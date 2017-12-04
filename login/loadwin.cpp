@@ -1,6 +1,6 @@
 #include "loadwin.h"
 #include "ui_loadwin.h"
-
+//2017-12-4 github change test
 loadwin::loadwin(QDialog *parent) :
     QDialog(parent),
     l_ui(new Ui::loadwin)
