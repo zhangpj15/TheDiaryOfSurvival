@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/config/ico/background.jpg</file>
+        <file>res/config/ico/coldFireBar.png</file>
+        <file>res/config/ico/death.jpg</file>
+        <file>res/config/ico/firebar.png</file>
+        <file>res/config/ico/restart.png</file>
+        <file>res/config/ico/sword.png</file>
+        <file>res/config/ico/title.jpg</file>
+        <file>res/img/bullets/bullet.png</file>
+        <file>res/img/flame/flame1.png</file>
+        <file>res/img/flame/flame2.png</file>
+        <file>res/img/flame/flame3.png</file>
+        <file>res/img/flame/flame4.png</file>
+        <file>res/img/flame/flame5.png</file>
+        <file>res/img/mask/mask1.png</file>
+        <file>res/img/mask/mask2.png</file>
+        <file>res/img/mask/mask3.png</file>
+        <file>res/img/mask/mask4.png</file>
+        <file>res/img/plane/classic.png</file>
+        <file>res/img/plane/classic1.png</file>
+    </qresource>
+</RCC>
