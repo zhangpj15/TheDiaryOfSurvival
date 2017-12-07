@@ -27,7 +27,7 @@ void MainWindow::initGame()
 //    m_game->setVisible(false);
 //    m_game->setDisabled(true);
 
-    connect(m_game,SIGNAL(sig_closeGameWidget()),this,SLOT(slot_return()));
+    connect(m_game,SIGNAL(sig_closeGame()),this,SLOT(slot_return()));
 }
 
 void MainWindow::initStart()
@@ -65,7 +65,7 @@ void MainWindow::slot_start()
     m_start->hide();
     m_game->show();
 
-//    m_gameWidget->startGameLoop();
+    m_game->startGameLoop();
 }
 
 void MainWindow::slot_regis()
