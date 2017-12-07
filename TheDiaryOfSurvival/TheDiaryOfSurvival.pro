@@ -18,21 +18,34 @@ SOURCES += main.cpp\
     regis.cpp \
     game.cpp \
     start.cpp \
-    death.cpp
+    death.cpp \
+    player.cpp \
+    bullet.cpp \
+    enemy.cpp \
+    emanager.cpp \
+    pmanager.cpp \
+    end.cpp
 
 HEADERS  += mainwindow.h \
     info.h \
     regis.h \
     game.h \
     start.h \
-    death.h
+    death.h \
+    player.h \
+    bullet.h \
+    enemy.h \
+    emanager.h \
+    pmanager.h \
+    end.h
 
 FORMS    += mainwindow.ui \
     info.ui \
     regis.ui \
     game.ui \
     start.ui \
-    death.ui
+    death.ui \
+    end.ui
 
 RESOURCES += \
     res.qrc
