@@ -2,11 +2,10 @@
 
 Enemy::Enemy()
 {
-    m_size = 5;
-    m_born = 0;
+    m_size = 10;
     m_isAlive = true;
     m_countDown = 100;
-    m_deathType = qrand()%3+1;
+    m_deathType = qrand()%4+1;
 }
 
 void Enemy::setPosi(double x, double y)
@@ -64,15 +63,9 @@ int Enemy::getCountDown()
 
 void Enemy::render(QPainter *painter)
 {
-    if(m_isAlive){
-//        painter->setPen(QColor(m_color));
-//        painter->setBrush(QBrush(m_color));
-//        painter->drawEllipse(m_posi,m_size,m_size);
-        painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
-       }
+    if(m_isAlive)painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
     else
     {
-
         QPixmap pixmap(m_size*5,m_size*5);
         m_color.setNamedColor("red");
         pixmap.fill(m_color);

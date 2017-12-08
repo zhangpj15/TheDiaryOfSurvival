@@ -36,9 +36,7 @@ void Emanager::bornNew(QPointF posi)
         Enemy oneenemy;
 
         qsrand(QTime::currentTime().msecsSinceStartOfDay()*QTime::currentTime().second());
-
         oneenemy.setPosi(qrand()%m_rect.x(),qrand()%m_rect.y());
-//        oneenemy.setColor(qrand()%256,qrand()%256,qrand()%256);
         oneenemy.setBorn(qrand()%40+1);
         double dx = posi.x()-oneenemy.getPosi().x();
         double dy = posi.y()-oneenemy.getPosi().y();
@@ -82,10 +80,7 @@ bool Emanager::updateEnemys(QPointF dist)
                            m_enemys[i].getPosi().y()+dy*m_speed);
     }
 
-//    qSort(m_enemys.begin(),m_enemys.end(),compareDist);
-
-    // 更新一下移动速度
-
+    qSort(m_enemys.begin(),m_enemys.end(),compareDist);// 排序，避免空指针
     return false;
 
 }
