@@ -6,6 +6,7 @@ INPUT(
 ./release\game.o
 ./release\start.o
 ./release\death.o
+./release\loadwin.o
 ./release\qrc_res.o
 ./release\moc_mainwindow.o
 ./release\moc_info.o
@@ -13,4 +14,5 @@ INPUT(
 ./release\moc_game.o
 ./release\moc_start.o
 ./release\moc_death.o
+./release\moc_loadwin.o
 );

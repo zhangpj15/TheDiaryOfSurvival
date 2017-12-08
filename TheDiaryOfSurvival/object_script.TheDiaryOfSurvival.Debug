@@ -6,6 +6,7 @@ INPUT(
 ./debug\game.o
 ./debug\start.o
 ./debug\death.o
+./debug\loadwin.o
 ./debug\qrc_res.o
 ./debug\moc_mainwindow.o
 ./debug\moc_info.o
@@ -13,4 +14,5 @@ INPUT(
 ./debug\moc_game.o
 ./debug\moc_start.o
 ./debug\moc_death.o
+./debug\moc_loadwin.o
 );

@@ -39,6 +39,7 @@ void MainWindow::initStart()
     connect(m_start,SIGNAL(sig_btnClose()),this,SLOT(slot_close()));
     connect(m_start,SIGNAL(sig_btnInfo()),this,SLOT(slot_info()));
     connect(m_start,SIGNAL(sig_btnRegis()),this,SLOT(slot_regis()));
+
 }
 
 void MainWindow::initInfo()
@@ -53,6 +54,7 @@ void MainWindow::initRegis()
     m_regis = new regis(this);
     m_regis->hide();
     connect(m_start,SIGNAL(sig_btnRegis()),this,SLOT(slot_regis()));
+    connect(m_regis,SIGNAL(sig_close_regis()),this,SLOT(slot_start()));
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event)
@@ -70,6 +72,9 @@ void MainWindow::slot_start()
 
 void MainWindow::slot_regis()
 {
+    m_start->hide();
+
+    m_regis->setGeometry(width()/4,height()/4,width()/2,height()/2);
     m_regis->show();
 }
 

@@ -182,6 +182,7 @@ Makefile: TheDiaryOfSurvival.pro ../../../MY_Software/QT/5.7/mingw53_32/mkspecs/
 		../../../MY_Software/QT/5.7/mingw53_32/mkspecs/features/win32/qt_config.prf \
 		../../../MY_Software/QT/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf \
 		../../../MY_Software/QT/5.7/mingw53_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../MY_Software/QT/5.7/mingw53_32/mkspecs/features/exclusive_builds.prf \
 		../../../MY_Software/QT/5.7/mingw53_32/mkspecs/features/default_pre.prf \
 		../../../MY_Software/QT/5.7/mingw53_32/mkspecs/features/win32/default_pre.prf \
@@ -207,6 +208,7 @@ Makefile: TheDiaryOfSurvival.pro ../../../MY_Software/QT/5.7/mingw53_32/mkspecs/
 		../../../MY_Software/QT/5.7/mingw53_32/lib/qtmaind.prl \
 		../../../MY_Software/QT/5.7/mingw53_32/lib/Qt5Widgets.prl \
 		../../../MY_Software/QT/5.7/mingw53_32/lib/Qt5Gui.prl \
+		../../../MY_Software/QT/5.7/mingw53_32/lib/Qt5Sql.prl \
 		../../../MY_Software/QT/5.7/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile TheDiaryOfSurvival.pro
 ../../../MY_Software/QT/5.7/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -332,6 +334,7 @@ Makefile: TheDiaryOfSurvival.pro ../../../MY_Software/QT/5.7/mingw53_32/mkspecs/
 ../../../MY_Software/QT/5.7/mingw53_32/mkspecs/features/win32/qt_config.prf:
 ../../../MY_Software/QT/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf:
 ../../../MY_Software/QT/5.7/mingw53_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../MY_Software/QT/5.7/mingw53_32/mkspecs/features/exclusive_builds.prf:
 ../../../MY_Software/QT/5.7/mingw53_32/mkspecs/features/default_pre.prf:
 ../../../MY_Software/QT/5.7/mingw53_32/mkspecs/features/win32/default_pre.prf:
@@ -357,6 +360,7 @@ TheDiaryOfSurvival.pro:
 ../../../MY_Software/QT/5.7/mingw53_32/lib/qtmaind.prl:
 ../../../MY_Software/QT/5.7/mingw53_32/lib/Qt5Widgets.prl:
 ../../../MY_Software/QT/5.7/mingw53_32/lib/Qt5Gui.prl:
+../../../MY_Software/QT/5.7/mingw53_32/lib/Qt5Sql.prl:
 ../../../MY_Software/QT/5.7/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile TheDiaryOfSurvival.pro
