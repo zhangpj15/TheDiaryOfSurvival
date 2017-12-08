@@ -6,6 +6,12 @@ INPUT(
 ./debug\game.o
 ./debug\start.o
 ./debug\death.o
+./debug\player.o
+./debug\bullet.o
+./debug\enemy.o
+./debug\emanager.o
+./debug\pmanager.o
+./debug\end.o
 ./debug\loadwin.o
 ./debug\qrc_res.o
 ./debug\moc_mainwindow.o
@@ -14,5 +20,6 @@ INPUT(
 ./debug\moc_game.o
 ./debug\moc_start.o
 ./debug\moc_death.o
+./debug\moc_end.o
 ./debug\moc_loadwin.o
 );
