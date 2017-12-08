@@ -17,12 +17,6 @@ public:
 
 private:
     Ui::death *ui;
-
-public slots:
-    void slot_btnRestart();
-
-signals:
-    void sig_restart();
 };
 
 #endif // DEATH_H
