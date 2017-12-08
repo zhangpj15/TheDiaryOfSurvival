@@ -1,0 +1,90 @@
+#include "enemy.h"
+
+Enemy::Enemy()
+{
+    m_size = 5;
+    m_born = 0;
+    m_isAlive = true;
+    m_countDown = 100;
+    m_deathType = qrand()%3+1;
+}
+
+void Enemy::setPosi(double x, double y)
+{
+    m_posi = QPointF(x,y);
+}
+
+void Enemy::setColor(int x, int y, int z)
+{
+    m_color = QColor(x,y,z);
+}
+void Enemy::setBorn(int x)
+{
+    m_born = x;
+}
+
+void Enemy::setIsAlive(bool b)
+{
+    m_isAlive = b;
+}
+
+QPointF Enemy::getPosi()
+{
+    QPointF posi;
+    posi.setX(m_posi.x()+m_size/2.0);
+    posi.setY(m_posi.y()+m_size/2.0);
+    return m_posi;
+}
+
+double Enemy::getSize()
+{
+    return m_size;
+}
+
+QColor Enemy::getColor()
+{
+    return m_color;
+}
+
+
+int Enemy::getBorn()
+{
+    return m_born;
+}
+
+bool Enemy::isAlive()
+{
+    return m_isAlive;
+}
+
+int Enemy::getCountDown()
+{
+    return m_countDown;
+}
+
+void Enemy::render(QPainter *painter)
+{
+    if(m_isAlive){
+//        painter->setPen(QColor(m_color));
+//        painter->setBrush(QBrush(m_color));
+//        painter->drawEllipse(m_posi,m_size,m_size);
+        painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
+       }
+    else
+    {
+
+        QPixmap pixmap(m_size*5,m_size*5);
+        m_color.setNamedColor("red");
+        pixmap.fill(m_color);
+        pixmap.setMask(QPixmap(QString(":/res/img/mask/mask%1.png").arg(m_deathType))
+                       .scaled(m_size*5,m_size*5).mask());
+
+        painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,pixmap);
+
+        // 同时颜色降低暗度，颜色渐变
+        m_countDown--;
+        m_color.setRed((m_color.red()+2)<255?m_color.red()+2:255);
+        m_color.setGreen((m_color.green()+2)<251?m_color.green()+2:251);
+        m_color.setBlue((m_color.blue()+2)<242?m_color.blue()+2:242);
+    }
+}
