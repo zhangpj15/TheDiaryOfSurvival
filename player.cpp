@@ -6,11 +6,10 @@ Player::Player()
 
 void Player::initPlayer()
 {
-    m_type = ":/res/img/plane/classic1.png";
+    m_type = ":/res/img/plane/katongxiaodongwu_01.png";
     m_dir = 0;
     m_vel = 5;
     m_curState = _STA;
-
     m_size = QPointF(25,25);
 }
 
@@ -146,6 +145,7 @@ void Player::render(QPainter *painter)
 {
     painter->save();
     painter->translate(m_posi.x()+m_size.x()/2.0,m_posi.y()+m_size.y()/2.0);
+//    将中心设为坐标系原点，便于旋转
     painter->rotate(m_dir);
     painter->translate(-m_posi.x()-m_size.x()/2.0,-m_posi.y()-m_size.y()/2.0);
 

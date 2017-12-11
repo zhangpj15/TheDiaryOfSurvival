@@ -21,9 +21,9 @@ public:
     int m_counter;           // 攻击计时器
 
     //火焰的一些效果
-//    int m_counterFire;       // 火焰的喷射计时
-//    bool m_isCooling;        // 火焰是否处于冷却状态
-//    int m_countDown;         // 火焰喷射的倒计时
+    int m_counterFire;       // 火焰的喷射计时
+    bool m_isCooling;        // 火焰是否处于冷却状态
+    int m_countDown;         // 火焰喷射的倒计时
 
     QList<Bullet> m_bullets;   // 所有的子弹序列 (_BULLET + _ShotGun)
 
@@ -40,9 +40,9 @@ public:
     int getAttackModeId();
     QString getAttackMode();
     int getKillNum();
-//    bool isCooling();
-//    int getCountDownNum();
-//    int getCountFireNum();
+    bool isCooling();
+    int getCountDownNum();
+    int getCountFireNum();
 
     // ------------------------------------------------
     void checkKnockWithEnemys(QVector<Enemy>& enemys, QPointF posi, double dir);
