@@ -1787,8 +1787,8 @@ QProgressBar::chunk {
   <widget class="QGroupBox" name="groupBox_help">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>160</y>
+     <x>190</x>
+     <y>170</y>
      <width>300</width>
      <height>180</height>
     </rect>
