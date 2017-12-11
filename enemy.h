@@ -19,13 +19,12 @@ public:
     int m_born;   // 敌人消失的样式
 
     void setPosi(double x,double y);
-    void setBorn(int x);
-    void setColor(int x, int y, int z);
+    void setColor(int x,int y,int z);
     void setIsAlive(bool b);
+    void setBorn(int x);
 
     QColor getColor();
     QPointF getPosi();
-    int getBorn();
     double getSize();
     bool isAlive();
     int getCountDown();

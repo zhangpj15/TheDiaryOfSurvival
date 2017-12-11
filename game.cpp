@@ -9,17 +9,17 @@ game::game(QWidget *parent) :
 //    新建death类窗口，用于重启游戏
     m_death = new death(this);
     m_death->hide();
-//    新建end类窗口，用于退出游戏
     m_end = new end(this);
     m_end->hide();
 
     connect(&m_timer,SIGNAL(timeout()),this,SLOT(slot_timeLoop()));      //信号槽，用于控制计时装置
-    connect(ui->btnShowTab,SIGNAL(clicked()),this,SLOT(slot_btnShowTab()));
-
+//    connect(ui->btnShowTab,SIGNAL(clicked()),this,SLOT(slot_btnShowTab()));
     connect(this,SIGNAL(sig_death()),this,SLOT(slot_gameOver()));       //death信号，则触发游戏结束
+
     connect(this,SIGNAL(sig_quitgame()),this,SLOT(slot_quitgame()));
     connect(m_death,SIGNAL(sig_restart()),this,SLOT(slot_restart()));   //restart信号，则触发游戏重启
-    connect(m_end,SIGNAL(sig_gameno()),this,SLOT(slot_no()));   //restart信号，则触发游戏重启
+
+      connect(m_end,SIGNAL(sig_gameno()),this,SLOT(slot_no()));   //restart信号，则触发游戏重启
     connect(m_end,SIGNAL(sig_gameyes()),this,SLOT(slot_yes()));   //restart信号，则触发游戏重启
 }
 
@@ -53,26 +53,13 @@ void game::startGameLoop()
 
     ui->lblAttackMode->setText(m_pmanager.getAttackMode());
 
-    //提示栏的动画效果_飞出
-    static QPropertyAnimation * animation = new QPropertyAnimation(ui->groupBox_help, "pos");
-    animation->setStartValue(QPoint(width()*0.5-ui->groupBox_help->width()*0.5, height()*0.5-ui->groupBox_help->height()*0.5));
-    animation->setEndValue(QPoint(width()*0.5-ui->groupBox_help->width()*0.5, -ui->groupBox_help->height()));
-    animation->setDuration(3000);
-    animation->setEasingCurve(QEasingCurve::OutInExpo);
-    animation->start(QAbstractAnimation::DeleteWhenStopped);
-
-    //提示栏的动画效果_透明
-//    static QPropertyAnimation * animation = new QPropertyAnimation(ui->groupBox_help, "windowOpacity");\
-//    animation->setStartValue(1);
-//    animation->setEndValue(0);
-//    animation->setEasingCurve(QEasingCurve::InCirc);
-//    connect(animation, SIGNAL(finished()),
-//            ui->groupBox_help, SLOT(deleteLater()));
-//    show();
-//    animation->start(QAbstractAnimation::DeleteWhenStopped);
-//    animation->setEasingCurve(QEasingCurve::OutInExpo);
-//    animation->setDuration(3000);
-//    animation->start(QAbstractAnimation::DeleteWhenStopped);
+    //提示栏的动画效果
+//    static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupBox,"pos");
+//    animate->setStartValue(QPoint(0,220));
+//    animate->setEndValue(QPoint(-140,220));
+//    animate->setEasingCurve(QEasingCurve::InCubic);
+//    animate->setDuration(3000);
+//    animate->start();
 
     setFocus();
 }
@@ -133,6 +120,7 @@ void game::paintEvent(QPaintEvent *event)
 
     m_emanager.renderEnemys(&painter);
     m_pmanager.renderAttackEffect(&painter,m_player.getCurrentPosi(),m_player.getSize().x(),m_player.getDir());
+
     m_player.render(&painter);
 }
 
@@ -195,6 +183,8 @@ void game::keyPressEvent(QKeyEvent *event)
             m_timer.start();
         break;
     case Qt::Key_Q:
+//        m_timer.stop();
+//        m_end->show();
         emit sig_quitgame();
         break;
     }
@@ -296,34 +286,35 @@ void game::keyReleaseEvent(QKeyEvent *event)
 
 void game::slot_btnShowTab()
 {
-    //提示栏的动画效果
-    if(ui->groupBox->pos() == QPoint(-140,170))
-    {
-        static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupBox,"pos");
-        animate->setStartValue(QPoint(-140,170));
-        animate->setEndValue(QPoint(0,170));
-        animate->setEasingCurve(QEasingCurve::Linear);
-        animate->setDuration(500);
-        animate->start();
-        ui->btnShowTab->setText(">");
-    }
-    else
-    {
-        static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupBox,"pos");
-        animate->setStartValue(QPoint(0,170));
-        animate->setEndValue(QPoint(-140,170));
-        animate->setEasingCurve(QEasingCurve::Linear);
-        animate->setDuration(500);
-        animate->start();
-        ui->btnShowTab->setText("<");
-    }
+//    //提示栏的动画效果
+//    if(ui->groupBox->pos() == QPoint(-140,220))
+//    {
+//        static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupBox,"pos");
+//        animate->setStartValue(QPoint(-140,220));
+//        animate->setEndValue(QPoint(0,220));
+//        animate->setEasingCurve(QEasingCurve::Linear);
+//        animate->setDuration(500);
+//        animate->start();
+
+//        ui->btnShowTab->setText(">");
+//    }
+//    else
+//    {
+//        static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupBox,"pos");
+//        animate->setStartValue(QPoint(0,220));
+//        animate->setEndValue(QPoint(-140,220));
+//        animate->setEasingCurve(QEasingCurve::Linear);
+//        animate->setDuration(500);
+//        animate->start();
+
+//        ui->btnShowTab->setText("<");
+//    }
 }
 //void game::slot_attack()
 //{
 //    m_pmanager.setAttacked(true);
 //}
 
-/**********  退出游戏事件 **********/
 void game::slot_gameOver()
 {
     m_timer.stop();
@@ -349,13 +340,11 @@ void game::slot_no()
     m_end->hide();
     m_timer.start();
 }
-
 void game::slot_yes()
 {
     m_end->hide();
     emit sig_closeGame();
 }
-
 game::~game()
 {
     delete ui;

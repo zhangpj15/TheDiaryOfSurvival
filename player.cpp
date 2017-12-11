@@ -6,10 +6,11 @@ Player::Player()
 
 void Player::initPlayer()
 {
-    m_type = ":/res/img/plane/smile.png";
+    m_type = ":/res/img/plane/classic1.png";
     m_dir = 0;
     m_vel = 5;
     m_curState = _STA;
+
     m_size = QPointF(25,25);
 }
 
