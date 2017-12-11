@@ -22,6 +22,7 @@ public:
     QPoint m_rect;  // 活动范围
 
     void setActiveRect(int x,int y);
+    
     QVector<Enemy>& getEnemysList();
 
     void bornNew(QPointF posi);

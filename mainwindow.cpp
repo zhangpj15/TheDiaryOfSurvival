@@ -24,6 +24,8 @@ void MainWindow::initGame()
     m_game->setFocusPolicy(Qt::StrongFocus);
 
     m_game->hide();
+//    m_game->setVisible(false);
+//    m_game->setDisabled(true);
 
     connect(m_game,SIGNAL(sig_closeGame()),this,SLOT(slot_return()));
 }
