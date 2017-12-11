@@ -52,7 +52,7 @@ protected:
 private slots:
     void slot_timeLoop();   // 游戏循环
     void slot_btnShowTab();  // 显示说明框
-//    void slot_attack();  // 显示说明框
+    void slot_attack();  // 显示说明框
 
     void slot_gameOver();   // 游戏结束
     void slot_quitgame(); // 退出游戏

@@ -6,9 +6,9 @@ Pmanager::Pmanager()
     m_isAttacked = false;
     m_killNum = 0;
 
-//    m_countDown = 0;
-//    m_counterFire = 0;
-//    m_isCooling = false;
+    m_countDown = 0;//    火焰计时冷却
+    m_counterFire = 0;
+    m_isCooling = false;
 }
 
 void Pmanager::initPmanager()
@@ -17,9 +17,9 @@ void Pmanager::initPmanager()
     m_isAttacked = false;
     m_killNum = 0;
 
-//    m_countDown = 0;
-//    m_counterFire = 0;
-//    m_isCooling = false;
+    m_countDown = 0;
+    m_counterFire = 0;
+    m_isCooling = false;
 
     m_bullets.clear();
 }
@@ -72,27 +72,28 @@ int Pmanager::getKillNum()
     return m_killNum;
 }
 
-//bool Pmanager::isCooling()
-//{
-//    return m_isCooling;
-//}
+bool Pmanager::isCooling()
+{
+    return m_isCooling;
+}
 
-//int Pmanager::getCountDownNum()
-//{
-//    return m_countDown;
-//}
+int Pmanager::getCountDownNum()
+{
+    return m_countDown;
+}
 
-//int Pmanager::getCountFireNum()
-//{
-//    return m_counterFire;
-//}
+int Pmanager::getCountFireNum()
+{
+    return m_counterFire;
+}
 
+// 检测敌人受攻击情况
 void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double dir)
 {
-    // 检测子弹产生的碰撞
+    // 检测子弹的碰撞
     for(int i=0; i<m_bullets.size();i++)
     {
-        if(!m_rect.contains(m_bullets[i].getPosi()))
+        if(!m_rect.contains(m_bullets[i].getPosi()))// 子弹飞出界外，删除
         {
             m_bullets.removeAt(i--);
             continue;
@@ -113,16 +114,15 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
             {
                 enemys[k].setIsAlive(false);
                 m_bullets.removeAt(i--);
-
                 m_killNum++;   // 击杀一个敌人
                 break;
             }
         }
     }
 
-    // 检测火焰产生的碰撞
-//    if( !m_isAttacked||m_curAttackType!=_FIRE || m_isCooling)
-     if( !m_isAttacked||m_curAttackType!=_FIRE)
+// 检测火焰产生的碰撞
+    if( !m_isAttacked||m_curAttackType!=_FIRE || m_isCooling)
+//     if( !m_isAttacked||m_curAttackType!=_FIRE)
         return;
 
     // 将 posi从玩家中心移动到火焰中心
@@ -140,7 +140,7 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
     matrix.rotate(dir);    // 旋转
     matrix.translate(-posi.x(),-posi.y());   // 平移回原位置
 
-    polygon = polygon*matrix;   // 多边形的坐标
+    polygon = polygon*matrix;   // 多边形的坐标，随player旋转
 
     for(int i=0; i<enemys.size();i++)
     {
@@ -163,17 +163,17 @@ void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)
         m_bullets[i].updateBullet();
     }
 
-//    // 更新一下火焰的冷却数据
-//    if(m_isCooling)
-//    {
-//        m_countDown+=1;
-//        if(m_countDown>200)
-//        {
-//            m_counterFire = 0;
-//            m_isCooling = false;
-//            m_countDown = 0;
-//        }
-//    }
+    // 更新一下火焰的冷却数据
+    if(m_isCooling)
+    {
+        m_countDown+=1;
+        if(m_countDown>200)
+        {
+            m_counterFire = 0;
+            m_isCooling = false;
+            m_countDown = 0;
+        }
+    }
 
     //若仍处于攻击状态则生成新的子弹
     if(m_isAttacked)
@@ -224,13 +224,13 @@ void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)
         }
         case _FIRE:
 
-//            if(m_counterFire>200)   // 火焰喷射时间超过200,停止喷射
-//            {
-//                setAttacked(false);
-//                m_isCooling = true;
-//            }
+            if(m_counterFire>200)   // 火焰喷射时间超过200,停止喷射
+            {
+                setAttacked(false);
+                m_isCooling = true;
+            }
 
-//            m_counterFire++;
+            m_counterFire++;
             break;
         }
 
@@ -246,19 +246,19 @@ void Pmanager::renderAttackEffect(QPainter* painter, QPointF posi, double size, 
 
 void Pmanager::renderFlame(QPainter *painter, QPointF posi, double size, double dir)
 {
-//    if(m_curAttackType != _FIRE || !m_isAttacked || m_isCooling)
-     if(m_curAttackType != _FIRE || !m_isAttacked)
+    if(m_curAttackType != _FIRE || !m_isAttacked || m_isCooling)
+//     if(m_curAttackType != _FIRE || !m_isAttacked)
         return;
 
     static double i = 1;
 
     double w = 100,h=150;  // 火焰尺寸
 
-//    if(m_counterFire > 100)
-//    {
-//        w-=m_counterFire/4;
-//        h-=m_counterFire/4;
-//    }
+    if(m_counterFire > 100)
+    {
+        w-=m_counterFire/4;
+        h-=m_counterFire/4;
+    }
 
     posi.setX(posi.x()+sin(3.14*dir/180.0)*(size+h/2-10));  // 将 posi 从玩家中心移动到火焰中心
     posi.setY(posi.y()-cos(3.14*dir/180.0)*(size+h/2-10));

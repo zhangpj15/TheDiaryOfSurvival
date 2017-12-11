@@ -15,6 +15,7 @@ public:
     void initEmanager();
 
     QVector<Enemy> m_enemys; // 所有的敌人
+    QVector<Enemy>& getEnemysList();
 
     double m_speed;     // 敌人的移动速度
     double m_timeCount;  // 局部计时器
@@ -22,10 +23,9 @@ public:
     QPoint m_rect;  // 活动范围
 
     void setActiveRect(int x,int y);
-    QVector<Enemy>& getEnemysList();
 
     void bornNew(QPointF posi);
-    bool updateEnemys(QPointF dist);
+    bool updateEnemys(QPointF dist, QPointF size);
     void renderEnemys(QPainter* painter);
 };
 
