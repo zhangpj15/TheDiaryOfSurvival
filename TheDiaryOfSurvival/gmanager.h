@@ -1,21 +1,21 @@
-#ifndef EMANAGER_H
-#define EMANAGER_H
-#include "enemy.h"
+#ifndef GMANAGER_H
+#define GMANAGER_H
+#include "goods.h"
 #include <QList>
 #include <QPainter>
 #include <QTime>
 #include <cmath>
 #include <QtAlgorithms>
 
-class Emanager
+class gmanager
 {
 public:
-    Emanager();
+    gmanager();
 
-    void initEmanager();
+    void initgmanager();
 
-    QVector<Enemy> m_enemys; // 所有的敌人
-    QVector<Enemy>& getEnemysList();
+    QVector<goods> m_goods; // 所有的敌人
+    QVector<goods>& getgoodsList();
 
     double m_speed;     // 敌人的移动速度
     double m_timeCount;  // 局部计时器
@@ -25,8 +25,9 @@ public:
     void setActiveRect(int x,int y);
 
     void bornNew(QPointF posi);
-    bool updateEnemys(QPointF dist, QPointF size);
-    void renderEnemys(QPainter* painter);
+    bool updategoods(QPointF dist, QPointF size);
+    void rendergoods(QPainter* painter);
 };
 
-#endif // EMANAGER_H
+
+#endif // GMANAGER_H

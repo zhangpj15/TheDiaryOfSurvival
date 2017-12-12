@@ -1,33 +1,33 @@
-#include "enemy.h"
+#include "goods.h"
 
-Enemy::Enemy()
+goods::goods()
 {
-    m_size = 8;
-
+    m_size = 10;
     m_isAlive = true;
     m_countDown = 100;
-    m_deathType = qrand()%4+1;
+    m_deathType = qrand()%2+1;
+    m_born = qrand()%9+1;
 }
 
-void Enemy::setPosi(double x, double y)
+void goods::setPosi(double x, double y)
 {
     m_posi = QPointF(x,y);
 }
 
-void Enemy::setColor(int x, int y, int z)
+void goods::setColor(int x, int y, int z)
 {
     m_color = QColor(x,y,z);
 }
-void Enemy::setBorn(int x)
+void goods::setBorn(int x)
 {
     m_born = x;
 }
-void Enemy::setIsAlive(bool b)
+void goods::setIsAlive(bool b)
 {
     m_isAlive = b;
 }
 
-QPointF Enemy::getPosi()
+QPointF goods::getPosi()
 {
     QPointF posi;
     posi.setX(m_posi.x()+m_size/2.0);
@@ -35,36 +35,36 @@ QPointF Enemy::getPosi()
     return m_posi;
 }
 
-double Enemy::getSize()
+double goods::getSize()
 {
     return m_size;
 }
 
-QColor Enemy::getColor()
+QColor goods::getColor()
 {
     return m_color;
 }
 
-bool Enemy::isAlive()
+bool goods::isAlive()
 {
     return m_isAlive;
 }
 
-int Enemy::getCountDown()
+int goods::getCountDown()
 {
     return m_countDown;
 }
 
-void Enemy::render(QPainter *painter)
+void goods::render(QPainter *painter)
 {
-    if(m_isAlive)painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
+    if(m_isAlive)painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,QPixmap(QString(":/res/img/goods/goods (%1).png").arg(m_born)));
     else
     {
 
         QPixmap pixmap(m_size*5,m_size*5);
 
         pixmap.fill(m_color);
-        pixmap.setMask(QPixmap(QString(":/res/img/mask/mask%1.png").arg(m_deathType))
+        pixmap.setMask(QPixmap(QString(":/res/img/goods/fireworks %1.png").arg(m_deathType))
                        .scaled(m_size*5,m_size*5).mask());
 
         painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,pixmap);

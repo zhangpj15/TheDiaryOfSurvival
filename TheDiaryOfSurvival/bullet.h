@@ -22,6 +22,7 @@ public:
     double getDir();
 
     void updateBullet();
+
     void renderBullet(QPainter* painter);
 
 };

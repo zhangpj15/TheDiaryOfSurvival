@@ -3,8 +3,7 @@
 # Project created by QtCreator 2017-11-28T20:36:10
 #
 #-------------------------------------------------
-QT       += sql
-QT       += gui
+
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -25,8 +24,9 @@ SOURCES += main.cpp\
     enemy.cpp \
     emanager.cpp \
     pmanager.cpp \
-    end.cpp\
-    loadwin.cpp
+    end.cpp \
+    goods.cpp \
+    gmanager.cpp
 
 HEADERS  += mainwindow.h \
     info.h \
@@ -39,8 +39,9 @@ HEADERS  += mainwindow.h \
     enemy.h \
     emanager.h \
     pmanager.h \
-    end.h\
-    loadwin.h
+    end.h \
+    goods.h \
+    gmanager.h
 
 FORMS    += mainwindow.ui \
     info.ui \
@@ -48,9 +49,7 @@ FORMS    += mainwindow.ui \
     game.ui \
     start.ui \
     death.ui \
-    end.ui\
-    loadwin.ui
+    end.ui
 
 RESOURCES += \
     res.qrc
-

@@ -1,22 +1,23 @@
-#ifndef ENEMY_H
-#define ENEMY_H
+#ifndef GOODS_H
+#define GOODS_H
+
 #include <QPainter>
 #include <QtCore>
 #include <QBitmap>
 
-class Enemy
+class goods
 {
 public:
-    Enemy();
+    goods();
 
-    QPointF m_posi;   // 敌人坐标
-    QColor m_color;  // 敌人颜色
-    double m_size;// 敌人尺寸
+    QPointF m_posi;   // 道具坐标
+    QColor m_color;  // 道具颜色
+    double m_size;// 道具尺寸
 
     bool m_isAlive;
     int m_countDown;
-    int m_deathType;   // 敌人消失的样式
-    int m_born;   // 敌人消失的样式
+    int m_deathType;   // 道具消失的样式
+    int m_born;   // 道具消失的样式
 
     void setPosi(double x,double y);
     void setColor(int x,int y,int z);
@@ -32,4 +33,5 @@ public:
     void render(QPainter* painter); // 渲染
 };
 
-#endif // ENEMY_H
+
+#endif // GOODS_H

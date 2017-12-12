@@ -52,14 +52,14 @@ protected:
 private slots:
     void slot_timeLoop();   // 游戏循环
     void slot_btnShowTab();  // 显示说明框
-//    void slot_attack();  // 显示说明框
+    void slot_attack();  // 显示说明框
 
     void slot_gameOver();   // 游戏结束
-    void slot_quitgame();
-    void slot_restart();
+    void slot_quitgame(); // 退出游戏
+    void slot_restart(); // 重启游戏
 
-    void slot_no();
-    void slot_yes();
+    void slot_no(); // 退出游戏后返回游戏
+    void slot_yes(); // 退出游戏后返回至主界面
 
 signals:
     void sig_closeGame();
