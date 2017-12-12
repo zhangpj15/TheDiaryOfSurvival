@@ -2,7 +2,7 @@
 
 Enemy::Enemy()
 {
-    m_size = 8;
+    m_size = 10;
 
     m_isAlive = true;
     m_countDown = 100;

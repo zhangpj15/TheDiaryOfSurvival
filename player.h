@@ -15,6 +15,7 @@ public:
     QPointF m_posi;      // 飞机当前的位置
     double m_vel;    // 飞机的速w率
     double m_dir;         // 飞机的当前方向 [0,360]
+    double m_big;         // 飞机的当前方向 [0,360]
 
     QPointF m_size;     // 飞机的尺寸
     QRect m_rect;     // 飞机的活动范围
@@ -33,21 +34,28 @@ public:
         _BACK_RIGHT  // 后退右转
     };
 
+
     short m_curState;  // 飞机当前运行状态
+    int m_curgoods;  // 飞机当前运行状态
 
     Player();
 
     void initPlayer();
 
     void setCurrentState(short state);
+    void setCurrentgoods(int goods);
+
     void setCurrentPosi(int x,int y);
     void setActiveRect(int x,int y,int w,int h);
     void setCurrentSpeed(int x);
     void setCurrentVolume(int x);
 
     QPointF getCurrentPosi();
+
     short getCurrentState();
+    int getCurrentgoods();
     double getDir();
+
     QPointF getSize();
 
     // 行为
@@ -56,7 +64,11 @@ public:
     void turnLeft();
     void turnRight();
 
+    void speedup();
+    void large();
+
     void updateStates();  // 更新
+    void updategoods();  // 更新
 
     void render(QPainter* painter);
 };

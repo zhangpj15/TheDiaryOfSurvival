@@ -1,6 +1,6 @@
 #include "game.h"
 #include "ui_game.h"
-
+#include <qdebug.h>
 game::game(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::game)
@@ -12,7 +12,7 @@ game::game(QWidget *parent) :
 //    新建end类窗口，用于主动结束游戏
     m_end = new end(this);
     m_end->hide();
-
+//    启动新窗口
     connect(&m_timer,SIGNAL(timeout()),this,SLOT(slot_timeLoop()));      //信号槽，用于控制计时装置
     connect(ui->btnShowTab,SIGNAL(clicked()),this,SLOT(slot_btnShowTab()));
     connect(this,SIGNAL(sig_death()),this,SLOT(slot_gameOver()));       //death信号，则触发游戏结束
@@ -20,44 +20,44 @@ game::game(QWidget *parent) :
     connect(this,SIGNAL(sig_quitgame()),this,SLOT(slot_quitgame()));
     connect(m_death,SIGNAL(sig_restart()),this,SLOT(slot_restart()));   //restart信号，则触发游戏重启
 
-      connect(m_end,SIGNAL(sig_gameno()),this,SLOT(slot_no()));   //restart信号，则触发游戏重启
+    connect(m_end,SIGNAL(sig_gameno()),this,SLOT(slot_no()));   //restart信号，则触发游戏重启
     connect(m_end,SIGNAL(sig_gameyes()),this,SLOT(slot_yes()));   //restart信号，则触发游戏重启
-
-//    connect(this,SIGNAL(sig_borngoods()),m_gmanager,SLOT(slot_yes()));   //restart信号，则触发游戏重启
 }
 
+//显示布局
 void game::resizeEvent(QResizeEvent *event)
 {
     m_player.setActiveRect(0,61,width(),height()-61);
-    m_emanager.setActiveRect(width(),height());
-    m_pmanager.setActiveRect(width(),height());
-    m_bmanager.setActiveRect(width(),height());
+    m_emanager.setActiveRect(width(),height()-61);
+    m_pmanager.setActiveRect(width(),height()-61);
+    m_bmanager.setActiveRect(width(),height()-61);
+    m_gmanager.setActiveRect(width(),height()-61);
 }
 
 void game::startGameLoop()
 {
-    ui->pbarEnergy->setVisible(false);    //显示生命槽
-    bA = bD = false;                        //判断按键是否按下，初始置为否
+    ui->pbarEnergy->setVisible(false);    //显示能量槽
+    bA = bD = false;                      //判断按键是否按下，初始置为否
 
-    m_time = 0;                             //计时器，初始置为0
+    m_time = 0;                           //计时器，初始置为0
 
     m_player.initPlayer();
-    m_timer.setInterval(16);
+    m_timer.setInterval(15);
 
-    m_timer.start();                        //启动计时器
+    m_timer.start();                      //启动计时器
 
     m_player.setCurrentPosi(width()/2,height()/2);
-    m_player.setActiveRect(0,61,width(),height()-61);
+//    m_player.setActiveRect(0,61,width(),height()-61);
 
     m_emanager.initEmanager();
     m_pmanager.initPmanager();
     m_gmanager.initgmanager();
     m_bmanager.initbmanager();
 
-    m_emanager.setActiveRect(width(),height());
-    m_pmanager.setActiveRect(width(),height());
-    m_gmanager.setActiveRect(width(),height());
-    m_bmanager.setActiveRect(width(),height());
+//    m_emanager.setActiveRect(width(),height());
+//    m_pmanager.setActiveRect(width(),height());
+//    m_gmanager.setActiveRect(width(),height());
+//    m_bmanager.setActiveRect(width(),height());
 
     ui->lblAttackMode->setText(m_pmanager.getAttackMode());
 
@@ -72,16 +72,28 @@ void game::startGameLoop()
     setFocus();
 }
 
+
+// 定时器控制刷新状态
 void game::slot_timeLoop()
 {
     m_time += m_timer.interval();
+    if(!(m_time/1000)%5)qDebug("Test:%d",m_time);
+
+//        m_emanager.setActiveRect(width()*0.5,height()*0.5);
+//        m_pmanager.setActiveRect(width()*0.5,height()*0.5);
+//        m_gmanager.setActiveRect(width()*0.5,height()*0.5);
+//        m_bmanager.setActiveRect(width()*0.5,height()*0.5);
+
+
+
     ui->btnShowTab->setText(">");
-    m_player.updateStates();
 
-//    QTimer::singleShot( 5, this, SLOT(sig_borngoods()) );
-    m_pmanager.updateAttackEffect(m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir());
+    m_player.updateStates();// 位置刷新
+    m_player.updategoods();// 位置刷新
 
-    bool isGameOver = m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize());
+    m_pmanager.updateAttackEffect(m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir());// 攻击模式刷新
+
+    bool isGameOver = (m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize())||m_bmanager.updatebarriers(m_player.getCurrentPosi(),m_player.getSize()));
 
     // 判断一下游戏是否结束
     if(isGameOver)
@@ -92,7 +104,10 @@ void game::slot_timeLoop()
     m_bmanager.bornNew(m_player.getCurrentPosi());
     m_gmanager.bornNew(m_player.getCurrentPosi());
     //玩家没死，该敌人死了
-    m_pmanager.checkKnockWithEnemys(m_emanager.getEnemysList(),m_bmanager.getbarriersList(),m_player.getCurrentPosi(),m_player.getDir());
+    int num_player=m_pmanager.checkKnockWithgoods(m_gmanager.getgoodsList(),m_player.getCurrentPosi());
+    //吃没吃到道具呀
+    m_player.setCurrentgoods(num_player);
+    m_pmanager.checkKnockWithEnemys(m_emanager.getEnemysList(),m_player.getCurrentPosi(),m_player.getDir());
     //敌人死一圈，该生成新的了
     m_emanager.bornNew(m_player.getCurrentPosi());
 

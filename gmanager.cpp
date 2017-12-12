@@ -40,7 +40,9 @@ void gmanager::bornNew(QPointF posi)
 
         onegoods.setPosi(qrand()%m_rect.x(),qrand()%m_rect.y());
         onegoods.setColor(qrand()%256,qrand()%256,qrand()%256);
-        onegoods.setBorn(qrand()%9+1);
+        int num=qrand()%2+1;
+        onegoods.setBorn(num);
+        onegoods.setNumber(num);
         double dx = posi.x()-onegoods.getPosi().x();
         double dy = posi.y()-onegoods.getPosi().y();
 
@@ -67,20 +69,20 @@ bool gmanager::updategoods(QPointF dist,QPointF size)
             }
             continue;
         }
-        float dx = dist.x()+size.x()*0.5-m_goods[i].getPosi().x()-m_goods[i].getSize()*0.5;
-        float dy = dist.y()+size.y()*0.5-m_goods[i].getPosi().y()-m_goods[i].getSize()*0.5;
+//        float dx = dist.x()+size.x()*0.5-m_goods[i].getPosi().x()-m_goods[i].getSize()*0.5;
+//        float dy = dist.y()+size.y()*0.5-m_goods[i].getPosi().y()-m_goods[i].getSize()*0.5;
 
-        float length = sqrt(dx*dx+dy*dy);
-        float range=(m_goods[i].getSize()*0.5+size.x()*0.5)*1.414;
-        if(length<=range)                // 如果距离小于1,那么游戏结束
-            return true;
+//        float length = sqrt(dx*dx+dy*dy);
+//        float range=(m_goods[i].getSize()*0.5+size.x()*0.4);
+//        if(length<=range)                // 如果距离小于1,那么游戏结束
+//            return true;
 
-        dx/=length;
-        dy/=length;
+//        dx/=length;
+//        dy/=length;
 
 
-        m_goods[i].setPosi(m_goods[i].getPosi().x()+dx*m_speed,
-                           m_goods[i].getPosi().y()+dy*m_speed);
+//        m_goods[i].setPosi(m_goods[i].getPosi().x()+dx*m_speed,
+//                           m_goods[i].getPosi().y()+dy*m_speed);
     }
 
     qSort(m_goods.begin(),m_goods.end(),compareDist);//更新enermy序列，非常重要，不然有空指针

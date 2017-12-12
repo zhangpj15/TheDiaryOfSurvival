@@ -16,8 +16,8 @@
   <widget class="QLabel" name="lblTime">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>20</y>
+     <x>200</x>
+     <y>10</y>
      <width>201</width>
      <height>41</height>
     </rect>
@@ -38,8 +38,8 @@
   <widget class="QProgressBar" name="pbarEnergy">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>30</y>
+     <x>360</x>
+     <y>20</y>
      <width>141</width>
      <height>21</height>
     </rect>
@@ -69,7 +69,7 @@ QProgressBar::chunk {
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>26</y>
+     <y>10</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -87,8 +87,8 @@ QProgressBar::chunk {
   <widget class="QLabel" name="lblPoint">
    <property name="geometry">
     <rect>
-     <x>540</x>
-     <y>30</y>
+     <x>570</x>
+     <y>20</y>
      <width>54</width>
      <height>23</height>
     </rect>
@@ -107,7 +107,7 @@ QProgressBar::chunk {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>26</y>
+     <y>10</y>
      <width>81</width>
      <height>31</height>
     </rect>

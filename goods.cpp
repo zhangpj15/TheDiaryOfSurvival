@@ -22,6 +22,10 @@ void goods::setBorn(int x)
 {
     m_born = x;
 }
+void goods::setNumber(int x)
+{
+    m_number = x;
+}
 void goods::setIsAlive(bool b)
 {
     m_isAlive = b;
@@ -54,7 +58,10 @@ int goods::getCountDown()
 {
     return m_countDown;
 }
-
+int goods::getNumber()
+{
+    return m_number;
+}
 void goods::render(QPainter *painter)
 {
     if(m_isAlive)painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,QPixmap(QString(":/res/img/goods/goods (%1).png").arg(m_born)));
@@ -64,7 +71,7 @@ void goods::render(QPainter *painter)
         QPixmap pixmap(m_size*5,m_size*5);
 
         pixmap.fill(m_color);
-        pixmap.setMask(QPixmap(QString(":/res/img/goods/fireworks %1.png").arg(m_deathType))
+        pixmap.setMask(QPixmap(QString(":/res/img/goods/fireworks (%1).png").arg(m_deathType))
                        .scaled(m_size*5,m_size*5).mask());
 
         painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,pixmap);

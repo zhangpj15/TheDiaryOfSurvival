@@ -61,6 +61,18 @@ QString Pmanager::getAttackMode()
         return "Fire Gun";
     }
 }
+// 返回商品
+QString Pmanager::getgoodsMode(int i)
+{
+    switch (i) {
+    case 1:
+        return "Speed up";
+    case 2:
+        return "large";
+//    case _FIRE:
+//        return "Fire Gun";
+    }
+}
 // 返回攻击模式
 int Pmanager::getAttackModeId()
 {
@@ -95,7 +107,7 @@ double Pmanager::TwoPtDistance(const QPointF& pt1, const QPointF& pt2)
 {return sqrt(double(square(pt2.x() - pt1.x()) + square(pt2.y() - pt1.y())));}
 
 // 检测敌人受攻击情况
-void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys,QVector<barriers> &barriers, QPointF posi, double dir)
+void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double dir)
 {
     // 检测子弹的进入障碍区
 
@@ -155,6 +167,27 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys,QVector<barriers> &ba
         }
     }
 }
+
+
+// 检测吃道具
+int Pmanager::checkKnockWithgoods(QVector<goods> &goods, QPointF posi)
+{
+    // 检测子弹的进入障碍区
+        int num=0;
+        for(int k=0; k<goods.size();k++)// 检测敌人是否被击中
+        {
+            if(!goods[k].isAlive())
+                continue;
+            if( TwoPtDistance(goods[k].getPosi(),posi)<25 )
+            {
+                goods[k].setIsAlive(false);
+                num=goods[k].getNumber();
+                return num;
+            }
+        }
+        return 0;
+}
+
 
 //    更新攻击
 void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)

@@ -10,12 +10,18 @@ void Player::initPlayer()
     m_dir = 0;
     m_vel = 5;
     m_curState = _STA;
-    m_size = QPointF(40,40);
+    m_size = QPointF(50,50);
+    m_big=1;
+    m_curgoods = 0;
 }
 
 void Player::setCurrentState(short state)
 {
     m_curState = state;
+}
+void Player::setCurrentgoods(int goods)
+{
+    m_curgoods = goods;
 }
 
 void Player::setCurrentPosi(int x, int y)
@@ -52,6 +58,10 @@ QPointF Player::getCurrentPosi()
 short Player::getCurrentState()
 {
     return m_curState;
+}
+int Player::getCurrentgoods()
+{
+    return m_curgoods;
 }
 
 double Player::getDir()
@@ -106,6 +116,17 @@ void Player::turnRight()
     m_dir+=5;
 }
 
+void Player::speedup()
+{
+    m_vel+=2;
+}
+
+void Player::large()
+{
+    m_big+=1.2;
+    setCurrentVolume(m_big);
+}
+
 void Player::updateStates()
 {
     switch(m_curState)
@@ -138,6 +159,41 @@ void Player::updateStates()
         turnRight();
         moveBack();
         break;
+    }
+}
+
+void Player::updategoods()
+{
+    switch(m_curgoods)
+    {
+    case 1:
+        speedup();
+        break;
+    case 2:
+        large();
+        break;
+//    case _RIGHT:
+//        turnRight();
+//        break;
+//    case _RUN_LEFT:
+//        turnLeft();
+//        moveFront();
+//        break;
+//    case _RUN_RIGHT:
+//        turnRight();
+//        moveFront();
+//        break;
+//    case _BACK:
+//        moveBack();
+//        break;
+//    case _BACK_LEFT:
+//        turnLeft();
+//        moveBack();
+//        break;
+//    case _BACK_RIGHT:
+//        turnRight();
+//        moveBack();
+//        break;
     }
 }
 

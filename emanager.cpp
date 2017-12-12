@@ -24,12 +24,19 @@ QVector<Enemy>& Emanager::getEnemysList()
 {
     return m_enemys;
 }
+// 求平方
+double Emanager::square(const double num){return num * num;}
+
+
+// 求两点距离
+double Emanager::TwoPtDistance(const QPointF& pt1, const QPointF& pt2)
+{return sqrt(double(square(pt2.x() - pt1.x()) + square(pt2.y() - pt1.y())));}
 
 void Emanager::bornNew(QPointF posi)
 {
     static int count = 0;
     count++;
-    if(count%10 <9)
+    if(count%80 <79)
         return;
 
     while(true)
@@ -41,10 +48,10 @@ void Emanager::bornNew(QPointF posi)
         oneenemy.setPosi(qrand()%m_rect.x(),qrand()%m_rect.y());
         oneenemy.setColor(qrand()%256,qrand()%256,qrand()%256);
         oneenemy.setBorn(qrand()%40+1);
-        double dx = posi.x()-oneenemy.getPosi().x();
-        double dy = posi.y()-oneenemy.getPosi().y();
+//        double dx = posi.x()-oneenemy.getPosi().x();
+//        double dy = posi.y()-oneenemy.getPosi().y();
 
-        double leng = sqrt(dx*dx+dy*dy);
+        double leng = TwoPtDistance(posi,oneenemy.getPosi());
 
         if(leng < 100)
             continue;
@@ -67,11 +74,12 @@ bool Emanager::updateEnemys(QPointF dist,QPointF size)
             }
             continue;
         }
-        float dx = dist.x()+size.x()*0.5-m_enemys[i].getPosi().x()-m_enemys[i].getSize()*0.5;
-        float dy = dist.y()+size.y()*0.5-m_enemys[i].getPosi().y()-m_enemys[i].getSize()*0.5;
+        float dx = dist.x()-m_enemys[i].getPosi().x();
+        float dy = dist.y()-m_enemys[i].getPosi().y();
 
-        float length = sqrt(dx*dx+dy*dy);
-        float range=(m_enemys[i].getSize()*0.5+size.x()*0.5)*1.414;
+//        float length = sqrt(dx*dx+dy*dy);
+         float length = TwoPtDistance(dist,m_enemys[i].getPosi());
+        float range=(m_enemys[i].getSize()*0.5+size.x()*0.4);
         if(length<=range)                // 如果距离小于1,那么游戏结束
             return true;
 
