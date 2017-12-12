@@ -6,11 +6,11 @@ Player::Player()
 
 void Player::initPlayer()
 {
-    m_type = ":/res/img/plane/katongxiaodongwu_01.png";
+    m_type = ":/res/img/plane/figure (2).png";
     m_dir = 0;
     m_vel = 5;
     m_curState = _STA;
-    m_size = QPointF(25,25);
+    m_size = QPointF(40,40);
 }
 
 void Player::setCurrentState(short state)

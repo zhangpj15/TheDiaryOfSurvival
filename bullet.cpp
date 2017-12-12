@@ -4,7 +4,7 @@ Bullet::Bullet()
 {
     m_isLive = true;
 
-    m_size = 14;
+    m_size = 25;
     m_speed = 7;
 }
 
@@ -51,5 +51,5 @@ void Bullet::updateBullet()
 
 void Bullet::renderBullet(QPainter *painter)
 {
-    painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(":/res/img/bullets/bullet.png"));
+    painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(":/res/img/bullets/bullets (1).png"));
 }
