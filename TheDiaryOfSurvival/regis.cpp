@@ -25,9 +25,9 @@ regis::regis(QWidget *parent) :
 
     /*数据库初始化*/
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");  //Qt访问mysql驱动的关键字
-    db.setHostName("localhost");
+    db.setHostName("39.106.151.114");
     db.setPort(3306);
-    db.setDatabaseName("diaryuser");
+    db.setDatabaseName("duser");
     db.setUserName("root");
     db.setPassword("986528");//数据库的登陆密码，可改
     //db.open();
