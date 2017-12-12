@@ -10,6 +10,8 @@
 #include "player.h"
 #include "emanager.h"
 #include "pmanager.h"
+#include "gmanager.h"
+#include "bmanager.h"
 #include "death.h"
 #include "end.h"
 
@@ -27,6 +29,8 @@ public:
 
     Emanager m_emanager;
     Pmanager m_pmanager;
+    gmanager m_gmanager;
+    bmanager m_bmanager;
 
     death* m_death;
     end* m_end;
@@ -65,6 +69,7 @@ signals:
     void sig_closeGame();
     void sig_death();
     void sig_quitgame();
+    void sig_borngoods();
 
 private:
     Ui::game *ui;

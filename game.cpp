@@ -22,6 +22,8 @@ game::game(QWidget *parent) :
 
       connect(m_end,SIGNAL(sig_gameno()),this,SLOT(slot_no()));   //restart信号，则触发游戏重启
     connect(m_end,SIGNAL(sig_gameyes()),this,SLOT(slot_yes()));   //restart信号，则触发游戏重启
+
+//    connect(this,SIGNAL(sig_borngoods()),m_gmanager,SLOT(slot_yes()));   //restart信号，则触发游戏重启
 }
 
 void game::resizeEvent(QResizeEvent *event)
@@ -29,6 +31,7 @@ void game::resizeEvent(QResizeEvent *event)
     m_player.setActiveRect(0,61,width(),height()-61);
     m_emanager.setActiveRect(width(),height());
     m_pmanager.setActiveRect(width(),height());
+    m_bmanager.setActiveRect(width(),height());
 }
 
 void game::startGameLoop()
@@ -48,9 +51,13 @@ void game::startGameLoop()
 
     m_emanager.initEmanager();
     m_pmanager.initPmanager();
+    m_gmanager.initgmanager();
+    m_bmanager.initbmanager();
 
     m_emanager.setActiveRect(width(),height());
     m_pmanager.setActiveRect(width(),height());
+    m_gmanager.setActiveRect(width(),height());
+    m_bmanager.setActiveRect(width(),height());
 
     ui->lblAttackMode->setText(m_pmanager.getAttackMode());
 
@@ -71,7 +78,7 @@ void game::slot_timeLoop()
     ui->btnShowTab->setText(">");
     m_player.updateStates();
 
-//    QTimer::singleShot( 5*1000, this, SLOT(sig_death()) );
+//    QTimer::singleShot( 5, this, SLOT(sig_borngoods()) );
     m_pmanager.updateAttackEffect(m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir());
 
     bool isGameOver = m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize());
@@ -81,8 +88,11 @@ void game::slot_timeLoop()
     {
         emit sig_death();
     }
+
+    m_bmanager.bornNew(m_player.getCurrentPosi());
+    m_gmanager.bornNew(m_player.getCurrentPosi());
     //玩家没死，该敌人死了
-    m_pmanager.checkKnockWithEnemys(m_emanager.getEnemysList(),m_player.getCurrentPosi(),m_player.getDir());
+    m_pmanager.checkKnockWithEnemys(m_emanager.getEnemysList(),m_bmanager.getbarriersList(),m_player.getCurrentPosi(),m_player.getDir());
     //敌人死一圈，该生成新的了
     m_emanager.bornNew(m_player.getCurrentPosi());
 
@@ -121,6 +131,8 @@ void game::paintEvent(QPaintEvent *event)
 
     m_emanager.renderEnemys(&painter);
     m_pmanager.renderAttackEffect(&painter,m_player.getCurrentPosi(),m_player.getSize().x(),m_player.getDir());
+    m_gmanager.rendergoods(&painter);
+    m_bmanager.renderbarriers(&painter);
 
     m_player.render(&painter);
 }
