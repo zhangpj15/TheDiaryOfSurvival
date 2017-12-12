@@ -6,6 +6,7 @@ Bullet::Bullet()
 
     m_size = 25;
     m_speed = 7;
+    m_pic=":/res/img/bullets/bullets (2).png";
 }
 
 void Bullet::setPosi(double x, double y)
@@ -26,6 +27,10 @@ bool Bullet::isAlive()
 double Bullet::getSpeed()
 {
     return m_speed;
+}
+void Bullet::changepic(QString str)
+{
+    m_pic=str;
 }
 
 QPointF Bullet::getPosi()
@@ -51,5 +56,5 @@ void Bullet::updateBullet()
 
 void Bullet::renderBullet(QPainter *painter)
 {
-    painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(":/res/img/bullets/bullets (1).png"));
+    painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(m_pic));
 }

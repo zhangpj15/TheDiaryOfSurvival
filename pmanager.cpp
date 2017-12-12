@@ -61,6 +61,28 @@ QString Pmanager::getAttackMode()
         return "Fire Gun";
     }
 }
+// 返回商品
+QString Pmanager::getgoodsMode(int i)
+{
+    switch (i) {
+    case 0:
+        return "None";
+    case 1:
+        return "Speed up";
+    case 2:
+        return "large";
+    case 3:
+        return "Speed low";
+    case 4:
+        return "small";
+    case 5:
+        return "changeType";
+    case 6:
+        return "changeType";
+    case 7:
+        return "changeBullets";
+    }
+}
 // 返回攻击模式
 int Pmanager::getAttackModeId()
 {
@@ -95,7 +117,7 @@ double Pmanager::TwoPtDistance(const QPointF& pt1, const QPointF& pt2)
 {return sqrt(double(square(pt2.x() - pt1.x()) + square(pt2.y() - pt1.y())));}
 
 // 检测敌人受攻击情况
-void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys,QVector<barriers> &barriers, QPointF posi, double dir)
+void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double dir)
 {
     // 检测子弹的进入障碍区
 
@@ -155,6 +177,27 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys,QVector<barriers> &ba
         }
     }
 }
+
+
+// 检测吃道具
+int Pmanager::checkKnockWithgoods(QVector<goods> &goods, QPointF posi)
+{
+    // 检测子弹的进入障碍区
+        int num=0;
+        for(int k=0; k<goods.size();k++)// 检测敌人是否被击中
+        {
+            if(!goods[k].isAlive())
+                continue;
+            if( TwoPtDistance(goods[k].getPosi(),posi)<25 )
+            {
+                goods[k].setIsAlive(false);
+                num=goods[k].getNumber();
+                return num;
+            }
+        }
+        return 0;
+}
+
 
 //    更新攻击
 void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)
@@ -241,10 +284,10 @@ void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)
 }
 
 //    绘制攻击效果
-void Pmanager::renderAttackEffect(QPainter* painter, QPointF posi, double size, double dir)
+void Pmanager::renderAttackEffect(QPainter* painter, QPointF posi, double size, double dir,QString str)
 {
     renderFlame(painter,posi,size,dir);
-    renderBullets(painter);
+    renderBullets(painter,str);
 }
 
 //    绘制火焰
@@ -291,10 +334,11 @@ void Pmanager::renderFlame(QPainter *painter, QPointF posi, double size, double 
 }
 
 //    绘制子弹
-void Pmanager::renderBullets(QPainter *painter)
+void Pmanager::renderBullets(QPainter *painter,QString str)
 {
     for(int i=0; i<m_bullets.size(); i++)
     {
+        m_bullets[i].changepic(str);
         m_bullets[i].renderBullet(painter);
     }
 }

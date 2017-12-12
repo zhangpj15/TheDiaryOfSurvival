@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "QDebug"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -8,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     setWindowTitle("The Diary of Survival by A Group");
-    resize(790,560);
+//    resize(790,560);
 
     initGame();
     initStart();
@@ -21,12 +22,10 @@ void MainWindow::initGame()
     m_game = new game(this);
 
     m_game->setGeometry(0,0,width(),height());
+    qDebug()<<width();
     m_game->setFocusPolicy(Qt::StrongFocus);
 
     m_game->hide();
-//    m_game->setVisible(false);
-//    m_game->setDisabled(true);
-
     connect(m_game,SIGNAL(sig_closeGame()),this,SLOT(slot_return()));
 }
 

@@ -17,11 +17,12 @@ public:
     QVector<barriers> m_barriers; // 所有的敌人
     QVector<barriers>& getbarriersList();
 
-    double m_speed;     // 敌人的移动速度
+    double m_speed;     // 障碍动物的移动速度
     double m_timeCount;  // 局部计时器
 
     QPoint m_rect;  // 活动范围
-
+    double square(const double num);
+    double TwoPtDistance(const QPointF& pt1, const QPointF& pt2);
     void setActiveRect(int x,int y);
 
     void bornNew(QPointF posi);

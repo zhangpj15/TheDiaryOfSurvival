@@ -24,6 +24,9 @@ public:
 
     void setActiveRect(int x,int y);
 
+    double square(const double num);
+    double TwoPtDistance(const QPointF& pt1, const QPointF& pt2);
+
     void bornNew(QPointF posi);
     bool updateEnemys(QPointF dist, QPointF size);
     void renderEnemys(QPainter* painter);

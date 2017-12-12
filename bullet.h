@@ -11,11 +11,13 @@ public:
     QPointF m_posi;    // 子弹坐标
     double m_dir;    // 子弹方向
     bool m_isLive;   // 是否生存
+    QString m_pic;
 
     Bullet();
 
     void setPosi(double x,double y);
     void setDir(double d);
+    void changepic(QString str);
     bool isAlive();
     double getSpeed();
     QPointF getPosi();

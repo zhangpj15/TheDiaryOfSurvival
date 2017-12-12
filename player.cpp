@@ -1,5 +1,5 @@
 #include "player.h"
-
+#include "QDebug"
 Player::Player()
 {
 }
@@ -7,15 +7,22 @@ Player::Player()
 void Player::initPlayer()
 {
     m_type = ":/res/img/plane/figure (2).png";
+    m_type_bullets=":/res/img/bullets/bullets (2).png";
     m_dir = 0;
     m_vel = 5;
     m_curState = _STA;
-    m_size = QPointF(40,40);
+    m_size = QPointF(50,50);
+    m_big=1;
+    m_curgoods = 0;
 }
 
 void Player::setCurrentState(short state)
 {
     m_curState = state;
+}
+void Player::setCurrentgoods(int goods)
+{
+    m_curgoods = goods;
 }
 
 void Player::setCurrentPosi(int x, int y)
@@ -39,6 +46,10 @@ void Player::setActiveRect(int x, int y, int w, int h)
     m_rect = QRect(x,y,w,h);
 }
 
+QString Player::getTypeBullet()
+{
+    return m_type_bullets;
+}
 QPointF Player::getCurrentPosi()
 {
     // 返回中点坐标
@@ -52,6 +63,10 @@ QPointF Player::getCurrentPosi()
 short Player::getCurrentState()
 {
     return m_curState;
+}
+int Player::getCurrentgoods()
+{
+    return m_curgoods;
 }
 
 double Player::getDir()
@@ -106,6 +121,27 @@ void Player::turnRight()
     m_dir+=5;
 }
 
+void Player::large()
+{
+    m_big+=0.1;
+    setCurrentVolume(m_big);
+}
+void Player::speedup()
+{
+    m_vel+=2;
+}
+
+void Player::small()
+{
+    m_big-=0.1;
+    qDebug()<<m_big;
+    setCurrentVolume(m_big);
+}
+void Player::speedlow()
+{
+    m_vel-=2;
+}
+
 void Player::updateStates()
 {
     switch(m_curState)
@@ -138,6 +174,38 @@ void Player::updateStates()
         turnRight();
         moveBack();
         break;
+    }
+}
+
+void Player::updategoods()
+{
+    switch(m_curgoods)
+    {
+    case 1:
+        speedup();
+        break;
+    case 2:
+        large();
+        break;
+    case 3:
+        speedlow();
+        break;
+    case 4:
+        small();
+        break;
+    case 5:
+        m_type=":/res/img/plane/figure (5).png";
+        break;
+    case 6:
+        m_type=":/res/img/plane/figure (6).png";
+        break;
+    case 7:
+        m_type_bullets=":/res/img/bullets/bullets (4).png";
+        break;
+//    case _BACK_RIGHT:
+//        turnRight();
+//        moveBack();
+//        break;
     }
 }
 
