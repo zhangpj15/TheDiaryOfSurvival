@@ -24,7 +24,9 @@ SOURCES += main.cpp\
     enemy.cpp \
     emanager.cpp \
     pmanager.cpp \
-    end.cpp
+    end.cpp \
+    goods.cpp \
+    gmanager.cpp
 
 HEADERS  += mainwindow.h \
     info.h \
@@ -37,7 +39,9 @@ HEADERS  += mainwindow.h \
     enemy.h \
     emanager.h \
     pmanager.h \
-    end.h
+    end.h \
+    goods.h \
+    gmanager.h
 
 FORMS    += mainwindow.ui \
     info.ui \
