@@ -26,7 +26,9 @@ SOURCES += main.cpp\
     pmanager.cpp \
     end.cpp \
     goods.cpp \
-    gmanager.cpp
+    gmanager.cpp \
+    barriers.cpp \
+    bmanager.cpp
 
 HEADERS  += mainwindow.h \
     info.h \
@@ -41,7 +43,9 @@ HEADERS  += mainwindow.h \
     pmanager.h \
     end.h \
     goods.h \
-    gmanager.h
+    gmanager.h \
+    barriers.h \
+    bmanager.h
 
 FORMS    += mainwindow.ui \
     info.ui \

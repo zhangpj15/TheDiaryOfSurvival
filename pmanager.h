@@ -3,6 +3,8 @@
 #define PMANAGER_H
 #include "bullet.h"
 #include "emanager.h"
+#include "gmanager.h"
+#include "bmanager.h"
 #include <QVector2D>
 
 class Pmanager
@@ -45,7 +47,9 @@ public:
     int getCountFireNum();
 
     // ------------------------------------------------
-    void checkKnockWithEnemys(QVector<Enemy>& enemys, QPointF posi, double dir);
+    double square(const double num);
+    double TwoPtDistance(const QPointF& pt1, const QPointF& pt2);
+    void checkKnockWithEnemys(QVector<Enemy>& enemys,QVector<barriers>& barriers, QPointF posi, double dir);
 
     void updateAttackEffect(QPointF posi,QPointF size,double dir);
 

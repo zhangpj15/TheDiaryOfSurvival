@@ -11,7 +11,7 @@ gmanager::gmanager()
 void gmanager::initgmanager()
 {
     m_goods.clear();
-    m_speed = 0.1;
+    m_speed = 0;
     m_timeCount = 0;
 }
 
@@ -29,7 +29,7 @@ void gmanager::bornNew(QPointF posi)
 {
     static int count = 0;
     count++;
-    if(count%10 <9)
+    if(count%500 <499)
         return;
 
     while(true)
@@ -40,7 +40,7 @@ void gmanager::bornNew(QPointF posi)
 
         onegoods.setPosi(qrand()%m_rect.x(),qrand()%m_rect.y());
         onegoods.setColor(qrand()%256,qrand()%256,qrand()%256);
-        onegoods.setBorn(qrand()%40+1);
+        onegoods.setBorn(qrand()%9+1);
         double dx = posi.x()-onegoods.getPosi().x();
         double dy = posi.y()-onegoods.getPosi().y();
 
@@ -48,7 +48,7 @@ void gmanager::bornNew(QPointF posi)
 
         if(leng < 100)
             continue;
-        m_goods.push_back(onegoods);// 将新生成的敌人添加至列表
+        m_goods.push_back(onegoods);// 将新生成的货物添加至列表
         return;
     }
 }
@@ -58,7 +58,7 @@ bool gmanager::updategoods(QPointF dist,QPointF size)
     m_playerPosi_goods = dist;
     for(int i=0; i< m_goods.size(); i++)
     {
-        if(!m_goods[i].isAlive())  // 已经死亡的敌人
+        if(!m_goods[i].isAlive())  // 已经死亡的货物
         {
             if(m_goods[i].getCountDown()<=0)
             {

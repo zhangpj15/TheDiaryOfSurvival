@@ -23,18 +23,18 @@ void Pmanager::initPmanager()
 
     m_bullets.clear();
 }
-
+// 定义活动范围
 void Pmanager::setActiveRect(double w, double h)
 {
     m_rect = QRectF(0,0,w,h);
 }
-
+// 检测是否被攻击
 bool Pmanager::isAttacked()
 {
     m_isAttacked = 0;
     return m_isAttacked;
 }
-
+// 设置是否被攻击
 void Pmanager::setAttacked(bool b)
 {
     m_isAttacked = b;
@@ -44,12 +44,12 @@ void Pmanager::setAttacked(bool b)
         m_counter = 0;
     }
 }
-
+// 改变攻击模式
 void Pmanager::changeAttackMode()
 {
     m_curAttackType = (m_curAttackType+1>=3)?0:m_curAttackType+1;
 }
-
+// 返回火焰冷却时间
 QString Pmanager::getAttackMode()
 {
     switch (m_curAttackType) {
@@ -61,36 +61,44 @@ QString Pmanager::getAttackMode()
         return "Fire Gun";
     }
 }
-
+// 返回攻击模式
 int Pmanager::getAttackModeId()
 {
     return m_curAttackType;
 }
-
+// 返回击杀敌人数量
 int Pmanager::getKillNum()
 {
     return m_killNum;
 }
-
+// 返回火焰是否冷却
 bool Pmanager::isCooling()
 {
     return m_isCooling;
 }
-
+// 返回火焰冷却时间
 int Pmanager::getCountDownNum()
 {
     return m_countDown;
 }
-
+// 返回火焰燃烧时间
 int Pmanager::getCountFireNum()
 {
     return m_counterFire;
 }
 
+// 求平方
+double Pmanager::square(const double num){return num * num;}
+
+// 求两点距离
+double Pmanager::TwoPtDistance(const QPointF& pt1, const QPointF& pt2)
+{return sqrt(double(square(pt2.x() - pt1.x()) + square(pt2.y() - pt1.y())));}
+
 // 检测敌人受攻击情况
-void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double dir)
+void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys,QVector<barriers> &barriers, QPointF posi, double dir)
 {
-    // 检测子弹的碰撞
+    // 检测子弹的进入障碍区
+
     for(int i=0; i<m_bullets.size();i++)
     {
         if(!m_rect.contains(m_bullets[i].getPosi()))// 子弹飞出界外，删除
@@ -98,19 +106,12 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
             m_bullets.removeAt(i--);
             continue;
         }
-        // 子弹形成的矩形区域
-        QPointF bpos1 = m_bullets[i].getPosi();
 
-        for(int k=0; k<enemys.size();k++)
+        for(int k=0; k<enemys.size();k++)// 检测敌人是否被击中
         {
             if(!enemys[k].isAlive())
                 continue;
-            QPointF eposi = enemys[k].getPosi();
-            double dx = bpos1.x()-eposi.x();
-            double dy = bpos1.y()-eposi.y();
-
-            double l = fabs(dx)+fabs(dy);
-            if( l<10 )
+            if( TwoPtDistance(enemys[k].getPosi(),m_bullets[i].getPosi())<15 )
             {
                 enemys[k].setIsAlive(false);
                 m_bullets.removeAt(i--);
@@ -155,6 +156,7 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
     }
 }
 
+//    更新攻击
 void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)
 {
     // 更新所有的子弹
@@ -213,7 +215,7 @@ void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)
 
             m_bullets.push_back(temp);
 
-            for(int i=0; i<3; i++)
+            for(int i=0; i<3; i++)// 扇形发出
             {
                 temp.setDir(dir-(i+1)*10);
                 m_bullets.push_back(temp);
@@ -238,16 +240,17 @@ void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)
     }
 }
 
+//    绘制攻击效果
 void Pmanager::renderAttackEffect(QPainter* painter, QPointF posi, double size, double dir)
 {
     renderFlame(painter,posi,size,dir);
     renderBullets(painter);
 }
 
+//    绘制火焰
 void Pmanager::renderFlame(QPainter *painter, QPointF posi, double size, double dir)
 {
     if(m_curAttackType != _FIRE || !m_isAttacked || m_isCooling)
-//     if(m_curAttackType != _FIRE || !m_isAttacked)
         return;
 
     static double i = 1;
@@ -287,6 +290,7 @@ void Pmanager::renderFlame(QPainter *painter, QPointF posi, double size, double 
     i= i+0.2>5?1:i+0.2;
 }
 
+//    绘制子弹
 void Pmanager::renderBullets(QPainter *painter)
 {
     for(int i=0; i<m_bullets.size(); i++)
@@ -294,3 +298,4 @@ void Pmanager::renderBullets(QPainter *painter)
         m_bullets[i].renderBullet(painter);
     }
 }
+

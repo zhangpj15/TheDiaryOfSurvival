@@ -6,7 +6,7 @@ goods::goods()
     m_isAlive = true;
     m_countDown = 100;
     m_deathType = qrand()%2+1;
-    m_born = qrand()%9+1;
+//    m_born = qrand()%9+1;
 }
 
 void goods::setPosi(double x, double y)
