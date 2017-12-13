@@ -40,6 +40,7 @@ void bmanager::bornNew(QPointF posi)
     static int count = 0;
     count++;
     if(count%400 <399)// 设置生成速率
+
         return;
 
     while(true)
@@ -52,6 +53,18 @@ void bmanager::bornNew(QPointF posi)
         double length = TwoPtDistance(posi,onebarriers.getPosi());
 
         if(length < 100)
+//        float xx=qrand()%m_rect.x();
+//        float yy=qrand()%m_rect.y();
+//        if(xx<yy)onebarriers.setPosi(0,yy);
+//        else onebarriers.setPosi(xx,0);
+
+        onebarriers.setPosi(0,qrand()%m_rect.y());
+        onebarriers.setBorn(qrand()%23+1);
+
+
+        double leng = TwoPtDistance(posi,onebarriers.getPosi());
+
+        if(leng < 100)
             continue;
         m_barriers.push_back(onebarriers);// 将新生成的障碍物添加至障碍物列表
         return;

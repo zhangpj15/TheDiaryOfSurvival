@@ -81,6 +81,8 @@ QString Pmanager::getgoodsMode(int i)
         return "changeType";
     case 7:
         return "changeBullets";
+//    case _FIRE:
+//        return "Fire Gun";
     }
 }
 // 返回攻击模式

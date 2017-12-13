@@ -48,6 +48,8 @@ public:
 
     QString getgoodsMode(int i);
 
+    QString getgoodsMode(int i);
+
     // ------------------------------------------------
     double square(const double num);
     double TwoPtDistance(const QPointF& pt1, const QPointF& pt2);

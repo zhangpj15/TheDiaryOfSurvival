@@ -40,6 +40,7 @@ public:
     short m_curState;  // 飞机当前运行状态
     int m_curgoods;  // 飞机当前道具状态
 
+
     Player();
 
     void initPlayer();
@@ -74,6 +75,7 @@ public:
 
     void updateStates();  // 状态更新
     void updategoods();  // 道具更新
+
 
     void render(QPainter* painter);
 };

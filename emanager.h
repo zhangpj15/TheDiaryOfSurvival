@@ -24,12 +24,14 @@ public:
 
     void setActiveRect(int x,int y);// 设置活动区域
 
+
     double square(const double num);// 求平方
     double TwoPtDistance(const QPointF& pt1, const QPointF& pt2);// 求两点间距
 
     void bornNew(QPointF posi);// 生成新敌人
     bool updateEnemys(QPointF dist, QPointF size);// 更新敌人
     void renderEnemys(QPainter* painter);// 渲染敌人
+
 };
 
 #endif // EMANAGER_H

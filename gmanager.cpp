@@ -40,7 +40,9 @@ void gmanager::bornNew(QPointF posi)
 
         onegoods.setPosi(qrand()%m_rect.x(),qrand()%m_rect.y());
         onegoods.setColor(qrand()%256,qrand()%256,qrand()%256);
+
         int num=qrand()%7+1;
+
         onegoods.setBorn(num);
         onegoods.setNumber(num);
         double dx = posi.x()-onegoods.getPosi().x();

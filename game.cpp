@@ -47,17 +47,19 @@ void game::startGameLoop()
     m_timer.start();                      //启动计时器
 
     m_player.setCurrentPosi(width()/2,height()/2);
-    m_player.setActiveRect(0,61,width(),height()-61);
+//    m_player.setActiveRect(0,61,width(),height()-61);
 
     m_emanager.initEmanager();
     m_pmanager.initPmanager();
     m_gmanager.initgmanager();
     m_bmanager.initbmanager();
 
+
     m_emanager.setActiveRect(width(),height()-61);
     m_pmanager.setActiveRect(width(),height()-61);
     m_bmanager.setActiveRect(width(),height()-61);
     m_gmanager.setActiveRect(width(),height()-61);
+
 
     ui->lblAttackMode->setText(m_pmanager.getAttackMode());
 
@@ -77,11 +79,14 @@ void game::startGameLoop()
 void game::slot_timeLoop()
 {
     m_time += m_timer.interval();
+
 //    if(!(m_time/1000)%5)qDebug("Test:%d",m_time);
+
 
     ui->btnShowTab->setText(">");
 
     m_player.updateStates();// 位置刷新
+
     m_player.updategoods();// 道具刷新
     if(m_player.getCurrentgoods())
     {
@@ -90,6 +95,7 @@ void game::slot_timeLoop()
         ui->lblGoods->setText(goodsmode);
     }
     m_gmanager.updategoods(m_player.getCurrentPosi(),m_player.getSize());
+
     m_pmanager.updateAttackEffect(m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir());// 攻击模式刷新
 
     bool isGameOver = (m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize())||m_bmanager.updatebarriers(m_player.getCurrentPosi(),m_player.getSize()));

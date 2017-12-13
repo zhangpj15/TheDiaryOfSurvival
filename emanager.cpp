@@ -78,6 +78,7 @@ bool Emanager::updateEnemys(QPointF dist,QPointF size)
         float length = TwoPtDistance(dist,m_enemys[i].getPosi());
         float range=(m_enemys[i].getSize()+size.x())*0.5;
         if(length<=range)                // 如果接触,那么游戏结束
+
             return true;
 
         dx/=length;

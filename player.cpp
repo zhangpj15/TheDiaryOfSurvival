@@ -121,12 +121,14 @@ void Player::turnRight()
     m_dir+=5;
 }
 
+
 void Player::large()
 {
     m_big+=0.1;
     qDebug()<<m_big;
     setCurrentVolume(m_big);
 }
+
 void Player::speedup()
 {
     m_vel+=2;
@@ -141,6 +143,12 @@ void Player::small()
 void Player::speedlow()
 {
     m_vel-=2;
+}
+
+void Player::large()
+{
+    m_big+=1.2;
+    setCurrentVolume(m_big);
 }
 
 void Player::updateStates()
@@ -190,6 +198,7 @@ void Player::updategoods()
     case 2:
         large();
         break;
+
     case 3:
         speedlow();
         break;
@@ -209,6 +218,24 @@ void Player::updategoods()
         test_bullet=qrand()%15+1;
         m_type_bullets=QString(":/res/img/bullets/bullets (%1).png").arg(test_bullet);
         break;
+//    case _RIGHT:
+//        turnRight();
+//        break;
+//    case _RUN_LEFT:
+//        turnLeft();
+//        moveFront();
+//        break;
+//    case _RUN_RIGHT:
+//        turnRight();
+//        moveFront();
+//        break;
+//    case _BACK:
+//        moveBack();
+//        break;
+//    case _BACK_LEFT:
+//        turnLeft();
+//        moveBack();
+//        break;
 //    case _BACK_RIGHT:
 //        turnRight();
 //        moveBack();
