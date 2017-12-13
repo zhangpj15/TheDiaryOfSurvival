@@ -54,10 +54,12 @@ void game::startGameLoop()
     m_gmanager.initgmanager();
     m_bmanager.initbmanager();
 
-//    m_emanager.setActiveRect(width(),height());
-//    m_pmanager.setActiveRect(width(),height());
-//    m_gmanager.setActiveRect(width(),height());
-//    m_bmanager.setActiveRect(width(),height());
+
+    m_emanager.setActiveRect(width(),height()-61);
+    m_pmanager.setActiveRect(width(),height()-61);
+    m_bmanager.setActiveRect(width(),height()-61);
+    m_gmanager.setActiveRect(width(),height()-61);
+
 
     ui->lblAttackMode->setText(m_pmanager.getAttackMode());
 
@@ -77,19 +79,22 @@ void game::startGameLoop()
 void game::slot_timeLoop()
 {
     m_time += m_timer.interval();
-    if(!(m_time/1000)%5)qDebug("Test:%d",m_time);
 
-//        m_emanager.setActiveRect(width()*0.5,height()*0.5);
-//        m_pmanager.setActiveRect(width()*0.5,height()*0.5);
-//        m_gmanager.setActiveRect(width()*0.5,height()*0.5);
-//        m_bmanager.setActiveRect(width()*0.5,height()*0.5);
-
+//    if(!(m_time/1000)%5)qDebug("Test:%d",m_time);
 
 
     ui->btnShowTab->setText(">");
 
     m_player.updateStates();// 位置刷新
-    m_player.updategoods();// 位置刷新
+
+    m_player.updategoods();// 道具刷新
+    if(m_player.getCurrentgoods())
+    {
+        QString goodsmode=m_pmanager.getgoodsMode(m_player.getCurrentgoods());
+//        qDebug() << goodsmode;
+        ui->lblGoods->setText(goodsmode);
+    }
+    m_gmanager.updategoods(m_player.getCurrentPosi(),m_player.getSize());
 
     m_pmanager.updateAttackEffect(m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir());// 攻击模式刷新
 
@@ -145,7 +150,7 @@ void game::paintEvent(QPaintEvent *event)
     painter.setRenderHint(QPainter::Antialiasing, true);// 开启反走样，用以防止“锯齿”现象的出现
 
     m_emanager.renderEnemys(&painter);
-    m_pmanager.renderAttackEffect(&painter,m_player.getCurrentPosi(),m_player.getSize().x(),m_player.getDir());
+    m_pmanager.renderAttackEffect(&painter,m_player.getCurrentPosi(),m_player.getSize().x(),m_player.getDir(),m_player.getTypeBullet());
     m_gmanager.rendergoods(&painter);
     m_bmanager.renderbarriers(&painter);
 

@@ -32,8 +32,8 @@ public:
     gmanager m_gmanager;
     bmanager m_bmanager;
 
-    death* m_death;
-    end* m_end;
+    death* m_death;// 失败窗口
+    end* m_end;// quit窗口
 
     Player m_player;
 
@@ -43,9 +43,9 @@ public:
     ~game();
 
 protected:
-    bool bA,bD;
-    void keyPressEvent(QKeyEvent* event);
-    void keyReleaseEvent(QKeyEvent* event);
+    bool bA,bD;// 标识方向按键
+    void keyPressEvent(QKeyEvent* event);// 键盘按键按压
+    void keyReleaseEvent(QKeyEvent* event);// 标识方向释放
 
     void mousePressEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);

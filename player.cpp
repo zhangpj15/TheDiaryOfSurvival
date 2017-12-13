@@ -1,5 +1,5 @@
 #include "player.h"
-
+#include "QDebug"
 Player::Player()
 {
 }
@@ -7,11 +7,12 @@ Player::Player()
 void Player::initPlayer()
 {
     m_type = ":/res/img/plane/figure (2).png";
+    m_type_bullets=":/res/img/bullets/bullets (2).png";
     m_dir = 0;
     m_vel = 5;
     m_curState = _STA;
     m_size = QPointF(50,50);
-    m_big=1;
+    m_big=1.0;
     m_curgoods = 0;
 }
 
@@ -32,7 +33,7 @@ void Player::setCurrentPosi(int x, int y)
 
 void Player::setCurrentVolume(int x)
 {
-    m_size = QPointF(25*x,25*x);
+    m_size = QPointF(50*x,50*x);
 }
 
 void Player::setCurrentSpeed(int x)
@@ -45,6 +46,10 @@ void Player::setActiveRect(int x, int y, int w, int h)
     m_rect = QRect(x,y,w,h);
 }
 
+QString Player::getTypeBullet()
+{
+    return m_type_bullets;
+}
 QPointF Player::getCurrentPosi()
 {
     // 返回中点坐标
@@ -116,9 +121,28 @@ void Player::turnRight()
     m_dir+=5;
 }
 
+
+void Player::large()
+{
+    m_big+=0.1;
+    qDebug()<<m_big;
+    setCurrentVolume(m_big);
+}
+
 void Player::speedup()
 {
     m_vel+=2;
+}
+
+void Player::small()
+{
+    m_big=m_big-0.1;
+    qDebug()<<m_big;
+    setCurrentVolume(m_big);
+}
+void Player::speedlow()
+{
+    m_vel-=2;
 }
 
 void Player::large()
@@ -164,6 +188,8 @@ void Player::updateStates()
 
 void Player::updategoods()
 {
+    int test_figure=1;
+    int test_bullet=1;
     switch(m_curgoods)
     {
     case 1:
@@ -171,6 +197,26 @@ void Player::updategoods()
         break;
     case 2:
         large();
+        break;
+
+    case 3:
+        speedlow();
+        break;
+    case 4:
+        small();
+        break;
+    case 5:
+        m_type=":/res/img/plane/figure (5).png";
+        break;
+    case 6:
+        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+        test_figure=qrand()%15+1;
+        m_type=QString(":/res/img/plane/figure (%1).png").arg(test_figure);
+        break;
+    case 7:
+        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+        test_bullet=qrand()%15+1;
+        m_type_bullets=QString(":/res/img/bullets/bullets (%1).png").arg(test_bullet);
         break;
 //    case _RIGHT:
 //        turnRight();

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>638</width>
-    <height>406</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,8 @@
   <widget class="QLabel" name="lblTime">
    <property name="geometry">
     <rect>
-     <x>200</x>
+
+     <x>280</x>
      <y>10</y>
      <width>201</width>
      <height>41</height>
@@ -38,8 +39,10 @@
   <widget class="QProgressBar" name="pbarEnergy">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>20</y>
+
+     <x>110</x>
+     <y>30</y>
+
      <width>141</width>
      <height>21</height>
     </rect>
@@ -68,8 +71,10 @@ QProgressBar::chunk {
   <widget class="QLabel" name="lblAttackMode">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>10</y>
+
+     <x>110</x>
+     <y>0</y>
+
      <width>101</width>
      <height>31</height>
     </rect>
@@ -87,8 +92,10 @@ QProgressBar::chunk {
   <widget class="QLabel" name="lblPoint">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>20</y>
+
+     <x>690</x>
+     <y>30</y>
+
      <width>54</width>
      <height>23</height>
     </rect>
@@ -107,7 +114,9 @@ QProgressBar::chunk {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
+
+     <y>0</y>
+
      <width>81</width>
      <height>31</height>
     </rect>
@@ -132,29 +141,13 @@ color:#FFFFFF;
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>500</x>
-     <y>30</y>
-     <width>24</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-image: url(:/type/res/config/ico/Diamond_Sword_24px_1124585_easyicon.net.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>180</y>
-     <width>151</width>
-     <height>171</height>
+     <width>150</width>
+     <height>250</height>
     </rect>
    </property>
    <property name="title">
@@ -447,9 +440,9 @@ color:#FFFFFF;
     <property name="geometry">
      <rect>
       <x>135</x>
-      <y>61</y>
+      <y>100</y>
       <width>16</width>
-      <height>51</height>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
@@ -557,7 +550,102 @@ background-color:rgb(80, 189, 255);
     </property>
    </widget>
   </widget>
+  <widget class="QLabel" name="lblGoods">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>10</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>None</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>10</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+background-color:#2CC955;
+color:#FFFFFF;
+}</string>
+   </property>
+   <property name="text">
+    <string>道具效果</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:#F7F3EA ;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_15">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>30</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="res.qrc">:/res/config/ico/death.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>label_4</zorder>
+  <zorder>lblTime</zorder>
+  <zorder>pbarEnergy</zorder>
+  <zorder>lblAttackMode</zorder>
+  <zorder>lblPoint</zorder>
+  <zorder>label</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>lblGoods</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_15</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

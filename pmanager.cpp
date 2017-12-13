@@ -65,10 +65,22 @@ QString Pmanager::getAttackMode()
 QString Pmanager::getgoodsMode(int i)
 {
     switch (i) {
+    case 0:
+        return "None";
     case 1:
         return "Speed up";
     case 2:
         return "large";
+    case 3:
+        return "Speed low";
+    case 4:
+        return "small";
+    case 5:
+        return "changeType";
+    case 6:
+        return "changeType";
+    case 7:
+        return "changeBullets";
 //    case _FIRE:
 //        return "Fire Gun";
     }
@@ -274,10 +286,10 @@ void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)
 }
 
 //    绘制攻击效果
-void Pmanager::renderAttackEffect(QPainter* painter, QPointF posi, double size, double dir)
+void Pmanager::renderAttackEffect(QPainter* painter, QPointF posi, double size, double dir,QString str)
 {
     renderFlame(painter,posi,size,dir);
-    renderBullets(painter);
+    renderBullets(painter,str);
 }
 
 //    绘制火焰
@@ -324,10 +336,11 @@ void Pmanager::renderFlame(QPainter *painter, QPointF posi, double size, double 
 }
 
 //    绘制子弹
-void Pmanager::renderBullets(QPainter *painter)
+void Pmanager::renderBullets(QPainter *painter,QString str)
 {
     for(int i=0; i<m_bullets.size(); i++)
     {
+        m_bullets[i].changepic(str);
         m_bullets[i].renderBullet(painter);
     }
 }

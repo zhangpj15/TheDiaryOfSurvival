@@ -16,7 +16,7 @@ public:
     bool m_isAlive;
     int m_countDown;
     int m_deathType;   // 敌人消失的样式
-    int m_born;   // 敌人消失的样式
+    int m_born;   // 敌人生成的样式
 
     void setPosi(double x,double y);
     void setColor(int x,int y,int z);

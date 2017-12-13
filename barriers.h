@@ -10,13 +10,13 @@ class barriers
 public:
     barriers();
 
-    QPointF m_posi;   // 道具坐标
-    double m_size;// 道具尺寸
+    QPointF m_posi;   // 障碍物坐标
+    double m_size;// 障碍物尺寸
 
-    int m_born;   // 道具消失的样式
+    int m_born;   // 障碍物生成的样式
 
-    void setPosi(double x,double y);
-    void setBorn(int x);
+    void setPosi(double x,double y); // 设置障碍物位置
+    void setBorn(int x); // 设置障碍物生成的样式
 
     QPointF getPosi();
     double getSize();

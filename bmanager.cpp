@@ -1,7 +1,7 @@
 #include "bmanager.h"
 #include "player.h"
 
-QPointF m_playerPosi_barriers;  // 本地备份玩家的位置
+QPointF m_playerPosi_barriers;  // 玩家的位置
 bool compareDist(const barriers &l, const barriers &r);
 
 bmanager::bmanager()
@@ -39,14 +39,20 @@ void bmanager::bornNew(QPointF posi)
 {
     static int count = 0;
     count++;
-    if(count%400 <399)
+    if(count%400 <399)// 设置生成速率
+
         return;
 
     while(true)
     {
         barriers onebarriers;
-
         qsrand(QTime::currentTime().msecsSinceStartOfDay()*QTime::currentTime().second());
+        onebarriers.setPosi(0,qrand()%m_rect.y());
+        onebarriers.setBorn(qrand()%23+1);
+
+        double length = TwoPtDistance(posi,onebarriers.getPosi());
+
+        if(length < 100)
 //        float xx=qrand()%m_rect.x();
 //        float yy=qrand()%m_rect.y();
 //        if(xx<yy)onebarriers.setPosi(0,yy);
@@ -60,7 +66,7 @@ void bmanager::bornNew(QPointF posi)
 
         if(leng < 100)
             continue;
-        m_barriers.push_back(onebarriers);// 将新生成的货物添加至列表
+        m_barriers.push_back(onebarriers);// 将新生成的障碍物添加至障碍物列表
         return;
     }
 }
@@ -72,8 +78,8 @@ bool bmanager::updatebarriers(QPointF dist,QPointF size)
     {
         float length = TwoPtDistance(dist,m_barriers[i].getPosi());
         float dis=10;
-        float range=(m_barriers[i].getSize()*0.5+size.x()*0.4);
-        if(length<=range)                // 如果距离小于1,那么游戏结束
+        float range=(m_barriers[i].getSize()+size.x())*0.5;
+        if(length<=range)                // 如果接触,那么游戏结束
             return true;
         m_barriers[i].setPosi(m_barriers[i].getPosi().x()+dis*m_speed,
                            m_barriers[i].getPosi().y());
