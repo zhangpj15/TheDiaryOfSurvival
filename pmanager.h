@@ -22,12 +22,12 @@ public:
     bool m_isAttacked;       // 是否正在进行攻击
     int m_counter;           // 攻击计时器
 
-    //火焰的一些效果
+    //火焰设置
     int m_counterFire;       // 火焰的喷射计时
     bool m_isCooling;        // 火焰是否处于冷却状态
     int m_countDown;         // 火焰喷射的倒计时
 
-    QList<Bullet> m_bullets;   // 所有的子弹序列 (_BULLET + _ShotGun)
+    QList<Bullet> m_bullets;   // 子弹序列
 
     int m_killNum;          // 当前击杀的敌人数目
     QRectF m_rect;          // 活动范围
@@ -36,15 +36,15 @@ public:
 
     void setActiveRect(double w,double h);
     void setAttacked(bool b);    // 进行攻击
-    bool isAttacked();
+    bool isAttacked();// 是否被攻击
 
     void changeAttackMode();
     int getAttackModeId();
     QString getAttackMode();
     int getKillNum();
     bool isCooling();
-    int getCountDownNum();
-    int getCountFireNum();
+    int getCountDownNum();// 火焰冷却时间
+    int getCountFireNum();// 火焰攻击时间
 
     QString getgoodsMode(int i);
 

@@ -3,7 +3,6 @@
 Bullet::Bullet()
 {
     m_isLive = true;
-
     m_size = 25;
     m_speed = 7;
     m_pic=":/res/img/bullets/bullets (2).png";

@@ -14,10 +14,10 @@ public:
 
     void initgmanager();
 
-    QVector<goods> m_goods; // 所有的敌人
+    QVector<goods> m_goods; // 所有的道具
     QVector<goods>& getgoodsList();
 
-    double m_speed;     // 敌人的移动速度
+    double m_speed;     // 道具的移动速度
     double m_timeCount;  // 局部计时器
 
     QPoint m_rect;  // 活动范围

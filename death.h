@@ -19,10 +19,10 @@ private:
     Ui::death *ui;
 
 public slots:
-    void slot_btnRestart();
+    void slot_btnRestart();// 重启函数
 
 signals:
-    void sig_restart();
+    void sig_restart();// 重启信号
 };
 
 #endif // DEATH_H

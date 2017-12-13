@@ -2,11 +2,12 @@
 
 Enemy::Enemy()
 {
-    m_size = 10;
+    m_size = 50;
 
     m_isAlive = true;
     m_countDown = 100;
     m_deathType = qrand()%4+1;
+    m_born=1;
 }
 
 void Enemy::setPosi(double x, double y)
@@ -57,21 +58,19 @@ int Enemy::getCountDown()
 
 void Enemy::render(QPainter *painter)
 {
-    if(m_isAlive)painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
+    if(m_isAlive)painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
     else
     {
 
-        QPixmap pixmap(m_size*5,m_size*5);
+        QPixmap pixmap(m_size,m_size);
 
         pixmap.fill(m_color);
         pixmap.setMask(QPixmap(QString(":/res/img/mask/mask%1.png").arg(m_deathType))
-                       .scaled(m_size*5,m_size*5).mask());
+                       .scaled(m_size,m_size).mask());
 
-        painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,pixmap);
+        painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,pixmap);
 
-        // 同时颜色降低暗度
         m_countDown--;
-
         m_color.setRed((m_color.red()+2)<255?m_color.red()+2:255);
         m_color.setGreen((m_color.green()+2)<251?m_color.green()+2:251);
         m_color.setBlue((m_color.blue()+2)<242?m_color.blue()+2:242);

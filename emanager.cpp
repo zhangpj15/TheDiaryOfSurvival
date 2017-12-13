@@ -1,7 +1,7 @@
 #include "emanager.h"
 #include "player.h"
 
-QPointF m_playerPosi;  // 本地备份玩家的位置
+QPointF m_playerPosi;  // 记录玩家的位置
 bool compareDist(const Enemy &l, const Enemy &r);
 
 Emanager::Emanager()
@@ -48,8 +48,6 @@ void Emanager::bornNew(QPointF posi)
         oneenemy.setPosi(qrand()%m_rect.x(),qrand()%m_rect.y());
         oneenemy.setColor(qrand()%256,qrand()%256,qrand()%256);
         oneenemy.setBorn(qrand()%40+1);
-//        double dx = posi.x()-oneenemy.getPosi().x();
-//        double dy = posi.y()-oneenemy.getPosi().y();
 
         double leng = TwoPtDistance(posi,oneenemy.getPosi());
 
@@ -77,10 +75,9 @@ bool Emanager::updateEnemys(QPointF dist,QPointF size)
         float dx = dist.x()-m_enemys[i].getPosi().x();
         float dy = dist.y()-m_enemys[i].getPosi().y();
 
-//        float length = sqrt(dx*dx+dy*dy);
-         float length = TwoPtDistance(dist,m_enemys[i].getPosi());
-        float range=(m_enemys[i].getSize()*0.5+size.x()*0.4);
-        if(length<=range)                // 如果距离小于1,那么游戏结束
+        float length = TwoPtDistance(dist,m_enemys[i].getPosi());
+        float range=(m_enemys[i].getSize()+size.x())*0.5;
+        if(length<=range)                // 如果接触,那么游戏结束
             return true;
 
         dx/=length;

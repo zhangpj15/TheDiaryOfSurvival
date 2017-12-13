@@ -19,8 +19,8 @@ private:
     Ui::end *ui;
 
 public slots:
-    void slot_btnNo();
-    void slot_btnYes();
+    void slot_btnNo();// 否认quit
+    void slot_btnYes();// 肯定quit
 
 signals:
     void sig_gameno();

@@ -1,7 +1,7 @@
 #include "gmanager.h"
 #include "player.h"
 #include "qDebug"
-QPointF m_playerPosi_goods;  // 本地备份玩家的位置
+QPointF m_playerPosi_goods;  // 玩家的位置
 bool compareDist(const goods &l, const goods &r);
 
 gmanager::gmanager()
@@ -11,7 +11,7 @@ gmanager::gmanager()
 void gmanager::initgmanager()
 {
     m_goods.clear();
-    m_speed = 0;
+    m_speed = 0;// 暂时为固定位置道具
     m_timeCount = 0;
 }
 
@@ -86,7 +86,7 @@ bool gmanager::updategoods(QPointF dist,QPointF size)
 //                           m_goods[i].getPosi().y()+dy*m_speed);
     }
 
-    qSort(m_goods.begin(),m_goods.end(),compareDist);//更新enermy序列，非常重要，不然有空指针
+    qSort(m_goods.begin(),m_goods.end(),compareDist);//更新道具序列，非常重要，不然有空指针
 
     return false;
 

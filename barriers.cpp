@@ -2,7 +2,7 @@
 
 barriers::barriers()
 {
-    m_size = 10;
+    m_size = 50;
 }
 
 void barriers::setPosi(double x, double y)
@@ -33,5 +33,5 @@ double barriers::getSize()
 
 void barriers::render(QPainter *painter)
 {
-    painter->drawPixmap(m_posi.x(),m_posi.y(),m_size*5,m_size*5,QPixmap(QString(":/res/img/barrier/animals (%1).png").arg(m_born)));
+    painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(QString(":/res/img/barrier/animals (%1).png").arg(m_born)));
 }

@@ -19,10 +19,10 @@ private:
     Ui::start *ui;
 
 public slots:
-    void slot_btnEnter();
-    void slot_btnInfo();
-    void slot_btnClose();
-    void slot_btnRegis();
+    void slot_btnEnter();// 进入游戏
+    void slot_btnInfo();// 查看信息
+    void slot_btnClose();// 关闭
+    void slot_btnRegis();// 登录注册
 signals:
     void sig_btnEnter();
     void sig_btnInfo();

@@ -9,7 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     setWindowTitle("The Diary of Survival by A Group");
-//    resize(790,560);
 
     initGame();
     initStart();
@@ -22,7 +21,7 @@ void MainWindow::initGame()
     m_game = new game(this);
 
     m_game->setGeometry(0,0,width(),height());
-    qDebug()<<width();
+//    qDebug()<<width();
     m_game->setFocusPolicy(Qt::StrongFocus);
 
     m_game->hide();
