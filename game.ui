@@ -13,6 +13,12 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+url(:/res/img/background/bg11.jpg)
+}</string>
+  </property>
   <widget class="QLabel" name="lblTime">
    <property name="geometry">
     <rect>
@@ -28,6 +34,12 @@
      <family>Arial Rounded MT Bold</family>
      <pointsize>35</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+color:#FFFFFF;
+}</string>
    </property>
    <property name="text">
     <string>0</string>
@@ -85,6 +97,12 @@ QProgressBar::chunk {
      <pointsize>11</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+color:#FFFFFF;
+}</string>
+   </property>
    <property name="text">
     <string>Normal Bullet</string>
    </property>
@@ -105,6 +123,12 @@ QProgressBar::chunk {
      <family>微软雅黑</family>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+color:#FFFFFF;
+}</string>
    </property>
    <property name="text">
     <string>0</string>
@@ -130,7 +154,6 @@ QProgressBar::chunk {
    <property name="styleSheet">
     <string notr="true">QLabel
 {
-background-color:#2CC955;
 color:#FFFFFF;
 }</string>
    </property>
@@ -161,6 +184,12 @@ color:#FFFFFF;
       <width>91</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{
+color:#FFFFFF;
+}</string>
     </property>
     <property name="text">
      <string>切换攻击模式：</string>
@@ -220,7 +249,7 @@ color:#FFFFFF;
      </font>
     </property>
     <property name="text">
-     <string>空格</string>
+     <string>K</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_11">
@@ -278,7 +307,7 @@ color:#FFFFFF;
      </font>
     </property>
     <property name="text">
-     <string>ESC</string>
+     <string>Q</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -336,7 +365,7 @@ color:#FFFFFF;
      </font>
     </property>
     <property name="text">
-     <string>WAD</string>
+     <string>WADS</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
@@ -347,6 +376,12 @@ color:#FFFFFF;
       <width>51</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{
+color:#FFFFFF;
+}</string>
     </property>
     <property name="text">
      <string>移动：</string>
@@ -360,6 +395,12 @@ color:#FFFFFF;
       <width>81</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{
+color:#FFFFFF;
+}</string>
     </property>
     <property name="text">
      <string>退出游戏：</string>
@@ -431,6 +472,12 @@ color:#FFFFFF;
       <width>51</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{
+color:#FFFFFF;
+}</string>
     </property>
     <property name="text">
      <string>攻击：</string>
@@ -533,7 +580,7 @@ background-color:rgb(80, 189, 255);
      </font>
     </property>
     <property name="text">
-     <string>R</string>
+     <string>空格</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_14">
@@ -544,6 +591,12 @@ background-color:rgb(80, 189, 255);
       <width>71</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{
+color:#FFFFFF;
+}</string>
     </property>
     <property name="text">
      <string>暂停/继续：</string>
@@ -564,6 +617,12 @@ background-color:rgb(80, 189, 255);
      <family>微软雅黑</family>
      <pointsize>11</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+color:#FFFFFF;
+}</string>
    </property>
    <property name="text">
     <string>None</string>
@@ -587,7 +646,6 @@ background-color:rgb(80, 189, 255);
    <property name="styleSheet">
     <string notr="true">QLabel
 {
-background-color:#2CC955;
 color:#FFFFFF;
 }</string>
    </property>
@@ -596,22 +654,6 @@ color:#FFFFFF;
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color:#F7F3EA ;</string>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_15">
@@ -633,16 +675,6 @@ color:#FFFFFF;
     <bool>true</bool>
    </property>
   </widget>
-  <zorder>label_4</zorder>
-  <zorder>lblTime</zorder>
-  <zorder>pbarEnergy</zorder>
-  <zorder>lblAttackMode</zorder>
-  <zorder>lblPoint</zorder>
-  <zorder>label</zorder>
-  <zorder>groupBox</zorder>
-  <zorder>lblGoods</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_15</zorder>
  </widget>
  <resources>
   <include location="res.qrc"/>

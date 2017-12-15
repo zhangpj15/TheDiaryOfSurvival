@@ -17,6 +17,11 @@ public:
 
 private:
     Ui::regis *ui;
+public slots:
+    void slot_returnButton();// 肯定quit
+
+signals:
+    void sig_returnButton();
 };
 
 #endif // REGIS_H

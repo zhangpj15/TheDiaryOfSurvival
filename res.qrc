@@ -131,5 +131,8 @@
         <file>res/img/barrier/barrier (8).png</file>
         <file>res/img/barrier/barrier (9).png</file>
         <file>res/img/barrier/barrier (10).png</file>
+        <file>res/img/background/bg1.jpg</file>
+        <file>res/img/background/bg11.jpg</file>
+        <file>res/img/background/bg2.jpg</file>
     </qresource>
 </RCC>

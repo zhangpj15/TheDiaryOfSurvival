@@ -28,9 +28,27 @@
       <colorrole role="WindowText">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>129</red>
-         <green>129</green>
-         <blue>129</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
@@ -39,9 +57,27 @@
       <colorrole role="WindowText">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>129</red>
-         <green>129</green>
-         <blue>129</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
@@ -50,9 +86,27 @@
       <colorrole role="WindowText">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>120</red>
-         <green>120</green>
-         <blue>120</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
@@ -66,7 +120,12 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">QLabel{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}</string>
    </property>
    <property name="text">
     <string>Game over</string>
@@ -78,50 +137,43 @@
   <widget class="QPushButton" name="btnRestart">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>150</y>
-     <width>181</width>
-     <height>61</height>
+     <x>110</x>
+     <y>160</y>
+     <width>158</width>
+     <height>42</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>微软雅黑</family>
-     <pointsize>16</pointsize>
+     <family>Agency FB</family>
+     <pointsize>26</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>true</underline>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
 border: 0px;
 color:#FFFFFF;
-border-radius: 14px;
-background-color: rgb(50, 112, 169);
+border-radius: 7px;
+
 }
 
 QPushButton:hover{
 border: 0px;
-color:#FFFFFF;
-background-color: rgb(70, 132, 189);
+color:#aaaaaa;
+
 }
 
 QPushButton:pressed{
 border:1px solid rgb(77, 176, 251);
-color:#FFFFFF;
-background-color:rgb(60, 129, 175);
+color:#aaaaaa;
+
 }</string>
    </property>
    <property name="text">
-    <string>Restart</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>:/type/res/config/ico/restart.png</normaloff>:/type/res/config/ico/restart.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>44</width>
-     <height>44</height>
-    </size>
+    <string>RESTART</string>
    </property>
   </widget>
  </widget>
