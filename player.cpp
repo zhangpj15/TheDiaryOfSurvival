@@ -9,10 +9,10 @@ void Player::initPlayer()
     m_type = ":/res/img/plane/figure (2).png";
     m_type_bullets=":/res/img/bullets/bullets (2).png";
     m_dir = 0;
-    m_vel = 5;
+    m_vel = 3;
     m_curState = _STA;
     m_size = QPointF(50,50);
-    m_big=1.0;
+    m_big=5;
     m_curgoods = 0;
 }
 
@@ -33,7 +33,7 @@ void Player::setCurrentPosi(int x, int y)
 
 void Player::setCurrentVolume(int x)
 {
-    m_size = QPointF(50*x,50*x);
+    m_size = QPointF(50-x,50-x);
 }
 
 void Player::setCurrentSpeed(int x)
@@ -123,7 +123,7 @@ void Player::turnRight()
 
 void Player::large()
 {
-    m_big+=0.1;
+    m_big=-5;
     qDebug()<<m_big;
     setCurrentVolume(m_big);
 }
@@ -134,9 +134,9 @@ void Player::speedup()
 
 void Player::small()
 {
-    m_big=m_big-0.1;
-    qDebug()<<m_big;
+    m_big=5;
     setCurrentVolume(m_big);
+    qDebug()<<m_size;
 }
 void Player::speedlow()
 {
@@ -218,6 +218,7 @@ void Player::updategoods()
 
 void Player::render(QPainter *painter)
 {
+//    setCurrentVolume(m_big);
     painter->save();
     painter->translate(m_posi.x()+m_size.x()/2.0,m_posi.y()+m_size.y()/2.0);
 //    将中心设为坐标系原点，便于旋转

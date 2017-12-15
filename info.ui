@@ -68,7 +68,7 @@
     </font>
    </property>
    <property name="text">
-    <string>R</string>
+    <string>空格</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
@@ -88,22 +88,6 @@
    </property>
    <property name="text">
     <string>移动：</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_16">
-   <property name="geometry">
-    <rect>
-     <x>303</x>
-     <y>11</y>
-     <width>101</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-image: url(:/type/res/config/ico/BlogLogo.png);</string>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
@@ -219,7 +203,7 @@
     </font>
    </property>
    <property name="text">
-    <string>WAD</string>
+    <string>WADS</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_12">
@@ -317,7 +301,7 @@
     </font>
    </property>
    <property name="text">
-    <string>空格</string>
+    <string>K</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_11">
@@ -375,7 +359,7 @@
     </font>
    </property>
    <property name="text">
-    <string>ESC</string>
+    <string>Q</string>
    </property>
   </widget>
   <widget class="QLabel" name="infoBackground">
@@ -421,45 +405,6 @@ border-radius: 9px;
     <string>暂停/继续：</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="infoClose">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>260</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>微软雅黑</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-border: 0px;
-color:#FFFFFF;
-border-radius: 14px;
-background-color: rgb(50, 112, 169);
-}
-
-QPushButton:hover{
-border: 0px;
-color:#FFFFFF;
-background-color: rgb(70, 132, 189);
-}
-
-QPushButton:pressed{
-border:1px solid rgb(77, 176, 251);
-color:#FFFFFF;
-background-color:rgb(60, 129, 175);
-}</string>
-   </property>
-   <property name="text">
-    <string>关 闭</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
@@ -498,6 +443,48 @@ background-color:rgb(60, 129, 175);
     <string>攻击：</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="infoClose">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>240</y>
+     <width>281</width>
+     <height>42</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>26</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border: 0px;
+color:rgb(0, 0, 0);
+border-radius: 7px;
+
+}
+
+QPushButton:hover{
+border: 0px;
+color:#aaaaaa;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+   </property>
+   <property name="text">
+    <string>CLOSE</string>
+   </property>
+  </widget>
   <zorder>infoBackground</zorder>
   <zorder>label_13</zorder>
   <zorder>label_7</zorder>
@@ -508,10 +495,9 @@ background-color:rgb(60, 129, 175);
   <zorder>label_9</zorder>
   <zorder>label_11</zorder>
   <zorder>label_14</zorder>
-  <zorder>infoClose</zorder>
   <zorder>label_10</zorder>
-  <zorder>label_16</zorder>
   <zorder>label_8</zorder>
+  <zorder>infoClose</zorder>
  </widget>
  <resources/>
  <connections/>

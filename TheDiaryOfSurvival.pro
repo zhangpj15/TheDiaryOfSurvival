@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     goods.cpp \
     gmanager.cpp \
     barriers.cpp \
-    bmanager.cpp
+    bmanager.cpp \
+    loadwin.cpp
 
 HEADERS  += mainwindow.h \
     info.h \
@@ -45,7 +46,8 @@ HEADERS  += mainwindow.h \
     goods.h \
     gmanager.h \
     barriers.h \
-    bmanager.h
+    bmanager.h \
+    loadwin.h
 
 FORMS    += mainwindow.ui \
     info.ui \
@@ -53,7 +55,8 @@ FORMS    += mainwindow.ui \
     game.ui \
     start.ui \
     death.ui \
-    end.ui
+    end.ui \
+    loadwin.ui
 
 RESOURCES += \
     res.qrc

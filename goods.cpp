@@ -70,7 +70,9 @@ void goods::render(QPainter *painter)
         QPixmap pixmap(m_size,m_size);
 
         pixmap.fill(m_color);
-        pixmap.setMask(QPixmap(QString(":/res/img/goods/fireworks (%1).png").arg(m_deathType))
+//        pixmap.setMask(QPixmap(QString(":/res/img/goods/fireworks (%1).png").arg(m_deathType))
+//                       .scaled(m_size,m_size).mask());
+        pixmap.setMask(QPixmap(QString(":/res/img/goods/fireworks (1).png"))
                        .scaled(m_size,m_size).mask());
 
         painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,pixmap);
