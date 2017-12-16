@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>regis</class>
+ <widget class="QWidget" name="regis">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>801</width>
+     <height>601</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="res.qrc">:/res/img/background/bg11.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="checkButton">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>140</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+QPushButton:hover{
+border: 0px;
+color:#aaaaaa;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+   </property>
+   <property name="text">
+    <string>CHECK</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="title">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>20</y>
+     <width>491</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>36</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+</string>
+   </property>
+   <property name="text">
+    <string>The Diary of Survival</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>130</y>
+     <width>201</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QLabel" name="username">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>USER NAME</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="mailboxlabel">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>E-MAIL</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="tellabel">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>PHONE</string>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="rPasswordlabel">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>CODE</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="passwordlabel_2">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>REPEAT CODE</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="passwordlabel">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>SEX</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>120</y>
+     <width>241</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QLineEdit" name="usernameline">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="mailboxline">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="telline">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="passwordline">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="rPasswordline">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>450</y>
+     <width>186</width>
+     <height>145</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="loginButton">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>26</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+QPushButton:hover{
+border: 0px;
+color:#aaaaaa;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>REGISTER</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="loadButton">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>26</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+QPushButton:hover{
+border: 0px;
+color:#aaaaaa;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>LOGIN</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="returnButton">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>26</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+QPushButton:hover{
+border: 0px;
+color:#aaaaaa;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>RETURN</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>460</y>
+     <width>239</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <property name="spacing">
+     <number>7</number>
+    </property>
+    <property name="sizeConstraint">
+     <enum>QLayout::SetDefaultConstraint</enum>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QRadioButton" name="womanradioButton">
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>MALE</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="manradioButton">
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>FEMALE</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>checkButton</zorder>
+  <zorder>title</zorder>
+  <zorder>verticalLayoutWidget</zorder>
+  <zorder>verticalLayoutWidget_2</zorder>
+  <zorder>verticalLayoutWidget_3</zorder>
+  <zorder>horizontalLayoutWidget</zorder>
+  <zorder>loadButton</zorder>
+ </widget>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections/>
+</ui>
