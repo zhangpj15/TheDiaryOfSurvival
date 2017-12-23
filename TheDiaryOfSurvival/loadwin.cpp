@@ -12,15 +12,26 @@ loadwin::loadwin(QWidget *parent) :
     QRegExpValidator *pRegExpValidator = new QRegExpValidator(regExp,this);
     ui->userline->setValidator(pRegExpValidator);
     ui->pwline->setValidator(pRegExpValidator);
-
     ui->pwline->setEchoMode(QLineEdit::Password);
 
     /*设置槽*/
     connect(ui->loadButton,SIGNAL(clicked()),this,SLOT(loadButtonClicked()));
     connect(ui->exitButton,SIGNAL(clicked()),this,SLOT(slot_exitButton()));
+
+    //初始化尝试登录次数
+    LoadTimes = 0;
+
 }
 
 void loadwin::loadButtonClicked(){
+
+    if(LoadTimes >= 3)
+    {
+        QMessageBox::information(this,tr("警告"),
+                                   tr("您短期内尝试登录次数过多，请重启游戏进行更多尝试，或联系管理员重置密码!!!"));
+        emit sig_exitButton();
+        return;
+    }
 
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));//字库编码
 
@@ -36,6 +47,8 @@ void loadwin::loadButtonClicked(){
         if(doCheck(name,pw)){
             QMessageBox::information(this,tr("温馨提示"),
                                      tr("登陆成功!!!"));
+            LoadTimes = 0;
+
             this->hide();
             emit sig_loginSuccess();
             return;
@@ -44,6 +57,7 @@ void loadwin::loadButtonClicked(){
                 ui->pwline->clear();
                 QMessageBox::information(this,tr("警告"),
                                  tr("用户名或密码错误!!!"));
+                LoadTimes += 1;
                 return;
                 }
            }
