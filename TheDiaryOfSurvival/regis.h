@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QSqlQuery>
 #include <QSqlDatabase>
+#include <QCryptographicHash>
 #include "loadwin.h"
 using namespace std;
 

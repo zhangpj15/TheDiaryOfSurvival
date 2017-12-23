@@ -1,6 +1,10 @@
 #include "regis.h"
 #include "ui_regis.h"
 
+#define IP "39.106.151.114"
+#define PORT 3306
+#define PASS "986528"
+
 regis::regis(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::regis)
@@ -28,11 +32,11 @@ regis::regis(QWidget *parent) :
 
     /*数据库初始化*/
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");  //Qt访问mysql驱动的关键字
-    db.setHostName("39.106.151.114");
-    db.setPort(3306);
+    db.setHostName(IP);
+    db.setPort(PORT);
     db.setDatabaseName("duser");
     db.setUserName("root");
-    db.setPassword("986528");//数据库的登陆密码，可改
+    db.setPassword(PASS);//数据库的登陆密码，可改
     //db.open();
     if (!db.open()) {
         QMessageBox::information(this,tr("Cannot open database"),
@@ -122,10 +126,18 @@ void regis::addPerson(const QString name,const QString pw ,const QString sex ,co
     int id=idquery.value(0).toInt()+1;
     //写入新用户数据
     QSqlQuery query;
+
+    //生成密码散列
+    QByteArray byteArray;
+    byteArray.append(pw);
+    QByteArray hash = QCryptographicHash::hash(byteArray, QCryptographicHash::Md5);
+    QString strMD5 = hash.toHex();
+
+
     QString temp = QObject::tr("insert into user_info(user_id,user_name, password, sex, email, tel) values('%1','%2','%3','%4','%5','%6')")
                             .arg(id)
                             .arg(name)
-                            .arg(pw)
+                            .arg(strMD5)
                             .arg(sex)
                             .arg(mail)
                             .arg(phone);
