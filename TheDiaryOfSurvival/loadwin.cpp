@@ -60,7 +60,13 @@ bool loadwin::doCheck(const QString uname, const QString pw){
     QString temppw = query.value(0).toString();
     qDebug()<<temppw<<"  "<<uname;
 
-    if(pw == temppw){
+    //生成密码散列
+    QByteArray byteArray;
+    byteArray.append(pw);
+    QByteArray hash = QCryptographicHash::hash(byteArray, QCryptographicHash::Md5);
+    QString strMD5 = hash.toHex();
+
+    if(strMD5 == temppw){
         return true;
     }
     else{
