@@ -19,6 +19,8 @@ public:
 
 private:
     Ui::loadwin *ui;
+    int LoadTimes;
+
 public slots:
     void slot_exitButton();// 肯定quit
     void loadButtonClicked();
