@@ -85,7 +85,7 @@ void regis::loginButtonClicked(){//注册功能
         //默认为男
         sex = "M";
     }
-    else{
+    else if(ui->womanradioButton->isChecked()){
         sex = "F";
     }
 
@@ -155,19 +155,9 @@ void regis::addPerson(const QString name,const QString pw ,const QString sex ,co
 void regis::loadButtonClicked(){//登陆功能
     this->hide();
     emit sig_load();
-    //loadwin *dialog = new loadwin();
-    //connect(dialog,SIGNAL(sig_loginSuccess()),this,SLOT(slot_loginSuccess()));
-    //dialog->show();
-
 }
 
-//void regis::slot_loginSuccess(){//登录成功，关闭注册窗口
 
-    //qDebug()<<"close regis emitted";
-//    this->hide();
-
-//    emit sig_close_regis();
-//}
 
 void regis::slot_returnButton()
 {

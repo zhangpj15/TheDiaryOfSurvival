@@ -67,12 +67,13 @@ void loadwin::loadButtonClicked(){
 
 bool loadwin::doCheck(const QString uname, const QString pw){
     QSqlQuery query;
-    query.prepare("SELECT password FROM user_info WHERE user_name = ?");
+    query.prepare("SELECT user_id,password,time,` kill` FROM user_info WHERE user_name = ?");
     query.bindValue(0, uname);
     query.exec();
     query.next();
-    QString temppw = query.value(0).toString();
-    qDebug()<<temppw<<"  "<<uname;
+    QString temppw = query.value(1).toString();
+    qDebug()<<query.value(0).toString()<<query.value(1).toString()
+           <<query.value(2).toString()<<query.value(2).toString()<<uname;
 
     //生成密码散列
     QByteArray byteArray;
@@ -81,6 +82,9 @@ bool loadwin::doCheck(const QString uname, const QString pw){
     QString strMD5 = hash.toHex();
 
     if(strMD5 == temppw){
+        user_id=query.value(0).toInt();
+        timeRecord=query.value(2).toInt();
+        killRecord=query.value(3).toInt();
         return true;
     }
     else{
@@ -88,6 +92,20 @@ bool loadwin::doCheck(const QString uname, const QString pw){
     }
 }
 
+void loadwin::saveRecord(int killnum, int timecount){
+    if (killnum > killRecord){
+        killRecord = killnum;
+    }
+    if (timecount > timeRecord){
+        timeRecord = timecount;
+    }
+    QSqlQuery query;
+    query.prepare("UPDATE user_info SET time = ?,kill = ? FROM user_info WHERE user_id = ?");
+    query.bindValue(0, timeRecord);
+    query.bindValue(1, killRecord);
+    query.bindValue(2, user_id);
+    query.exec();
+}
 
 void loadwin::slot_exitButton()
 {

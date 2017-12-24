@@ -344,6 +344,7 @@ void game::slot_attack()
 
 void game::slot_gameOver()
 {
+    emit sig_deathSave(m_pmanager.m_killNum,m_pmanager.m_counter);
     m_timer.stop();
     m_death->show();
     m_death->move((this->width() - m_death->width())/2,(this->height() - m_death->height())/2);
