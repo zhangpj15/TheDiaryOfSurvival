@@ -93,6 +93,7 @@ bool loadwin::doCheck(const QString uname, const QString pw){
 }
 
 void loadwin::saveRecord(int killnum, int timecount){
+    qDebug()<<"save"<<killnum<<timecount;
     if (killnum > killRecord){
         killRecord = killnum;
     }
@@ -100,7 +101,7 @@ void loadwin::saveRecord(int killnum, int timecount){
         timeRecord = timecount;
     }
     QSqlQuery query;
-    query.prepare("UPDATE user_info SET time = ?,kill = ? FROM user_info WHERE user_id = ?");
+    query.prepare("UPDATE user_info SET time = ?,` kill` = ? WHERE user_id = ?");
     query.bindValue(0, timeRecord);
     query.bindValue(1, killRecord);
     query.bindValue(2, user_id);
