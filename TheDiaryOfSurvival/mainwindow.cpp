@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     initInfo();
     initRegis();
     initLoadwin();
+
+    connect(m_game,SIGNAL(sig_deathSave(int,int)),m_loadwin,SLOT(saveRecord(int, int)));
 }
 
 void MainWindow::initGame()

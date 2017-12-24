@@ -70,6 +70,7 @@ signals:
     void sig_death();
     void sig_quitgame();
     void sig_borngoods();
+    void sig_deathSave(int kill, int timecount);
 
 private:
     Ui::game *ui;

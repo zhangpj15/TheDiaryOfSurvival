@@ -458,7 +458,7 @@ color:#aaaaaa;
      <number>0</number>
     </property>
     <item>
-     <widget class="QRadioButton" name="womanradioButton">
+     <widget class="QRadioButton" name="manradioButton">
       <property name="autoFillBackground">
        <bool>true</bool>
       </property>
@@ -468,7 +468,7 @@ color:#aaaaaa;
      </widget>
     </item>
     <item>
-     <widget class="QRadioButton" name="manradioButton">
+     <widget class="QRadioButton" name="womanradioButton">
       <property name="autoFillBackground">
        <bool>true</bool>
       </property>
@@ -479,14 +479,6 @@ color:#aaaaaa;
     </item>
    </layout>
   </widget>
-  <zorder>label</zorder>
-  <zorder>checkButton</zorder>
-  <zorder>title</zorder>
-  <zorder>verticalLayoutWidget</zorder>
-  <zorder>verticalLayoutWidget_2</zorder>
-  <zorder>verticalLayoutWidget_3</zorder>
-  <zorder>horizontalLayoutWidget</zorder>
-  <zorder>loadButton</zorder>
  </widget>
  <resources>
   <include location="res.qrc"/>

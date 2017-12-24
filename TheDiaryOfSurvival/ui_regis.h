@@ -368,8 +368,8 @@ public:
         loginButton->setText(QApplication::translate("regis", "REGISTER", 0));
         loadButton->setText(QApplication::translate("regis", "LOGIN", 0));
         returnButton->setText(QApplication::translate("regis", "RETURN", 0));
-        womanradioButton->setText(QApplication::translate("regis", "MALE", 0));
-        manradioButton->setText(QApplication::translate("regis", "FEMALE", 0));
+        manradioButton->setText(QApplication::translate("regis", "MALE", 0));
+        womanradioButton->setText(QApplication::translate("regis", "FEMALE", 0));
     } // retranslateUi
 
 };
