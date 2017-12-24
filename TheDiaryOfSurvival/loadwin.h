@@ -15,7 +15,6 @@ class loadwin : public QWidget
 public:
     explicit loadwin(QWidget *parent = 0);
     bool doCheck(const QString uname,const QString pw);   //登陆时比较账户密码是否一致
-    void saveRecord(int killnum, int timecount);
     ~loadwin();
 
 private:
@@ -28,6 +27,7 @@ private:
 public slots:
     void slot_exitButton();// 肯定quit
     void loadButtonClicked();
+    void saveRecord(int killnum, int timecount);
 
 signals:
     void sig_exitButton();
