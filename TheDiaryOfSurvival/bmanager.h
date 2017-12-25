@@ -26,7 +26,7 @@ public:
     void setActiveRect(int x,int y);// 设置活动区域
 
     void bornNew(QPointF posi);// 生成新障碍物
-    bool updatebarriers(QPointF dist, QPointF size);// 更新障碍物
+    bool updatebarriers(QPointF dist, double size);// 更新障碍物
     void renderbarriers(QPainter* painter);// 渲染
 };
 

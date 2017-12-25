@@ -52,9 +52,9 @@ public:
     double square(const double num);
     double TwoPtDistance(const QPointF& pt1, const QPointF& pt2);
     void checkKnockWithEnemys(QVector<Enemy>& enemys,QPointF posi, double dir);
-    int checkKnockWithgoods(QVector<goods>& goods,QPointF posi);
+    int checkKnockWithgoods(QVector<goods>& goods,QPointF posi,double player_size);
 
-    void updateAttackEffect(QPointF posi,QPointF size,double dir);
+    void updateAttackEffect(QPointF posi,double size,double dir);
 
     void renderAttackEffect(QPainter* painter, QPointF posi,double size, double dir,QString str);
     void renderBullets(QPainter* painter,QString str);

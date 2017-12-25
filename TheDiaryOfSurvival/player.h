@@ -19,7 +19,7 @@ public:
     double m_dir;         // 飞机的当前方向 [0,360]
     double m_big;         // 飞机的当前大小
 
-    QPointF m_size;     // 飞机的尺寸
+    double m_size;     // 飞机的尺寸
     QRect m_rect;     // 飞机的活动范围
 
     // 飞机运动状态
@@ -58,7 +58,7 @@ public:
     int getCurrentgoods();
     double getDir();
 
-    QPointF getSize();
+    double getSize();
 
     // 行为
     void moveFront();

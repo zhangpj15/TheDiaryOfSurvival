@@ -88,13 +88,14 @@ void game::slot_timeLoop()
         QString goodsmode=m_pmanager.getgoodsMode(m_player.getCurrentgoods());
 //        qDebug() << goodsmode;
         ui->lblGoods->setText(goodsmode);
+//        ui->lblVolume;
     }
     m_gmanager.updategoods(m_player.getCurrentPosi(),m_player.getSize());
     m_pmanager.updateAttackEffect(m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir());// 攻击模式刷新
 
     bool isGameOver = (m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize())||m_bmanager.updatebarriers(m_player.getCurrentPosi(),m_player.getSize()));
 
-    // 判断一下游戏是否结束
+    // 判断一下游戏是否结束,被敌人或者障碍物杀死
     if(isGameOver)
     {
         emit sig_death();
@@ -103,7 +104,7 @@ void game::slot_timeLoop()
     m_bmanager.bornNew(m_player.getCurrentPosi());
     m_gmanager.bornNew(m_player.getCurrentPosi());
     //玩家没死，该敌人死了
-    int num_player=m_pmanager.checkKnockWithgoods(m_gmanager.getgoodsList(),m_player.getCurrentPosi());
+    int num_player=m_pmanager.checkKnockWithgoods(m_gmanager.getgoodsList(),m_player.getCurrentPosi(),m_player.getSize());
     //吃没吃到道具呀
     m_player.setCurrentgoods(num_player);
     m_pmanager.checkKnockWithEnemys(m_emanager.getEnemysList(),m_player.getCurrentPosi(),m_player.getDir());
@@ -144,7 +145,7 @@ void game::paintEvent(QPaintEvent *event)
     painter.setRenderHint(QPainter::Antialiasing, true);// 开启反走样，用以防止“锯齿”现象的出现
 
     m_emanager.renderEnemys(&painter);
-    m_pmanager.renderAttackEffect(&painter,m_player.getCurrentPosi(),m_player.getSize().x(),m_player.getDir(),m_player.getTypeBullet());
+    m_pmanager.renderAttackEffect(&painter,m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir(),m_player.getTypeBullet());
     m_gmanager.rendergoods(&painter);
     m_bmanager.renderbarriers(&painter);
 
@@ -344,7 +345,6 @@ void game::slot_attack()
 
 void game::slot_gameOver()
 {
-    emit sig_deathSave(m_pmanager.m_killNum,m_time/1000);
     m_timer.stop();
     m_death->show();
     m_death->move((this->width() - m_death->width())/2,(this->height() - m_death->height())/2);

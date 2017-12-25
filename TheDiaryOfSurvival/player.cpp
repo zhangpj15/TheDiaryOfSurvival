@@ -11,7 +11,7 @@ void Player::initPlayer()
     m_dir = 0;
     m_vel = 3;
     m_curState = _STA;
-    m_size = QPointF(50,50);
+    m_size = 50;
     m_big=5;
     m_curgoods = 0;
 }
@@ -33,7 +33,7 @@ void Player::setCurrentPosi(int x, int y)
 
 void Player::setCurrentVolume(int x)
 {
-    m_size = QPointF(50-x,50-x);
+    m_size = 50-x;
 }
 
 void Player::setCurrentSpeed(int x)
@@ -55,8 +55,8 @@ QPointF Player::getCurrentPosi()
     // 返回中点坐标
     QPointF posi;
 
-    posi.setX(m_posi.x()+m_size.x()/2);
-    posi.setY(m_posi.y()+m_size.y()/2);
+    posi.setX(m_posi.x()+m_size/2);
+    posi.setY(m_posi.y()+m_size/2);
     return posi;
 }
 
@@ -74,7 +74,7 @@ double Player::getDir()
     return m_dir;
 }
 
-QPointF Player::getSize()
+double Player::getSize()
 {
     return m_size;
 }
@@ -88,10 +88,10 @@ void Player::moveFront()
         nextX = m_rect.x();
     if(nextY < m_rect.y())
         nextY = m_rect.y();
-    if(nextX+m_size.x() >= m_rect.x()+m_rect.width())
-        nextX = m_rect.x()-m_size.x()+m_rect.width();
-    if(nextY+m_size.y() >= m_rect.y()+m_rect.height())
-        nextY = m_rect.y()-m_size.y()+m_rect.height();
+    if(nextX+m_size >= m_rect.x()+m_rect.width())
+        nextX = m_rect.x()-m_size+m_rect.width();
+    if(nextY+m_size >= m_rect.y()+m_rect.height())
+        nextY = m_rect.y()-m_size+m_rect.height();
     m_posi = QPointF(nextX,nextY);
 }
 
@@ -104,10 +104,10 @@ void Player::moveBack()
         nextX = m_rect.x();
     if(nextY < m_rect.y())
         nextY = m_rect.y();
-    if(nextX+m_size.x() >= m_rect.x()+m_rect.width())
-        nextX = m_rect.x()-m_size.x()+m_rect.width();
-    if(nextY+m_size.y() >= m_rect.y()+m_rect.height())
-        nextY = m_rect.y()-m_size.y()+m_rect.height();
+    if(nextX+m_size >= m_rect.x()+m_rect.width())
+        nextX = m_rect.x()-m_size+m_rect.width();
+    if(nextY+m_size >= m_rect.y()+m_rect.height())
+        nextY = m_rect.y()-m_size+m_rect.height();
     m_posi = QPointF(nextX,nextY);
 }
 
@@ -220,11 +220,11 @@ void Player::render(QPainter *painter)
 {
 //    setCurrentVolume(m_big);
     painter->save();
-    painter->translate(m_posi.x()+m_size.x()/2.0,m_posi.y()+m_size.y()/2.0);
+    painter->translate(m_posi.x()+m_size/2.0,m_posi.y()+m_size/2.0);
 //    将中心设为坐标系原点，便于旋转
     painter->rotate(m_dir);
-    painter->translate(-m_posi.x()-m_size.x()/2.0,-m_posi.y()-m_size.y()/2.0);
+    painter->translate(-m_posi.x()-m_size/2.0,-m_posi.y()-m_size/2.0);
 
-    painter->drawPixmap(m_posi.x(),m_posi.y(),m_size.x(),m_size.y(),QPixmap(m_type));
+    painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(m_type));
     painter->restore();
 }

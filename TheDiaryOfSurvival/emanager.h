@@ -28,7 +28,7 @@ public:
     double TwoPtDistance(const QPointF& pt1, const QPointF& pt2);// 求两点间距
 
     void bornNew(QPointF posi);// 生成新敌人
-    bool updateEnemys(QPointF dist, QPointF size);// 更新敌人
+    bool updateEnemys(QPointF dist, double size);// 更新敌人
     void renderEnemys(QPainter* painter);// 渲染敌人
 };
 
