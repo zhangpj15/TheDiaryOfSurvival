@@ -20,7 +20,8 @@ public:
     double m_speed;     // 道具的移动速度
     double m_timeCount;  // 局部计时器
 
-    QPoint m_rect;  // 活动范围
+    QRectF m_rect;  // 活动范围
+    int space=60;
 
     void setActiveRect(int x,int y);
 

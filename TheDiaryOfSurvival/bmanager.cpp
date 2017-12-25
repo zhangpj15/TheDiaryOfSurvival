@@ -17,7 +17,7 @@ void bmanager::initbmanager()
 
 void bmanager::setActiveRect(int x, int y)
 {
-    m_rect = QPoint(x,y);
+    m_rect = QRectF(0,space,x,y);
 }
 
 QVector<barriers>& bmanager::getbarriersList()
@@ -46,7 +46,7 @@ void bmanager::bornNew(QPointF posi)
     {
         barriers onebarriers;
         qsrand(QTime::currentTime().msecsSinceStartOfDay()*QTime::currentTime().second());
-        onebarriers.setPosi(0,qrand()%m_rect.y());
+        onebarriers.setPosi(0,space+qrand()%(int(m_rect.height())-space));
         onebarriers.setBorn(qrand()%23+1);
 
         double length = TwoPtDistance(posi,onebarriers.getPosi());

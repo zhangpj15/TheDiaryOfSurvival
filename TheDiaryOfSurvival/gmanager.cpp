@@ -17,7 +17,7 @@ void gmanager::initgmanager()
 
 void gmanager::setActiveRect(int x, int y)
 {
-    m_rect = QPoint(x,y);
+    m_rect = QRectF(0,space,x,y);
 }
 
 QVector<goods>& gmanager::getgoodsList()
@@ -38,7 +38,7 @@ void gmanager::bornNew(QPointF posi)
 
         qsrand(QTime::currentTime().msecsSinceStartOfDay()*QTime::currentTime().second());
 
-        onegoods.setPosi(qrand()%m_rect.x(),qrand()%m_rect.y());
+        onegoods.setPosi(qrand()%int(m_rect.width()),space+qrand()%(int(m_rect.height())-space));
         onegoods.setColor(qrand()%256,qrand()%256,qrand()%256);
         int num=qrand()%7+1;
         onegoods.setBorn(num);
