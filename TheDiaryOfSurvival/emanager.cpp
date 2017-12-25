@@ -58,7 +58,7 @@ void Emanager::bornNew(QPointF posi)
     }
 }
 
-bool Emanager::updateEnemys(QPointF dist,QPointF size)
+bool Emanager::updateEnemys(QPointF dist,double size)
 {
     m_playerPosi = dist;
     for(int i=0; i< m_enemys.size(); i++)
@@ -76,7 +76,7 @@ bool Emanager::updateEnemys(QPointF dist,QPointF size)
         float dy = dist.y()-m_enemys[i].getPosi().y();
 
         float length = TwoPtDistance(dist,m_enemys[i].getPosi());
-        float range=(m_enemys[i].getSize()+size.x())*0.3;
+        float range=(m_enemys[i].getSize()+size)*0.3;
         if(length<=range)                // 如果接触,那么游戏结束
             return true;
 

@@ -25,7 +25,7 @@ public:
     void setActiveRect(int x,int y);
 
     void bornNew(QPointF posi);
-    bool updategoods(QPointF dist, QPointF size);
+    bool updategoods(QPointF dist, double size);
     void rendergoods(QPainter* painter);
 };
 

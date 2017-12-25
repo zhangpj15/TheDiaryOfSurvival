@@ -55,7 +55,7 @@ void gmanager::bornNew(QPointF posi)
     }
 }
 
-bool gmanager::updategoods(QPointF dist,QPointF size)
+bool gmanager::updategoods(QPointF dist,double size)
 {
     m_playerPosi_goods = dist;
     for(int i=0; i< m_goods.size(); i++)
@@ -70,20 +70,7 @@ bool gmanager::updategoods(QPointF dist,QPointF size)
             }
             continue;
         }
-//        float dx = dist.x()+size.x()*0.5-m_goods[i].getPosi().x()-m_goods[i].getSize()*0.5;
-//        float dy = dist.y()+size.y()*0.5-m_goods[i].getPosi().y()-m_goods[i].getSize()*0.5;
 
-//        float length = sqrt(dx*dx+dy*dy);
-//        float range=(m_goods[i].getSize()*0.5+size.x()*0.4);
-//        if(length<=range)                // 如果距离小于1,那么游戏结束
-//            return true;
-
-//        dx/=length;
-//        dy/=length;
-
-
-//        m_goods[i].setPosi(m_goods[i].getPosi().x()+dx*m_speed,
-//                           m_goods[i].getPosi().y()+dy*m_speed);
     }
 
     qSort(m_goods.begin(),m_goods.end(),compareDist);//更新道具序列，非常重要，不然有空指针

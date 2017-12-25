@@ -133,7 +133,7 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
         {
             if(!enemys[k].isAlive())
                 continue;
-            if( TwoPtDistance(enemys[k].getPosi(),m_bullets[i].getPosi())<15 )
+        if( TwoPtDistance(enemys[k].getPosi(),m_bullets[i].getPosi())<(enemys[k].getSize()+m_bullets[i].m_size)*0.5)
             {
                 enemys[k].setIsAlive(false);
                 m_bullets.removeAt(i--);
@@ -180,15 +180,15 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
 
 
 // 检测吃道具
-int Pmanager::checkKnockWithgoods(QVector<goods> &goods, QPointF posi)
+int Pmanager::checkKnockWithgoods(QVector<goods> &goods, QPointF posi,double player_size)
 {
     // 检测子弹的进入障碍区
         int num=0;
-        for(int k=0; k<goods.size();k++)// 检测敌人是否被击中
+        for(int k=0; k<goods.size();k++)// 检测商品是否被吃掉
         {
             if(!goods[k].isAlive())
                 continue;
-            if( TwoPtDistance(goods[k].getPosi(),posi)<25 )
+            if( TwoPtDistance(goods[k].getPosi(),posi)<(goods[k].getSize()+player_size)*0.5 )
             {
                 goods[k].setIsAlive(false);
                 num=goods[k].getNumber();
@@ -200,7 +200,7 @@ int Pmanager::checkKnockWithgoods(QVector<goods> &goods, QPointF posi)
 
 
 //    更新攻击
-void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)
+void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
 {
     // 更新所有的子弹
     for(int i=0; i<m_bullets.size();i++)
@@ -232,8 +232,8 @@ void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)
             // 子弹攻击
             QPointF s;
 
-            s.setX(posi.x()+size.x()/2.0*sin(3.14*dir/180.0));    // 设置新子弹的位置
-            s.setY(posi.y()-size.y()/2.0*cos(3.14*dir/180.0));
+            s.setX(posi.x()+size/2.0*sin(3.14*dir/180.0));    // 设置新子弹的位置
+            s.setY(posi.y()-size/2.0*cos(3.14*dir/180.0));
 
             Bullet temp;
             temp.setPosi(s.x(),s.y());

@@ -58,14 +58,14 @@ void bmanager::bornNew(QPointF posi)
     }
 }
 
-bool bmanager::updatebarriers(QPointF dist,QPointF size)
+bool bmanager::updatebarriers(QPointF dist,double size)
 {
     m_playerPosi_barriers = dist;
     for(int i=0; i< m_barriers.size(); i++)
     {
         float length = TwoPtDistance(dist,m_barriers[i].getPosi());
         float dis=10;
-        float range=(m_barriers[i].getSize()+size.x())*0.3;
+        float range=(m_barriers[i].getSize()+size)*0.3;
         if(length<=range)                // 如果接触,那么游戏结束
             return true;
         m_barriers[i].setPosi(m_barriers[i].getPosi().x()+dis*m_speed,
