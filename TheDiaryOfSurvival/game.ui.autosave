@@ -704,7 +704,7 @@ color:#FFFFFF;
 }</string>
    </property>
    <property name="text">
-    <string>3</string>
+    <string>5</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">

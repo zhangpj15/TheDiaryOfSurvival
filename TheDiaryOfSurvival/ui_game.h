@@ -49,6 +49,7 @@ public:
     QLabel *lblLife;
     QLabel *label_16;
     QLabel *label_17;
+    QProgressBar *pbarLife;
 
     void setupUi(QWidget *game)
     {
@@ -325,6 +326,21 @@ public:
 "{\n"
 "color:#FFFFFF;\n"
 "}"));
+        pbarLife = new QProgressBar(game);
+        pbarLife->setObjectName(QStringLiteral("pbarLife"));
+        pbarLife->setGeometry(QRect(600, 80, 141, 21));
+        pbarLife->setStyleSheet(QLatin1String("QProgressBar {\n"
+"    border: 2px solid grey;\n"
+"    border-radius: 5px;\n"
+"    background-color: rgba(0,0,0,0);\n"
+"}\n"
+"\n"
+"QProgressBar::chunk {\n"
+"	background-image: url(:/type/res/config/ico/firebar.png);\n"
+"}"));
+        pbarLife->setMaximum(200);
+        pbarLife->setValue(200);
+        pbarLife->setTextVisible(false);
 
         retranslateUi(game);
 
@@ -353,8 +369,8 @@ public:
         label_15->setText(QString());
         lblSpeed->setText(QApplication::translate("game", "3", 0));
         label_7->setText(QApplication::translate("game", "\351\200\237\345\272\246\357\274\232", 0));
-        lblVolume->setText(QApplication::translate("game", "3", 0));
-        lblLife->setText(QApplication::translate("game", "3", 0));
+        lblVolume->setText(QApplication::translate("game", "50", 0));
+        lblLife->setText(QApplication::translate("game", "100", 0));
         label_16->setText(QApplication::translate("game", "\345\260\272\345\257\270\357\274\232", 0));
         label_17->setText(QApplication::translate("game", "\347\224\237\345\221\275\357\274\232", 0));
     } // retranslateUi
