@@ -19,8 +19,9 @@ public:
 
     double m_speed;     // 敌人的移动速度
     double m_timeCount;  // 局部计时器
+    int space=60;
 
-    QPoint m_rect;  // 活动范围
+    QRectF m_rect;  // 活动范围
 
     void setActiveRect(int x,int y);// 设置活动区域
 

@@ -17,7 +17,7 @@ void Emanager::initEmanager()
 
 void Emanager::setActiveRect(int x, int y)
 {
-    m_rect = QPoint(x,y);
+    m_rect = QRectF(0,space,x,y);
 }
 
 QVector<Enemy>& Emanager::getEnemysList()
@@ -45,7 +45,7 @@ void Emanager::bornNew(QPointF posi)
 
         qsrand(QTime::currentTime().msecsSinceStartOfDay()*QTime::currentTime().second());
 
-        oneenemy.setPosi(qrand()%m_rect.x(),qrand()%m_rect.y());
+        oneenemy.setPosi(qrand()%int(m_rect.width()),space+qrand()%(int(m_rect.height())-space));
         oneenemy.setColor(qrand()%256,qrand()%256,qrand()%256);
         oneenemy.setBorn(qrand()%40+1);
 
