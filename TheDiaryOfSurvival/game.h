@@ -26,6 +26,7 @@ class game : public QWidget
 public:
     QTimer m_timer;
     int m_time;    // 与 Timer 捆绑的一个时间值
+    int zone=0;
 
     Emanager m_emanager;
     Pmanager m_pmanager;
@@ -34,7 +35,7 @@ public:
 
     death* m_death;// 失败窗口
     end* m_end;// quit窗口
-    int space=60;
+    int space=10;
 
     Player m_player;
 
@@ -52,6 +53,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event);
 
     void paintEvent(QPaintEvent* event);
+    void renderBorder(QPainter *painter, int rate);
     void resizeEvent(QResizeEvent* event);
 
 private slots:
