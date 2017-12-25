@@ -34,6 +34,7 @@ public:
 
     death* m_death;// 失败窗口
     end* m_end;// quit窗口
+    int space=60;
 
     Player m_player;
 
@@ -70,7 +71,6 @@ signals:
     void sig_death();
     void sig_quitgame();
     void sig_borngoods();
-    void sig_deathSave(int kill, int timecount);
 
 private:
     Ui::game *ui;

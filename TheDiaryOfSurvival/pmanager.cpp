@@ -27,7 +27,7 @@ void Pmanager::initPmanager()
 // 定义活动范围
 void Pmanager::setActiveRect(double w, double h)
 {
-    m_rect = QRectF(0,0,w,h);
+    m_rect = QRectF(0,61,w,h);
 }
 // 检测是否被攻击
 bool Pmanager::isAttacked()

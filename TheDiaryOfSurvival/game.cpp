@@ -27,21 +27,15 @@ game::game(QWidget *parent) :
 //显示布局
 void game::resizeEvent(QResizeEvent *event)
 {
-    m_player.setActiveRect(0,61,width(),height()-61);
-    m_emanager.setActiveRect(width(),height()-61);
-    m_pmanager.setActiveRect(width(),height()-61);
-    m_bmanager.setActiveRect(width(),height()-61);
-    m_gmanager.setActiveRect(width(),height()-61);
+    m_player.setActiveRect(0,60,width(),height());
+    m_pmanager.setActiveRect(width(),height());
+    m_bmanager.setActiveRect(width(),height());
+    m_gmanager.setActiveRect(width(),height());
 }
 
 void game::startGameLoop()
 {
     ui->pbarEnergy->setVisible(false);    //隐藏能量槽
-    ui->pbarLife->setVisible(true);    //显示能量槽
-    ui->pbarLife->setValue(m_player.getLife());
-    ui->pbarLife->setStyleSheet(
-                "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
-                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
     bA = bD = false;                      //判断按键是否按下，初始置为否
 
     m_time = 0;                           //计时器，初始置为0
@@ -52,20 +46,26 @@ void game::startGameLoop()
     m_timer.start();                      //启动计时器
 
     m_player.setCurrentPosi(width()/2,height()/2);
-    m_player.setActiveRect(0,61,width(),height()-61);
+    m_player.setActiveRect(0,60,width(),height()-60);
 
     m_emanager.initEmanager();
     m_pmanager.initPmanager();
     m_gmanager.initgmanager();
     m_bmanager.initbmanager();
 
-    m_emanager.setActiveRect(width(),height()-61);
-    m_pmanager.setActiveRect(width(),height()-61);
-    m_bmanager.setActiveRect(width(),height()-61);
-    m_gmanager.setActiveRect(width(),height()-61);
+    m_emanager.setActiveRect(width(),height());
+    m_pmanager.setActiveRect(width(),height());
+    m_bmanager.setActiveRect(width(),height());
+    m_gmanager.setActiveRect(width(),height());
 
     ui->lblAttackMode->setText(m_pmanager.getAttackMode());
 
+    ui->pbarLife->setVisible(true);    //显示能量槽
+    ui->pbarLife->setRange(0,m_player.getLife());    //显示能量槽
+    ui->pbarLife->setValue(m_player.getLife());
+    ui->pbarLife->setStyleSheet(
+                "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
+                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
     //提示栏的动画效果
     static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupBox,"pos");
     animate->setStartValue(QPoint(0,220));
@@ -82,8 +82,18 @@ void game::startGameLoop()
 void game::slot_timeLoop()
 {
     m_time += m_timer.interval();
-//    if(!(m_time/1000)%5)qDebug("Test:%d",m_time);
+    if(m_time%1000==0&&m_time>999)
+    {
+        qDebug()<<"到点啦";
+//        QPolygonF polygon;          // 未变换的多边形
+//        polygon<<QPointF(posi.x(),posi.y()-50)
+//               <<QPointF(posi.x()-35,posi.y()+35)
+//               <<QPointF(posi.x(),posi.y()+75)
+//               <<QPointF(posi.x()+35,posi.y()+35);
 
+
+//        m_player.setActiveRect(m_time%1000*space*4/3,60+m_time%1000*space,width()-m_time%1000*space*2,height()-60-m_time%1000*space*2);
+    }
     ui->btnShowTab->setText(">");
 
     m_player.updateStates();// 位置刷新
@@ -91,7 +101,6 @@ void game::slot_timeLoop()
     if(m_player.getCurrentgoods())
     {
         QString goodsmode=m_pmanager.getgoodsMode(m_player.getCurrentgoods());
-//        qDebug() << goodsmode;
         ui->lblGoods->setText(goodsmode);
         ui->lblLife->setText(QString::number(m_player.getLife(),10));
         ui->lblVolume->setText(QString::number(m_player.getSize()));
