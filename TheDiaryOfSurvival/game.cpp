@@ -36,7 +36,12 @@ void game::resizeEvent(QResizeEvent *event)
 
 void game::startGameLoop()
 {
-    ui->pbarEnergy->setVisible(false);    //显示能量槽
+    ui->pbarEnergy->setVisible(false);    //隐藏能量槽
+    ui->pbarLife->setVisible(true);    //显示能量槽
+    ui->pbarLife->setValue(m_player.getLife());
+    ui->pbarLife->setStyleSheet(
+                "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
+                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
     bA = bD = false;                      //判断按键是否按下，初始置为否
 
     m_time = 0;                           //计时器，初始置为0
@@ -101,7 +106,13 @@ void game::slot_timeLoop()
     if(hurt)
     {
         m_player.setCurrentLife();
+        ui->lblLife->setText(QString::number(m_player.getLife()));
         qDebug()<<(m_player.getLife());
+        ui->pbarLife->setRange(0,100-1);
+        ui->pbarLife->setValue(m_player.getLife());
+        ui->pbarLife->setStyleSheet(
+                    "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
+                    "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
         if(m_player.getLife()==0)
             isGameOver=true;
     }
