@@ -15,12 +15,13 @@ public:
     enum{
         _BULLET,
         _SHOTGUN,
-        _FIRE
+        _FIRE,
+        _MESS
     };
 
     short m_curAttackType;   // 当前攻击模式
     bool m_isAttacked;       // 是否正在进行攻击
-    int m_counter;           // 攻击计时器
+    int m_counter;           // 攻击计时器,计算按键按下时间
 
     //火焰设置
     int m_counterFire;       // 火焰的喷射计时
@@ -38,7 +39,7 @@ public:
     void setAttacked(bool b);    // 进行攻击
     bool isAttacked();// 是否被攻击
 
-    void changeAttackMode();
+    void changeAttackMode(short num);
     int getAttackModeId();
     QString getAttackMode();
     int getKillNum();

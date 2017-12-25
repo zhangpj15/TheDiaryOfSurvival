@@ -34,8 +34,6 @@ public:
     QLabel *label_10;
     QLabel *label_9;
     QLabel *label_11;
-    QLabel *label_5;
-    QLabel *label_7;
     QLabel *label_12;
     QLabel *label_6;
     QLabel *label_8;
@@ -45,6 +43,12 @@ public:
     QLabel *lblGoods;
     QLabel *label_2;
     QLabel *label_15;
+    QLabel *lblSpeed;
+    QLabel *label_7;
+    QLabel *lblVolume;
+    QLabel *lblLife;
+    QLabel *label_16;
+    QLabel *label_17;
 
     void setupUi(QWidget *game)
     {
@@ -154,22 +158,6 @@ public:
         font4.setBold(true);
         font4.setWeight(75);
         label_11->setFont(font4);
-        label_5 = new QLabel(groupBox);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(80, 30, 51, 16));
-        QPalette palette2;
-        palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
-        label_5->setPalette(palette2);
-        label_5->setFont(font4);
-        label_7 = new QLabel(groupBox);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(10, 30, 51, 16));
-        label_7->setStyleSheet(QLatin1String("QLabel\n"
-"{\n"
-"color:#FFFFFF;\n"
-"}"));
         label_12 = new QLabel(groupBox);
         label_12->setObjectName(QStringLiteral("label_12"));
         label_12->setGeometry(QRect(10, 105, 81, 21));
@@ -180,11 +168,11 @@ public:
         label_6 = new QLabel(groupBox);
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setGeometry(QRect(80, 55, 31, 21));
-        QPalette palette3;
-        palette3.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette3.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette3.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
-        label_6->setPalette(palette3);
+        QPalette palette2;
+        palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        label_6->setPalette(palette2);
         label_6->setFont(font4);
         label_8 = new QLabel(groupBox);
         label_8->setObjectName(QStringLiteral("label_8"));
@@ -222,11 +210,11 @@ public:
         label_13 = new QLabel(groupBox);
         label_13->setObjectName(QStringLiteral("label_13"));
         label_13->setGeometry(QRect(80, 130, 31, 21));
-        QPalette palette4;
-        palette4.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette4.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette4.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
-        label_13->setPalette(palette4);
+        QPalette palette3;
+        palette3.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette3.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette3.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        label_13->setPalette(palette3);
         label_13->setFont(font4);
         label_14 = new QLabel(groupBox);
         label_14->setObjectName(QStringLiteral("label_14"));
@@ -257,6 +245,86 @@ public:
         label_15->setGeometry(QRect(650, 30, 31, 31));
         label_15->setPixmap(QPixmap(QString::fromUtf8(":/res/config/ico/death.jpg")));
         label_15->setScaledContents(true);
+        lblSpeed = new QLabel(game);
+        lblSpeed->setObjectName(QStringLiteral("lblSpeed"));
+        lblSpeed->setGeometry(QRect(530, 40, 51, 16));
+        QPalette palette4;
+        QBrush brush2(QColor(255, 255, 255, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette4.setBrush(QPalette::Active, QPalette::WindowText, brush2);
+        palette4.setBrush(QPalette::Active, QPalette::Text, brush2);
+        palette4.setBrush(QPalette::Active, QPalette::ButtonText, brush2);
+        palette4.setBrush(QPalette::Inactive, QPalette::WindowText, brush2);
+        palette4.setBrush(QPalette::Inactive, QPalette::Text, brush2);
+        palette4.setBrush(QPalette::Inactive, QPalette::ButtonText, brush2);
+        palette4.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette4.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette4.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
+        lblSpeed->setPalette(palette4);
+        lblSpeed->setFont(font4);
+        lblSpeed->setStyleSheet(QLatin1String("QLabel\n"
+"{\n"
+"color:#FFFFFF;\n"
+"}"));
+        label_7 = new QLabel(game);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(430, 40, 51, 16));
+        label_7->setStyleSheet(QLatin1String("QLabel\n"
+"{\n"
+"color:#FFFFFF;\n"
+"}"));
+        lblVolume = new QLabel(game);
+        lblVolume->setObjectName(QStringLiteral("lblVolume"));
+        lblVolume->setGeometry(QRect(530, 60, 51, 16));
+        QPalette palette5;
+        palette5.setBrush(QPalette::Active, QPalette::WindowText, brush2);
+        palette5.setBrush(QPalette::Active, QPalette::Text, brush2);
+        palette5.setBrush(QPalette::Active, QPalette::ButtonText, brush2);
+        palette5.setBrush(QPalette::Inactive, QPalette::WindowText, brush2);
+        palette5.setBrush(QPalette::Inactive, QPalette::Text, brush2);
+        palette5.setBrush(QPalette::Inactive, QPalette::ButtonText, brush2);
+        palette5.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette5.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette5.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
+        lblVolume->setPalette(palette5);
+        lblVolume->setFont(font4);
+        lblVolume->setStyleSheet(QLatin1String("QLabel\n"
+"{\n"
+"color:#FFFFFF;\n"
+"}"));
+        lblLife = new QLabel(game);
+        lblLife->setObjectName(QStringLiteral("lblLife"));
+        lblLife->setGeometry(QRect(530, 80, 51, 16));
+        QPalette palette6;
+        palette6.setBrush(QPalette::Active, QPalette::WindowText, brush2);
+        palette6.setBrush(QPalette::Active, QPalette::Text, brush2);
+        palette6.setBrush(QPalette::Active, QPalette::ButtonText, brush2);
+        palette6.setBrush(QPalette::Inactive, QPalette::WindowText, brush2);
+        palette6.setBrush(QPalette::Inactive, QPalette::Text, brush2);
+        palette6.setBrush(QPalette::Inactive, QPalette::ButtonText, brush2);
+        palette6.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette6.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette6.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
+        lblLife->setPalette(palette6);
+        lblLife->setFont(font4);
+        lblLife->setStyleSheet(QLatin1String("QLabel\n"
+"{\n"
+"color:#FFFFFF;\n"
+"}"));
+        label_16 = new QLabel(game);
+        label_16->setObjectName(QStringLiteral("label_16"));
+        label_16->setGeometry(QRect(430, 60, 51, 16));
+        label_16->setStyleSheet(QLatin1String("QLabel\n"
+"{\n"
+"color:#FFFFFF;\n"
+"}"));
+        label_17 = new QLabel(game);
+        label_17->setObjectName(QStringLiteral("label_17"));
+        label_17->setGeometry(QRect(430, 80, 51, 16));
+        label_17->setStyleSheet(QLatin1String("QLabel\n"
+"{\n"
+"color:#FFFFFF;\n"
+"}"));
 
         retranslateUi(game);
 
@@ -274,8 +342,6 @@ public:
         label_10->setText(QApplication::translate("game", "\345\210\207\346\215\242\346\224\273\345\207\273\346\250\241\345\274\217\357\274\232", 0));
         label_9->setText(QApplication::translate("game", "K", 0));
         label_11->setText(QApplication::translate("game", "Q", 0));
-        label_5->setText(QApplication::translate("game", "WADS", 0));
-        label_7->setText(QApplication::translate("game", "\347\247\273\345\212\250\357\274\232", 0));
         label_12->setText(QApplication::translate("game", "\351\200\200\345\207\272\346\270\270\346\210\217\357\274\232", 0));
         label_6->setText(QApplication::translate("game", "J", 0));
         label_8->setText(QApplication::translate("game", "\346\224\273\345\207\273\357\274\232", 0));
@@ -285,6 +351,12 @@ public:
         lblGoods->setText(QApplication::translate("game", "None", 0));
         label_2->setText(QApplication::translate("game", "\351\201\223\345\205\267\346\225\210\346\236\234", 0));
         label_15->setText(QString());
+        lblSpeed->setText(QApplication::translate("game", "3", 0));
+        label_7->setText(QApplication::translate("game", "\351\200\237\345\272\246\357\274\232", 0));
+        lblVolume->setText(QApplication::translate("game", "3", 0));
+        lblLife->setText(QApplication::translate("game", "3", 0));
+        label_16->setText(QApplication::translate("game", "\345\260\272\345\257\270\357\274\232", 0));
+        label_17->setText(QApplication::translate("game", "\347\224\237\345\221\275\357\274\232", 0));
     } // retranslateUi
 
 };

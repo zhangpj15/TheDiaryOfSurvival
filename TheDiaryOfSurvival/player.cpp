@@ -10,6 +10,7 @@ void Player::initPlayer()
     m_type_bullets=":/res/img/bullets/bullets (2).png";
     m_dir = 0;
     m_vel = 3;
+    m_life = 100;
     m_curState = _STA;
     m_size = 50;
     m_big=5;
@@ -39,6 +40,11 @@ void Player::setCurrentVolume(int x)
 void Player::setCurrentSpeed(int x)
 {
     m_vel=x;
+}
+
+void Player::setCurrentLife()
+{
+    m_life--;
 }
 
 void Player::setActiveRect(int x, int y, int w, int h)
@@ -79,6 +85,14 @@ double Player::getSize()
     return m_size;
 }
 
+double Player::getSpeed()
+{
+    return m_vel;
+}
+int Player::getLife()
+{
+    return m_life;
+}
 void Player::moveFront()
 {
     float nextX = m_posi.x() + m_vel*sin(3.14*m_dir/180.0);

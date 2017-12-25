@@ -1,6 +1,6 @@
 #include "game.h"
 #include "ui_game.h"
-#include <qdebug.h>
+#include <qDebug>
 game::game(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::game)
@@ -88,13 +88,23 @@ void game::slot_timeLoop()
         QString goodsmode=m_pmanager.getgoodsMode(m_player.getCurrentgoods());
 //        qDebug() << goodsmode;
         ui->lblGoods->setText(goodsmode);
+        ui->lblLife->setText(QString::number(m_player.getLife(),10));
+        ui->lblVolume->setText(QString::number(m_player.getSize()));
+        ui->lblSpeed->setText(QString::number(m_player.getSpeed()));
 //        ui->lblVolume;
     }
     m_gmanager.updategoods(m_player.getCurrentPosi(),m_player.getSize());
     m_pmanager.updateAttackEffect(m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir());// 攻击模式刷新
 
-    bool isGameOver = (m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize())||m_bmanager.updatebarriers(m_player.getCurrentPosi(),m_player.getSize()));
-
+    bool hurt = (m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize())||m_bmanager.updatebarriers(m_player.getCurrentPosi(),m_player.getSize()));
+    bool isGameOver=false;
+    if(hurt)
+    {
+        m_player.setCurrentLife();
+        qDebug()<<(m_player.getLife());
+        if(m_player.getLife()==0)
+            isGameOver=true;
+    }
     // 判断一下游戏是否结束,被敌人或者障碍物杀死
     if(isGameOver)
     {
@@ -198,11 +208,28 @@ void game::keyPressEvent(QKeyEvent *event)
             m_player.setCurrentState(Player::_BACK_RIGHT);
         break;
     case Qt::Key_J:
+        m_pmanager.changeAttackMode(0);
+        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
         m_pmanager.setAttacked(true);
         break;
-    case Qt::Key_K:
-        m_pmanager.changeAttackMode();
+//    case Qt::Key_K:
+//        m_pmanager.changeAttackMode();
+//        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
+//        break;
+    case Qt::Key_U:
+        m_pmanager.changeAttackMode(1);
         ui->lblAttackMode->setText(m_pmanager.getAttackMode());
+        m_pmanager.setAttacked(true);
+        break;
+    case Qt::Key_I:
+        m_pmanager.changeAttackMode(2);
+        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
+        m_pmanager.setAttacked(true);
+        break;
+    case Qt::Key_O:
+        m_pmanager.changeAttackMode(3);
+        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
+        m_pmanager.setAttacked(true);
         break;
     case Qt::Key_Space:
         if(m_timer.isActive())
@@ -307,6 +334,15 @@ void game::keyReleaseEvent(QKeyEvent *event)
         }
         break;
     case Qt::Key_J:
+        m_pmanager.setAttacked(false);
+        break;
+    case Qt::Key_U:
+        m_pmanager.setAttacked(false);
+        break;
+    case Qt::Key_I:
+        m_pmanager.setAttacked(false);
+        break;
+    case Qt::Key_O:
         m_pmanager.setAttacked(false);
         break;
     }
