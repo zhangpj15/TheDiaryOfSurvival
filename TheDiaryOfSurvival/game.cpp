@@ -37,16 +37,16 @@ void game::resizeEvent(QResizeEvent *event)
 void game::startGameLoop()
 {
     ui->pbarEnergy->setVisible(false);    //隐藏能量槽
-    ui->pbarBoss_1->setVisible(false);    //隐藏能量槽
-    ui->pbarBoss_2->setVisible(false);    //隐藏能量槽
-    ui->pbarBoss_3->setVisible(false);    //隐藏能量槽
+    ui->groupBoss->setVisible(false);
     bA = bD = false;                      //判断按键是否按下，初始置为否
 
     m_time = 0;                           //计时器，初始置为0
     bornrate_enermy=1000;
-    bornrate_boss=5000;
+    bornrate_boss=8000;
     bornrate_goods=2000;
     bornrate_barriers=3000;
+    tiprate=5000;
+    zonerate=10000;
 
     m_player.initPlayer();
     m_timer.setInterval(10);
@@ -80,9 +80,9 @@ void game::startGameLoop()
                 "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
                 "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
     //提示栏的动画效果
-    static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupBox,"pos");
-    animate->setStartValue(QPoint(0,220));
-    animate->setEndValue(QPoint(-140,220));
+    static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupGoods,"pos");
+    animate->setStartValue(QPoint(width()-140,220));
+    animate->setEndValue(QPoint(width()-20,220));
     animate->setEasingCurve(QEasingCurve::InCubic);
     animate->setDuration(3000);
     animate->start();
@@ -97,10 +97,10 @@ void game::slot_timeLoop()
     m_time += m_timer.interval();
 //    qDebug()<<m_time;
     sectime=m_time/1000;
-    if(m_time%1000==0&&m_time>999)
+    if(m_time%zonerate==0)//控制缩圈
     {
 //        qDebug()<<"到点啦";
-        zone=m_time/1000;
+        zone=m_time/zonerate;
     }
     ui->btnShowTab->setText(">");
 
@@ -156,11 +156,20 @@ void game::slot_timeLoop()
     if(m_time%bornrate_enermy==0){
     m_emanager.bornNew(m_player.getCurrentPosi());
     }
+    if((m_time+tiprate)%bornrate_boss==0){
+        ui->groupBoss->setVisible(true);
+        static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupBoss,"pos");
+        animate->setStartValue(QPoint(0,0));
+        animate->setEndValue(QPoint(width(),height()));
+        animate->setEasingCurve(QEasingCurve::InCubic);
+        animate->setDuration(tiprate);
+        animate->start();
+    }
 
     //该生成新的boss
-    if(m_time%bornrate_boss==0){
+    if(m_time%bornrate_boss==0)
         m_bomanager.bornNew(m_player.getCurrentPosi());
-    }
+
 
     ui->lblTime->setText(QString::number(m_time/1000));
     ui->lblPoint->setText(QString::number(m_pmanager.getKillNum()));
@@ -203,7 +212,7 @@ void game::paintEvent(QPaintEvent *event)
 
     m_player.render(&painter);
 
-//    renderBorder(&painter,zone);
+    renderBorder(&painter,zone);
 }
 
 /**********  按键事件 **********/
@@ -395,27 +404,27 @@ void game::keyReleaseEvent(QKeyEvent *event)
 void game::slot_btnShowTab()
 {
     //提示栏的动画效果
-    if(ui->groupBox->pos() == QPoint(-140,220))
+    if(ui->groupGoods->pos() == QPoint(width(),220))
     {
-        static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupBox,"pos");
-        animate->setStartValue(QPoint(-140,220));
-        animate->setEndValue(QPoint(0,220));
-        animate->setEasingCurve(QEasingCurve::Linear);
-        animate->setDuration(500);
-        animate->start();
-
-        ui->btnShowTab->setText("<");
-    }
-    else
-    {
-        static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupBox,"pos");
-        animate->setStartValue(QPoint(0,220));
-        animate->setEndValue(QPoint(-140,220));
+        static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupGoods,"pos");
+        animate->setStartValue(QPoint(width()-20,220));
+        animate->setEndValue(QPoint(width()-140,220));
         animate->setEasingCurve(QEasingCurve::Linear);
         animate->setDuration(500);
         animate->start();
 
         ui->btnShowTab->setText(">");
+    }
+    else
+    {
+        static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupGoods,"pos");
+        animate->setStartValue(QPoint(width()-140,220));
+        animate->setEndValue(QPoint(width()-20,220));
+        animate->setEasingCurve(QEasingCurve::Linear);
+        animate->setDuration(500);
+        animate->start();
+
+        ui->btnShowTab->setText("<");
     }
 }
 void game::slot_attack()
@@ -460,8 +469,7 @@ void game::renderBorder(QPainter *painter, int rate)
     QPainterPath path;
     path.addRect(0,60,this->width(),this->height());
     path.addRect(space*4/3*rate,60+space*rate,this->width()-space*8/3*rate,this->height()-60-space*2*rate);
-    painter->setBrush(QPixmap(QString(":/res/img/flame/flame1.png")));
-//    painter->drawPixmap(0,60,this->width(),this->height(),QPixmap(QString(":/res/img/flame/flame1.png")));
+    painter->setBrush(QPixmap(QString(":/res/config/ico/coldFireBar.png")));
     path.setFillRule(Qt::OddEvenFill);//使用奇偶填充，刚好可以只显示圆环
     painter->drawPath(path);
 }

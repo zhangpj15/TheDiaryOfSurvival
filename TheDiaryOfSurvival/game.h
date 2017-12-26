@@ -33,6 +33,8 @@ public:
     int bornrate_boss;
     int bornrate_goods;
     int bornrate_barriers;
+    int tiprate;
+    int zonerate;
 
     Emanager m_emanager;
     Bomanager m_bomanager;
