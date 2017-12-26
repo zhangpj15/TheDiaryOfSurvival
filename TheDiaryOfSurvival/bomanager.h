@@ -7,7 +7,7 @@
 #include <QTime>
 #include <cmath>
 #include <QtAlgorithms>
-#include "bullet.h"
+
 
 class Bomanager
 {
