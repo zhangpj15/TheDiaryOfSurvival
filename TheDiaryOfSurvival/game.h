@@ -27,6 +27,7 @@ class game : public QWidget
 public:
     QTimer m_timer;
     int m_time;    // 与 Timer 捆绑的一个时间值
+    int sectime;
     int zone=0;
 
     Emanager m_emanager;
