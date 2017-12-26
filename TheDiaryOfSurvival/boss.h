@@ -4,11 +4,20 @@
 #include <QPainter>
 #include <QtCore>
 #include <QBitmap>
+#include "bullet.h"
 
 class Boss
 {
 public:
     Boss();
+
+    enum{
+        _SHOTGUN,
+        _BULLET
+    };
+    short m_curAttackType;   // 当前攻击模式
+    int m_counter;           // 攻击计时器,计算按键按下时间
+    QList<Bullet> m_bullets;   // 子弹序列
 
     QPointF m_posi;   // 敌人坐标
     QColor m_color;  // 敌人颜色
@@ -24,6 +33,7 @@ public:
     void setColor(int x,int y,int z);
     void setIsAlive(bool b);
     void setBorn(int x);
+    void updateAttackEffect(QPointF posi, double size, double dir);
 
     QColor getColor();
     QPointF getPosi();

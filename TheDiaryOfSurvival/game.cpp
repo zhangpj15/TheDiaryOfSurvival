@@ -93,18 +93,8 @@ void game::slot_timeLoop()
     sectime=m_time/1000;
     if(m_time%1000==0&&m_time>999)
     {
-        qDebug()<<"到点啦";
+//        qDebug()<<"到点啦";
         zone=m_time/1000;
-//        QPainterPath path;
-//        QPainter painter;
-//        path.addEllipse(0,0,100,100);
-//        path.addEllipse(25,25,50,50);
-//        painter.setBrush(Qt::blue);
-//        path.setFillRule(Qt::OddEventFil);//使用奇偶填充，刚好可以只显示圆环
-//        painter.drawPath(path);
-
-
-//        m_player.setActiveRect(m_time%1000*space*4/3,60+m_time%1000*space,width()-m_time%1000*space*2,height()-60-m_time%1000*space*2);
     }
     ui->btnShowTab->setText(">");
 
@@ -128,7 +118,7 @@ void game::slot_timeLoop()
     {
         m_player.setCurrentLife();
         ui->lblLife->setText(QString::number(m_player.getLife()));
-        qDebug()<<(m_player.getLife());
+//        qDebug()<<(m_player.getLife());
         ui->pbarLife->setRange(0,100-1);
         ui->pbarLife->setValue(m_player.getLife());
         ui->pbarLife->setStyleSheet(

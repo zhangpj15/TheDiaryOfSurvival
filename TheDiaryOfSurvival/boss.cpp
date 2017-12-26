@@ -1,4 +1,5 @@
 #include "boss.h"
+#include "qDebug"
 
 Boss::Boss()
 {
@@ -8,6 +9,8 @@ Boss::Boss()
     m_countDown = 10;
     m_deathType = qrand()%4+1;
     m_born=1;
+    m_curAttackType=_SHOTGUN;
+    m_bullets.clear();
 }
 
 void Boss::setPosi(double x, double y)
@@ -56,9 +59,100 @@ int Boss::getCountDown()
     return m_countDown;
 }
 
+//    更新攻击
+void Boss::updateAttackEffect(QPointF posi, double size, double dir)
+{
+    // 更新所有的子弹
+    for(int i=0; i<m_bullets.size();i++)
+    {
+        m_bullets[i].updateBullet();
+    }
+        m_counter++;
+        switch(m_curAttackType)
+        {
+        case _BULLET:
+        {
+            if(!(m_counter%5000==0||m_counter==0))
+                break;
+            // 子弹攻击
+            QPointF s;
+
+            s.setX(posi.x()+size/2.0*sin(3.14*dir/180.0));    // 设置新子弹的位置
+            s.setY(posi.y()-size/2.0*cos(3.14*dir/180.0));
+
+            Bullet temp;
+            temp.setPosi(s.x(),s.y());
+            temp.setDir(dir);
+
+            m_bullets.push_back(temp);
+            break;
+        }
+        case _SHOTGUN:
+        {
+            if(!(m_counter%40==0||m_counter==0))
+                break;
+            // 散弹攻击
+            QPointF s;
+
+            s.setX(posi.x()+2*sin(3.14*dir/180.0));
+            s.setY(posi.y()-2*cos(3.14*dir/180.0));
+
+            Bullet temp;
+            temp.setPosi(s.x(),s.y());
+            temp.setDir(dir);
+
+            m_bullets.push_back(temp);
+
+            for(int i=0; i<3; i=i+1)// 扇形发出
+            {
+                temp.setDir(dir-(i+1)*45);
+                m_bullets.push_back(temp);
+                temp.setDir(dir+(i+1)*45);
+                m_bullets.push_back(temp);
+            }
+            break;
+        }
+//        case _MESS:
+//        {
+//            if(!(m_counter%30==0||m_counter==0))
+//                break;
+//            // 散弹攻击
+//            QPointF s;
+
+//            s.setX(posi.x()+4*sin(3.14*dir/180.0));
+//            s.setY(posi.y()-4*cos(3.14*dir/180.0));
+
+//            Bullet temp;
+//            temp.setPosi(s.x(),s.y());
+//            temp.setDir(dir);
+
+//            m_bullets.push_back(temp);
+
+//            for(int i=0; i<3; i=i+1)// 矩形发出
+//            {
+//                temp.setPosi(s.x()+2*sin(3.14*dir/180.0),s.y()-2*cos(3.14*dir/180.0));
+//                temp.setDir(dir-(i+1)*10);
+//                m_bullets.push_back(temp);
+//                temp.setDir(dir+(i+1)*10);
+//                m_bullets.push_back(temp);
+//                break;
+//            }
+//        }
+//     qDebug()<<m_counter;
+    }
+}
+
 void Boss::render(QPainter *painter)
 {
-    if(m_isAlive)painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
+    if(m_isAlive){
+        painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
+        for(int i=0; i<m_bullets.size(); i++)
+        {
+//            m_bullets[i].changepic(str);
+//            qDebug()<<"更新子弹";
+            m_bullets[i].renderBullet(painter);
+        }
+    }
     else
     {
 

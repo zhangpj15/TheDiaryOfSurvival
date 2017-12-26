@@ -366,7 +366,7 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
         }
 
         m_counter++;
-        qDebug()<<(m_counter);
+//        qDebug()<<(m_counter);
     }
 }
 

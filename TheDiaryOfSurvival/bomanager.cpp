@@ -36,10 +36,10 @@ double Bomanager::TwoPtDistance(const QPointF& pt1, const QPointF& pt2)
 void Bomanager::bornNew(QPointF posi,int num)
 {
     if(num%5000!=0){
-        qDebug()<<"没boss了";
+//        qDebug()<<"没boss了";
         return;
         }
-    qDebug()<<"生boss了"<<num;
+//    qDebug()<<"生boss了"<<num;
     while(true)
     {
         Boss oneboss;
@@ -62,6 +62,7 @@ void Bomanager::bornNew(QPointF posi,int num)
 bool Bomanager::updateBoss(QPointF dist,double size)
 {
     m_playPosi = dist;
+//    qDebug()<<"更新boss了";
     for(int i=0; i< m_boss.size(); i++)
     {
         if(!m_boss[i].isAlive())  // 已经死亡的敌人
@@ -78,8 +79,23 @@ bool Bomanager::updateBoss(QPointF dist,double size)
 
         float length = TwoPtDistance(dist,m_boss[i].getPosi());
         float range=(m_boss[i].getSize()+size)*0.3;
-        if(length<=range)                // 如果接触,那么游戏结束
+        if(length<=range)
             return true;
+
+        for(int j=0; j<m_boss.size();j++)
+        {
+        for(int i=0; i<m_boss[j].m_bullets.size();i++)
+        {
+            if(!m_rect.contains(m_boss[j].m_bullets[i].getPosi()))// 子弹飞出界外，删除
+            {
+                m_boss[j].m_bullets.removeAt(i--);
+                continue;
+            }
+
+            if( TwoPtDistance(dist,m_boss[j].m_bullets[i].getPosi())<(size+m_boss[j].m_bullets[i].m_size)*0.5)
+                return true;
+        }
+        }
 
         dx/=length;
         dy/=length;
@@ -87,6 +103,7 @@ bool Bomanager::updateBoss(QPointF dist,double size)
 
         m_boss[i].setPosi(m_boss[i].getPosi().x()+dx*m_speed,
                            m_boss[i].getPosi().y()+dy*m_speed);
+        m_boss[i].updateAttackEffect(m_boss[i].getPosi(),m_boss[i].getSize(),5.0);
     }
 
     qSort(m_boss.begin(),m_boss.end(),compareDist);//更新enermy序列，非常重要，不然有空指针
