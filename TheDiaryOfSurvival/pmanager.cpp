@@ -1,6 +1,6 @@
 #include "pmanager.h"
 #include "qDebug"
-
+#include "ui_game.h"
 Pmanager::Pmanager()
 {
     m_curAttackType = _FIRE;
@@ -197,9 +197,14 @@ void Pmanager::checkKnockWithBoss(QVector<Boss> &bosses, QPointF posi, double di
                 continue;
         if( TwoPtDistance(bosses[k].getPosi(),m_bullets[i].getPosi())<(bosses[k].getSize()+m_bullets[i].m_size)*0.5)
             {
+                bosses[k].setCurrentLife();
+                if(bosses[k].getLife()==0)
+                {
                 bosses[k].setIsAlive(false);
                 m_bullets.removeAt(i--);
                 m_killNum++;   // 击杀一个敌人
+                }
+//                qDebug()<<bosses[k].getLife();
                 break;
             }
         }
@@ -238,6 +243,7 @@ void Pmanager::checkKnockWithBoss(QVector<Boss> &bosses, QPointF posi, double di
         }
     }
 }
+
 
 // 检测吃道具
 int Pmanager::checkKnockWithgoods(QVector<goods> &goods, QPointF posi,double player_size)

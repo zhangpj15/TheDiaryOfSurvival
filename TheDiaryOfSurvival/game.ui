@@ -50,8 +50,8 @@ color:#FFFFFF;
   <widget class="QProgressBar" name="pbarEnergy">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>30</y>
+     <x>20</x>
+     <y>140</y>
      <width>141</width>
      <height>21</height>
     </rect>
@@ -80,8 +80,8 @@ QProgressBar::chunk {
   <widget class="QLabel" name="lblAttackMode">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>0</y>
+     <x>90</x>
+     <y>100</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -130,8 +130,8 @@ color:#FFFFFF;
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>0</y>
+     <x>0</x>
+     <y>100</y>
      <width>81</width>
      <height>31</height>
     </rect>
@@ -1005,6 +1005,96 @@ color:#FFFFFF;
     <rect>
      <x>600</x>
      <y>80</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QProgressBar {
+    border: 2px solid grey;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0);
+}
+
+QProgressBar::chunk {
+	background-image: url(:/type/res/config/ico/firebar.png);
+}</string>
+   </property>
+   <property name="maximum">
+    <number>200</number>
+   </property>
+   <property name="value">
+    <number>200</number>
+   </property>
+   <property name="textVisible">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QProgressBar" name="pbarBoss_1">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>0</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QProgressBar {
+    border: 2px solid grey;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0);
+}
+
+QProgressBar::chunk {
+	background-image: url(:/type/res/config/ico/firebar.png);
+}</string>
+   </property>
+   <property name="maximum">
+    <number>200</number>
+   </property>
+   <property name="value">
+    <number>200</number>
+   </property>
+   <property name="textVisible">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QProgressBar" name="pbarBoss_2">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>30</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QProgressBar {
+    border: 2px solid grey;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0);
+}
+
+QProgressBar::chunk {
+	background-image: url(:/type/res/config/ico/firebar.png);
+}</string>
+   </property>
+   <property name="maximum">
+    <number>200</number>
+   </property>
+   <property name="value">
+    <number>200</number>
+   </property>
+   <property name="textVisible">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QProgressBar" name="pbarBoss_3">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>60</y>
      <width>141</width>
      <height>21</height>
     </rect>

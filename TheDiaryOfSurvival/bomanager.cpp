@@ -12,7 +12,7 @@ Bomanager::Bomanager()
 void Bomanager::initBomanager()
 {
     m_boss.clear();
-    m_speed = 0.1;
+    m_speed = 0.5;
     m_timeCount = 0;
 }
 
@@ -47,9 +47,12 @@ void Bomanager::bornNew(QPointF posi)
 
         double leng = TwoPtDistance(posi,oneboss.getPosi());
 
-        if(leng < 100)
+        if(leng < 100||m_boss.size()>2){
+//            qDebug()<<m_boss.size()<<"boss数量";
             continue;
+        }
         m_boss.push_back(oneboss);// 将新生成的敌人添加至列表
+
         return;
     }
 }

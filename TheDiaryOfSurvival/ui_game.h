@@ -50,6 +50,9 @@ public:
     QLabel *label_16;
     QLabel *label_17;
     QProgressBar *pbarLife;
+    QProgressBar *pbarBoss_1;
+    QProgressBar *pbarBoss_2;
+    QProgressBar *pbarBoss_3;
 
     void setupUi(QWidget *game)
     {
@@ -74,7 +77,7 @@ public:
         lblTime->setAlignment(Qt::AlignCenter);
         pbarEnergy = new QProgressBar(game);
         pbarEnergy->setObjectName(QStringLiteral("pbarEnergy"));
-        pbarEnergy->setGeometry(QRect(110, 30, 141, 21));
+        pbarEnergy->setGeometry(QRect(20, 140, 141, 21));
         pbarEnergy->setStyleSheet(QLatin1String("QProgressBar {\n"
 "    border: 2px solid grey;\n"
 "    border-radius: 5px;\n"
@@ -89,7 +92,7 @@ public:
         pbarEnergy->setTextVisible(false);
         lblAttackMode = new QLabel(game);
         lblAttackMode->setObjectName(QStringLiteral("lblAttackMode"));
-        lblAttackMode->setGeometry(QRect(110, 0, 101, 31));
+        lblAttackMode->setGeometry(QRect(90, 100, 101, 31));
         QFont font1;
         font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font1.setPointSize(11);
@@ -111,7 +114,7 @@ public:
 "}"));
         label = new QLabel(game);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(10, 0, 81, 31));
+        label->setGeometry(QRect(0, 100, 81, 31));
         label->setFont(font1);
         label->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
@@ -341,6 +344,51 @@ public:
         pbarLife->setMaximum(200);
         pbarLife->setValue(200);
         pbarLife->setTextVisible(false);
+        pbarBoss_1 = new QProgressBar(game);
+        pbarBoss_1->setObjectName(QStringLiteral("pbarBoss_1"));
+        pbarBoss_1->setGeometry(QRect(90, 0, 141, 21));
+        pbarBoss_1->setStyleSheet(QLatin1String("QProgressBar {\n"
+"    border: 2px solid grey;\n"
+"    border-radius: 5px;\n"
+"    background-color: rgba(0,0,0,0);\n"
+"}\n"
+"\n"
+"QProgressBar::chunk {\n"
+"	background-image: url(:/type/res/config/ico/firebar.png);\n"
+"}"));
+        pbarBoss_1->setMaximum(200);
+        pbarBoss_1->setValue(200);
+        pbarBoss_1->setTextVisible(false);
+        pbarBoss_2 = new QProgressBar(game);
+        pbarBoss_2->setObjectName(QStringLiteral("pbarBoss_2"));
+        pbarBoss_2->setGeometry(QRect(90, 30, 141, 21));
+        pbarBoss_2->setStyleSheet(QLatin1String("QProgressBar {\n"
+"    border: 2px solid grey;\n"
+"    border-radius: 5px;\n"
+"    background-color: rgba(0,0,0,0);\n"
+"}\n"
+"\n"
+"QProgressBar::chunk {\n"
+"	background-image: url(:/type/res/config/ico/firebar.png);\n"
+"}"));
+        pbarBoss_2->setMaximum(200);
+        pbarBoss_2->setValue(200);
+        pbarBoss_2->setTextVisible(false);
+        pbarBoss_3 = new QProgressBar(game);
+        pbarBoss_3->setObjectName(QStringLiteral("pbarBoss_3"));
+        pbarBoss_3->setGeometry(QRect(90, 60, 141, 21));
+        pbarBoss_3->setStyleSheet(QLatin1String("QProgressBar {\n"
+"    border: 2px solid grey;\n"
+"    border-radius: 5px;\n"
+"    background-color: rgba(0,0,0,0);\n"
+"}\n"
+"\n"
+"QProgressBar::chunk {\n"
+"	background-image: url(:/type/res/config/ico/firebar.png);\n"
+"}"));
+        pbarBoss_3->setMaximum(200);
+        pbarBoss_3->setValue(200);
+        pbarBoss_3->setTextVisible(false);
 
         retranslateUi(game);
 

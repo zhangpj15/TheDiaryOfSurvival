@@ -37,7 +37,9 @@ void game::resizeEvent(QResizeEvent *event)
 void game::startGameLoop()
 {
     ui->pbarEnergy->setVisible(false);    //隐藏能量槽
-    ui->pbarBoss->setVisible(false);    //隐藏能量槽
+    ui->pbarBoss_1->setVisible(false);    //隐藏能量槽
+    ui->pbarBoss_2->setVisible(false);    //隐藏能量槽
+    ui->pbarBoss_3->setVisible(false);    //隐藏能量槽
     bA = bD = false;                      //判断按键是否按下，初始置为否
 
     m_time = 0;                           //计时器，初始置为0

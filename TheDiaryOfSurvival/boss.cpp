@@ -1,6 +1,5 @@
 #include "boss.h"
 #include "qDebug"
-
 Boss::Boss()
 {
     m_size = 100;
@@ -58,7 +57,15 @@ int Boss::getCountDown()
 {
     return m_countDown;
 }
+void Boss::setCurrentLife()
+{
+    m_life--;
+}
 
+int Boss::getLife()
+{
+    return m_life;
+}
 //    更新攻击
 void Boss::updateAttackEffect(QPointF posi, double size, double dir)
 {
@@ -89,7 +96,7 @@ void Boss::updateAttackEffect(QPointF posi, double size, double dir)
         }
         case _SHOTGUN:
         {
-            if(!(m_counter%40==0||m_counter==0))
+            if(!(m_counter%5000==0||m_counter==0))
                 break;
             // 散弹攻击
             QPointF s;
@@ -152,6 +159,7 @@ void Boss::render(QPainter *painter)
 //            qDebug()<<"更新子弹";
             m_bullets[i].renderBullet(painter);
         }
+
     }
     else
     {

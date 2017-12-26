@@ -29,15 +29,19 @@ public:
     int m_deathType;   // 敌人消失的样式
     int m_born;   // 敌人生成的样式
 
+
+
     void setPosi(double x,double y);
     void setColor(int x,int y,int z);
     void setIsAlive(bool b);
     void setBorn(int x);
+    void setCurrentLife();
     void updateAttackEffect(QPointF posi, double size, double dir);
 
     QColor getColor();
     QPointF getPosi();
     double getSize();
+    int getLife();
     bool isAlive();
     int getCountDown();
 

@@ -138,7 +138,7 @@ void Player::turnRight()
 void Player::large()
 {
     m_big=-5;
-    qDebug()<<m_big;
+//    qDebug()<<m_big;
     setCurrentVolume(m_big);
 }
 void Player::speedup()
@@ -150,7 +150,7 @@ void Player::small()
 {
     m_big=5;
     setCurrentVolume(m_big);
-    qDebug()<<m_size;
+//    qDebug()<<m_size;
 }
 void Player::speedlow()
 {
