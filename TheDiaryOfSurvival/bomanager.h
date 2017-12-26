@@ -30,7 +30,7 @@ public:
     double square(const double num);// 求平方
     double TwoPtDistance(const QPointF& pt1, const QPointF& pt2);// 求两点间距
 
-    void bornNew(QPointF posi,int num);// 生成新敌人
+    void bornNew(QPointF posi);// 生成新敌人
     bool updateBoss(QPointF dist, double size);// 更新敌人
     void renderBoss(QPainter* painter);// 渲染敌人
 };

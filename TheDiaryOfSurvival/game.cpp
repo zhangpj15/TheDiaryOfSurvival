@@ -41,6 +41,10 @@ void game::startGameLoop()
     bA = bD = false;                      //判断按键是否按下，初始置为否
 
     m_time = 0;                           //计时器，初始置为0
+    bornrate_enermy=1000;
+    bornrate_boss=5000;
+    bornrate_goods=2000;
+    bornrate_barriers=3000;
 
     m_player.initPlayer();
     m_timer.setInterval(10);
@@ -118,7 +122,6 @@ void game::slot_timeLoop()
     {
         m_player.setCurrentLife();
         ui->lblLife->setText(QString::number(m_player.getLife()));
-//        qDebug()<<(m_player.getLife());
         ui->pbarLife->setRange(0,100-1);
         ui->pbarLife->setValue(m_player.getLife());
         ui->pbarLife->setStyleSheet(
@@ -132,20 +135,30 @@ void game::slot_timeLoop()
     {
         emit sig_death();
     }
-
+    //生成障碍物
+    if(m_time%bornrate_barriers==0){
     m_bmanager.bornNew(m_player.getCurrentPosi());
+    }
+    //生成道具
+    if(m_time%bornrate_goods==0){
     m_gmanager.bornNew(m_player.getCurrentPosi());
+    }
     //玩家没死，该敌人死了
     int num_player=m_pmanager.checkKnockWithgoods(m_gmanager.getgoodsList(),m_player.getCurrentPosi(),m_player.getSize());
     //吃没吃到道具呀
     m_player.setCurrentgoods(num_player);
     m_pmanager.checkKnockWithEnemys(m_emanager.getEnemysList(),m_player.getCurrentPosi(),m_player.getDir());
     m_pmanager.checkKnockWithBoss(m_bomanager.getBossList(),m_player.getCurrentPosi(),m_player.getDir());
+
     //敌人死一圈，该生成新的了
+    if(m_time%bornrate_enermy==0){
     m_emanager.bornNew(m_player.getCurrentPosi());
+    }
 
     //该生成新的boss
-    m_bomanager.bornNew(m_player.getCurrentPosi(),m_time);
+    if(m_time%bornrate_boss==0){
+        m_bomanager.bornNew(m_player.getCurrentPosi());
+    }
 
     ui->lblTime->setText(QString::number(m_time/1000));
     ui->lblPoint->setText(QString::number(m_pmanager.getKillNum()));
