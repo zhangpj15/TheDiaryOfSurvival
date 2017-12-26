@@ -27,10 +27,6 @@ QVector<goods>& gmanager::getgoodsList()
 
 void gmanager::bornNew(QPointF posi)
 {
-    static int count = 0;
-    count++;
-    if(count%500 <499)
-        return;
 
     while(true)
     {
@@ -66,7 +62,7 @@ bool gmanager::updategoods(QPointF dist,double size)
             {
                 m_goods.removeAt(i);
                 i--;
-                qDebug()<<("货物被吃掉");
+//                qDebug()<<("货物被吃掉");
             }
             continue;
         }
