@@ -13,38 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>35</y>
-     <width>451</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Agency FB</family>
-     <pointsize>36</pointsize>
-     <weight>75</weight>
-     <italic>true</italic>
-     <bold>true</bold>
-     <underline>true</underline>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel{
-border: 0px;
-color:#FFFFFF;
-border-radius: 7px;
-
-}
-</string>
-   </property>
-   <property name="text">
-    <string>The Diary of Survival</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="pwlabel">
    <property name="geometry">
     <rect>
@@ -136,8 +104,8 @@ border-radius: 7px;
   <widget class="QPushButton" name="loadButton">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>395</y>
+     <x>180</x>
+     <y>350</y>
      <width>121</width>
      <height>51</height>
     </rect>
@@ -177,8 +145,8 @@ color:#aaaaaa;
   <widget class="QPushButton" name="exitButton">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>395</y>
+     <x>420</x>
+     <y>350</y>
      <width>101</width>
      <height>51</height>
     </rect>
@@ -228,14 +196,13 @@ color:#aaaaaa;
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../../../test/TheDiaryOfSurvival/res.qrc">:/res/img/background/bg11.jpg</pixmap>
+    <pixmap resource="res.qrc">:/res/img/background/main5.jpg</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
   <zorder>label_2</zorder>
-  <zorder>label</zorder>
   <zorder>pwlabel</zorder>
   <zorder>usernamelabel</zorder>
   <zorder>userline</zorder>
@@ -244,7 +211,6 @@ color:#aaaaaa;
   <zorder>exitButton</zorder>
  </widget>
  <resources>
-  <include location="../../../test/TheDiaryOfSurvival/res.qrc"/>
   <include location="res.qrc"/>
  </resources>
  <connections/>
