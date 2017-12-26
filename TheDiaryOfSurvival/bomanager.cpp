@@ -33,13 +33,8 @@ double Bomanager::square(const double num){return num * num;}
 double Bomanager::TwoPtDistance(const QPointF& pt1, const QPointF& pt2)
 {return sqrt(double(square(pt2.x() - pt1.x()) + square(pt2.y() - pt1.y())));}
 
-void Bomanager::bornNew(QPointF posi,int num)
+void Bomanager::bornNew(QPointF posi)
 {
-    if(num%5000!=0){
-//        qDebug()<<"没boss了";
-        return;
-        }
-//    qDebug()<<"生boss了"<<num;
     while(true)
     {
         Boss oneboss;
@@ -79,6 +74,13 @@ bool Bomanager::updateBoss(QPointF dist,double size)
 
         float length = TwoPtDistance(dist,m_boss[i].getPosi());
         float range=(m_boss[i].getSize()+size)*0.3;
+        dx/=length;
+        dy/=length;
+
+        m_boss[i].setPosi(m_boss[i].getPosi().x()+dx*m_speed,
+                           m_boss[i].getPosi().y()+dy*m_speed);
+        m_boss[i].updateAttackEffect(m_boss[i].getPosi(),m_boss[i].getSize(),5.0);
+
         if(length<=range)
             return true;
 
@@ -97,17 +99,8 @@ bool Bomanager::updateBoss(QPointF dist,double size)
         }
         }
 
-        dx/=length;
-        dy/=length;
-
-
-        m_boss[i].setPosi(m_boss[i].getPosi().x()+dx*m_speed,
-                           m_boss[i].getPosi().y()+dy*m_speed);
-        m_boss[i].updateAttackEffect(m_boss[i].getPosi(),m_boss[i].getSize(),5.0);
     }
-
     qSort(m_boss.begin(),m_boss.end(),compareDist);//更新enermy序列，非常重要，不然有空指针
-
     return false;
 
 }

@@ -29,6 +29,10 @@ public:
     int m_time;    // 与 Timer 捆绑的一个时间值
     int sectime;
     int zone=0;
+    int bornrate_enermy;
+    int bornrate_boss;
+    int bornrate_goods;
+    int bornrate_barriers;
 
     Emanager m_emanager;
     Bomanager m_bomanager;

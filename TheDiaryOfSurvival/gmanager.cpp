@@ -27,10 +27,6 @@ QVector<goods>& gmanager::getgoodsList()
 
 void gmanager::bornNew(QPointF posi)
 {
-    static int count = 0;
-    count++;
-    if(count%500 <499)
-        return;
 
     while(true)
     {

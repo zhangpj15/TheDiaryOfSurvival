@@ -37,11 +37,6 @@ double bmanager::TwoPtDistance(const QPointF& pt1, const QPointF& pt2)
 
 void bmanager::bornNew(QPointF posi)
 {
-    static int count = 0;
-    count++;
-    if(count%400 <399)// 设置生成速率
-        return;
-
     while(true)
     {
         barriers onebarriers;
@@ -66,10 +61,11 @@ bool bmanager::updatebarriers(QPointF dist,double size)
         float length = TwoPtDistance(dist,m_barriers[i].getPosi());
         float dis=10;
         float range=(m_barriers[i].getSize()+size)*0.3;
-        if(length<=range)                // 如果接触,那么游戏结束
-            return true;
         m_barriers[i].setPosi(m_barriers[i].getPosi().x()+dis*m_speed,
                            m_barriers[i].getPosi().y());
+        if(length<=range)                // 如果接触,那么游戏结束
+            return true;
+
     }
 
     qSort(m_barriers.begin(),m_barriers.end(),compareDist);//更新enermy序列，非常重要，不然有空指针
