@@ -1,5 +1,6 @@
 #include "bomanager.h"
 #include "player.h"
+#include "qDebug"
 
 QPointF m_playPosi;  // 记录玩家的位置
 bool compareDist(const Boss &l, const Boss &r);
@@ -32,13 +33,13 @@ double Bomanager::square(const double num){return num * num;}
 double Bomanager::TwoPtDistance(const QPointF& pt1, const QPointF& pt2)
 {return sqrt(double(square(pt2.x() - pt1.x()) + square(pt2.y() - pt1.y())));}
 
-void Bomanager::bornNew(QPointF posi)
+void Bomanager::bornNew(QPointF posi,int num)
 {
-    static int count = 0;
-    count++;
-    if(count%80 <79)
+    if(num%5000!=0){
+        qDebug()<<"没boss了";
         return;
-
+        }
+    qDebug()<<"生boss了"<<num;
     while(true)
     {
         Boss oneboss;
@@ -51,7 +52,7 @@ void Bomanager::bornNew(QPointF posi)
 
         double leng = TwoPtDistance(posi,oneboss.getPosi());
 
-        if(leng < 10)
+        if(leng < 100)
             continue;
         m_boss.push_back(oneboss);// 将新生成的敌人添加至列表
         return;

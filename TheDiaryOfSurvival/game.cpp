@@ -37,12 +37,13 @@ void game::resizeEvent(QResizeEvent *event)
 void game::startGameLoop()
 {
     ui->pbarEnergy->setVisible(false);    //隐藏能量槽
+    ui->pbarBoss->setVisible(false);    //隐藏能量槽
     bA = bD = false;                      //判断按键是否按下，初始置为否
 
     m_time = 0;                           //计时器，初始置为0
 
     m_player.initPlayer();
-    m_timer.setInterval(15);
+    m_timer.setInterval(10);
 
     m_timer.start();                      //启动计时器
 
@@ -88,6 +89,8 @@ void game::startGameLoop()
 void game::slot_timeLoop()
 {
     m_time += m_timer.interval();
+//    qDebug()<<m_time;
+    sectime=m_time/1000;
     if(m_time%1000==0&&m_time>999)
     {
         qDebug()<<"到点啦";
@@ -152,7 +155,7 @@ void game::slot_timeLoop()
     m_emanager.bornNew(m_player.getCurrentPosi());
 
     //该生成新的boss
-    m_bomanager.bornNew(m_player.getCurrentPosi());
+    m_bomanager.bornNew(m_player.getCurrentPosi(),m_time);
 
     ui->lblTime->setText(QString::number(m_time/1000));
     ui->lblPoint->setText(QString::number(m_pmanager.getKillNum()));
