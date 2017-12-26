@@ -34,10 +34,6 @@ double Emanager::TwoPtDistance(const QPointF& pt1, const QPointF& pt2)
 
 void Emanager::bornNew(QPointF posi)
 {
-    static int count = 0;
-    count++;
-    if(count%80 <79)
-        return;
 
     while(true)
     {
