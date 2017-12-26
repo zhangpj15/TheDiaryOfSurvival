@@ -85,11 +85,14 @@ void game::slot_timeLoop()
     if(m_time%1000==0&&m_time>999)
     {
         qDebug()<<"到点啦";
-//        QPolygonF polygon;          // 未变换的多边形
-//        polygon<<QPointF(posi.x(),posi.y()-50)
-//               <<QPointF(posi.x()-35,posi.y()+35)
-//               <<QPointF(posi.x(),posi.y()+75)
-//               <<QPointF(posi.x()+35,posi.y()+35);
+        zone=m_time/1000;
+//        QPainterPath path;
+//        QPainter painter;
+//        path.addEllipse(0,0,100,100);
+//        path.addEllipse(25,25,50,50);
+//        painter.setBrush(Qt::blue);
+//        path.setFillRule(Qt::OddEventFil);//使用奇偶填充，刚好可以只显示圆环
+//        painter.drawPath(path);
 
 
 //        m_player.setActiveRect(m_time%1000*space*4/3,60+m_time%1000*space,width()-m_time%1000*space*2,height()-60-m_time%1000*space*2);
@@ -180,6 +183,8 @@ void game::paintEvent(QPaintEvent *event)
     m_bmanager.renderbarriers(&painter);
 
     m_player.render(&painter);
+
+    renderBorder(&painter,zone);
 }
 
 /**********  按键事件 **********/
@@ -428,6 +433,18 @@ void game::slot_yes()
 {
     m_end->hide();
     emit sig_closeGame();
+}
+
+//    绘制火焰
+void game::renderBorder(QPainter *painter, int rate)
+{
+    QPainterPath path;
+    path.addRect(0,60,this->width(),this->height());
+    path.addRect(space*4/3*rate,60+space*rate,this->width()-space*8/3*rate,this->height()-60-space*2*rate);
+    painter->setBrush(QPixmap(QString(":/res/img/flame/flame1.png")));
+//    painter->drawPixmap(0,60,this->width(),this->height(),QPixmap(QString(":/res/img/flame/flame1.png")));
+    path.setFillRule(Qt::OddEvenFill);//使用奇偶填充，刚好可以只显示圆环
+    painter->drawPath(path);
 }
 game::~game()
 {
