@@ -5,6 +5,7 @@
 #include "emanager.h"
 #include "gmanager.h"
 #include "bmanager.h"
+#include "bomanager.h"
 #include <QVector2D>
 
 class Pmanager
@@ -53,6 +54,7 @@ public:
     double square(const double num);
     double TwoPtDistance(const QPointF& pt1, const QPointF& pt2);
     void checkKnockWithEnemys(QVector<Enemy>& enemys,QPointF posi, double dir);
+    void checkKnockWithBoss(QVector<Boss>& bosses,QPointF posi, double dir);
     int checkKnockWithgoods(QVector<goods>& goods,QPointF posi,double player_size);
 
     void updateAttackEffect(QPointF posi,double size,double dir);

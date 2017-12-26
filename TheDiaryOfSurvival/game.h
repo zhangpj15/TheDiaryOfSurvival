@@ -12,6 +12,7 @@
 #include "pmanager.h"
 #include "gmanager.h"
 #include "bmanager.h"
+#include "bomanager.h"
 #include "death.h"
 #include "end.h"
 
@@ -29,6 +30,7 @@ public:
     int zone=0;
 
     Emanager m_emanager;
+    Bomanager m_bomanager;
     Pmanager m_pmanager;
     gmanager m_gmanager;
     bmanager m_bmanager;

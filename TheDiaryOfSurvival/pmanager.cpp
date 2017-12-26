@@ -179,7 +179,65 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
         }
     }
 }
+void Pmanager::checkKnockWithBoss(QVector<Boss> &bosses, QPointF posi, double dir)
+{
+    // 检测子弹的进入障碍区
 
+    for(int i=0; i<m_bullets.size();i++)
+    {
+        if(!m_rect.contains(m_bullets[i].getPosi()))// 子弹飞出界外，删除
+        {
+            m_bullets.removeAt(i--);
+            continue;
+        }
+
+        for(int k=0; k<bosses.size();k++)// 检测boss是否被击中
+        {
+            if(!bosses[k].isAlive())
+                continue;
+        if( TwoPtDistance(bosses[k].getPosi(),m_bullets[i].getPosi())<(bosses[k].getSize()+m_bullets[i].m_size)*0.5)
+            {
+                bosses[k].setIsAlive(false);
+                m_bullets.removeAt(i--);
+                m_killNum++;   // 击杀一个敌人
+                break;
+            }
+        }
+    }
+
+// 检测火焰产生的碰撞
+    if( !m_isAttacked||m_curAttackType!=_FIRE || m_isCooling)
+        return;
+
+    // 将 posi从玩家中心移动到火焰中心
+    posi.setX(posi.x()+sin(3.14*dir/180.0)*90);
+    posi.setY(posi.y()-cos(3.14*dir/180.0)*90);
+
+    QPolygonF polygon;          // 未变换的多边形
+    polygon<<QPointF(posi.x(),posi.y()-50)
+           <<QPointF(posi.x()-35,posi.y()+35)
+           <<QPointF(posi.x(),posi.y()+75)
+           <<QPointF(posi.x()+35,posi.y()+35);
+
+    QMatrix matrix;   // 计算旋转矩阵matrix
+    matrix.translate(posi.x(),posi.y());    // 平移到火焰中心
+    matrix.rotate(dir);    // 旋转
+    matrix.translate(-posi.x(),-posi.y());   // 平移回原位置
+
+    polygon = polygon*matrix;   // 多边形的坐标，随player旋转
+
+    for(int i=0; i<bosses.size();i++)
+    {
+        if(!bosses[i].isAlive())
+            continue;
+
+        if(polygon.containsPoint(bosses[i].getPosi(),Qt::WindingFill))
+        {
+            bosses[i].setIsAlive(false);
+            m_killNum++;   // 击杀一个敌人
+        }
+    }
+}
 
 // 检测吃道具
 int Pmanager::checkKnockWithgoods(QVector<goods> &goods, QPointF posi,double player_size)

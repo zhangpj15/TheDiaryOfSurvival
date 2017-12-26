@@ -31,6 +31,7 @@ void game::resizeEvent(QResizeEvent *event)
     m_pmanager.setActiveRect(width(),height());
     m_bmanager.setActiveRect(width(),height());
     m_gmanager.setActiveRect(width(),height());
+    m_bomanager.setActiveRect(width(),height());
 }
 
 void game::startGameLoop()
@@ -52,13 +53,18 @@ void game::startGameLoop()
     m_pmanager.initPmanager();
     m_gmanager.initgmanager();
     m_bmanager.initbmanager();
+    m_bomanager.initBomanager();
 
     m_emanager.setActiveRect(width(),height());
     m_pmanager.setActiveRect(width(),height());
     m_bmanager.setActiveRect(width(),height());
     m_gmanager.setActiveRect(width(),height());
+    m_bomanager.setActiveRect(width(),height());
 
     ui->lblAttackMode->setText(m_pmanager.getAttackMode());
+    ui->lblLife->setText(QString::number(m_player.getLife(),10));
+    ui->lblVolume->setText(QString::number(m_player.getSize()));
+    ui->lblSpeed->setText(QString::number(m_player.getSpeed()));
 
     ui->pbarLife->setVisible(true);    //显示能量槽
     ui->pbarLife->setRange(0,m_player.getLife());    //显示能量槽
@@ -141,8 +147,10 @@ void game::slot_timeLoop()
     //吃没吃到道具呀
     m_player.setCurrentgoods(num_player);
     m_pmanager.checkKnockWithEnemys(m_emanager.getEnemysList(),m_player.getCurrentPosi(),m_player.getDir());
+    m_pmanager.checkKnockWithBoss(m_bomanager.getBossList(),m_player.getCurrentPosi(),m_player.getDir());
     //敌人死一圈，该生成新的了
     m_emanager.bornNew(m_player.getCurrentPosi());
+    m_bomanager.bornNew(m_player.getCurrentPosi());
 
     ui->lblTime->setText(QString::number(m_time/1000));
     ui->lblPoint->setText(QString::number(m_pmanager.getKillNum()));
@@ -181,10 +189,11 @@ void game::paintEvent(QPaintEvent *event)
     m_pmanager.renderAttackEffect(&painter,m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir(),m_player.getTypeBullet());
     m_gmanager.rendergoods(&painter);
     m_bmanager.renderbarriers(&painter);
+    m_bomanager.renderBoss(&painter);
 
     m_player.render(&painter);
 
-    renderBorder(&painter,zone);
+//    renderBorder(&painter,zone);
 }
 
 /**********  按键事件 **********/
