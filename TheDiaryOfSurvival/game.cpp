@@ -119,7 +119,7 @@ void game::slot_timeLoop()
     m_gmanager.updategoods(m_player.getCurrentPosi(),m_player.getSize());
     m_pmanager.updateAttackEffect(m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir());// 攻击模式刷新
 
-    bool hurt = (m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize())||m_bmanager.updatebarriers(m_player.getCurrentPosi(),m_player.getSize()));
+    bool hurt = (m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize())||m_bmanager.updatebarriers(m_player.getCurrentPosi(),m_player.getSize())||m_bomanager.updateBoss(m_player.getCurrentPosi(),m_player.getSize()));
     bool isGameOver=false;
     if(hurt)
     {
@@ -150,6 +150,8 @@ void game::slot_timeLoop()
     m_pmanager.checkKnockWithBoss(m_bomanager.getBossList(),m_player.getCurrentPosi(),m_player.getDir());
     //敌人死一圈，该生成新的了
     m_emanager.bornNew(m_player.getCurrentPosi());
+
+    //该生成新的boss
     m_bomanager.bornNew(m_player.getCurrentPosi());
 
     ui->lblTime->setText(QString::number(m_time/1000));
