@@ -53,19 +53,12 @@
         <file>res/img/mask/enermy_(35).png</file>
         <file>res/img/mask/enermy_(36).png</file>
         <file>res/img/goods/goods (1).png</file>
-        <file>res/img/goods/goods (10).png</file>
-        <file>res/img/goods/goods (11).png</file>
-        <file>res/img/goods/goods (12).png</file>
-        <file>res/img/goods/goods (13).png</file>
-        <file>res/img/goods/goods (14).png</file>
         <file>res/img/goods/goods (2).png</file>
         <file>res/img/goods/goods (3).png</file>
         <file>res/img/goods/goods (4).png</file>
         <file>res/img/goods/goods (5).png</file>
         <file>res/img/goods/goods (6).png</file>
         <file>res/img/goods/goods (7).png</file>
-        <file>res/img/goods/goods (8).png</file>
-        <file>res/img/goods/goods (9).png</file>
         <file>res/img/bullets/bullets (1).png</file>
         <file>res/img/bullets/bullets (2).png</file>
         <file>res/img/bullets/bullets (3).png</file>
@@ -131,8 +124,23 @@
         <file>res/img/barrier/barrier (8).png</file>
         <file>res/img/barrier/barrier (9).png</file>
         <file>res/img/barrier/barrier (10).png</file>
-        <file>res/img/background/bg1.jpg</file>
-        <file>res/img/background/bg11.jpg</file>
-        <file>res/img/background/bg2.jpg</file>
+        <file>res/img/background/main5.jpg</file>
+        <file>res/img/background/main6.jpg</file>
+        <file>res/img/background/main7.jpg</file>
+        <file>res/img/background/main8.jpg</file>
+        <file>res/img/background/playbg1.jpg</file>
+        <file>res/img/background/playbg2.jpg</file>
+        <file>res/img/background/playbg3.jpg</file>
+        <file>res/img/background/playbg4.jpg</file>
+        <file>res/img/background/playbg5.jpg</file>
+        <file>res/img/background/playbg6.jpg</file>
+        <file>res/img/background/playbg7.jpg</file>
+        <file>res/img/background/playbg8.jpg</file>
+        <file>res/img/mask/enermy_(37).png</file>
+        <file>res/img/mask/enermy_(38).png</file>
+        <file>res/img/mask/enermy_(39).png</file>
+        <file>res/img/skill/p1.png</file>
+        <file>res/img/skill/p2.png</file>
+        <file>res/img/skill/p3.png</file>
     </qresource>
 </RCC>

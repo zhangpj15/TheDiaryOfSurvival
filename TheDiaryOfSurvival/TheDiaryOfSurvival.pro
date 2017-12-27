@@ -29,7 +29,9 @@ SOURCES += main.cpp\
     gmanager.cpp \
     barriers.cpp \
     bmanager.cpp \
-    loadwin.cpp
+    loadwin.cpp \
+    boss.cpp \
+    bomanager.cpp
 
 HEADERS  += mainwindow.h \
     info.h \
@@ -47,7 +49,9 @@ HEADERS  += mainwindow.h \
     gmanager.h \
     barriers.h \
     bmanager.h \
-    loadwin.h
+    loadwin.h \
+    boss.h \
+    bomanager.h
 
 FORMS    += mainwindow.ui \
     info.ui \
