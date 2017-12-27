@@ -15,7 +15,7 @@ void Player::initPlayer()
     m_life = 100;
     m_curState = _STA;
     m_size = 50;
-//    m_big=50;
+    //    m_big=50;
     m_curgoods = 0;
     defence=0;
 }
@@ -141,21 +141,21 @@ void Player::turnRight()
 void Player::large()
 {
     m_size=m_size<70?m_size+10:70;
-//    qDebug()<<m_big;
-//    setCurrentVolume(m_big);
+    //    qDebug()<<m_big;
+    //    setCurrentVolume(m_big);
 }
 void Player::speedup()
 {
 
-   m_vel=m_vel<9?m_vel+1:9;
+    m_vel=m_vel<9?m_vel+1:9;
 
 }
 
 void Player::small()
 {
     m_size=m_size>30?m_size-10:30;
-//    setCurrentVolume(m_big);
-//    qDebug()<<m_size;
+    //    setCurrentVolume(m_big);
+    //    qDebug()<<m_size;
 }
 void Player::speedlow()
 {
@@ -236,35 +236,38 @@ void Player::updategoods()
 
         QSound::play(":/res/wav/props1.wav");
         break;
-    case 6://加血50点，可更改
+    case 6://瞬间移动
         QSound::play(":/res/wav/props1.wav");
-//        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-//        test_figure=qrand()%15+1;
-//        m_type=QString(":/res/img/plane/figure (%1).png").arg(test_figure);
-        m_life=m_life+50>100?100:m_life+50;
+        //        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+        //        test_figure=qrand()%15+1;
+        //        m_type=QString(":/res/img/plane/figure (%1).png").arg(test_figure);
+
+        //        m_life=m_life+50>100?100:m_life+50;
+        setCurrentPosi(m_posi.x()+100*sin(3.14*m_dir/180.0),m_posi.y()-100*cos(3.14*m_dir/180.0));
+        qDebug()<<"瞬间移动";
         break;
     case 7://无敌模式
         QSound::play(":/res/wav/props1.wav");
         defence=1;
-        qDebug()<<"无敌模式";
+        //        qDebug()<<"无敌模式";
         break;
-//    case _BACK_RIGHT:
-//        turnRight();
-//        moveBack();
-//        break;
+        //    case _BACK_RIGHT:
+        //        turnRight();
+        //        moveBack();
+        //        break;
     }
 }
 
 void Player::render(QPainter *painter)
 {
-//    setCurrentVolume(m_big);
+    //    setCurrentVolume(m_big);
     painter->save();
 
-//    int numb=m_life/25+1;
-//    for(int i=0;i<numb;i++)
-//        painter->drawPixmap(m_posi.x()+0.2*i*m_size,m_posi.y()-0.2*m_size,15,15,QPixmap(QString(m_type)));
+    //    int numb=m_life/25+1;
+    //    for(int i=0;i<numb;i++)
+    //        painter->drawPixmap(m_posi.x()+0.2*i*m_size,m_posi.y()-0.2*m_size,15,15,QPixmap(QString(m_type)));
     painter->translate(m_posi.x()+m_size/2.0,m_posi.y()+m_size/2.0);
-//    将中心设为坐标系原点，便于旋转
+    //    将中心设为坐标系原点，便于旋转
     painter->rotate(m_dir);
     painter->translate(-m_posi.x()-m_size/2.0,-m_posi.y()-m_size/2.0);
 
