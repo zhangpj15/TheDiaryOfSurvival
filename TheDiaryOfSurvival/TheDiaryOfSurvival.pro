@@ -1,3 +1,4 @@
+
 #-------------------------------------------------
 #
 # Project created by QtCreator 2017-11-28T20:36:10
@@ -30,8 +31,7 @@ SOURCES += main.cpp\
     barriers.cpp \
     bmanager.cpp \
     loadwin.cpp \
-    boss.cpp \
-    bomanager.cpp
+    rank.cpp
 
 HEADERS  += mainwindow.h \
     info.h \
@@ -50,8 +50,7 @@ HEADERS  += mainwindow.h \
     barriers.h \
     bmanager.h \
     loadwin.h \
-    boss.h \
-    bomanager.h
+    rank.h
 
 FORMS    += mainwindow.ui \
     info.ui \
@@ -60,7 +59,9 @@ FORMS    += mainwindow.ui \
     start.ui \
     death.ui \
     end.ui \
-    loadwin.ui
+    loadwin.ui \
+    rank.ui
 
 RESOURCES += \
     res.qrc
+
