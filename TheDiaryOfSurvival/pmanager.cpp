@@ -39,9 +39,9 @@ void Pmanager::setActiveRect(double w, double h)
 {
     m_rect = QRectF(0,60,w,h);
 }
-void Pmanager::setLifeRect(double w, double h)
+void Pmanager::setLifeRect(int a,int b,int w, int h)
 {
-    m_lifeZone = QRectF(0,60,w,h);
+    m_lifeZone = QRectF(a,b,w,h);
 }
 // 检测是否被攻击
 bool Pmanager::isAttacked()

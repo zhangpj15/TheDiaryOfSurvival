@@ -17,7 +17,7 @@ public:
     QPointF m_posi;      // 飞机当前的位置
     double m_vel;    // 飞机的速度
     double m_dir;         // 飞机的当前方向 [0,360]
-    double m_big;         // 飞机的当前大小
+//    double m_big;         // 飞机的当前大小
 
     double m_size;     // 飞机的尺寸
     int m_life;     // 飞机的尺寸
