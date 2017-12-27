@@ -143,9 +143,7 @@ void Player::large()
 }
 void Player::speedup()
 {
-
-   m_vel=m_vel<9?m_vel+1:9;
-
+    m_vel+=2;
 }
 
 void Player::small()
@@ -156,7 +154,7 @@ void Player::small()
 }
 void Player::speedlow()
 {
-    m_vel=m_vel>1?m_vel-1:1;
+    m_vel-=2;
 }
 
 void Player::updateStates()
@@ -212,17 +210,17 @@ void Player::updategoods()
     case 4:
         small();
         break;
-    case 5://加血10点
+    case 5:
         m_life=m_life+10>100?100:m_life+10;
 
         break;
-    case 6://加血50点，可更改
+    case 6:
 //        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
 //        test_figure=qrand()%15+1;
 //        m_type=QString(":/res/img/plane/figure (%1).png").arg(test_figure);
         m_life=m_life+50>100?100:m_life+50;
         break;
-    case 7://更改人物？还是啥
+    case 7:
 //        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
 //        test_bullet=qrand()%15+1;
 //        m_type_bullets=QString(":/res/img/bullets/bullets (%1).png").arg(test_bullet);

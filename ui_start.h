@@ -61,7 +61,7 @@ public:
         font1.setUnderline(true);
         font1.setWeight(75);
         btnEnter->setFont(font1);
-        btnEnter->setCursor(QCursor(Qt::ArrowCursor));
+        btnEnter->setCursor(QCursor(Qt::CrossCursor));
         btnEnter->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
 "color:#FFFFFF;\n"

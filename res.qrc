@@ -53,12 +53,19 @@
         <file>res/img/mask/enermy_(35).png</file>
         <file>res/img/mask/enermy_(36).png</file>
         <file>res/img/goods/goods (1).png</file>
+        <file>res/img/goods/goods (10).png</file>
+        <file>res/img/goods/goods (11).png</file>
+        <file>res/img/goods/goods (12).png</file>
+        <file>res/img/goods/goods (13).png</file>
+        <file>res/img/goods/goods (14).png</file>
         <file>res/img/goods/goods (2).png</file>
         <file>res/img/goods/goods (3).png</file>
         <file>res/img/goods/goods (4).png</file>
         <file>res/img/goods/goods (5).png</file>
         <file>res/img/goods/goods (6).png</file>
         <file>res/img/goods/goods (7).png</file>
+        <file>res/img/goods/goods (8).png</file>
+        <file>res/img/goods/goods (9).png</file>
         <file>res/img/bullets/bullets (1).png</file>
         <file>res/img/bullets/bullets (2).png</file>
         <file>res/img/bullets/bullets (3).png</file>
@@ -139,8 +146,5 @@
         <file>res/img/mask/enermy_(37).png</file>
         <file>res/img/mask/enermy_(38).png</file>
         <file>res/img/mask/enermy_(39).png</file>
-        <file>res/img/skill/p1.png</file>
-        <file>res/img/skill/p2.png</file>
-        <file>res/img/skill/p3.png</file>
     </qresource>
 </RCC>

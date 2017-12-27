@@ -79,7 +79,7 @@
     </font>
    </property>
    <property name="cursor">
-    <cursorShape>ArrowCursor</cursorShape>
+    <cursorShape>CrossCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{

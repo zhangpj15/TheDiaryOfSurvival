@@ -1,21 +1,23 @@
-#ifndef EMANAGER_H
-#define EMANAGER_H
-#include "enemy.h"
+#ifndef BOMANAGER_H
+#define BOMANAGER_H
+
+#include "boss.h"
 #include <QList>
 #include <QPainter>
 #include <QTime>
 #include <cmath>
 #include <QtAlgorithms>
 
-class Emanager
+
+class Bomanager
 {
 public:
-    Emanager();
+    Bomanager();
 
-    void initEmanager();// 初始化敌人管理器
+    void initBomanager();// 初始化敌人管理器
 
-    QVector<Enemy> m_enemys; // 所有的敌人
-    QVector<Enemy>& getEnemysList();
+    QVector<Boss> m_boss; // 所有的敌人
+    QVector<Boss>& getBossList();
 
     double m_speed;     // 敌人的移动速度
     double m_timeCount;  // 局部计时器
@@ -29,8 +31,9 @@ public:
     double TwoPtDistance(const QPointF& pt1, const QPointF& pt2);// 求两点间距
 
     void bornNew(QPointF posi);// 生成新敌人
-    bool updateEnemys(QPointF dist, double size);// 更新敌人
-    void renderEnemys(QPainter* painter);// 渲染敌人
+    bool updateBoss(QPointF dist, double size);// 更新敌人
+    void renderBoss(QPainter* painter);// 渲染敌人
 };
 
-#endif // EMANAGER_H
+
+#endif // BOMANAGER_H
