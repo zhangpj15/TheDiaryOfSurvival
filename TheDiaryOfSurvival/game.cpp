@@ -48,6 +48,9 @@ void game::startGameLoop()
     tiprate=5000;
     zonerate=10000;
 
+    dayrate=6000;
+
+
     m_player.initPlayer();
     m_timer.setInterval(10);
 
@@ -76,15 +79,18 @@ void game::startGameLoop()
     ui->pbarLife->setVisible(true);    //显示能量槽
     ui->pbarLife->setRange(0,m_player.getLife());    //显示能量槽
     ui->pbarLife->setValue(m_player.getLife());
-    ui->pbarLife->setStyleSheet(
-                "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
-                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
+//    ui->pbarLife->setStyleSheet(
+//                "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
+//                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
     //提示栏的动画效果
     static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupGoods,"pos");
-    animate->setStartValue(QPoint(width()-140,220));
-    animate->setEndValue(QPoint(width()-20,220));
+
+    animate->setStartValue(QPoint(width()-160,140));
+    animate->setEndValue(QPoint(width()-20,140));
+
     animate->setEasingCurve(QEasingCurve::InCubic);
     animate->setDuration(3000);
+    ui->btnShowTab->setText("<");
     animate->start();
 
     setFocus();
@@ -98,11 +104,26 @@ void game::slot_timeLoop()
 //    qDebug()<<m_time;
     sectime=m_time/1000;
     if(m_time%zonerate==0)//控制缩圈
+
     {
 //        qDebug()<<"到点啦";
         zone=m_time/zonerate;
     }
-    ui->btnShowTab->setText(">");
+    if(m_time%dayrate==0)//控制缩圈
+    {
+        qDebug()<<"到点啦";
+        //pix=QPixmap(":/res/img/background/playbg1.jpg");
+//        ui->lblback->setStyleSheet{
+//                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}"}
+ //      mainwindow.setStyleSheet("#mainwindow{border-image:url(:/res/img/background/playbg1.jpg);}");
+        //ui->lblback->show();
+        setAutoFillBackground(true);  //这句一定不能少，否则图片显示不出来。
+        QPalette palette;
+        palette.setBrush(QPalette::Background, QBrush(QPixmap(QString(":/res/img/background/playbg%1.jpg").arg(m_time/dayrate))));
+        setPalette(palette);
+
+    }
+    //ui->btnShowTab->setText(">");
 
     m_player.updateStates();// 位置刷新
     m_player.updategoods();// 道具刷新
@@ -126,9 +147,9 @@ void game::slot_timeLoop()
         ui->lblLife->setText(QString::number(m_player.getLife()));
         ui->pbarLife->setRange(0,100-1);
         ui->pbarLife->setValue(m_player.getLife());
-        ui->pbarLife->setStyleSheet(
-                    "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
-                    "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
+//        ui->pbarLife->setStyleSheet(
+//                    "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
+//                    "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
         if(m_player.getLife()==0)
             isGameOver=true;
     }
@@ -404,13 +425,16 @@ void game::keyReleaseEvent(QKeyEvent *event)
 void game::slot_btnShowTab()
 {
     //提示栏的动画效果
-    if(ui->groupGoods->pos() == QPoint(width(),220))
+
+    if(ui->groupGoods->pos() == QPoint(width()-160,140))
+
     {
         static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupGoods,"pos");
-        animate->setStartValue(QPoint(width()-20,220));
-        animate->setEndValue(QPoint(width()-140,220));
+        animate->setStartValue(QPoint(width()-160,140));
+        animate->setEndValue(QPoint(width()-20,140));
+
         animate->setEasingCurve(QEasingCurve::Linear);
-        animate->setDuration(500);
+        animate->setDuration(1000);
         animate->start();
 
         ui->btnShowTab->setText(">");
@@ -418,10 +442,12 @@ void game::slot_btnShowTab()
     else
     {
         static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupGoods,"pos");
-        animate->setStartValue(QPoint(width()-140,220));
-        animate->setEndValue(QPoint(width()-20,220));
+
+        animate->setStartValue(QPoint(width()-20,140));
+        animate->setEndValue(QPoint(width()-160,140));
+
         animate->setEasingCurve(QEasingCurve::Linear);
-        animate->setDuration(500);
+        animate->setDuration(1000);
         animate->start();
 
         ui->btnShowTab->setText("<");
@@ -467,8 +493,10 @@ void game::slot_yes()
 void game::renderBorder(QPainter *painter, int rate)
 {
     QPainterPath path;
-    path.addRect(0,60,this->width(),this->height());
-    path.addRect(space*4/3*rate,60+space*rate,this->width()-space*8/3*rate,this->height()-60-space*2*rate);
+
+    path.addRect(0,60,this->width(),this->height()-130);
+    path.addRect(space*4/3*rate,60+space*rate,this->width()-space*8/3*rate,this->height()-130-space*2*rate);
+
     painter->setBrush(QPixmap(QString(":/res/config/ico/coldFireBar.png")));
     path.setFillRule(Qt::OddEvenFill);//使用奇偶填充，刚好可以只显示圆环
     painter->drawPath(path);

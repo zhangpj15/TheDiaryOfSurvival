@@ -17,6 +17,8 @@ INPUT(
 ./release\barriers.o
 ./release\bmanager.o
 ./release\loadwin.o
+./release\boss.o
+./release\bomanager.o
 ./release\qrc_res.o
 ./release\moc_mainwindow.o
 ./release\moc_info.o

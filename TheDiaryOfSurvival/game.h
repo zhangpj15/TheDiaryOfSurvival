@@ -36,6 +36,9 @@ public:
     int tiprate;
     int zonerate;
 
+    int dayrate;
+
+
     Emanager m_emanager;
     Bomanager m_bomanager;
     Pmanager m_pmanager;
