@@ -31,6 +31,7 @@ public:
     QLabel *lblAttackMode;
     QLabel *label;
     QGroupBox *groupGoods;
+
     QPushButton *btnShowTab;
     QLabel *prop;
     QLabel *proptext;
@@ -83,11 +84,13 @@ public:
     QLabel *playerpic;
     QFrame *line1_7;
     QProgressBar *pbarLife;
+
     QLabel *skill1num_2;
     QLabel *skill2num_2;
     QLabel *skill3num_2;
     QLabel *groupBoss;
     QFrame *lblback;
+
 
     void setupUi(QWidget *game)
     {
@@ -112,7 +115,9 @@ public:
         lblTime->setAlignment(Qt::AlignCenter);
         pbarEnergy = new QProgressBar(game);
         pbarEnergy->setObjectName(QStringLiteral("pbarEnergy"));
+
         pbarEnergy->setGeometry(QRect(270, 15, 70, 20));
+
         pbarEnergy->setStyleSheet(QLatin1String("QProgressBar {\n"
 "    border: 2px solid grey;\n"
 "    border-radius: 5px;\n"
@@ -127,7 +132,9 @@ public:
         pbarEnergy->setTextVisible(false);
         lblAttackMode = new QLabel(game);
         lblAttackMode->setObjectName(QStringLiteral("lblAttackMode"));
+
         lblAttackMode->setGeometry(QRect(140, 10, 140, 30));
+
         QFont font1;
         font1.setFamily(QStringLiteral("Agency FB"));
         font1.setPointSize(16);
@@ -140,11 +147,13 @@ public:
 "}"));
         label = new QLabel(game);
         label->setObjectName(QStringLiteral("label"));
+
         label->setGeometry(QRect(10, 10, 120, 30));
         QFont font2;
         font2.setFamily(QStringLiteral("Agency FB"));
         font2.setPointSize(16);
         label->setFont(font2);
+
         label->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
 "color:#5a5a5a;\n"
@@ -152,15 +161,19 @@ public:
         label->setAlignment(Qt::AlignCenter);
         groupGoods = new QGroupBox(game);
         groupGoods->setObjectName(QStringLiteral("groupGoods"));
+
         groupGoods->setGeometry(QRect(640, 140, 160, 340));
         btnShowTab = new QPushButton(groupGoods);
         btnShowTab->setObjectName(QStringLiteral("btnShowTab"));
         btnShowTab->setGeometry(QRect(0, 140, 20, 50));
+
         QFont font3;
         font3.setPointSize(12);
         font3.setBold(true);
         font3.setWeight(75);
+
         btnShowTab->setFont(font3);
+
         btnShowTab->setFocusPolicy(Qt::NoFocus);
         btnShowTab->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
@@ -179,6 +192,7 @@ public:
 "color:#FFFFFF;\n"
 "background-color:rgb(80, 189, 255);\n"
 "}"));
+
         prop = new QLabel(groupGoods);
         prop->setObjectName(QStringLiteral("prop"));
         prop->setGeometry(QRect(20, 50, 35, 30));
@@ -192,6 +206,7 @@ public:
         font4.setPointSize(12);
         proptext->setFont(font4);
         proptext->setStyleSheet(QLatin1String("QLabel\n"
+
 "{\n"
 "color:#2A2A2A;\n"
 "}"));
@@ -570,6 +585,7 @@ public:
         pbarLife->setMaximum(200);
         pbarLife->setValue(200);
         pbarLife->setTextVisible(false);
+
         pbarLife->setOrientation(Qt::Vertical);
         skill1num_2 = new QLabel(groupSkill);
         skill1num_2->setObjectName(QStringLiteral("skill1num_2"));
@@ -634,6 +650,8 @@ public:
         lblback->setFrameShape(QFrame::StyledPanel);
         lblback->setFrameShadow(QFrame::Raised);
 
+     
+
         retranslateUi(game);
 
         QMetaObject::connectSlotsByName(game);
@@ -641,6 +659,7 @@ public:
 
     void retranslateUi(QWidget *game)
     {
+
         game->setWindowTitle(QApplication::translate("game", "Form", Q_NULLPTR));
         lblTime->setText(QApplication::translate("game", "0", Q_NULLPTR));
         lblAttackMode->setText(QApplication::translate("game", "Normal Bullet", Q_NULLPTR));
@@ -685,6 +704,7 @@ public:
         skill2num_2->setText(QApplication::translate("game", "I", Q_NULLPTR));
         skill3num_2->setText(QApplication::translate("game", "O", Q_NULLPTR));
         groupBoss->setText(QApplication::translate("game", "BOSS IS COMING!", Q_NULLPTR));
+
     } // retranslateUi
 
 };

@@ -35,7 +35,9 @@ public:
     int bornrate_barriers;
     int tiprate;
     int zonerate;
+
     int dayrate;
+
 
     Emanager m_emanager;
     Bomanager m_bomanager;
