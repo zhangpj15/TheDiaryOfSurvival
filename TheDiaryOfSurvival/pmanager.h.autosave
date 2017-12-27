@@ -73,6 +73,12 @@ public:
     void renderAttackEffect(QPainter* painter, QPointF posi,double size, double dir,QString str);
     void renderBullets(QPainter* painter,QString str);
     void renderFlame(QPainter* painter, QPointF posi,double size, double dir);
+
+private slots:
+    void slot_learnSkill1();   // 游戏循环
+    void slot_learnSkill2();  // 显示说明框
+    void slot_learnSkill3();  // 显示说明框
+
 };
 
 #endif // PMANAGER_H

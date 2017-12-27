@@ -1625,7 +1625,7 @@ color:#5a5a5a;
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="skill1">
+   <widget class="QPushButton" name="lblskill1">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -1638,7 +1638,7 @@ color:#5a5a5a;
      <string>PushButton</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="skill1_2">
+   <widget class="QPushButton" name="lblskill2">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -1651,7 +1651,7 @@ color:#5a5a5a;
      <string>PushButton</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="skill1_3">
+   <widget class="QPushButton" name="lblskill3">
     <property name="geometry">
      <rect>
       <x>640</x>

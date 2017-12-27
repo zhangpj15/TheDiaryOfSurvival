@@ -35,9 +35,7 @@ public:
     int bornrate_barriers;
     int tiprate;
     int zonerate;
-
     int dayrate;
-
 
     Emanager m_emanager;
     Bomanager m_bomanager;
@@ -47,7 +45,7 @@ public:
 
     death* m_death;// 失败窗口
     end* m_end;// quit窗口
-    int space=10;
+    int space;
 
     Player m_player;
 
