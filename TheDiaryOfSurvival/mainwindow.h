@@ -7,6 +7,7 @@
 #include "info.h"
 #include "regis.h"
 #include "loadwin.h"
+#include "rank.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,12 +26,14 @@ public:
     info * m_info;
     regis * m_regis;
     loadwin * m_loadwin;
+    Rank *m_rank;
 
     void initStart();
     void initGame();
     void initInfo();
     void initRegis();
     void initLoadwin();
+    void initRank();
 
 protected:
     void resizeEvent(QResizeEvent* event);
@@ -43,9 +46,11 @@ private slots:
     void slot_loadwin();
     void slot_regis();
     void slot_return();
+    void slot_rank();
     void slot_info();
     void slot_close();
     void slot_exitLogin();
+    void slot_exitRank();
     void slot_returnStart();
 
 };

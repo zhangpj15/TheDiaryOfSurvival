@@ -65,7 +65,7 @@
      <x>60</x>
      <y>210</y>
      <width>261</width>
-     <height>281</height>
+     <height>351</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -183,7 +183,42 @@ color:#aaaaaa;
 }</string>
       </property>
       <property name="text">
-       <string>About     </string>
+       <string>About  </string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnRank">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>26</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+QPushButton:hover{
+border: 0px;
+color:#aaaaaa;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>Rank     </string>
       </property>
      </widget>
     </item>

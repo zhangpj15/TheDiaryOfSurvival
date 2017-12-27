@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_start_t {
-    QByteArrayData data[12];
-    char stringdata0[140];
+    QByteArrayData data[14];
+    char stringdata0[165];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,17 +36,20 @@ QT_MOC_LITERAL(3, 20, 11), // "sig_btnInfo"
 QT_MOC_LITERAL(4, 32, 12), // "sig_btnClose"
 QT_MOC_LITERAL(5, 45, 12), // "sig_btnRegis"
 QT_MOC_LITERAL(6, 58, 12), // "sig_btnLogin"
-QT_MOC_LITERAL(7, 71, 13), // "slot_btnEnter"
-QT_MOC_LITERAL(8, 85, 12), // "slot_btnInfo"
-QT_MOC_LITERAL(9, 98, 13), // "slot_btnClose"
-QT_MOC_LITERAL(10, 112, 13), // "slot_btnRegis"
-QT_MOC_LITERAL(11, 126, 13) // "slot_btnLogin"
+QT_MOC_LITERAL(7, 71, 11), // "sig_btnRank"
+QT_MOC_LITERAL(8, 83, 13), // "slot_btnEnter"
+QT_MOC_LITERAL(9, 97, 12), // "slot_btnInfo"
+QT_MOC_LITERAL(10, 110, 13), // "slot_btnClose"
+QT_MOC_LITERAL(11, 124, 13), // "slot_btnRegis"
+QT_MOC_LITERAL(12, 138, 13), // "slot_btnLogin"
+QT_MOC_LITERAL(13, 152, 12) // "slot_btnRank"
 
     },
     "start\0sig_btnEnter\0\0sig_btnInfo\0"
     "sig_btnClose\0sig_btnRegis\0sig_btnLogin\0"
-    "slot_btnEnter\0slot_btnInfo\0slot_btnClose\0"
-    "slot_btnRegis\0slot_btnLogin"
+    "sig_btnRank\0slot_btnEnter\0slot_btnInfo\0"
+    "slot_btnClose\0slot_btnRegis\0slot_btnLogin\0"
+    "slot_btnRank"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,26 +59,28 @@ static const uint qt_meta_data_start[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       5,       // signalCount
+       6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   64,    2, 0x06 /* Public */,
-       3,    0,   65,    2, 0x06 /* Public */,
-       4,    0,   66,    2, 0x06 /* Public */,
-       5,    0,   67,    2, 0x06 /* Public */,
-       6,    0,   68,    2, 0x06 /* Public */,
+       1,    0,   74,    2, 0x06 /* Public */,
+       3,    0,   75,    2, 0x06 /* Public */,
+       4,    0,   76,    2, 0x06 /* Public */,
+       5,    0,   77,    2, 0x06 /* Public */,
+       6,    0,   78,    2, 0x06 /* Public */,
+       7,    0,   79,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    0,   69,    2, 0x0a /* Public */,
-       8,    0,   70,    2, 0x0a /* Public */,
-       9,    0,   71,    2, 0x0a /* Public */,
-      10,    0,   72,    2, 0x0a /* Public */,
-      11,    0,   73,    2, 0x0a /* Public */,
+       8,    0,   80,    2, 0x0a /* Public */,
+       9,    0,   81,    2, 0x0a /* Public */,
+      10,    0,   82,    2, 0x0a /* Public */,
+      11,    0,   83,    2, 0x0a /* Public */,
+      12,    0,   84,    2, 0x0a /* Public */,
+      13,    0,   85,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -83,8 +88,10 @@ static const uint qt_meta_data_start[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -105,11 +112,13 @@ void start::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 2: _t->sig_btnClose(); break;
         case 3: _t->sig_btnRegis(); break;
         case 4: _t->sig_btnLogin(); break;
-        case 5: _t->slot_btnEnter(); break;
-        case 6: _t->slot_btnInfo(); break;
-        case 7: _t->slot_btnClose(); break;
-        case 8: _t->slot_btnRegis(); break;
-        case 9: _t->slot_btnLogin(); break;
+        case 5: _t->sig_btnRank(); break;
+        case 6: _t->slot_btnEnter(); break;
+        case 7: _t->slot_btnInfo(); break;
+        case 8: _t->slot_btnClose(); break;
+        case 9: _t->slot_btnRegis(); break;
+        case 10: _t->slot_btnLogin(); break;
+        case 11: _t->slot_btnRank(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -150,6 +159,13 @@ void start::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
                 return;
             }
         }
+        {
+            typedef void (start::*_t)();
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&start::sig_btnRank)) {
+                *result = 5;
+                return;
+            }
+        }
     }
     Q_UNUSED(_a);
 }
@@ -179,13 +195,13 @@ int start::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 12;
     }
     return _id;
 }
@@ -218,5 +234,11 @@ void start::sig_btnRegis()
 void start::sig_btnLogin()
 {
     QMetaObject::activate(this, &staticMetaObject, 4, Q_NULLPTR);
+}
+
+// SIGNAL 5
+void start::sig_btnRank()
+{
+    QMetaObject::activate(this, &staticMetaObject, 5, Q_NULLPTR);
 }
 QT_END_MOC_NAMESPACE

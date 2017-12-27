@@ -17,6 +17,7 @@ INPUT(
 ./debug\barriers.o
 ./debug\bmanager.o
 ./debug\loadwin.o
+./debug\rank.o
 ./debug\qrc_res.o
 ./debug\moc_mainwindow.o
 ./debug\moc_info.o
@@ -26,4 +27,5 @@ INPUT(
 ./debug\moc_death.o
 ./debug\moc_end.o
 ./debug\moc_loadwin.o
+./debug\moc_rank.o
 );

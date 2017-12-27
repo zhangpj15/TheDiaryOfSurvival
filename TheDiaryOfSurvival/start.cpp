@@ -11,6 +11,7 @@ start::start(QWidget *parent) :
     connect(ui->btnClose,SIGNAL(clicked()),this,SLOT(slot_btnClose()));
     connect(ui->btnRegis,SIGNAL(clicked()),this,SLOT(slot_btnRegis()));
     connect(ui->btnLogin,SIGNAL(clicked()),this,SLOT(slot_btnLogin()));
+    connect(ui->btnRank,SIGNAL(clicked()),this,SLOT(slot_btnRank()));
 }
 
 void start::slot_btnEnter()
@@ -36,6 +37,11 @@ void start::slot_btnClose()
 void start::slot_btnLogin()
 {
     emit sig_btnLogin();
+}
+
+void start::slot_btnRank()
+{
+    emit sig_btnRank();
 }
 
 start::~start()

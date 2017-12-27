@@ -30,6 +30,7 @@ public:
     QPushButton *btnLogin;
     QPushButton *btnRegis;
     QPushButton *btnInfo;
+    QPushButton *btnRank;
     QPushButton *btnClose;
     QPushButton *btnEnter;
     QLabel *label;
@@ -56,7 +57,7 @@ public:
         Background->setWordWrap(false);
         verticalLayoutWidget = new QWidget(start);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(60, 210, 261, 281));
+        verticalLayoutWidget->setGeometry(QRect(60, 210, 261, 351));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -144,6 +145,30 @@ public:
 "}"));
 
         verticalLayout->addWidget(btnInfo);
+
+        btnRank = new QPushButton(verticalLayoutWidget);
+        btnRank->setObjectName(QStringLiteral("btnRank"));
+        btnRank->setFont(font1);
+        btnRank->setStyleSheet(QLatin1String("QPushButton{\n"
+"border: 0px;\n"
+"color:#FFFFFF;\n"
+"border-radius: 7px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border: 0px;\n"
+"color:#aaaaaa;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border:1px solid rgb(77, 176, 251);\n"
+"color:#aaaaaa;\n"
+"\n"
+"}"));
+
+        verticalLayout->addWidget(btnRank);
 
         btnClose = new QPushButton(verticalLayoutWidget);
         btnClose->setObjectName(QStringLiteral("btnClose"));
@@ -248,7 +273,8 @@ public:
         Background->setText(QString());
         btnLogin->setText(QApplication::translate("start", "Login     ", 0));
         btnRegis->setText(QApplication::translate("start", "Register", 0));
-        btnInfo->setText(QApplication::translate("start", "About     ", 0));
+        btnInfo->setText(QApplication::translate("start", "About  ", 0));
+        btnRank->setText(QApplication::translate("start", "Rank     ", 0));
         btnClose->setText(QApplication::translate("start", "Quit       ", 0));
         btnEnter->setText(QApplication::translate("start", "START GAME", 0));
         label->setText(QApplication::translate("start", "The Diary of Survival", 0));

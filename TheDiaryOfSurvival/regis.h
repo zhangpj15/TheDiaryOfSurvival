@@ -23,25 +23,22 @@ class regis : public QWidget
 public:
     explicit regis(QWidget *parent = 0);
     void addPerson(const QString name,const QString pw ,const QString sex ,const QString mail ,const QString phone);
-    //void saveRecord(int killnum, int timecount);
+
     ~regis();
 
 private:
     Ui::regis *ui;
-    //int user_id;
 
 public slots:
     void slot_returnButton();// 肯定quit
     void checkButtonClicked();
     void loginButtonClicked();
     void loadButtonClicked();
-//    void slot_loginSuccess();
 
 signals:
     void sig_returnButton();
     void sig_close_regis();
     void sig_load();
-
 };
 
 #endif // REGIS_H

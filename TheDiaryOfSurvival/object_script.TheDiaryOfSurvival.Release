@@ -17,6 +17,7 @@ INPUT(
 ./release\barriers.o
 ./release\bmanager.o
 ./release\loadwin.o
+./release\rank.o
 ./release\qrc_res.o
 ./release\moc_mainwindow.o
 ./release\moc_info.o
@@ -26,4 +27,5 @@ INPUT(
 ./release\moc_death.o
 ./release\moc_end.o
 ./release\moc_loadwin.o
+./release\moc_rank.o
 );
