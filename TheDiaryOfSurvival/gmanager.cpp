@@ -17,7 +17,7 @@ void gmanager::initgmanager()
 
 void gmanager::setActiveRect(int x, int y)
 {
-    m_rect = QRectF(0,space,x,y);
+    m_rect = QPoint(x,y);
 }
 
 QVector<goods>& gmanager::getgoodsList()
@@ -27,6 +27,10 @@ QVector<goods>& gmanager::getgoodsList()
 
 void gmanager::bornNew(QPointF posi)
 {
+    static int count = 0;
+    count++;
+    if(count%500 <499)
+        return;
 
     while(true)
     {
@@ -34,7 +38,7 @@ void gmanager::bornNew(QPointF posi)
 
         qsrand(QTime::currentTime().msecsSinceStartOfDay()*QTime::currentTime().second());
 
-        onegoods.setPosi(qrand()%int(m_rect.width()),space+qrand()%(int(m_rect.height())-space));
+        onegoods.setPosi(qrand()%m_rect.x(),qrand()%m_rect.y());
         onegoods.setColor(qrand()%256,qrand()%256,qrand()%256);
         int num=qrand()%7+1;
         onegoods.setBorn(num);
@@ -51,7 +55,7 @@ void gmanager::bornNew(QPointF posi)
     }
 }
 
-bool gmanager::updategoods(QPointF dist,double size)
+bool gmanager::updategoods(QPointF dist,QPointF size)
 {
     m_playerPosi_goods = dist;
     for(int i=0; i< m_goods.size(); i++)
@@ -62,11 +66,24 @@ bool gmanager::updategoods(QPointF dist,double size)
             {
                 m_goods.removeAt(i);
                 i--;
-//                qDebug()<<("货物被吃掉");
+                qDebug()<<("货物被吃掉");
             }
             continue;
         }
+//        float dx = dist.x()+size.x()*0.5-m_goods[i].getPosi().x()-m_goods[i].getSize()*0.5;
+//        float dy = dist.y()+size.y()*0.5-m_goods[i].getPosi().y()-m_goods[i].getSize()*0.5;
 
+//        float length = sqrt(dx*dx+dy*dy);
+//        float range=(m_goods[i].getSize()*0.5+size.x()*0.4);
+//        if(length<=range)                // 如果距离小于1,那么游戏结束
+//            return true;
+
+//        dx/=length;
+//        dy/=length;
+
+
+//        m_goods[i].setPosi(m_goods[i].getPosi().x()+dx*m_speed,
+//                           m_goods[i].getPosi().y()+dy*m_speed);
     }
 
     qSort(m_goods.begin(),m_goods.end(),compareDist);//更新道具序列，非常重要，不然有空指针

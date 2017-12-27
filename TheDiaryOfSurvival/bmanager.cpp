@@ -17,7 +17,7 @@ void bmanager::initbmanager()
 
 void bmanager::setActiveRect(int x, int y)
 {
-    m_rect = QRectF(0,space,x,y);
+    m_rect = QPoint(x,y);
 }
 
 QVector<barriers>& bmanager::getbarriersList()
@@ -37,11 +37,16 @@ double bmanager::TwoPtDistance(const QPointF& pt1, const QPointF& pt2)
 
 void bmanager::bornNew(QPointF posi)
 {
+    static int count = 0;
+    count++;
+    if(count%400 <399)// 设置生成速率
+        return;
+
     while(true)
     {
         barriers onebarriers;
         qsrand(QTime::currentTime().msecsSinceStartOfDay()*QTime::currentTime().second());
-        onebarriers.setPosi(0,space+qrand()%(int(m_rect.height())-space));
+        onebarriers.setPosi(0,qrand()%m_rect.y());
         onebarriers.setBorn(qrand()%23+1);
 
         double length = TwoPtDistance(posi,onebarriers.getPosi());
@@ -53,19 +58,18 @@ void bmanager::bornNew(QPointF posi)
     }
 }
 
-bool bmanager::updatebarriers(QPointF dist,double size)
+bool bmanager::updatebarriers(QPointF dist,QPointF size)
 {
     m_playerPosi_barriers = dist;
     for(int i=0; i< m_barriers.size(); i++)
     {
         float length = TwoPtDistance(dist,m_barriers[i].getPosi());
         float dis=10;
-        float range=(m_barriers[i].getSize()+size)*0.3;
-        m_barriers[i].setPosi(m_barriers[i].getPosi().x()+dis*m_speed,
-                           m_barriers[i].getPosi().y());
+        float range=(m_barriers[i].getSize()+size.x())*0.3;
         if(length<=range)                // 如果接触,那么游戏结束
             return true;
-
+        m_barriers[i].setPosi(m_barriers[i].getPosi().x()+dis*m_speed,
+                           m_barriers[i].getPosi().y());
     }
 
     qSort(m_barriers.begin(),m_barriers.end(),compareDist);//更新enermy序列，非常重要，不然有空指针

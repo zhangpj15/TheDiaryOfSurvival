@@ -72,8 +72,8 @@ bool loadwin::doCheck(const QString uname, const QString pw){
     query.exec();
     query.next();
     QString temppw = query.value(1).toString();
-    qDebug()<<query.value(0).toString()<<query.value(1).toString()
-           <<query.value(2).toString()<<query.value(2).toString()<<uname;
+    //qDebug()<<query.value(0).toString()<<query.value(1).toString()
+    //       <<query.value(2).toString()<<query.value(2).toString()<<uname;
 
     //生成密码散列
     QByteArray byteArray;
@@ -85,6 +85,7 @@ bool loadwin::doCheck(const QString uname, const QString pw){
         user_id=query.value(0).toInt();
         timeRecord=query.value(2).toInt();
         killRecord=query.value(3).toInt();
+        qDebug()<<timeRecord<<killRecord;
         return true;
     }
     else{

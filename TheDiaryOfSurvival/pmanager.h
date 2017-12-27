@@ -5,7 +5,6 @@
 #include "emanager.h"
 #include "gmanager.h"
 #include "bmanager.h"
-#include "bomanager.h"
 #include <QVector2D>
 
 class Pmanager
@@ -16,13 +15,12 @@ public:
     enum{
         _BULLET,
         _SHOTGUN,
-        _FIRE,
-        _MESS
+        _FIRE
     };
 
     short m_curAttackType;   // 当前攻击模式
     bool m_isAttacked;       // 是否正在进行攻击
-    int m_counter;           // 攻击计时器,计算按键按下时间
+    int m_counter;           // 攻击计时器
 
     //火焰设置
     int m_counterFire;       // 火焰的喷射计时
@@ -40,7 +38,7 @@ public:
     void setAttacked(bool b);    // 进行攻击
     bool isAttacked();// 是否被攻击
 
-    void changeAttackMode(short num);
+    void changeAttackMode();
     int getAttackModeId();
     QString getAttackMode();
     int getKillNum();
@@ -54,10 +52,9 @@ public:
     double square(const double num);
     double TwoPtDistance(const QPointF& pt1, const QPointF& pt2);
     void checkKnockWithEnemys(QVector<Enemy>& enemys,QPointF posi, double dir);
-    void checkKnockWithBoss(QVector<Boss>& bosses,QPointF posi, double dir);
-    int checkKnockWithgoods(QVector<goods>& goods,QPointF posi,double player_size);
+    int checkKnockWithgoods(QVector<goods>& goods,QPointF posi);
 
-    void updateAttackEffect(QPointF posi,double size,double dir);
+    void updateAttackEffect(QPointF posi,QPointF size,double dir);
 
     void renderAttackEffect(QPainter* painter, QPointF posi,double size, double dir,QString str);
     void renderBullets(QPainter* painter,QString str);

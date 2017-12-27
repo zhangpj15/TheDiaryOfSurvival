@@ -10,9 +10,8 @@ void Player::initPlayer()
     m_type_bullets=":/res/img/bullets/bullets (2).png";
     m_dir = 0;
     m_vel = 3;
-    m_life = 100;
     m_curState = _STA;
-    m_size = 50;
+    m_size = QPointF(50,50);
     m_big=5;
     m_curgoods = 0;
 }
@@ -34,17 +33,12 @@ void Player::setCurrentPosi(int x, int y)
 
 void Player::setCurrentVolume(int x)
 {
-    m_size = 50-x;
+    m_size = QPointF(50-x,50-x);
 }
 
 void Player::setCurrentSpeed(int x)
 {
     m_vel=x;
-}
-
-void Player::setCurrentLife()
-{
-    m_life--;
 }
 
 void Player::setActiveRect(int x, int y, int w, int h)
@@ -61,8 +55,8 @@ QPointF Player::getCurrentPosi()
     // 返回中点坐标
     QPointF posi;
 
-    posi.setX(m_posi.x()+m_size/2);
-    posi.setY(m_posi.y()+m_size/2);
+    posi.setX(m_posi.x()+m_size.x()/2);
+    posi.setY(m_posi.y()+m_size.y()/2);
     return posi;
 }
 
@@ -80,19 +74,11 @@ double Player::getDir()
     return m_dir;
 }
 
-double Player::getSize()
+QPointF Player::getSize()
 {
     return m_size;
 }
 
-double Player::getSpeed()
-{
-    return m_vel;
-}
-int Player::getLife()
-{
-    return m_life;
-}
 void Player::moveFront()
 {
     float nextX = m_posi.x() + m_vel*sin(3.14*m_dir/180.0);
@@ -102,10 +88,10 @@ void Player::moveFront()
         nextX = m_rect.x();
     if(nextY < m_rect.y())
         nextY = m_rect.y();
-    if(nextX+m_size >= m_rect.x()+m_rect.width())
-        nextX = m_rect.x()-m_size+m_rect.width();
-    if(nextY+m_size >= m_rect.y()+m_rect.height())
-        nextY = m_rect.y()-m_size+m_rect.height();
+    if(nextX+m_size.x() >= m_rect.x()+m_rect.width())
+        nextX = m_rect.x()-m_size.x()+m_rect.width();
+    if(nextY+m_size.y() >= m_rect.y()+m_rect.height())
+        nextY = m_rect.y()-m_size.y()+m_rect.height();
     m_posi = QPointF(nextX,nextY);
 }
 
@@ -118,10 +104,10 @@ void Player::moveBack()
         nextX = m_rect.x();
     if(nextY < m_rect.y())
         nextY = m_rect.y();
-    if(nextX+m_size >= m_rect.x()+m_rect.width())
-        nextX = m_rect.x()-m_size+m_rect.width();
-    if(nextY+m_size >= m_rect.y()+m_rect.height())
-        nextY = m_rect.y()-m_size+m_rect.height();
+    if(nextX+m_size.x() >= m_rect.x()+m_rect.width())
+        nextX = m_rect.x()-m_size.x()+m_rect.width();
+    if(nextY+m_size.y() >= m_rect.y()+m_rect.height())
+        nextY = m_rect.y()-m_size.y()+m_rect.height();
     m_posi = QPointF(nextX,nextY);
 }
 
@@ -138,25 +124,23 @@ void Player::turnRight()
 void Player::large()
 {
     m_big=-5;
-//    qDebug()<<m_big;
+    qDebug()<<m_big;
     setCurrentVolume(m_big);
 }
 void Player::speedup()
 {
-
-   m_vel=m_vel<9?m_vel+1:9;
-
+    m_vel+=2;
 }
 
 void Player::small()
 {
     m_big=5;
     setCurrentVolume(m_big);
-//    qDebug()<<m_size;
+    qDebug()<<m_size;
 }
 void Player::speedlow()
 {
-    m_vel=m_vel>1?m_vel-1:1;
+    m_vel-=2;
 }
 
 void Player::updateStates()
@@ -212,21 +196,18 @@ void Player::updategoods()
     case 4:
         small();
         break;
-    case 5://加血10点
-        m_life=m_life+10>100?100:m_life+10;
-
+    case 5:
+        m_type=":/res/img/plane/figure (5).png";
         break;
-    case 6://加血50点，可更改
-//        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-//        test_figure=qrand()%15+1;
-//        m_type=QString(":/res/img/plane/figure (%1).png").arg(test_figure);
-        m_life=m_life+50>100?100:m_life+50;
+    case 6:
+        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+        test_figure=qrand()%15+1;
+        m_type=QString(":/res/img/plane/figure (%1).png").arg(test_figure);
         break;
-    case 7://更改人物？还是啥
-//        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-//        test_bullet=qrand()%15+1;
-//        m_type_bullets=QString(":/res/img/bullets/bullets (%1).png").arg(test_bullet);
-
+    case 7:
+        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+        test_bullet=qrand()%15+1;
+        m_type_bullets=QString(":/res/img/bullets/bullets (%1).png").arg(test_bullet);
         break;
 //    case _BACK_RIGHT:
 //        turnRight();
@@ -239,11 +220,11 @@ void Player::render(QPainter *painter)
 {
 //    setCurrentVolume(m_big);
     painter->save();
-    painter->translate(m_posi.x()+m_size/2.0,m_posi.y()+m_size/2.0);
+    painter->translate(m_posi.x()+m_size.x()/2.0,m_posi.y()+m_size.y()/2.0);
 //    将中心设为坐标系原点，便于旋转
     painter->rotate(m_dir);
-    painter->translate(-m_posi.x()-m_size/2.0,-m_posi.y()-m_size/2.0);
+    painter->translate(-m_posi.x()-m_size.x()/2.0,-m_posi.y()-m_size.y()/2.0);
 
-    painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(m_type));
+    painter->drawPixmap(m_posi.x(),m_posi.y(),m_size.x(),m_size.y(),QPixmap(m_type));
     painter->restore();
 }

@@ -26,7 +26,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="res.qrc">:/res/img/background/main5.jpg</pixmap>
+    <pixmap resource="res.qrc">:/res/img/background/bg11.jpg</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -35,8 +35,8 @@
   <widget class="QPushButton" name="checkButton">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>120</y>
+     <x>620</x>
+     <y>140</y>
      <width>111</width>
      <height>51</height>
     </rect>
@@ -71,13 +71,45 @@ color:#aaaaaa;
     <string>CHECK</string>
    </property>
   </widget>
-  <widget class="QFrame" name="verticalFrame">
+  <widget class="QLabel" name="title">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>120</y>
+     <x>230</x>
+     <y>20</y>
+     <width>491</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>36</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+</string>
+   </property>
+   <property name="text">
+    <string>The Diary of Survival</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>130</y>
      <width>201</width>
-     <height>291</height>
+     <height>381</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -224,13 +256,13 @@ border-radius: 7px;
     </item>
    </layout>
   </widget>
-  <widget class="QFrame" name="verticalFrame_2">
+  <widget class="QWidget" name="verticalLayoutWidget_2">
    <property name="geometry">
     <rect>
      <x>330</x>
      <y>120</y>
      <width>241</width>
-     <height>241</height>
+     <height>341</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -286,11 +318,131 @@ border-radius: 7px;
     </item>
    </layout>
   </widget>
-  <widget class="QFrame" name="horizontalFrame">
+  <widget class="QWidget" name="verticalLayoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>450</y>
+     <width>186</width>
+     <height>145</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="loginButton">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>26</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+QPushButton:hover{
+border: 0px;
+color:#aaaaaa;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>REGISTER</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="loadButton">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>26</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+QPushButton:hover{
+border: 0px;
+color:#aaaaaa;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>LOGIN</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="returnButton">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>26</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: 0px;
+color:#FFFFFF;
+border-radius: 7px;
+
+}
+
+QPushButton:hover{
+border: 0px;
+color:#aaaaaa;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>RETURN</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
      <x>330</x>
-     <y>360</y>
+     <y>460</y>
      <width>239</width>
      <height>51</height>
     </rect>
@@ -303,15 +455,12 @@ border-radius: 7px;
      <enum>QLayout::SetDefaultConstraint</enum>
     </property>
     <property name="topMargin">
-     <number>1</number>
+     <number>0</number>
     </property>
     <item>
      <widget class="QRadioButton" name="manradioButton">
-      <property name="font">
-       <font>
-        <family>Agency FB</family>
-        <pointsize>12</pointsize>
-       </font>
+      <property name="autoFillBackground">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>MALE</string>
@@ -320,153 +469,15 @@ border-radius: 7px;
     </item>
     <item>
      <widget class="QRadioButton" name="womanradioButton">
-      <property name="font">
-       <font>
-        <family>Agency FB</family>
-        <pointsize>12</pointsize>
-       </font>
+      <property name="autoFillBackground">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>FEMALE</string>
       </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-      <property name="autoRepeat">
-       <bool>false</bool>
-      </property>
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QPushButton" name="returnButton">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>184</width>
-     <height>52</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Agency FB</family>
-     <pointsize>26</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-     <underline>true</underline>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-border: 0px;
-color:#FFFFFF;
-border-radius: 7px;
-
-}
-
-QPushButton:hover{
-border: 0px;
-color:#aaaaaa;
-
-}
-
-QPushButton:pressed{
-border:1px solid rgb(77, 176, 251);
-color:#aaaaaa;
-
-}</string>
-   </property>
-   <property name="text">
-    <string>RETURN</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="loginButton">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>470</y>
-     <width>184</width>
-     <height>52</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Agency FB</family>
-     <pointsize>26</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-     <underline>true</underline>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-border: 0px;
-color:#FFFFFF;
-border-radius: 7px;
-
-}
-
-QPushButton:hover{
-border: 0px;
-color:#aaaaaa;
-
-}
-
-QPushButton:pressed{
-border:1px solid rgb(77, 176, 251);
-color:#aaaaaa;
-
-}</string>
-   </property>
-   <property name="text">
-    <string>REGISTER</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="loadButton">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>470</y>
-     <width>184</width>
-     <height>52</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Agency FB</family>
-     <pointsize>26</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-     <underline>true</underline>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-border: 0px;
-color:#FFFFFF;
-border-radius: 7px;
-
-}
-
-QPushButton:hover{
-border: 0px;
-color:#aaaaaa;
-
-}
-
-QPushButton:pressed{
-border:1px solid rgb(77, 176, 251);
-color:#aaaaaa;
-
-}</string>
-   </property>
-   <property name="text">
-    <string>LOGIN</string>
-   </property>
   </widget>
  </widget>
  <resources>

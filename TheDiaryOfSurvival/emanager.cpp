@@ -17,7 +17,7 @@ void Emanager::initEmanager()
 
 void Emanager::setActiveRect(int x, int y)
 {
-    m_rect = QRectF(0,space,x,y);
+    m_rect = QPoint(x,y);
 }
 
 QVector<Enemy>& Emanager::getEnemysList()
@@ -34,6 +34,10 @@ double Emanager::TwoPtDistance(const QPointF& pt1, const QPointF& pt2)
 
 void Emanager::bornNew(QPointF posi)
 {
+    static int count = 0;
+    count++;
+    if(count%80 <79)
+        return;
 
     while(true)
     {
@@ -41,7 +45,7 @@ void Emanager::bornNew(QPointF posi)
 
         qsrand(QTime::currentTime().msecsSinceStartOfDay()*QTime::currentTime().second());
 
-        oneenemy.setPosi(qrand()%int(m_rect.width()),space+qrand()%(int(m_rect.height())-space));
+        oneenemy.setPosi(qrand()%m_rect.x(),qrand()%m_rect.y());
         oneenemy.setColor(qrand()%256,qrand()%256,qrand()%256);
         oneenemy.setBorn(qrand()%40+1);
 
@@ -54,7 +58,7 @@ void Emanager::bornNew(QPointF posi)
     }
 }
 
-bool Emanager::updateEnemys(QPointF dist,double size)
+bool Emanager::updateEnemys(QPointF dist,QPointF size)
 {
     m_playerPosi = dist;
     for(int i=0; i< m_enemys.size(); i++)
@@ -72,7 +76,7 @@ bool Emanager::updateEnemys(QPointF dist,double size)
         float dy = dist.y()-m_enemys[i].getPosi().y();
 
         float length = TwoPtDistance(dist,m_enemys[i].getPosi());
-        float range=(m_enemys[i].getSize()+size)*0.3;
+        float range=(m_enemys[i].getSize()+size.x())*0.3;
         if(length<=range)                // 如果接触,那么游戏结束
             return true;
 

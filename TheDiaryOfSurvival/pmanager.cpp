@@ -1,6 +1,5 @@
 #include "pmanager.h"
-#include "qDebug"
-#include "ui_game.h"
+
 Pmanager::Pmanager()
 {
     m_curAttackType = _FIRE;
@@ -27,7 +26,7 @@ void Pmanager::initPmanager()
 // 定义活动范围
 void Pmanager::setActiveRect(double w, double h)
 {
-    m_rect = QRectF(0,61,w,h);
+    m_rect = QRectF(0,0,w,h);
 }
 // 检测是否被攻击
 bool Pmanager::isAttacked()
@@ -46,9 +45,9 @@ void Pmanager::setAttacked(bool b)
     }
 }
 // 改变攻击模式
-void Pmanager::changeAttackMode(short num)
+void Pmanager::changeAttackMode()
 {
-    m_curAttackType = num;
+    m_curAttackType = (m_curAttackType+1>=3)?0:m_curAttackType+1;
 }
 // 返回火焰冷却时间
 QString Pmanager::getAttackMode()
@@ -60,8 +59,6 @@ QString Pmanager::getAttackMode()
         return "Shot Gun";
     case _FIRE:
         return "Fire Gun";
-    case _MESS:
-        return "Mess";
     }
 }
 // 返回商品
@@ -136,7 +133,7 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
         {
             if(!enemys[k].isAlive())
                 continue;
-        if( TwoPtDistance(enemys[k].getPosi(),m_bullets[i].getPosi())<(enemys[k].getSize()+m_bullets[i].m_size)*0.5)
+            if( TwoPtDistance(enemys[k].getPosi(),m_bullets[i].getPosi())<15 )
             {
                 enemys[k].setIsAlive(false);
                 m_bullets.removeAt(i--);
@@ -148,6 +145,7 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
 
 // 检测火焰产生的碰撞
     if( !m_isAttacked||m_curAttackType!=_FIRE || m_isCooling)
+//     if( !m_isAttacked||m_curAttackType!=_FIRE)
         return;
 
     // 将 posi从玩家中心移动到火焰中心
@@ -179,82 +177,18 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
         }
     }
 }
-void Pmanager::checkKnockWithBoss(QVector<Boss> &bosses, QPointF posi, double dir)
-{
-    // 检测子弹的进入障碍区
-
-    for(int i=0; i<m_bullets.size();i++)
-    {
-        if(!m_rect.contains(m_bullets[i].getPosi()))// 子弹飞出界外，删除
-        {
-            m_bullets.removeAt(i--);
-            continue;
-        }
-
-        for(int k=0; k<bosses.size();k++)// 检测boss是否被击中
-        {
-            if(!bosses[k].isAlive())
-                continue;
-        if( TwoPtDistance(bosses[k].getPosi(),m_bullets[i].getPosi())<(bosses[k].getSize()+m_bullets[i].m_size)*0.5)
-            {
-                bosses[k].setCurrentLife();
-                if(bosses[k].getLife()==0)
-                {
-                bosses[k].setIsAlive(false);
-                m_bullets.removeAt(i--);
-                m_killNum++;   // 击杀一个敌人
-                }
-//                qDebug()<<bosses[k].getLife();
-                break;
-            }
-        }
-    }
-
-// 检测火焰产生的碰撞
-    if( !m_isAttacked||m_curAttackType!=_FIRE || m_isCooling)
-        return;
-
-    // 将 posi从玩家中心移动到火焰中心
-    posi.setX(posi.x()+sin(3.14*dir/180.0)*90);
-    posi.setY(posi.y()-cos(3.14*dir/180.0)*90);
-
-    QPolygonF polygon;          // 未变换的多边形
-    polygon<<QPointF(posi.x(),posi.y()-50)
-           <<QPointF(posi.x()-35,posi.y()+35)
-           <<QPointF(posi.x(),posi.y()+75)
-           <<QPointF(posi.x()+35,posi.y()+35);
-
-    QMatrix matrix;   // 计算旋转矩阵matrix
-    matrix.translate(posi.x(),posi.y());    // 平移到火焰中心
-    matrix.rotate(dir);    // 旋转
-    matrix.translate(-posi.x(),-posi.y());   // 平移回原位置
-
-    polygon = polygon*matrix;   // 多边形的坐标，随player旋转
-
-    for(int i=0; i<bosses.size();i++)
-    {
-        if(!bosses[i].isAlive())
-            continue;
-
-        if(polygon.containsPoint(bosses[i].getPosi(),Qt::WindingFill))
-        {
-            bosses[i].setIsAlive(false);
-            m_killNum++;   // 击杀一个敌人
-        }
-    }
-}
 
 
 // 检测吃道具
-int Pmanager::checkKnockWithgoods(QVector<goods> &goods, QPointF posi,double player_size)
+int Pmanager::checkKnockWithgoods(QVector<goods> &goods, QPointF posi)
 {
     // 检测子弹的进入障碍区
         int num=0;
-        for(int k=0; k<goods.size();k++)// 检测商品是否被吃掉
+        for(int k=0; k<goods.size();k++)// 检测敌人是否被击中
         {
             if(!goods[k].isAlive())
                 continue;
-            if( TwoPtDistance(goods[k].getPosi(),posi)<(goods[k].getSize()+player_size)*0.5 )
+            if( TwoPtDistance(goods[k].getPosi(),posi)<25 )
             {
                 goods[k].setIsAlive(false);
                 num=goods[k].getNumber();
@@ -266,7 +200,7 @@ int Pmanager::checkKnockWithgoods(QVector<goods> &goods, QPointF posi,double pla
 
 
 //    更新攻击
-void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
+void Pmanager::updateAttackEffect(QPointF posi, QPointF size, double dir)
 {
     // 更新所有的子弹
     for(int i=0; i<m_bullets.size();i++)
@@ -293,13 +227,13 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
         {
         case _BULLET:
         {
-            if(!(m_counter%20==0||m_counter==0))
+            if(!(m_counter%15==0||m_counter==0))
                 break;
             // 子弹攻击
             QPointF s;
 
-            s.setX(posi.x()+size/2.0*sin(3.14*dir/180.0));    // 设置新子弹的位置
-            s.setY(posi.y()-size/2.0*cos(3.14*dir/180.0));
+            s.setX(posi.x()+size.x()/2.0*sin(3.14*dir/180.0));    // 设置新子弹的位置
+            s.setY(posi.y()-size.y()/2.0*cos(3.14*dir/180.0));
 
             Bullet temp;
             temp.setPosi(s.x(),s.y());
@@ -310,7 +244,7 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
         }
         case _SHOTGUN:
         {
-            if(!(m_counter%40==0||m_counter==0))
+            if(!(m_counter%20==0||m_counter==0))
                 break;
             // 散弹攻击
             QPointF s;
@@ -324,7 +258,7 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
 
             m_bullets.push_back(temp);
 
-            for(int i=0; i<3; i=i+1)// 扇形发出
+            for(int i=0; i<3; i++)// 扇形发出
             {
                 temp.setDir(dir-(i+1)*10);
                 m_bullets.push_back(temp);
@@ -332,32 +266,6 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
                 m_bullets.push_back(temp);
             }
             break;
-        }
-        case _MESS:
-        {
-            if(!(m_counter%30==0||m_counter==0))
-                break;
-            // 散弹攻击
-            QPointF s;
-
-            s.setX(posi.x()+4*sin(3.14*dir/180.0));
-            s.setY(posi.y()-4*cos(3.14*dir/180.0));
-
-            Bullet temp;
-            temp.setPosi(s.x(),s.y());
-            temp.setDir(dir);
-
-            m_bullets.push_back(temp);
-
-            for(int i=0; i<3; i=i+1)// 矩形发出
-            {
-                temp.setPosi(s.x()+2*sin(3.14*dir/180.0),s.y()-2*cos(3.14*dir/180.0));
-                temp.setDir(dir-(i+1)*10);
-                m_bullets.push_back(temp);
-                temp.setDir(dir+(i+1)*10);
-                m_bullets.push_back(temp);
-                break;
-            }
         }
         case _FIRE:
 
@@ -372,7 +280,6 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
         }
 
         m_counter++;
-//        qDebug()<<(m_counter);
     }
 }
 
@@ -408,6 +315,20 @@ void Pmanager::renderFlame(QPainter *painter, QPointF posi, double size, double 
     painter->translate(-posi.x(),-posi.y());
     painter->drawPixmap(posi.x()-w/2,posi.y()-h/2,w,h,QPixmap(QString(":/res/img/flame/flame%1.png").arg((int)i)));
     painter->restore();
+
+//    QPolygonF polygon;
+//    polygon<<QPointF(posi.x(),posi.y()-50)
+//           <<QPointF(posi.x()-35,posi.y()+35)
+//           <<QPointF(posi.x(),posi.y()+75)
+//           <<QPointF(posi.x()+35,posi.y()+35);
+
+//    QMatrix matrix;   // 计算旋转矩阵
+//    matrix.translate(posi.x(),posi.y());
+//    matrix.rotate(dir);
+//    matrix.translate(-posi.x(),-posi.y());
+
+//    polygon = polygon*matrix;
+//    painter->drawPolygon(polygon);
 
     i= i+0.2>5?1:i+0.2;
 }

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'regis.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.3
+** Created by: Qt User Interface Compiler version 5.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -30,7 +29,8 @@ class Ui_regis
 public:
     QLabel *label;
     QPushButton *checkButton;
-    QFrame *verticalFrame;
+    QLabel *title;
+    QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout_2;
     QLabel *username;
     QLabel *mailboxlabel;
@@ -38,20 +38,22 @@ public:
     QLabel *rPasswordlabel;
     QLabel *passwordlabel_2;
     QLabel *passwordlabel;
-    QFrame *verticalFrame_2;
+    QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout_3;
     QLineEdit *usernameline;
     QLineEdit *mailboxline;
     QLineEdit *telline;
     QLineEdit *passwordline;
     QLineEdit *rPasswordline;
-    QFrame *horizontalFrame;
-    QHBoxLayout *horizontalLayout_2;
-    QRadioButton *manradioButton;
-    QRadioButton *womanradioButton;
-    QPushButton *returnButton;
+    QWidget *verticalLayoutWidget_3;
+    QVBoxLayout *verticalLayout;
     QPushButton *loginButton;
     QPushButton *loadButton;
+    QPushButton *returnButton;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout_2;
+    QRadioButton *womanradioButton;
+    QRadioButton *manradioButton;
 
     void setupUi(QWidget *regis)
     {
@@ -61,11 +63,11 @@ public:
         label = new QLabel(regis);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(0, 0, 801, 601));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/res/img/background/main5.jpg")));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/res/img/background/bg11.jpg")));
         label->setScaledContents(true);
         checkButton = new QPushButton(regis);
         checkButton->setObjectName(QStringLiteral("checkButton"));
-        checkButton->setGeometry(QRect(570, 120, 111, 51));
+        checkButton->setGeometry(QRect(620, 140, 111, 51));
         QFont font;
         font.setFamily(QStringLiteral("Agency FB"));
         font.setPointSize(20);
@@ -88,12 +90,31 @@ public:
 "color:#aaaaaa;\n"
 "\n"
 "}"));
-        verticalFrame = new QFrame(regis);
-        verticalFrame->setObjectName(QStringLiteral("verticalFrame"));
-        verticalFrame->setGeometry(QRect(100, 120, 201, 291));
-        verticalLayout_2 = new QVBoxLayout(verticalFrame);
+        title = new QLabel(regis);
+        title->setObjectName(QStringLiteral("title"));
+        title->setGeometry(QRect(230, 20, 491, 101));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Agency FB"));
+        font1.setPointSize(36);
+        font1.setBold(true);
+        font1.setItalic(true);
+        font1.setUnderline(true);
+        font1.setWeight(75);
+        title->setFont(font1);
+        title->setStyleSheet(QLatin1String("QLabel{\n"
+"border: 0px;\n"
+"color:#FFFFFF;\n"
+"border-radius: 7px;\n"
+"\n"
+"}\n"
+""));
+        verticalLayoutWidget = new QWidget(regis);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(130, 130, 201, 381));
+        verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        username = new QLabel(verticalFrame);
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        username = new QLabel(verticalLayoutWidget);
         username->setObjectName(QStringLiteral("username"));
         username->setFont(font);
         username->setStyleSheet(QLatin1String("QLabel{\n"
@@ -107,7 +128,7 @@ public:
 
         verticalLayout_2->addWidget(username);
 
-        mailboxlabel = new QLabel(verticalFrame);
+        mailboxlabel = new QLabel(verticalLayoutWidget);
         mailboxlabel->setObjectName(QStringLiteral("mailboxlabel"));
         mailboxlabel->setFont(font);
         mailboxlabel->setStyleSheet(QLatin1String("QLabel{\n"
@@ -121,7 +142,7 @@ public:
 
         verticalLayout_2->addWidget(mailboxlabel);
 
-        tellabel = new QLabel(verticalFrame);
+        tellabel = new QLabel(verticalLayoutWidget);
         tellabel->setObjectName(QStringLiteral("tellabel"));
         tellabel->setFont(font);
         tellabel->setStyleSheet(QLatin1String("QLabel{\n"
@@ -136,7 +157,7 @@ public:
 
         verticalLayout_2->addWidget(tellabel);
 
-        rPasswordlabel = new QLabel(verticalFrame);
+        rPasswordlabel = new QLabel(verticalLayoutWidget);
         rPasswordlabel->setObjectName(QStringLiteral("rPasswordlabel"));
         rPasswordlabel->setFont(font);
         rPasswordlabel->setStyleSheet(QLatin1String("QLabel{\n"
@@ -150,7 +171,7 @@ public:
 
         verticalLayout_2->addWidget(rPasswordlabel);
 
-        passwordlabel_2 = new QLabel(verticalFrame);
+        passwordlabel_2 = new QLabel(verticalLayoutWidget);
         passwordlabel_2->setObjectName(QStringLiteral("passwordlabel_2"));
         passwordlabel_2->setFont(font);
         passwordlabel_2->setStyleSheet(QLatin1String("QLabel{\n"
@@ -164,7 +185,7 @@ public:
 
         verticalLayout_2->addWidget(passwordlabel_2);
 
-        passwordlabel = new QLabel(verticalFrame);
+        passwordlabel = new QLabel(verticalLayoutWidget);
         passwordlabel->setObjectName(QStringLiteral("passwordlabel"));
         passwordlabel->setFont(font);
         passwordlabel->setStyleSheet(QLatin1String("QLabel{\n"
@@ -178,98 +199,56 @@ public:
 
         verticalLayout_2->addWidget(passwordlabel);
 
-        verticalFrame_2 = new QFrame(regis);
-        verticalFrame_2->setObjectName(QStringLiteral("verticalFrame_2"));
-        verticalFrame_2->setGeometry(QRect(330, 120, 241, 241));
-        verticalLayout_3 = new QVBoxLayout(verticalFrame_2);
+        verticalLayoutWidget_2 = new QWidget(regis);
+        verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
+        verticalLayoutWidget_2->setGeometry(QRect(330, 120, 241, 341));
+        verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        usernameline = new QLineEdit(verticalFrame_2);
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        usernameline = new QLineEdit(verticalLayoutWidget_2);
         usernameline->setObjectName(QStringLiteral("usernameline"));
         usernameline->setFont(font);
 
         verticalLayout_3->addWidget(usernameline);
 
-        mailboxline = new QLineEdit(verticalFrame_2);
+        mailboxline = new QLineEdit(verticalLayoutWidget_2);
         mailboxline->setObjectName(QStringLiteral("mailboxline"));
         mailboxline->setFont(font);
 
         verticalLayout_3->addWidget(mailboxline);
 
-        telline = new QLineEdit(verticalFrame_2);
+        telline = new QLineEdit(verticalLayoutWidget_2);
         telline->setObjectName(QStringLiteral("telline"));
         telline->setFont(font);
 
         verticalLayout_3->addWidget(telline);
 
-        passwordline = new QLineEdit(verticalFrame_2);
+        passwordline = new QLineEdit(verticalLayoutWidget_2);
         passwordline->setObjectName(QStringLiteral("passwordline"));
         passwordline->setFont(font);
 
         verticalLayout_3->addWidget(passwordline);
 
-        rPasswordline = new QLineEdit(verticalFrame_2);
+        rPasswordline = new QLineEdit(verticalLayoutWidget_2);
         rPasswordline->setObjectName(QStringLiteral("rPasswordline"));
         rPasswordline->setFont(font);
 
         verticalLayout_3->addWidget(rPasswordline);
 
-        horizontalFrame = new QFrame(regis);
-        horizontalFrame->setObjectName(QStringLiteral("horizontalFrame"));
-        horizontalFrame->setGeometry(QRect(330, 360, 239, 51));
-        horizontalLayout_2 = new QHBoxLayout(horizontalFrame);
-        horizontalLayout_2->setSpacing(7);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setSizeConstraint(QLayout::SetDefaultConstraint);
-        horizontalLayout_2->setContentsMargins(-1, 1, -1, -1);
-        manradioButton = new QRadioButton(horizontalFrame);
-        manradioButton->setObjectName(QStringLiteral("manradioButton"));
-        QFont font1;
-        font1.setFamily(QStringLiteral("Agency FB"));
-        font1.setPointSize(12);
-        manradioButton->setFont(font1);
-
-        horizontalLayout_2->addWidget(manradioButton);
-
-        womanradioButton = new QRadioButton(horizontalFrame);
-        womanradioButton->setObjectName(QStringLiteral("womanradioButton"));
-        womanradioButton->setFont(font1);
-        womanradioButton->setCheckable(true);
-        womanradioButton->setChecked(false);
-        womanradioButton->setAutoRepeat(false);
-
-        horizontalLayout_2->addWidget(womanradioButton);
-
-        returnButton = new QPushButton(regis);
-        returnButton->setObjectName(QStringLiteral("returnButton"));
-        returnButton->setGeometry(QRect(10, 20, 184, 52));
+        verticalLayoutWidget_3 = new QWidget(regis);
+        verticalLayoutWidget_3->setObjectName(QStringLiteral("verticalLayoutWidget_3"));
+        verticalLayoutWidget_3->setGeometry(QRect(630, 450, 186, 145));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget_3);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        loginButton = new QPushButton(verticalLayoutWidget_3);
+        loginButton->setObjectName(QStringLiteral("loginButton"));
         QFont font2;
         font2.setFamily(QStringLiteral("Agency FB"));
         font2.setPointSize(26);
         font2.setBold(true);
         font2.setUnderline(true);
         font2.setWeight(75);
-        returnButton->setFont(font2);
-        returnButton->setStyleSheet(QLatin1String("QPushButton{\n"
-"border: 0px;\n"
-"color:#FFFFFF;\n"
-"border-radius: 7px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"border: 0px;\n"
-"color:#aaaaaa;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"border:1px solid rgb(77, 176, 251);\n"
-"color:#aaaaaa;\n"
-"\n"
-"}"));
-        loginButton = new QPushButton(regis);
-        loginButton->setObjectName(QStringLiteral("loginButton"));
-        loginButton->setGeometry(QRect(70, 470, 184, 52));
         loginButton->setFont(font2);
         loginButton->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
@@ -289,9 +268,11 @@ public:
 "color:#aaaaaa;\n"
 "\n"
 "}"));
-        loadButton = new QPushButton(regis);
+
+        verticalLayout->addWidget(loginButton);
+
+        loadButton = new QPushButton(verticalLayoutWidget_3);
         loadButton->setObjectName(QStringLiteral("loadButton"));
-        loadButton->setGeometry(QRect(270, 470, 184, 52));
         loadButton->setFont(font2);
         loadButton->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
@@ -312,6 +293,61 @@ public:
 "\n"
 "}"));
 
+        verticalLayout->addWidget(loadButton);
+
+        returnButton = new QPushButton(verticalLayoutWidget_3);
+        returnButton->setObjectName(QStringLiteral("returnButton"));
+        returnButton->setFont(font2);
+        returnButton->setStyleSheet(QLatin1String("QPushButton{\n"
+"border: 0px;\n"
+"color:#FFFFFF;\n"
+"border-radius: 7px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border: 0px;\n"
+"color:#aaaaaa;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border:1px solid rgb(77, 176, 251);\n"
+"color:#aaaaaa;\n"
+"\n"
+"}"));
+
+        verticalLayout->addWidget(returnButton);
+
+        horizontalLayoutWidget = new QWidget(regis);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(330, 460, 239, 51));
+        horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout_2->setSpacing(7);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setSizeConstraint(QLayout::SetDefaultConstraint);
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        womanradioButton = new QRadioButton(horizontalLayoutWidget);
+        womanradioButton->setObjectName(QStringLiteral("womanradioButton"));
+        womanradioButton->setAutoFillBackground(true);
+
+        horizontalLayout_2->addWidget(womanradioButton);
+
+        manradioButton = new QRadioButton(horizontalLayoutWidget);
+        manradioButton->setObjectName(QStringLiteral("manradioButton"));
+        manradioButton->setAutoFillBackground(true);
+
+        horizontalLayout_2->addWidget(manradioButton);
+
+        label->raise();
+        checkButton->raise();
+        title->raise();
+        verticalLayoutWidget->raise();
+        verticalLayoutWidget_2->raise();
+        verticalLayoutWidget_3->raise();
+        horizontalLayoutWidget->raise();
+        loadButton->raise();
+
         retranslateUi(regis);
 
         QMetaObject::connectSlotsByName(regis);
@@ -319,20 +355,21 @@ public:
 
     void retranslateUi(QWidget *regis)
     {
-        regis->setWindowTitle(QApplication::translate("regis", "Form", Q_NULLPTR));
+        regis->setWindowTitle(QApplication::translate("regis", "Form", 0));
         label->setText(QString());
-        checkButton->setText(QApplication::translate("regis", "CHECK", Q_NULLPTR));
-        username->setText(QApplication::translate("regis", "USER NAME", Q_NULLPTR));
-        mailboxlabel->setText(QApplication::translate("regis", "E-MAIL", Q_NULLPTR));
-        tellabel->setText(QApplication::translate("regis", "PHONE", Q_NULLPTR));
-        rPasswordlabel->setText(QApplication::translate("regis", "CODE", Q_NULLPTR));
-        passwordlabel_2->setText(QApplication::translate("regis", "REPEAT CODE", Q_NULLPTR));
-        passwordlabel->setText(QApplication::translate("regis", "SEX", Q_NULLPTR));
-        manradioButton->setText(QApplication::translate("regis", "MALE", Q_NULLPTR));
-        womanradioButton->setText(QApplication::translate("regis", "FEMALE", Q_NULLPTR));
-        returnButton->setText(QApplication::translate("regis", "RETURN", Q_NULLPTR));
-        loginButton->setText(QApplication::translate("regis", "REGISTER", Q_NULLPTR));
-        loadButton->setText(QApplication::translate("regis", "LOGIN", Q_NULLPTR));
+        checkButton->setText(QApplication::translate("regis", "CHECK", 0));
+        title->setText(QApplication::translate("regis", "The Diary of Survival", 0));
+        username->setText(QApplication::translate("regis", "USER NAME", 0));
+        mailboxlabel->setText(QApplication::translate("regis", "E-MAIL", 0));
+        tellabel->setText(QApplication::translate("regis", "PHONE", 0));
+        rPasswordlabel->setText(QApplication::translate("regis", "CODE", 0));
+        passwordlabel_2->setText(QApplication::translate("regis", "REPEAT CODE", 0));
+        passwordlabel->setText(QApplication::translate("regis", "SEX", 0));
+        loginButton->setText(QApplication::translate("regis", "REGISTER", 0));
+        loadButton->setText(QApplication::translate("regis", "LOGIN", 0));
+        returnButton->setText(QApplication::translate("regis", "RETURN", 0));
+        manradioButton->setText(QApplication::translate("regis", "MALE", 0));
+        womanradioButton->setText(QApplication::translate("regis", "FEMALE", 0));
     } // retranslateUi
 
 };
