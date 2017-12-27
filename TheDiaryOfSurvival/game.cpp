@@ -171,7 +171,7 @@ void game::slot_timeLoop()
     {
         if(m_player.statusDe())
         {
-            if(denum<5000){
+            if(denum<50){
                 denum++;
                 qDebug()<<"无敌中";
             }
