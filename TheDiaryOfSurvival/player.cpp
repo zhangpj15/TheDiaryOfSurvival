@@ -17,6 +17,7 @@ void Player::initPlayer()
     m_size = 50;
 //    m_big=50;
     m_curgoods = 0;
+    defence=0;
 }
 
 void Player::setCurrentState(short state)
@@ -160,6 +161,14 @@ void Player::speedlow()
 {
     m_vel=m_vel>1?m_vel-1:1;
 }
+void Player::setDefence(bool a)
+{
+    defence=a;
+}
+bool Player::statusDe()
+{
+    return defence;
+}
 
 void Player::updateStates()
 {
@@ -234,12 +243,10 @@ void Player::updategoods()
 //        m_type=QString(":/res/img/plane/figure (%1).png").arg(test_figure);
         m_life=m_life+50>100?100:m_life+50;
         break;
-    case 7://更改人物？还是啥
+    case 7://无敌模式
         QSound::play(":/res/wav/props1.wav");
-//        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-//        test_bullet=qrand()%15+1;
-//        m_type_bullets=QString(":/res/img/bullets/bullets (%1).png").arg(test_bullet);
-
+        defence=1;
+        qDebug()<<"无敌模式";
         break;
 //    case _BACK_RIGHT:
 //        turnRight();
@@ -252,6 +259,7 @@ void Player::render(QPainter *painter)
 {
 //    setCurrentVolume(m_big);
     painter->save();
+
 //    int numb=m_life/25+1;
 //    for(int i=0;i<numb;i++)
 //        painter->drawPixmap(m_posi.x()+0.2*i*m_size,m_posi.y()-0.2*m_size,15,15,QPixmap(QString(m_type)));
@@ -262,6 +270,14 @@ void Player::render(QPainter *painter)
 
     painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(m_type));
     int numb=m_life/25+1;
+    if(defence){
+        QPainterPath path;
+        path.addEllipse(getCurrentPosi(),m_size*0.7,m_size*0.7);
+        path.addEllipse(getCurrentPosi(),m_size*0.5,m_size*0.5);
+        painter->setBrush(QPixmap(QString(":/res/config/ico/coldFireBar.png")));
+        path.setFillRule(Qt::OddEvenFill);//使用奇偶填充，刚好可以只显示圆环
+        painter->drawPath(path);
+    }
     for(int i=0;i<numb;i++)
         painter->drawPixmap(m_posi.x()+0.2*i*m_size,m_posi.y()-0.2*m_size,20,20,QPixmap(QString(m_type)));
     painter->restore();

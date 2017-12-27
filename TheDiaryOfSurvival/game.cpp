@@ -10,13 +10,13 @@ game::game(QWidget *parent) :
     ui(new Ui::game)
 {
     ui->setupUi(this);
-//    新建death类窗口，用于重启游戏
+    //    新建death类窗口，用于重启游戏
     m_death = new death(this);
     m_death->hide();
-//    新建end类窗口，用于主动结束游戏
+    //    新建end类窗口，用于主动结束游戏
     m_end = new end(this);
     m_end->hide();
-//    启动新窗口
+    //    启动新窗口
     connect(&m_timer,SIGNAL(timeout()),this,SLOT(slot_timeLoop()));      //信号槽，用于控制计时装置
     connect(ui->btnShowTab,SIGNAL(clicked()),this,SLOT(slot_btnShowTab()));
     connect(this,SIGNAL(sig_death()),this,SLOT(slot_gameOver()));       //death信号，则触发游戏结束
@@ -106,9 +106,9 @@ void game::startGameLoop()
     ui->pbarLife->setVisible(true);    //显示能量槽
     ui->pbarLife->setRange(0,m_player.getLife());    //显示能量槽
     ui->pbarLife->setValue(m_player.getLife());
-//    ui->pbarLife->setStyleSheet(
-//                "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
-//                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
+    //    ui->pbarLife->setStyleSheet(
+    //                "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
+    //                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
     //提示栏的动画效果
     static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupGoods,"pos");
     animate->setStartValue(QPoint(width()-160,140));
@@ -126,20 +126,20 @@ void game::slot_timeLoop()
 {
     m_time += m_timer.interval();
 
-//    qDebug()<<m_time;
+    //    qDebug()<<m_time;
     sectime=m_time/1000;
     if(m_time%zonerate==0)//控制缩圈
     {
-//        qDebug()<<"到点啦";
+        //        qDebug()<<"到点啦";
         zone=m_time/zonerate;
     }
     if(m_time%dayrate==0)//控制背景图片
     {
-        qDebug()<<"到点啦";
+        //        qDebug()<<"到点啦";
         //pix=QPixmap(":/res/img/background/playbg1.jpg");
-//        ui->lblback->setStyleSheet{
-//                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}"}
- //      mainwindow.setStyleSheet("#mainwindow{border-image:url(:/res/img/background/playbg1.jpg);}");
+        //        ui->lblback->setStyleSheet{
+        //                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}"}
+        //      mainwindow.setStyleSheet("#mainwindow{border-image:url(:/res/img/background/playbg1.jpg);}");
         //ui->lblback->show();
         setAutoFillBackground(true);  //这句一定不能少，否则图片显示不出来。
         QPalette palette;
@@ -157,32 +157,46 @@ void game::slot_timeLoop()
         ui->lblLife->setText(QString::number(m_player.getLife(),10));
         ui->lblVolume->setText(QString::number(m_player.getSize()));
         ui->lblSpeed->setText(QString::number(m_player.getSpeed()));
-//        ui->lblVolume;
+        //        ui->lblVolume;
     }
     m_gmanager.updategoods(m_player.getCurrentPosi(),m_player.getSize());
     m_pmanager.updateAttackEffect(m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir());// 攻击模式刷新
 
     bool attacked = (m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize())||m_bmanager.updatebarriers(m_player.getCurrentPosi(),m_player.getSize())||m_bomanager.updateBoss(m_player.getCurrentPosi(),m_player.getSize()));
     bool hurt= (m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()-m_player.getSize()*0.5,m_player.getCurrentPosi().y()-m_player.getSize()*0.5) && m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()-m_player.getSize()*0.5,m_player.getCurrentPosi().y()+m_player.getSize()*0.5)&&m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()+m_player.getSize()*0.5,m_player.getCurrentPosi().y()-m_player.getSize()*0.5)&&m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()+m_player.getSize()*0.5,m_player.getCurrentPosi().y()+m_player.getSize()*0.5));
-//    bool hurt=m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x());
+    //    bool hurt=m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x());
     bool isGameOver=false;
+    static int denum=0;
     if(!hurt||attacked)
     {
-        static int countblood=0;
-        if(countblood>bloodrate)
+        if(m_player.statusDe())
         {
-        //QSound::play(":/res/wav/hurt.wav");//受到伤害的声音
-        countblood=0;
-        m_player.setCurrentLife();
-        ui->lblLife->setText(QString::number(m_player.getLife()));
-        ui->pbarLife->setRange(0,100-1);
-        ui->pbarLife->setValue(m_player.getLife());
-//        ui->pbarLife->setStyleSheet(
-//                    "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
-//                    "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
-        if(m_player.getLife()==0)isGameOver=true;
+            if(denum<5000){
+                denum++;
+                qDebug()<<"无敌中";
+            }
+            else{
+                denum=0;
+                m_player.setDefence(0);
+            }
         }
-        else countblood++;
+        else{
+            static int countblood=0;
+            if(countblood>bloodrate)
+            {
+                //QSound::play(":/res/wav/hurt.wav");//受到伤害的声音
+                countblood=0;
+                m_player.setCurrentLife();
+                ui->lblLife->setText(QString::number(m_player.getLife()));
+                ui->pbarLife->setRange(0,100-1);
+                ui->pbarLife->setValue(m_player.getLife());
+                //        ui->pbarLife->setStyleSheet(
+                //                    "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
+                //                    "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
+                if(m_player.getLife()==0)isGameOver=true;
+            }
+            else countblood++;
+        }
     }
     // 判断一下游戏是否结束,被敌人或者障碍物杀死
     if(isGameOver)
@@ -193,11 +207,11 @@ void game::slot_timeLoop()
     }
     //生成障碍物
     if(m_time%bornrate_barriers==0){
-    m_bmanager.bornNew(m_player.getCurrentPosi());
+        m_bmanager.bornNew(m_player.getCurrentPosi());
     }
     //生成道具
     if(m_time%bornrate_goods==0){
-    m_gmanager.bornNew(m_player.getCurrentPosi());
+        m_gmanager.bornNew(m_player.getCurrentPosi());
     }
     //玩家没死，该敌人死了
     int num_player=m_pmanager.checkKnockWithgoods(m_gmanager.getgoodsList(),m_player.getCurrentPosi(),m_player.getSize());
@@ -211,7 +225,7 @@ void game::slot_timeLoop()
     ui->lblskill3->setText(QString::number(m_pmanager.getSkill_3()));
     //敌人死一圈，该生成新的了
     if(m_time%bornrate_enermy==0){
-    m_emanager.bornNew(m_player.getCurrentPosi());
+        m_emanager.bornNew(m_player.getCurrentPosi());
     }
     if((m_time+tiprate)%bornrate_boss==0){
         ui->groupBoss->setVisible(true);
@@ -322,10 +336,10 @@ void game::keyPressEvent(QKeyEvent *event)
         ui->lblAttackMode->setText(m_pmanager.getAttackMode());
         m_pmanager.setAttacked(true);
         break;
-//    case Qt::Key_K:
-//        m_pmanager.changeAttackMode();
-//        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
-//        break;
+        //    case Qt::Key_K:
+        //        m_pmanager.changeAttackMode();
+        //        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
+        //        break;
     case Qt::Key_U:
         if(m_pmanager.getSkill_1())
         {
@@ -360,33 +374,33 @@ void game::keyPressEvent(QKeyEvent *event)
             m_timer.start();
         break;
     case Qt::Key_Q:
-//        m_timer.stop();
-//        m_end->show();
+        //        m_timer.stop();
+        //        m_end->show();
         emit sig_quitgame();
         break;
     }
 }
 void game::mousePressEvent(QMouseEvent *e){
 
-//    //---点击左键，开始攻击
-//    if (Qt ::LeftButton == e->button())
-//    {
-//        m_pmanager.setAttacked(true);
-//    }
-//    //---点击右键，切换攻击模式
-//    if (Qt ::RightButton == e->button())
-//    {
-//        m_pmanager.changeAttackMode();
-//        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
-//    }
+    //    //---点击左键，开始攻击
+    //    if (Qt ::LeftButton == e->button())
+    //    {
+    //        m_pmanager.setAttacked(true);
+    //    }
+    //    //---点击右键，切换攻击模式
+    //    if (Qt ::RightButton == e->button())
+    //    {
+    //        m_pmanager.changeAttackMode();
+    //        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
+    //    }
 }
 void game::mouseReleaseEvent(QMouseEvent *e){
 
-//    //---释放左键，停止攻击
-//    if (Qt ::LeftButton == e->button())
-//    {
-//        m_pmanager.setAttacked(false);
-//    }
+    //    //---释放左键，停止攻击
+    //    if (Qt ::LeftButton == e->button())
+    //    {
+    //        m_pmanager.setAttacked(false);
+    //    }
 }
 
 void game::keyReleaseEvent(QKeyEvent *event)
