@@ -21,6 +21,10 @@ game::game(QWidget *parent) :
     connect(ui->btnShowTab,SIGNAL(clicked()),this,SLOT(slot_btnShowTab()));
     connect(this,SIGNAL(sig_death()),this,SLOT(slot_gameOver()));       //death信号，则触发游戏结束
 
+    connect(ui->lblskill1,SIGNAL(clicked),this,SLOT(slot_learnSkill1()));
+    connect(ui->lblskill2,SIGNAL(clicked),this,SLOT(slot_learnSkill2()));
+    connect(ui->lblskill3,SIGNAL(clicked),this,SLOT(slot_learnSkill3()));
+
     connect(this,SIGNAL(sig_quitgame()),this,SLOT(slot_quitgame()));
     connect(m_death,SIGNAL(sig_restart()),this,SLOT(slot_restart()));   //restart信号，则触发游戏重启
 
@@ -35,7 +39,7 @@ void game::resizeEvent(QResizeEvent *event)
     m_player.setActiveRect(0,60,width(),height());
     m_pmanager.setActiveRect(width(),height());
     m_bmanager.setActiveRect(width(),height());
-    m_gmanager.setActiveRect(width(),height());
+    m_gmanager.setActiveRect(width(),height()-130);
     m_bomanager.setActiveRect(width(),height());
 }
 
@@ -51,8 +55,9 @@ void game::startGameLoop()
     bornrate_goods=2000;
     bornrate_barriers=3000;
     tiprate=5000;
-    zonerate=10000;
+    zonerate=2000;
     dayrate=3000;
+    space=2;
 
 
     bgsound->play();//播放
@@ -66,7 +71,7 @@ void game::startGameLoop()
     m_timer.start();                      //启动计时器
 
     m_player.setCurrentPosi(width()/2,height()/2);
-    m_player.setActiveRect(0,60,width(),height()-60);
+    m_player.setActiveRect(0,60,width(),height()-130);
 
     m_emanager.initEmanager();
     m_pmanager.initPmanager();
@@ -77,13 +82,17 @@ void game::startGameLoop()
     m_emanager.setActiveRect(width(),height());
     m_pmanager.setActiveRect(width(),height());
     m_bmanager.setActiveRect(width(),height());
-    m_gmanager.setActiveRect(width(),height());
+    m_gmanager.setActiveRect(width(),height()-70);
     m_bomanager.setActiveRect(width(),height());
 
     ui->lblAttackMode->setText(m_pmanager.getAttackMode());
     ui->lblLife->setText(QString::number(m_player.getLife(),10));
     ui->lblVolume->setText(QString::number(m_player.getSize()));
     ui->lblSpeed->setText(QString::number(m_player.getSpeed()));
+    ui->coins->setText(QString::number(m_pmanager.getMoney()));
+    ui->lblskill1->setText(QString::number(m_pmanager.getSkill_1()));
+    ui->lblskill2->setText(QString::number(m_pmanager.getSkill_2()));
+    ui->lblskill3->setText(QString::number(m_pmanager.getSkill_3()));
 
     ui->pbarLife->setVisible(true);    //显示能量槽
     ui->pbarLife->setRange(0,m_player.getLife());    //显示能量槽
@@ -116,7 +125,7 @@ void game::slot_timeLoop()
 //        qDebug()<<"到点啦";
         zone=m_time/zonerate;
     }
-    if(m_time%dayrate==0)//控制缩圈
+    if(m_time%dayrate==0)//控制背景图片
     {
         qDebug()<<"到点啦";
         //pix=QPixmap(":/res/img/background/playbg1.jpg");
@@ -183,7 +192,10 @@ void game::slot_timeLoop()
     m_player.setCurrentgoods(num_player);
     m_pmanager.checkKnockWithEnemys(m_emanager.getEnemysList(),m_player.getCurrentPosi(),m_player.getDir());
     m_pmanager.checkKnockWithBoss(m_bomanager.getBossList(),m_player.getCurrentPosi(),m_player.getDir());
-
+    ui->coins->setText(QString::number(m_pmanager.getMoney()));
+    ui->lblskill1->setText(QString::number(m_pmanager.getSkill_1()));
+    ui->lblskill2->setText(QString::number(m_pmanager.getSkill_2()));
+    ui->lblskill3->setText(QString::number(m_pmanager.getSkill_3()));
     //敌人死一圈，该生成新的了
     if(m_time%bornrate_enermy==0){
     m_emanager.bornNew(m_player.getCurrentPosi());
@@ -491,6 +503,24 @@ void game::slot_no()
     m_timer.start();
 }
 void game::slot_yes()
+{
+    m_end->hide();
+    emit sig_closeGame();
+}
+
+void game::slot_learnSkill1()
+{
+    m_end->hide();
+    emit sig_closeGame();
+}
+
+void game::slot_learnSkill2()
+{
+    m_end->hide();
+    emit sig_closeGame();
+}
+
+void game::slot_learnSkill3()
 {
     m_end->hide();
     emit sig_closeGame();

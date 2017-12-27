@@ -454,4 +454,8 @@ void Pmanager::renderBullets(QPainter *painter,QString str)
         m_bullets[i].renderBullet(painter);
     }
 }
-
+void Pmanager::slot_learnSkill1()
+{
+    m_money-=15;
+    m_skill_1++;
+}

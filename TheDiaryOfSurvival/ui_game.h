@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'game.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.3
+** Created by: Qt User Interface Compiler version 5.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -83,9 +83,9 @@ public:
     QLabel *skill1num_2;
     QLabel *skill2num_2;
     QLabel *skill3num_2;
-    QPushButton *skill1;
-    QPushButton *skill1_2;
-    QPushButton *skill1_3;
+    QPushButton *lblskill1;
+    QPushButton *lblskill2;
+    QPushButton *lblskill3;
     QLabel *label_3;
     QLabel *groupBoss;
     QFrame *lblback;
@@ -621,15 +621,15 @@ public:
         skill3num_2->setTextFormat(Qt::AutoText);
         skill3num_2->setScaledContents(false);
         skill3num_2->setOpenExternalLinks(false);
-        skill1 = new QPushButton(groupSkill);
-        skill1->setObjectName(QStringLiteral("skill1"));
-        skill1->setGeometry(QRect(500, 20, 41, 41));
-        skill1_2 = new QPushButton(groupSkill);
-        skill1_2->setObjectName(QStringLiteral("skill1_2"));
-        skill1_2->setGeometry(QRect(570, 20, 41, 41));
-        skill1_3 = new QPushButton(groupSkill);
-        skill1_3->setObjectName(QStringLiteral("skill1_3"));
-        skill1_3->setGeometry(QRect(640, 20, 41, 41));
+        lblskill1 = new QPushButton(groupSkill);
+        lblskill1->setObjectName(QStringLiteral("lblskill1"));
+        lblskill1->setGeometry(QRect(500, 20, 41, 41));
+        lblskill2 = new QPushButton(groupSkill);
+        lblskill2->setObjectName(QStringLiteral("lblskill2"));
+        lblskill2->setGeometry(QRect(570, 20, 41, 41));
+        lblskill3 = new QPushButton(groupSkill);
+        lblskill3->setObjectName(QStringLiteral("lblskill3"));
+        lblskill3->setGeometry(QRect(640, 20, 41, 41));
         label_3 = new QLabel(groupSkill);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(700, 20, 30, 30));
@@ -669,52 +669,52 @@ public:
 
     void retranslateUi(QWidget *game)
     {
-        game->setWindowTitle(QApplication::translate("game", "Form", Q_NULLPTR));
-        lblTime->setText(QApplication::translate("game", "0", Q_NULLPTR));
-        lblAttackMode->setText(QApplication::translate("game", "Normal Bullet", Q_NULLPTR));
-        label->setText(QApplication::translate("game", "ATTACK MODE", Q_NULLPTR));
+        game->setWindowTitle(QApplication::translate("game", "Form", 0));
+        lblTime->setText(QApplication::translate("game", "0", 0));
+        lblAttackMode->setText(QApplication::translate("game", "Normal Bullet", 0));
+        label->setText(QApplication::translate("game", "ATTACK MODE", 0));
         groupGoods->setTitle(QString());
         btnShowTab->setText(QString());
         prop->setText(QString());
-        proptext->setText(QApplication::translate("game", "SPEED UP", Q_NULLPTR));
+        proptext->setText(QApplication::translate("game", "SPEED UP", 0));
         prop_2->setText(QString());
-        proptext_2->setText(QApplication::translate("game", "SPEED LOW", Q_NULLPTR));
+        proptext_2->setText(QApplication::translate("game", "SPEED LOW", 0));
         prop_3->setText(QString());
-        proptext_3->setText(QApplication::translate("game", "SIZE LARGER", Q_NULLPTR));
+        proptext_3->setText(QApplication::translate("game", "SIZE LARGER", 0));
         prop_4->setText(QString());
-        proptext_4->setText(QApplication::translate("game", "SIZE SMALLER", Q_NULLPTR));
+        proptext_4->setText(QApplication::translate("game", "SIZE SMALLER", 0));
         prop_5->setText(QString());
-        proptext_5->setText(QApplication::translate("game", "BLOOD BAG", Q_NULLPTR));
+        proptext_5->setText(QApplication::translate("game", "BLOOD BAG", 0));
         prop_6->setText(QString());
-        proptext_6->setText(QApplication::translate("game", "BLOOD BAG", Q_NULLPTR));
+        proptext_6->setText(QApplication::translate("game", "BLOOD BAG", 0));
         prop_7->setText(QString());
-        proptext_7->setText(QApplication::translate("game", "BLOOD BAG", Q_NULLPTR));
-        label_2->setText(QApplication::translate("game", "PROPS INFO", Q_NULLPTR));
+        proptext_7->setText(QApplication::translate("game", "BLOOD BAG", 0));
+        label_2->setText(QApplication::translate("game", "PROPS INFO", 0));
         bg->setText(QString());
-        lblGoods->setText(QApplication::translate("game", "None", Q_NULLPTR));
-        propseffect->setText(QApplication::translate("game", "PROPS EFFECT", Q_NULLPTR));
+        lblGoods->setText(QApplication::translate("game", "None", 0));
+        propseffect->setText(QApplication::translate("game", "PROPS EFFECT", 0));
         groupSkill->setTitle(QString());
-        skill1num->setText(QApplication::translate("game", "15", Q_NULLPTR));
-        skill2num->setText(QApplication::translate("game", "15", Q_NULLPTR));
-        skill3num->setText(QApplication::translate("game", "15", Q_NULLPTR));
-        coins->setText(QApplication::translate("game", "0", Q_NULLPTR));
-        textskill_2->setText(QApplication::translate("game", "SPEED", Q_NULLPTR));
-        textskill_3->setText(QApplication::translate("game", "SIZE", Q_NULLPTR));
-        textskill_4->setText(QApplication::translate("game", "LIFE", Q_NULLPTR));
-        lblSpeed->setText(QApplication::translate("game", "3", Q_NULLPTR));
-        lblVolume->setText(QApplication::translate("game", "50", Q_NULLPTR));
-        lblLife->setText(QApplication::translate("game", "100", Q_NULLPTR));
-        lblPoint->setText(QApplication::translate("game", "0", Q_NULLPTR));
-        textskill_5->setText(QApplication::translate("game", "KILL", Q_NULLPTR));
+        skill1num->setText(QApplication::translate("game", "15", 0));
+        skill2num->setText(QApplication::translate("game", "15", 0));
+        skill3num->setText(QApplication::translate("game", "15", 0));
+        coins->setText(QApplication::translate("game", "0", 0));
+        textskill_2->setText(QApplication::translate("game", "SPEED", 0));
+        textskill_3->setText(QApplication::translate("game", "SIZE", 0));
+        textskill_4->setText(QApplication::translate("game", "LIFE", 0));
+        lblSpeed->setText(QApplication::translate("game", "3", 0));
+        lblVolume->setText(QApplication::translate("game", "50", 0));
+        lblLife->setText(QApplication::translate("game", "100", 0));
+        lblPoint->setText(QApplication::translate("game", "0", 0));
+        textskill_5->setText(QApplication::translate("game", "KILL", 0));
         playerpic->setText(QString());
-        skill1num_2->setText(QApplication::translate("game", "U", Q_NULLPTR));
-        skill2num_2->setText(QApplication::translate("game", "I", Q_NULLPTR));
-        skill3num_2->setText(QApplication::translate("game", "O", Q_NULLPTR));
-        skill1->setText(QApplication::translate("game", "PushButton", Q_NULLPTR));
-        skill1_2->setText(QApplication::translate("game", "PushButton", Q_NULLPTR));
-        skill1_3->setText(QApplication::translate("game", "PushButton", Q_NULLPTR));
+        skill1num_2->setText(QApplication::translate("game", "U", 0));
+        skill2num_2->setText(QApplication::translate("game", "I", 0));
+        skill3num_2->setText(QApplication::translate("game", "O", 0));
+        lblskill1->setText(QApplication::translate("game", "PushButton", 0));
+        lblskill2->setText(QApplication::translate("game", "PushButton", 0));
+        lblskill3->setText(QApplication::translate("game", "PushButton", 0));
         label_3->setText(QString());
-        groupBoss->setText(QApplication::translate("game", "BOSS IS COMING!", Q_NULLPTR));
+        groupBoss->setText(QApplication::translate("game", "BOSS IS COMING!", 0));
     } // retranslateUi
 
 };
