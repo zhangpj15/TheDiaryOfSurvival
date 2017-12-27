@@ -1,6 +1,8 @@
 #include "pmanager.h"
 #include "qDebug"
 #include "ui_game.h"
+#include "QSound"
+
 Pmanager::Pmanager()
 {
     m_curAttackType = _FIRE;
@@ -73,13 +75,13 @@ QString Pmanager::getgoodsMode(int i)
     case 1:
         return "Speed up";
     case 2:
-        return "large";
+        return "Size Larger";
     case 3:
         return "Speed low";
     case 4:
-        return "small";
+        return "Sieze Smaller";
     case 5:
-        return "changeType";
+        return "Blood bag";
     case 6:
         return "changeType";
     case 7:
@@ -141,6 +143,7 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
                 enemys[k].setIsAlive(false);
                 m_bullets.removeAt(i--);
                 m_killNum++;   // 击杀一个敌人
+                QSound::play(":/res/wav/beat3.wav");//击杀音效
                 break;
             }
         }

@@ -50,7 +50,7 @@
     <enum>Qt::AutoText</enum>
    </property>
    <property name="pixmap">
-    <pixmap resource="res.qrc">:/res/img/background/main8.jpg</pixmap>
+    <pixmap resource="res.qrc">:/res/img/background/main1.jpg</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -62,24 +62,27 @@
   <widget class="QPushButton" name="btnEnter">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>310</y>
-     <width>251</width>
-     <height>71</height>
+     <x>550</x>
+     <y>140</y>
+     <width>172</width>
+     <height>50</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Agency FB</family>
-     <pointsize>30</pointsize>
+     <pointsize>24</pointsize>
      <weight>75</weight>
-     <italic>true</italic>
+     <italic>false</italic>
      <bold>true</bold>
      <underline>true</underline>
     </font>
    </property>
    <property name="cursor">
     <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::DefaultContextMenu</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
@@ -108,18 +111,19 @@ color:#aaaaaa;
   <widget class="QPushButton" name="btnClose">
    <property name="geometry">
     <rect>
-     <x>660</x>
-     <y>10</y>
-     <width>131</width>
-     <height>49</height>
+     <x>550</x>
+     <y>200</y>
+     <width>151</width>
+     <height>50</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Agency FB</family>
-     <pointsize>26</pointsize>
+     <pointsize>24</pointsize>
      <weight>75</weight>
      <bold>true</bold>
+     <underline>true</underline>
     </font>
    </property>
    <property name="styleSheet">
@@ -143,24 +147,25 @@ color:#aaaaaa;
 }</string>
    </property>
    <property name="text">
-    <string>Quit</string>
+    <string>QUIT GAME</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btnInfo">
    <property name="geometry">
     <rect>
-     <x>680</x>
-     <y>530</y>
+     <x>550</x>
+     <y>320</y>
      <width>101</width>
-     <height>52</height>
+     <height>50</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Agency FB</family>
-     <pointsize>26</pointsize>
+     <pointsize>24</pointsize>
      <weight>75</weight>
      <bold>true</bold>
+     <underline>true</underline>
     </font>
    </property>
    <property name="styleSheet">
@@ -184,42 +189,43 @@ color:#aaaaaa;
 }</string>
    </property>
    <property name="text">
-    <string>About</string>
+    <string>ABOUT</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btnLogin">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>400</y>
-     <width>124</width>
+     <x>550</x>
+     <y>430</y>
+     <width>81</width>
      <height>52</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
-     <width>124</width>
+     <width>0</width>
      <height>0</height>
     </size>
    </property>
    <property name="font">
     <font>
      <family>Agency FB</family>
-     <pointsize>26</pointsize>
+     <pointsize>24</pointsize>
      <weight>75</weight>
      <bold>true</bold>
+     <underline>false</underline>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
-border: 0px;
-color:#FFFFFF;
-border-radius: 7px;
+border: 1px;
+color:#5A5A5A;
+border-radius: 5px;
 
 }
 
 QPushButton:hover{
-border: 0px;
+border: 1px;
 color:#aaaaaa;
 
 }
@@ -237,8 +243,8 @@ color:#aaaaaa;
   <widget class="QPushButton" name="btnRegis">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>400</y>
+     <x>550</x>
+     <y>490</y>
      <width>131</width>
      <height>52</height>
     </rect>
@@ -260,6 +266,55 @@ color:#aaaaaa;
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
+border: 1px;
+color:#5A5A5A;
+border-radius: 5px;
+
+}
+
+QPushButton:hover{
+border: 1px;
+color:#aaaaaa;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+   </property>
+   <property name="text">
+    <string>Register</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnRanking">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>260</y>
+     <width>131</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>24</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
 border: 0px;
 color:#FFFFFF;
 border-radius: 7px;
@@ -279,7 +334,7 @@ color:#aaaaaa;
 }</string>
    </property>
    <property name="text">
-    <string>Register</string>
+    <string>RANKING</string>
    </property>
   </widget>
  </widget>

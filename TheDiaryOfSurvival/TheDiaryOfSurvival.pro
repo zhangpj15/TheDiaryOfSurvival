@@ -1,4 +1,3 @@
-
 #-------------------------------------------------
 #
 # Project created by QtCreator 2017-11-28T20:36:10
@@ -6,7 +5,9 @@
 #-------------------------------------------------
 QT       += sql
 QT       += core gui
+QT       += multimedia
 
+CONFIG   +=resources_big
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = TheDiaryOfSurvival
@@ -31,7 +32,8 @@ SOURCES += main.cpp\
     barriers.cpp \
     bmanager.cpp \
     loadwin.cpp \
-    rank.cpp
+    boss.cpp \
+    bomanager.cpp
 
 HEADERS  += mainwindow.h \
     info.h \
@@ -50,7 +52,8 @@ HEADERS  += mainwindow.h \
     barriers.h \
     bmanager.h \
     loadwin.h \
-    rank.h
+    boss.h \
+    bomanager.h
 
 FORMS    += mainwindow.ui \
     info.ui \
@@ -59,9 +62,7 @@ FORMS    += mainwindow.ui \
     start.ui \
     death.ui \
     end.ui \
-    loadwin.ui \
-    rank.ui
+    loadwin.ui
 
 RESOURCES += \
     res.qrc
-

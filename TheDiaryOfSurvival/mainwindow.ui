@@ -57,7 +57,7 @@ url(:/res/img/background/bg2.jpg)
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="res.qrc">:/res/img/background/playbg3.jpg</pixmap>
+      <pixmap resource="res.qrc">:/res/img/background/playbg1.jpg</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>

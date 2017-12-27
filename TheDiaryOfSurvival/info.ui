@@ -6,97 +6,46 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>500</width>
+    <height>360</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label_13">
+  <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>140</y>
-     <width>31</width>
-     <height>21</height>
+     <x>60</x>
+     <y>110</y>
+     <width>80</width>
+     <height>40</height>
     </rect>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>0</red>
-         <green>0</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>0</red>
-         <green>0</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>120</red>
-         <green>120</green>
-         <blue>120</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
    </property>
    <property name="font">
     <font>
-     <family>微软雅黑</family>
-     <pointsize>10</pointsize>
+     <family>Agency FB</family>
+     <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
-   <property name="text">
-    <string>空格</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>97</y>
-     <width>51</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>微软雅黑</family>
-     <pointsize>10</pointsize>
-    </font>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+color:#5a5a5a;
+}</string>
    </property>
    <property name="text">
-    <string>移动：</string>
+    <string>Moving:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>97</y>
+     <x>200</x>
+     <y>160</y>
      <width>31</width>
-     <height>21</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="palette">
@@ -138,8 +87,8 @@
    </property>
    <property name="font">
     <font>
-     <family>微软雅黑</family>
-     <pointsize>10</pointsize>
+     <family>Agency FB</family>
+     <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -151,10 +100,10 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>97</y>
-     <width>51</width>
-     <height>16</height>
+     <x>140</x>
+     <y>110</y>
+     <width>81</width>
+     <height>40</height>
     </rect>
    </property>
    <property name="palette">
@@ -196,63 +145,44 @@
    </property>
    <property name="font">
     <font>
-     <family>微软雅黑</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>WADS</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_12">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>118</y>
-     <width>81</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>微软雅黑</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>退出游戏：</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>24</y>
-     <width>231</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>微软雅黑</family>
+     <family>Agency FB</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
    <property name="text">
-    <string>A Group</string>
+    <string>W-S-A-D</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>20</y>
+     <width>271</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Book Antiqua</family>
+     <pointsize>24</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>BRIEF GUIDE</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>118</y>
-     <width>31</width>
-     <height>21</height>
+     <x>370</x>
+     <y>110</y>
+     <width>91</width>
+     <height>40</height>
     </rect>
    </property>
    <property name="palette">
@@ -294,72 +224,14 @@
    </property>
    <property name="font">
     <font>
-     <family>微软雅黑</family>
-     <pointsize>10</pointsize>
+     <family>Agency FB</family>
+     <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
    <property name="text">
-    <string>K</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_11">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>118</y>
-     <width>31</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>0</red>
-         <green>0</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>0</red>
-         <green>0</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>120</red>
-         <green>120</green>
-         <blue>120</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <property name="font">
-    <font>
-     <family>微软雅黑</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Q</string>
+    <string>U-I-O</string>
    </property>
   </widget>
   <widget class="QLabel" name="infoBackground">
@@ -367,16 +239,16 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
-     <height>300</height>
+     <width>500</width>
+     <height>360</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">QLabel
 {
 background-color:rgb(250,250,250);
-border: 2px solid #0F0F0F;
-border-radius: 9px;
+border:1px #2a2a2a;
+border-radius: 2px;
 }</string>
    </property>
    <property name="frameShadow">
@@ -386,68 +258,63 @@ border-radius: 9px;
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_14">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>140</y>
-     <width>71</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>微软雅黑</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>暂停/继续：</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>118</y>
+     <x>270</x>
+     <y>110</y>
      <width>91</width>
-     <height>21</height>
+     <height>40</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>微软雅黑</family>
-     <pointsize>10</pointsize>
+     <family>Agency FB</family>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+color:#5a5a5a;
+}</string>
+   </property>
    <property name="text">
-    <string>切换攻击模式：</string>
+    <string>Skill Mode:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>97</y>
-     <width>51</width>
-     <height>21</height>
+     <x>60</x>
+     <y>160</y>
+     <width>151</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>微软雅黑</family>
-     <pointsize>10</pointsize>
+     <family>Agency FB</family>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+color:#5a5a5a;
+}</string>
+   </property>
    <property name="text">
-    <string>攻击：</string>
+    <string>Normal Attack：</string>
    </property>
   </widget>
   <widget class="QPushButton" name="infoClose">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>240</y>
+     <x>110</x>
+     <y>280</y>
      <width>281</width>
      <height>42</height>
     </rect>
@@ -485,19 +352,187 @@ color:#aaaaaa;
     <string>CLOSE</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>160</y>
+     <width>91</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+color:#5a5a5a;
+}</string>
+   </property>
+   <property name="text">
+    <string>Pause:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>160</y>
+     <width>91</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>120</red>
+         <green>120</green>
+         <blue>120</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>space</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>210</y>
+     <width>91</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+color:#5a5a5a;
+}</string>
+   </property>
+   <property name="text">
+    <string>Quit:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>210</y>
+     <width>91</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>120</red>
+         <green>120</green>
+         <blue>120</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Q</string>
+   </property>
+  </widget>
   <zorder>infoBackground</zorder>
-  <zorder>label_13</zorder>
   <zorder>label_7</zorder>
   <zorder>label_6</zorder>
   <zorder>label_5</zorder>
-  <zorder>label_12</zorder>
   <zorder>label_3</zorder>
   <zorder>label_9</zorder>
-  <zorder>label_11</zorder>
-  <zorder>label_14</zorder>
   <zorder>label_10</zorder>
   <zorder>label_8</zorder>
   <zorder>infoClose</zorder>
+  <zorder>label_11</zorder>
+  <zorder>label_12</zorder>
+  <zorder>label_13</zorder>
+  <zorder>label_14</zorder>
  </widget>
  <resources/>
  <connections/>

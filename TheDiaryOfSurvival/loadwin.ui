@@ -16,8 +16,8 @@
   <widget class="QLabel" name="pwlabel">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>260</y>
+     <x>200</x>
+     <y>365</y>
      <width>71</width>
      <height>51</height>
     </rect>
@@ -44,8 +44,8 @@ border-radius: 7px;
   <widget class="QLabel" name="usernamelabel">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>180</y>
+     <x>200</x>
+     <y>305</y>
      <width>121</width>
      <height>51</height>
     </rect>
@@ -72,8 +72,8 @@ border-radius: 7px;
   <widget class="QLineEdit" name="userline">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>185</y>
+     <x>340</x>
+     <y>310</y>
      <width>239</width>
      <height>42</height>
     </rect>
@@ -88,8 +88,8 @@ border-radius: 7px;
   <widget class="QLineEdit" name="pwline">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>265</y>
+     <x>340</x>
+     <y>370</y>
      <width>239</width>
      <height>42</height>
     </rect>
@@ -104,8 +104,8 @@ border-radius: 7px;
   <widget class="QPushButton" name="loadButton">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>350</y>
+     <x>330</x>
+     <y>450</y>
      <width>121</width>
      <height>51</height>
     </rect>
@@ -114,7 +114,9 @@ border-radius: 7px;
     <font>
      <family>Agency FB</family>
      <pointsize>26</pointsize>
-     <italic>true</italic>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
      <underline>true</underline>
     </font>
    </property>
@@ -145,8 +147,8 @@ color:#aaaaaa;
   <widget class="QPushButton" name="exitButton">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>350</y>
+     <x>470</x>
+     <y>450</y>
      <width>101</width>
      <height>51</height>
     </rect>
@@ -155,7 +157,9 @@ color:#aaaaaa;
     <font>
      <family>Agency FB</family>
      <pointsize>26</pointsize>
-     <italic>true</italic>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
      <underline>true</underline>
     </font>
    </property>
@@ -196,7 +200,7 @@ color:#aaaaaa;
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="res.qrc">:/res/img/background/main5.jpg</pixmap>
+    <pixmap resource="res.qrc">:/res/img/background/main8.jpg</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>

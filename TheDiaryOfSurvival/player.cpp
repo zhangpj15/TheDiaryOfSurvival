@@ -1,5 +1,7 @@
 #include "player.h"
 #include "QDebug"
+#include "QSound"
+
 Player::Player()
 {
 }
@@ -198,31 +200,42 @@ void Player::updategoods()
 {
     int test_figure=1;
     int test_bullet=1;
+    //QSound sound(":/res/wav/props1.wav");
     switch(m_curgoods)
     {
     case 1:
         speedup();
+        QSound::play(":/res/wav/props1.wav");
         break;
     case 2:
+
         large();
+        QSound::play(":/res/wav/props1.wav");
         break;
     case 3:
+
         speedlow();
+        QSound::play(":/res/wav/props1.wav");
         break;
     case 4:
+
         small();
+        QSound::play(":/res/wav/props1.wav");
         break;
     case 5://加血10点
         m_life=m_life+10>100?100:m_life+10;
 
+        QSound::play(":/res/wav/props1.wav");
         break;
     case 6://加血50点，可更改
+        QSound::play(":/res/wav/props1.wav");
 //        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
 //        test_figure=qrand()%15+1;
 //        m_type=QString(":/res/img/plane/figure (%1).png").arg(test_figure);
         m_life=m_life+50>100?100:m_life+50;
         break;
     case 7://更改人物？还是啥
+        QSound::play(":/res/wav/props1.wav");
 //        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
 //        test_bullet=qrand()%15+1;
 //        m_type_bullets=QString(":/res/img/bullets/bullets (%1).png").arg(test_bullet);

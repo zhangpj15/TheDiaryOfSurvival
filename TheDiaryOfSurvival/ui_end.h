@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'end.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.9.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -34,7 +34,7 @@ public:
         end->resize(400, 300);
         btnYes = new QPushButton(end);
         btnYes->setObjectName(QStringLiteral("btnYes"));
-        btnYes->setGeometry(QRect(20, 150, 158, 42));
+        btnYes->setGeometry(QRect(30, 180, 158, 42));
         QFont font;
         font.setFamily(QStringLiteral("Agency FB"));
         font.setPointSize(26);
@@ -44,7 +44,7 @@ public:
         btnYes->setFont(font);
         btnYes->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
-"color:#FFFFFF;\n"
+"color:#3A3A3A;\n"
 "border-radius: 7px;\n"
 "\n"
 "}\n"
@@ -62,11 +62,11 @@ public:
 "}"));
         btnNo = new QPushButton(end);
         btnNo->setObjectName(QStringLiteral("btnNo"));
-        btnNo->setGeometry(QRect(200, 150, 158, 42));
+        btnNo->setGeometry(QRect(210, 180, 158, 42));
         btnNo->setFont(font);
         btnNo->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
-"color:#FFFFFF;\n"
+"color:#3A3A3A;\n"
 "border-radius: 7px;\n"
 "\n"
 "}\n"
@@ -84,9 +84,9 @@ public:
 "}"));
         lblPoint = new QLabel(end);
         lblPoint->setObjectName(QStringLiteral("lblPoint"));
-        lblPoint->setGeometry(QRect(50, 60, 321, 71));
+        lblPoint->setGeometry(QRect(20, 60, 361, 71));
         QPalette palette;
-        QBrush brush(QColor(255, 255, 255, 255));
+        QBrush brush(QColor(90, 90, 90, 255));
         brush.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Active, QPalette::Text, brush);
@@ -104,7 +104,7 @@ public:
         lblPoint->setFont(font1);
         lblPoint->setStyleSheet(QLatin1String("QLabel{\n"
 "border: 0px;\n"
-"color:#FFFFFF;\n"
+"color:#5A5A5A;\n"
 "border-radius: 7px;\n"
 "\n"
 "}"));
@@ -117,10 +117,10 @@ public:
 
     void retranslateUi(QWidget *end)
     {
-        end->setWindowTitle(QApplication::translate("end", "Form", 0));
-        btnYes->setText(QApplication::translate("end", "YES", 0));
-        btnNo->setText(QApplication::translate("end", "NO", 0));
-        lblPoint->setText(QApplication::translate("end", "Want to quit \357\274\237", 0));
+        end->setWindowTitle(QApplication::translate("end", "Form", Q_NULLPTR));
+        btnYes->setText(QApplication::translate("end", "YES", Q_NULLPTR));
+        btnNo->setText(QApplication::translate("end", "NO", Q_NULLPTR));
+        lblPoint->setText(QApplication::translate("end", "Wanna quit?", Q_NULLPTR));
     } // retranslateUi
 
 };
