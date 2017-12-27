@@ -37,12 +37,18 @@ public:
     int m_skill_2;
     int m_skill_3;
     QRectF m_rect;          // 活动范围
+    QRectF m_lifeZone;
 
     void initPmanager();
 
+    void setLifeRect(double w,double h);
     void setActiveRect(double w,double h);
     void setAttacked(bool b);    // 进行攻击
-    bool isAttacked();// 是否被攻击
+    bool setMoney(int a);    // 进行攻击
+    void setSkill_1(bool a);    // 进行攻击
+    void setSkill_2(bool a);    // 进行攻击
+    void setSkill_3(bool a);// 是否被攻击
+    bool isAttacked();
 
     void changeAttackMode(short num);
     int getAttackModeId();
@@ -73,6 +79,8 @@ public:
     void renderAttackEffect(QPainter* painter, QPointF posi,double size, double dir,QString str);
     void renderBullets(QPainter* painter,QString str);
     void renderFlame(QPainter* painter, QPointF posi,double size, double dir);
+
+
 };
 
 #endif // PMANAGER_H

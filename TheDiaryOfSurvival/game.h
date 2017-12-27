@@ -37,6 +37,10 @@ public:
     int zonerate;
     int dayrate;
 
+    int m_price_skill1;
+    int m_price_skill2;
+    int m_price_skill3;
+
     Emanager m_emanager;
     Bomanager m_bomanager;
     Pmanager m_pmanager;
@@ -77,6 +81,10 @@ private slots:
 
     void slot_no(); // 退出游戏后返回游戏
     void slot_yes(); // 退出游戏后返回至主界面
+
+    void slot_learnSkill1();   // 游戏循环
+    void slot_learnSkill2();  // 显示说明框
+    void slot_learnSkill3();  // 显示说明框
 
 signals:
     void sig_closeGame();
