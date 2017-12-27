@@ -13,7 +13,8 @@ public:
 
     enum{
         _SHOTGUN,
-        _BULLET
+        _BULLET,
+        _MESS
     };
     short m_curAttackType;   // 当前攻击模式
     int m_counter;           // 攻击计时器,计算按键按下时间

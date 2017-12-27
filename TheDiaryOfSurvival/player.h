@@ -22,6 +22,7 @@ public:
     double m_size;     // 飞机的尺寸
     int m_life;     // 飞机的尺寸
     QRect m_rect;     // 飞机的活动范围
+    bool defence;
 
     // 飞机运动状态
     enum STATE
@@ -53,6 +54,7 @@ public:
     void setCurrentSpeed(int x);
     void setCurrentVolume(int x);
     void setCurrentLife();
+    void setDefence(bool a);
 
     QPointF getCurrentPosi();
     QString getTypeBullet();
@@ -74,6 +76,7 @@ public:
     void large();
     void speedlow();
     void small();
+    bool statusDe();
 
     void updateStates();  // 状态更新
     void updategoods();  // 道具更新

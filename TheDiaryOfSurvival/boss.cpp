@@ -75,26 +75,11 @@ void Boss::updateAttackEffect(QPointF posi, double size, double dir)
         m_bullets[i].updateBullet();
     }
         m_counter++;
-        switch(m_curAttackType)
+        static int btype;
+        btype=btype<2?btype+1:0;
+        switch(btype)
         {
-        case _BULLET:
-        {
-            if(!(m_counter%5000==0||m_counter==0))
-                break;
-            // 子弹攻击
-            QPointF s;
-
-            s.setX(posi.x()+size/2.0*sin(3.14*dir/180.0));    // 设置新子弹的位置
-            s.setY(posi.y()-size/2.0*cos(3.14*dir/180.0));
-
-            Bullet temp;
-            temp.setPosi(s.x(),s.y());
-            temp.setDir(dir);
-
-            m_bullets.push_back(temp);
-            break;
-        }
-        case _SHOTGUN:
+        case 0:
         {
             if(!(m_counter%100==0||m_counter==0))
                 break;
@@ -108,44 +93,57 @@ void Boss::updateAttackEffect(QPointF posi, double size, double dir)
             temp.setPosi(s.x(),s.y());
             temp.setDir(dir);
 
-            m_bullets.push_back(temp);
-
-            for(int i=0; i<3; i=i+1)// 扇形发出
+//            m_bullets.push_back(temp);
+            for(int i=0; i<6; i=i+1)// 扇形发出
             {
-                temp.setDir(dir-(i+1)*45);
+                temp.setDir(dir-i*60);
                 m_bullets.push_back(temp);
-                temp.setDir(dir+(i+1)*45);
+            }
+        }
+        case 1:
+        {
+            if(!(m_counter%100==0||m_counter==0))
+                break;
+            // 散弹攻击
+            QPointF s;
+
+            s.setX(posi.x()+2*sin(3.14*dir/180.0));
+            s.setY(posi.y()-2*cos(3.14*dir/180.0));
+
+            Bullet temp;
+            temp.setPosi(s.x(),s.y());
+            temp.setDir(dir);
+
+//            m_bullets.push_back(temp);
+            for(int i=0; i<4; i=i+1)// 扇形发出
+            {
+                temp.setDir(dir-i*90);
                 m_bullets.push_back(temp);
             }
             break;
         }
-//        case _MESS:
-//        {
-//            if(!(m_counter%30==0||m_counter==0))
-//                break;
-//            // 散弹攻击
-//            QPointF s;
+        case 2:
+        {
+            if(!(m_counter%100==0||m_counter==0))
+                break;
+            // 散弹攻击
+            QPointF s;
 
-//            s.setX(posi.x()+4*sin(3.14*dir/180.0));
-//            s.setY(posi.y()-4*cos(3.14*dir/180.0));
+            s.setX(posi.x()+2*sin(3.14*dir/180.0));
+            s.setY(posi.y()-2*cos(3.14*dir/180.0));
 
-//            Bullet temp;
-//            temp.setPosi(s.x(),s.y());
-//            temp.setDir(dir);
+            Bullet temp;
+            temp.setPosi(s.x(),s.y());
+            temp.setDir(dir-30);
 
 //            m_bullets.push_back(temp);
-
-//            for(int i=0; i<3; i=i+1)// 矩形发出
-//            {
-//                temp.setPosi(s.x()+2*sin(3.14*dir/180.0),s.y()-2*cos(3.14*dir/180.0));
-//                temp.setDir(dir-(i+1)*10);
-//                m_bullets.push_back(temp);
-//                temp.setDir(dir+(i+1)*10);
-//                m_bullets.push_back(temp);
-//                break;
-//            }
-//        }
-//     qDebug()<<m_counter;
+            for(int i=0; i<8; i=i+1)// 扇形发出
+            {
+                temp.setDir(dir-i*45);
+                m_bullets.push_back(temp);
+            }
+        }
+     qDebug()<<m_counter;
     }
 }
 
