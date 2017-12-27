@@ -41,7 +41,7 @@ public:
 
     void initPmanager();
 
-    void setLifeRect(double w,double h);
+    void setLifeRect(int a,int b,int w,int h);
     void setActiveRect(double w,double h);
     void setAttacked(bool b);    // 进行攻击
     bool setMoney(int a);    // 进行攻击

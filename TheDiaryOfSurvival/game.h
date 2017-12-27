@@ -36,6 +36,7 @@ public:
     int tiprate;
     int zonerate;
     int dayrate;
+    int bloodrate;
 
     int m_price_skill1;
     int m_price_skill2;

@@ -38,7 +38,7 @@ void game::resizeEvent(QResizeEvent *event)
 {
     m_player.setActiveRect(0,60,width(),height());
     m_pmanager.setActiveRect(width(),height());
-    m_pmanager.setLifeRect(width(),height());
+    m_pmanager.setLifeRect(0,60,width(),height());
     m_bmanager.setActiveRect(width(),height());
     m_gmanager.setActiveRect(width(),height()-130);
     m_bomanager.setActiveRect(width(),height());
@@ -58,6 +58,7 @@ void game::startGameLoop()
     tiprate=12000;
     zonerate=2000;
     dayrate=3000;
+    bloodrate=3;
     space=1;
     zone=0;
 
@@ -88,7 +89,7 @@ void game::startGameLoop()
 
     m_emanager.setActiveRect(width(),height());
     m_pmanager.setActiveRect(width(),height());
-    m_pmanager.setLifeRect(width(),height());
+    m_pmanager.setLifeRect(0,60,width(),height());
     m_bmanager.setActiveRect(width(),height());
     m_gmanager.setActiveRect(width(),height()-70);
     m_bomanager.setActiveRect(width(),height());
@@ -161,11 +162,17 @@ void game::slot_timeLoop()
     m_gmanager.updategoods(m_player.getCurrentPosi(),m_player.getSize());
     m_pmanager.updateAttackEffect(m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir());// 攻击模式刷新
 
-    bool hurt = (m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize())||m_bmanager.updatebarriers(m_player.getCurrentPosi(),m_player.getSize())||m_bomanager.updateBoss(m_player.getCurrentPosi(),m_player.getSize()));
+    bool attacked = (m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize())||m_bmanager.updatebarriers(m_player.getCurrentPosi(),m_player.getSize())||m_bomanager.updateBoss(m_player.getCurrentPosi(),m_player.getSize()));
+    bool hurt= (m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()-m_player.getSize()*0.5,m_player.getCurrentPosi().y()-m_player.getSize()*0.5) && m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()-m_player.getSize()*0.5,m_player.getCurrentPosi().y()+m_player.getSize()*0.5)&&m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()+m_player.getSize()*0.5,m_player.getCurrentPosi().y()-m_player.getSize()*0.5)&&m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()+m_player.getSize()*0.5,m_player.getCurrentPosi().y()+m_player.getSize()*0.5));
+//    bool hurt=m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x());
     bool isGameOver=false;
-    if(hurt)
+    if(!hurt||attacked)
     {
+        static int countblood=0;
+        if(countblood>bloodrate)
+        {
         //QSound::play(":/res/wav/hurt.wav");//受到伤害的声音
+        countblood=0;
         m_player.setCurrentLife();
         ui->lblLife->setText(QString::number(m_player.getLife()));
         ui->pbarLife->setRange(0,100-1);
@@ -173,10 +180,9 @@ void game::slot_timeLoop()
 //        ui->pbarLife->setStyleSheet(
 //                    "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
 //                    "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
-        if(m_player.getLife()==0){
-
-            isGameOver=true;
+        if(m_player.getLife()==0)isGameOver=true;
         }
+        else countblood++;
     }
     // 判断一下游戏是否结束,被敌人或者障碍物杀死
     if(isGameOver)
@@ -562,10 +568,13 @@ void game::renderBorder(QPainter *painter, int rate)
 {
     QPainterPath path;
     path.addRect(0,60,this->width(),this->height()-130);
-    path.addRect(space*4/3*rate,60+space*rate,this->width()-space*8/3*rate,this->height()-130-space*2*rate);
+    int w_bound=this->width()-space*8/3*rate>300?this->width()-space*8/3*rate:280;
+    int h_bound=this->height()-130-space*2*rate>210?this->height()-130-space*2*rate:210;
+    path.addRect(space*4/3*rate,60+space*rate,w_bound,h_bound);
     painter->setBrush(QPixmap(QString(":/res/config/ico/coldFireBar.png")));
     path.setFillRule(Qt::OddEvenFill);//使用奇偶填充，刚好可以只显示圆环
     painter->drawPath(path);
+    m_pmanager.setLifeRect(space*4/3*rate,60+space*rate,w_bound,h_bound);
 }
 game::~game()
 {
