@@ -21,9 +21,9 @@ game::game(QWidget *parent) :
     connect(ui->btnShowTab,SIGNAL(clicked()),this,SLOT(slot_btnShowTab()));
     connect(this,SIGNAL(sig_death()),this,SLOT(slot_gameOver()));       //death信号，则触发游戏结束
 
-    connect(ui->lblskill1,SIGNAL(clicked),this,SLOT(slot_learnSkill1()));
-    connect(ui->lblskill2,SIGNAL(clicked),this,SLOT(slot_learnSkill2()));
-    connect(ui->lblskill3,SIGNAL(clicked),this,SLOT(slot_learnSkill3()));
+    connect(ui->lblskill1,SIGNAL(clicked()),this,SLOT(slot_learnSkill1()));
+    connect(ui->lblskill2,SIGNAL(clicked()),this,SLOT(slot_learnSkill2()));
+    connect(ui->lblskill3,SIGNAL(clicked()),this,SLOT(slot_learnSkill3()));
 
     connect(this,SIGNAL(sig_quitgame()),this,SLOT(slot_quitgame()));
     connect(m_death,SIGNAL(sig_restart()),this,SLOT(slot_restart()));   //restart信号，则触发游戏重启
@@ -38,6 +38,7 @@ void game::resizeEvent(QResizeEvent *event)
 {
     m_player.setActiveRect(0,60,width(),height());
     m_pmanager.setActiveRect(width(),height());
+    m_pmanager.setLifeRect(width(),height());
     m_bmanager.setActiveRect(width(),height());
     m_gmanager.setActiveRect(width(),height()-130);
     m_bomanager.setActiveRect(width(),height());
@@ -50,15 +51,21 @@ void game::startGameLoop()
     bA = bD = false;                      //判断按键是否按下，初始置为否
 
     m_time = 0;                           //计时器，初始置为0
-    bornrate_enermy=1000;
-    bornrate_boss=8000;
-    bornrate_goods=2000;
+    bornrate_enermy=2000;
+    bornrate_boss=15000;
+    bornrate_goods=10000;
     bornrate_barriers=3000;
-    tiprate=5000;
+    tiprate=12000;
     zonerate=2000;
     dayrate=3000;
-    space=2;
+    space=1;
+    zone=0;
 
+
+    m_price_skill1=15;
+    m_price_skill2=15;
+    m_price_skill3=15;
+    update();
 
     bgsound->play();//播放
     bgsound->setLoops(-1);
@@ -81,6 +88,7 @@ void game::startGameLoop()
 
     m_emanager.setActiveRect(width(),height());
     m_pmanager.setActiveRect(width(),height());
+    m_pmanager.setLifeRect(width(),height());
     m_bmanager.setActiveRect(width(),height());
     m_gmanager.setActiveRect(width(),height()-70);
     m_bomanager.setActiveRect(width(),height());
@@ -108,7 +116,6 @@ void game::startGameLoop()
     animate->setDuration(3000);
     ui->btnShowTab->setText("<");
     animate->start();
-
     setFocus();
 }
 
@@ -314,19 +321,31 @@ void game::keyPressEvent(QKeyEvent *event)
 //        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
 //        break;
     case Qt::Key_U:
-        m_pmanager.changeAttackMode(1);
-        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
-        m_pmanager.setAttacked(true);
+        if(m_pmanager.getSkill_1())
+        {
+            m_pmanager.setSkill_1(0);
+            m_pmanager.changeAttackMode(1);
+            ui->lblAttackMode->setText(m_pmanager.getAttackMode());
+            m_pmanager.setAttacked(true);
+        }
         break;
     case Qt::Key_I:
-        m_pmanager.changeAttackMode(2);
-        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
-        m_pmanager.setAttacked(true);
+        if(m_pmanager.getSkill_2())
+        {
+            m_pmanager.setSkill_2(0);
+            m_pmanager.changeAttackMode(2);
+            ui->lblAttackMode->setText(m_pmanager.getAttackMode());
+            m_pmanager.setAttacked(true);
+        }
         break;
     case Qt::Key_O:
-        m_pmanager.changeAttackMode(3);
-        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
-        m_pmanager.setAttacked(true);
+        if(m_pmanager.getSkill_3())
+        {
+            m_pmanager.setSkill_3(0);
+            m_pmanager.changeAttackMode(3);
+            ui->lblAttackMode->setText(m_pmanager.getAttackMode());
+            m_pmanager.setAttacked(true);
+        }
         break;
     case Qt::Key_Space:
         if(m_timer.isActive())
@@ -510,20 +529,32 @@ void game::slot_yes()
 
 void game::slot_learnSkill1()
 {
-    m_end->hide();
-    emit sig_closeGame();
+    if(m_pmanager.setMoney(m_price_skill1))
+    {
+        m_pmanager.setSkill_1(1);
+        ui->coins->setText(QString::number(m_pmanager.getMoney()));
+        ui->lblskill1->setText(QString::number(m_pmanager.getSkill_1()));
+    }
 }
 
 void game::slot_learnSkill2()
 {
-    m_end->hide();
-    emit sig_closeGame();
+    if(m_pmanager.setMoney(m_price_skill1))
+    {
+        m_pmanager.setSkill_2(1);
+        ui->coins->setText(QString::number(m_pmanager.getMoney()));
+        ui->lblskill1->setText(QString::number(m_pmanager.getSkill_2()));
+    }
 }
 
 void game::slot_learnSkill3()
 {
-    m_end->hide();
-    emit sig_closeGame();
+    if(m_pmanager.setMoney(m_price_skill1))
+    {
+        m_pmanager.setSkill_3(1);
+        ui->coins->setText(QString::number(m_pmanager.getMoney()));
+        ui->lblskill1->setText(QString::number(m_pmanager.getSkill_3()));
+    }
 }
 
 //    绘制火焰

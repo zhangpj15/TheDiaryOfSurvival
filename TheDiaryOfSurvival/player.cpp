@@ -15,7 +15,7 @@ void Player::initPlayer()
     m_life = 100;
     m_curState = _STA;
     m_size = 50;
-    m_big=5;
+    m_big=50;
     m_curgoods = 0;
 }
 
@@ -36,7 +36,7 @@ void Player::setCurrentPosi(int x, int y)
 
 void Player::setCurrentVolume(int x)
 {
-    m_size = 50-x;
+    m_size = x;
 }
 
 void Player::setCurrentSpeed(int x)
@@ -129,17 +129,17 @@ void Player::moveBack()
 
 void Player::turnLeft()
 {
-    m_dir-=5;
+    m_dir-=2;
 }
 
 void Player::turnRight()
 {
-    m_dir+=5;
+    m_dir+=2;
 }
 
 void Player::large()
 {
-    m_big=-5;
+    m_big=m_big<70?m_vel+10:70;
 //    qDebug()<<m_big;
     setCurrentVolume(m_big);
 }
@@ -152,7 +152,7 @@ void Player::speedup()
 
 void Player::small()
 {
-    m_big=5;
+    m_big=m_big>30?m_vel-10:30;
     setCurrentVolume(m_big);
 //    qDebug()<<m_size;
 }

@@ -37,7 +37,11 @@ void Pmanager::initPmanager()
 // 定义活动范围
 void Pmanager::setActiveRect(double w, double h)
 {
-    m_rect = QRectF(0,61,w,h);
+    m_rect = QRectF(0,60,w,h);
+}
+void Pmanager::setLifeRect(double w, double h)
+{
+    m_lifeZone = QRectF(0,60,w,h);
 }
 // 检测是否被攻击
 bool Pmanager::isAttacked()
@@ -54,6 +58,35 @@ void Pmanager::setAttacked(bool b)
     {
         m_counter = 0;
     }
+}
+
+bool Pmanager::setMoney(int b)
+{
+
+    if(m_money>=b)
+    {
+        m_money=m_money-b;
+        return true;
+    }
+    else
+        return false;
+}
+
+void Pmanager::setSkill_1(bool b)
+{
+    if(b)m_skill_1++;
+    else m_skill_1--;
+}
+
+void Pmanager::setSkill_2(bool b)
+{
+    if(b)m_skill_2++;
+    else m_skill_2--;
+}
+void Pmanager::setSkill_3(bool b)
+{
+    if(b)m_skill_3++;
+    else m_skill_3--;
 }
 // 改变攻击模式
 void Pmanager::changeAttackMode(short num)
@@ -454,4 +487,3 @@ void Pmanager::renderBullets(QPainter *painter,QString str)
         m_bullets[i].renderBullet(painter);
     }
 }
-
