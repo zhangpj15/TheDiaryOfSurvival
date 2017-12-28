@@ -89,6 +89,7 @@ public:
     QLabel *label_3;
     QLabel *groupBoss;
     QFrame *lblback;
+    QLabel *lbluser;
 
     void setupUi(QWidget *game)
     {
@@ -744,6 +745,9 @@ public:
         lblback->setGeometry(QRect(0, 0, 51, 61));
         lblback->setFrameShape(QFrame::StyledPanel);
         lblback->setFrameShadow(QFrame::Raised);
+        lbluser = new QLabel(game);
+        lbluser->setObjectName(QStringLiteral("lbluser"));
+        lbluser->setGeometry(QRect(450, 20, 72, 15));
 
         retranslateUi(game);
 
@@ -798,6 +802,7 @@ public:
         lblskill3->setText(QString());
         label_3->setText(QString());
         groupBoss->setText(QApplication::translate("game", "BOSS IS COMING!", Q_NULLPTR));
+        lbluser->setText(QApplication::translate("game", "TextLabel", Q_NULLPTR));
     } // retranslateUi
 
 };

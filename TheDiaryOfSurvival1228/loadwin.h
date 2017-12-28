@@ -19,6 +19,8 @@ public:
 
 private:
     Ui::loadwin *ui;
+
+    QString m_uname;
     int LoadTimes;
     int user_id; //记录登录成功后的用户名
     int killRecord;//记录用户击杀记录
@@ -26,6 +28,7 @@ private:
 
 public slots:
     void slot_exitButton();// 肯定quit
+    QString return_user();// 肯定quit
     void loadButtonClicked();
     void saveRecord(int killnum, int timecount);
 
