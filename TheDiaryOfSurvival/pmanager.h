@@ -76,8 +76,8 @@ public:
 
     void updateAttackEffect(QPointF posi,double size,double dir);
 
-    void renderAttackEffect(QPainter* painter, QPointF posi,double size, double dir,QString str);
-    void renderBullets(QPainter* painter,QString str);
+    void renderAttackEffect(QPainter* painter, QPointF posi, double size, double dir, QString str);
+    void renderBullets(QPainter* painter, QString str);
     void renderFlame(QPainter* painter, QPointF posi,double size, double dir);
 
 

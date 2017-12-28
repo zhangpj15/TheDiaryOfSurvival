@@ -26,6 +26,7 @@ public:
     QPushButton *btnYes;
     QPushButton *btnNo;
     QLabel *lblPoint;
+    QLabel *label;
 
     void setupUi(QWidget *end)
     {
@@ -56,7 +57,7 @@ public:
 "}\n"
 "\n"
 "QPushButton:pressed{\n"
-"border:1px solid rgb(77, 176, 251);\n"
+"border:0px solid rgb(77, 176, 251);\n"
 "color:#aaaaaa;\n"
 "\n"
 "}"));
@@ -78,7 +79,7 @@ public:
 "}\n"
 "\n"
 "QPushButton:pressed{\n"
-"border:1px solid rgb(77, 176, 251);\n"
+"border:0px solid rgb(77, 176, 251);\n"
 "color:#aaaaaa;\n"
 "\n"
 "}"));
@@ -109,6 +110,19 @@ public:
 "\n"
 "}"));
         lblPoint->setAlignment(Qt::AlignCenter);
+        label = new QLabel(end);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(0, 0, 400, 300));
+        label->setStyleSheet(QLatin1String("QLabel{\n"
+"background-color:rgba(250,250,220,70%);\n"
+"border:2px #2a2a2a;\n"
+"border-radius: 10px;\n"
+"}"));
+        label->setScaledContents(false);
+        label->raise();
+        btnYes->raise();
+        btnNo->raise();
+        lblPoint->raise();
 
         retranslateUi(end);
 
@@ -121,6 +135,7 @@ public:
         btnYes->setText(QApplication::translate("end", "YES", Q_NULLPTR));
         btnNo->setText(QApplication::translate("end", "NO", Q_NULLPTR));
         lblPoint->setText(QApplication::translate("end", "Wanna quit?", Q_NULLPTR));
+        label->setText(QString());
     } // retranslateUi
 
 };

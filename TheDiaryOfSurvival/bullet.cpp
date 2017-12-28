@@ -29,7 +29,18 @@ double Bullet::getSpeed()
 }
 void Bullet::changepic(QString str)
 {
-    m_pic=str;
+    int keyy;
+    //m_pic=str;
+    if (str=="_SHOTGUN"){
+        keyy=4;
+    }
+    else if(str=="_MESS"){
+        keyy=5;
+    }
+    else
+        keyy=1;
+
+    m_pic=QString(":/res/img/bullets/bullets (%1).png").arg(keyy);
 }
 
 QPointF Bullet::getPosi()
@@ -55,5 +66,6 @@ void Bullet::updateBullet()
 
 void Bullet::renderBullet(QPainter *painter)
 {
+
     painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(m_pic));
 }
