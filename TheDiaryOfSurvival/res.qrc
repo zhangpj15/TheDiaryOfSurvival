@@ -142,5 +142,30 @@
         <file>res/img/skill/p1.png</file>
         <file>res/img/skill/p2.png</file>
         <file>res/img/skill/p3.png</file>
+        <file>res/img/background/main1.jpg</file>
+        <file>res/img/background/main3.jpg</file>
+        <file>res/img/background/playbg9.jpg</file>
+        <file>res/img/background/playbg10.jpg</file>
+        <file>res/img/background/playbg11.jpg</file>
+        <file>res/img/background/playbg12.jpg</file>
+        <file>res/img/background/playbg13.jpg</file>
+        <file>res/img/background/playbg14.jpg</file>
+        <file>res/img/goods/slowdown2.png</file>
+        <file>res/wav/gameover1.wav</file>
+        <file>res/wav/hit2.wav</file>
+        <file>res/wav/props1.wav</file>
+        <file>res/wav/gamebgm1.wav</file>
+        <file>res/wav/hurt.wav</file>
+        <file>res/wav/startbgm1.wav</file>
+        <file>res/wav/beat1.wav</file>
+        <file>res/wav/beat3.wav</file>
+        <file>res/wav/cutfruit.wav</file>
+        <file>res/img/skill/coins.png</file>
+        <file>res/img/skill/s1.png</file>
+        <file>res/img/skill/s2.png</file>
+        <file>res/img/skill/s3.png</file>
+        <file>res/config/ico/border.png</file>
+        <file>res/config/ico/metal.png</file>
+        <file>res/config/ico/seaplane.png</file>
     </qresource>
 </RCC>

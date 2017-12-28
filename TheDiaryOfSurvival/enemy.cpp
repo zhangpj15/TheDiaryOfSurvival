@@ -1,5 +1,5 @@
 #include "enemy.h"
-
+#include "QSound"
 Enemy::Enemy()
 {
     m_size = 50;

@@ -241,7 +241,7 @@ public:
 
         returnButton = new QPushButton(regis);
         returnButton->setObjectName(QStringLiteral("returnButton"));
-        returnButton->setGeometry(QRect(10, 20, 184, 52));
+        returnButton->setGeometry(QRect(10, 10, 121, 52));
         QFont font2;
         font2.setFamily(QStringLiteral("Agency FB"));
         font2.setPointSize(26);
@@ -269,7 +269,7 @@ public:
 "}"));
         loginButton = new QPushButton(regis);
         loginButton->setObjectName(QStringLiteral("loginButton"));
-        loginButton->setGeometry(QRect(70, 470, 184, 52));
+        loginButton->setGeometry(QRect(90, 440, 171, 52));
         loginButton->setFont(font2);
         loginButton->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
@@ -291,7 +291,7 @@ public:
 "}"));
         loadButton = new QPushButton(regis);
         loadButton->setObjectName(QStringLiteral("loadButton"));
-        loadButton->setGeometry(QRect(270, 470, 184, 52));
+        loadButton->setGeometry(QRect(300, 440, 111, 52));
         loadButton->setFont(font2);
         loadButton->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"

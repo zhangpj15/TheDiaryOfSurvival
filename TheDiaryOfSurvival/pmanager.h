@@ -32,18 +32,35 @@ public:
     QList<Bullet> m_bullets;   // 子弹序列
 
     int m_killNum;          // 当前击杀的敌人数目
+    int m_money;
+    int m_skill_1;
+    int m_skill_2;
+    int m_skill_3;
     QRectF m_rect;          // 活动范围
+    QRectF m_lifeZone;
 
     void initPmanager();
 
+    void setLifeRect(int a,int b,int w,int h);
     void setActiveRect(double w,double h);
     void setAttacked(bool b);    // 进行攻击
-    bool isAttacked();// 是否被攻击
+    bool setMoney(int a);    // 进行攻击
+    void setSkill_1(bool a);    // 进行攻击
+    void setSkill_2(bool a);    // 进行攻击
+    void setSkill_3(bool a);// 是否被攻击
+    bool isAttacked();
 
     void changeAttackMode(short num);
     int getAttackModeId();
     QString getAttackMode();
     int getKillNum();
+    int getMoney();
+    int getSkill_1();
+    int getSkill_2();
+    int getSkill_3();
+
+
+
     bool isCooling();
     int getCountDownNum();// 火焰冷却时间
     int getCountFireNum();// 火焰攻击时间
@@ -59,9 +76,11 @@ public:
 
     void updateAttackEffect(QPointF posi,double size,double dir);
 
-    void renderAttackEffect(QPainter* painter, QPointF posi,double size, double dir,QString str);
-    void renderBullets(QPainter* painter,QString str);
+    void renderAttackEffect(QPainter* painter, QPointF posi, double size, double dir, QString str);
+    void renderBullets(QPainter* painter, QString str);
     void renderFlame(QPainter* painter, QPointF posi,double size, double dir);
+
+
 };
 
 #endif // PMANAGER_H

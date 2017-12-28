@@ -35,9 +35,12 @@ public:
     int bornrate_barriers;
     int tiprate;
     int zonerate;
-
     int dayrate;
+    int bloodrate;
 
+    int m_price_skill1;
+    int m_price_skill2;
+    int m_price_skill3;
 
     Emanager m_emanager;
     Bomanager m_bomanager;
@@ -47,7 +50,7 @@ public:
 
     death* m_death;// 失败窗口
     end* m_end;// quit窗口
-    int space=10;
+    int space;
 
     Player m_player;
 
@@ -79,6 +82,10 @@ private slots:
 
     void slot_no(); // 退出游戏后返回游戏
     void slot_yes(); // 退出游戏后返回至主界面
+
+    void slot_learnSkill1();   // 游戏循环
+    void slot_learnSkill2();  // 显示说明框
+    void slot_learnSkill3();  // 显示说明框
 
 signals:
     void sig_closeGame();

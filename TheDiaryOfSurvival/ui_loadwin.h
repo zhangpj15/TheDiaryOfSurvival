@@ -39,7 +39,7 @@ public:
         loadwin->resize(800, 600);
         pwlabel = new QLabel(loadwin);
         pwlabel->setObjectName(QStringLiteral("pwlabel"));
-        pwlabel->setGeometry(QRect(190, 260, 71, 51));
+        pwlabel->setGeometry(QRect(200, 365, 71, 51));
         QFont font;
         font.setFamily(QStringLiteral("Agency FB"));
         font.setPointSize(20);
@@ -53,7 +53,7 @@ public:
 ""));
         usernamelabel = new QLabel(loadwin);
         usernamelabel->setObjectName(QStringLiteral("usernamelabel"));
-        usernamelabel->setGeometry(QRect(190, 180, 121, 51));
+        usernamelabel->setGeometry(QRect(200, 305, 121, 51));
         usernamelabel->setFont(font);
         usernamelabel->setStyleSheet(QLatin1String("QLabel{\n"
 "border: 0px;\n"
@@ -64,20 +64,22 @@ public:
 ""));
         userline = new QLineEdit(loadwin);
         userline->setObjectName(QStringLiteral("userline"));
-        userline->setGeometry(QRect(330, 185, 239, 42));
+        userline->setGeometry(QRect(340, 310, 239, 42));
         userline->setFont(font);
         pwline = new QLineEdit(loadwin);
         pwline->setObjectName(QStringLiteral("pwline"));
-        pwline->setGeometry(QRect(330, 265, 239, 42));
+        pwline->setGeometry(QRect(340, 370, 239, 42));
         pwline->setFont(font);
         loadButton = new QPushButton(loadwin);
         loadButton->setObjectName(QStringLiteral("loadButton"));
-        loadButton->setGeometry(QRect(180, 350, 121, 51));
+        loadButton->setGeometry(QRect(330, 450, 121, 51));
         QFont font1;
         font1.setFamily(QStringLiteral("Agency FB"));
         font1.setPointSize(26);
-        font1.setItalic(true);
+        font1.setBold(true);
+        font1.setItalic(false);
         font1.setUnderline(true);
+        font1.setWeight(75);
         loadButton->setFont(font1);
         loadButton->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
@@ -99,7 +101,7 @@ public:
 "}"));
         exitButton = new QPushButton(loadwin);
         exitButton->setObjectName(QStringLiteral("exitButton"));
-        exitButton->setGeometry(QRect(420, 350, 101, 51));
+        exitButton->setGeometry(QRect(470, 450, 101, 51));
         exitButton->setFont(font1);
         exitButton->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
@@ -122,7 +124,7 @@ public:
         label_2 = new QLabel(loadwin);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(0, 0, 800, 600));
-        label_2->setPixmap(QPixmap(QString::fromUtf8(":/res/img/background/main5.jpg")));
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/res/img/background/main8.jpg")));
         label_2->setScaledContents(true);
         label_2->raise();
         pwlabel->raise();

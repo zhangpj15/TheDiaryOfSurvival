@@ -54,7 +54,7 @@ public:
         label = new QLabel(widgetBack);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(0, 0, 800, 600));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/res/img/background/playbg3.jpg")));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/res/img/background/playbg1.jpg")));
         label->setScaledContents(true);
         MainWindow->setCentralWidget(centralWidget);
 

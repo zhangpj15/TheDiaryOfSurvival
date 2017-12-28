@@ -31,7 +31,6 @@ public:
     QLabel *lblAttackMode;
     QLabel *label;
     QGroupBox *groupGoods;
-
     QPushButton *btnShowTab;
     QLabel *prop;
     QLabel *proptext;
@@ -56,17 +55,14 @@ public:
     QFrame *line1_13;
     QFrame *line1_14;
     QFrame *line1_15;
-    QFrame *line1_16;
+    QLabel *bg;
     QLabel *lblGoods;
     QLabel *propseffect;
     QGroupBox *groupSkill;
-    QLabel *skill1;
-    QLabel *skill2;
-    QLabel *skill3;
     QLabel *skill1num;
     QLabel *skill2num;
     QLabel *skill3num;
-    QLabel *textskill;
+    QLabel *coins;
     QFrame *line1;
     QFrame *line1_2;
     QFrame *line1_3;
@@ -84,13 +80,15 @@ public:
     QLabel *playerpic;
     QFrame *line1_7;
     QProgressBar *pbarLife;
-
     QLabel *skill1num_2;
     QLabel *skill2num_2;
     QLabel *skill3num_2;
+    QPushButton *lblskill1;
+    QPushButton *lblskill2;
+    QPushButton *lblskill3;
+    QLabel *label_3;
     QLabel *groupBoss;
     QFrame *lblback;
-
 
     void setupUi(QWidget *game)
     {
@@ -115,9 +113,7 @@ public:
         lblTime->setAlignment(Qt::AlignCenter);
         pbarEnergy = new QProgressBar(game);
         pbarEnergy->setObjectName(QStringLiteral("pbarEnergy"));
-
-        pbarEnergy->setGeometry(QRect(270, 15, 70, 20));
-
+        pbarEnergy->setGeometry(QRect(230, 15, 70, 20));
         pbarEnergy->setStyleSheet(QLatin1String("QProgressBar {\n"
 "    border: 2px solid grey;\n"
 "    border-radius: 5px;\n"
@@ -132,9 +128,7 @@ public:
         pbarEnergy->setTextVisible(false);
         lblAttackMode = new QLabel(game);
         lblAttackMode->setObjectName(QStringLiteral("lblAttackMode"));
-
-        lblAttackMode->setGeometry(QRect(140, 10, 140, 30));
-
+        lblAttackMode->setGeometry(QRect(140, 10, 140, 40));
         QFont font1;
         font1.setFamily(QStringLiteral("Agency FB"));
         font1.setPointSize(16);
@@ -147,13 +141,11 @@ public:
 "}"));
         label = new QLabel(game);
         label->setObjectName(QStringLiteral("label"));
-
-        label->setGeometry(QRect(10, 10, 120, 30));
+        label->setGeometry(QRect(10, 10, 120, 40));
         QFont font2;
         font2.setFamily(QStringLiteral("Agency FB"));
         font2.setPointSize(16);
         label->setFont(font2);
-
         label->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
 "color:#5a5a5a;\n"
@@ -161,19 +153,15 @@ public:
         label->setAlignment(Qt::AlignCenter);
         groupGoods = new QGroupBox(game);
         groupGoods->setObjectName(QStringLiteral("groupGoods"));
-
         groupGoods->setGeometry(QRect(640, 140, 160, 340));
         btnShowTab = new QPushButton(groupGoods);
         btnShowTab->setObjectName(QStringLiteral("btnShowTab"));
         btnShowTab->setGeometry(QRect(0, 140, 20, 50));
-
         QFont font3;
         font3.setPointSize(12);
         font3.setBold(true);
         font3.setWeight(75);
-
         btnShowTab->setFont(font3);
-
         btnShowTab->setFocusPolicy(Qt::NoFocus);
         btnShowTab->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
@@ -192,10 +180,9 @@ public:
 "color:#FFFFFF;\n"
 "background-color:rgb(80, 189, 255);\n"
 "}"));
-
         prop = new QLabel(groupGoods);
         prop->setObjectName(QStringLiteral("prop"));
-        prop->setGeometry(QRect(20, 50, 35, 30));
+        prop->setGeometry(QRect(20, 50, 30, 28));
         prop->setPixmap(QPixmap(QString::fromUtf8(":/res/img/goods/goods (1).png")));
         prop->setScaledContents(true);
         proptext = new QLabel(groupGoods);
@@ -206,13 +193,12 @@ public:
         font4.setPointSize(12);
         proptext->setFont(font4);
         proptext->setStyleSheet(QLatin1String("QLabel\n"
-
 "{\n"
 "color:#2A2A2A;\n"
 "}"));
         prop_2 = new QLabel(groupGoods);
         prop_2->setObjectName(QStringLiteral("prop_2"));
-        prop_2->setGeometry(QRect(20, 90, 35, 35));
+        prop_2->setGeometry(QRect(20, 90, 30, 30));
         prop_2->setPixmap(QPixmap(QString::fromUtf8(":/res/img/goods/goods (3).png")));
         prop_2->setScaledContents(true);
         proptext_2 = new QLabel(groupGoods);
@@ -225,7 +211,7 @@ public:
 "}"));
         prop_3 = new QLabel(groupGoods);
         prop_3->setObjectName(QStringLiteral("prop_3"));
-        prop_3->setGeometry(QRect(20, 130, 35, 35));
+        prop_3->setGeometry(QRect(20, 130, 30, 30));
         prop_3->setPixmap(QPixmap(QString::fromUtf8(":/res/img/goods/goods (2).png")));
         prop_3->setScaledContents(true);
         proptext_3 = new QLabel(groupGoods);
@@ -238,8 +224,8 @@ public:
 "}"));
         prop_4 = new QLabel(groupGoods);
         prop_4->setObjectName(QStringLiteral("prop_4"));
-        prop_4->setGeometry(QRect(20, 170, 35, 35));
-        prop_4->setPixmap(QPixmap(QString::fromUtf8(":/res/img/goods/goods (2).png")));
+        prop_4->setGeometry(QRect(20, 170, 30, 30));
+        prop_4->setPixmap(QPixmap(QString::fromUtf8(":/res/img/goods/goods (4).png")));
         prop_4->setScaledContents(true);
         proptext_4 = new QLabel(groupGoods);
         proptext_4->setObjectName(QStringLiteral("proptext_4"));
@@ -251,7 +237,7 @@ public:
 "}"));
         prop_5 = new QLabel(groupGoods);
         prop_5->setObjectName(QStringLiteral("prop_5"));
-        prop_5->setGeometry(QRect(20, 210, 35, 35));
+        prop_5->setGeometry(QRect(20, 210, 30, 30));
         prop_5->setPixmap(QPixmap(QString::fromUtf8(":/res/img/goods/goods (5).png")));
         prop_5->setScaledContents(true);
         proptext_5 = new QLabel(groupGoods);
@@ -264,8 +250,8 @@ public:
 "}"));
         prop_6 = new QLabel(groupGoods);
         prop_6->setObjectName(QStringLiteral("prop_6"));
-        prop_6->setGeometry(QRect(20, 290, 35, 35));
-        prop_6->setPixmap(QPixmap(QString::fromUtf8(":/res/img/goods/goods (2).png")));
+        prop_6->setGeometry(QRect(20, 290, 30, 30));
+        prop_6->setPixmap(QPixmap(QString::fromUtf8(":/res/img/goods/goods (7).png")));
         prop_6->setScaledContents(true);
         proptext_6 = new QLabel(groupGoods);
         proptext_6->setObjectName(QStringLiteral("proptext_6"));
@@ -277,8 +263,8 @@ public:
 "}"));
         prop_7 = new QLabel(groupGoods);
         prop_7->setObjectName(QStringLiteral("prop_7"));
-        prop_7->setGeometry(QRect(20, 250, 35, 35));
-        prop_7->setPixmap(QPixmap(QString::fromUtf8(":/res/img/goods/goods (2).png")));
+        prop_7->setGeometry(QRect(20, 250, 30, 30));
+        prop_7->setPixmap(QPixmap(QString::fromUtf8(":/res/img/goods/goods (6).png")));
         prop_7->setScaledContents(true);
         proptext_7 = new QLabel(groupGoods);
         proptext_7->setObjectName(QStringLiteral("proptext_7"));
@@ -336,14 +322,42 @@ public:
         line1_15->setGeometry(QRect(20, 320, 120, 10));
         line1_15->setFrameShape(QFrame::HLine);
         line1_15->setFrameShadow(QFrame::Raised);
-        line1_16 = new QFrame(groupGoods);
-        line1_16->setObjectName(QStringLiteral("line1_16"));
-        line1_16->setGeometry(QRect(50, 70, 8, 231));
-        line1_16->setFrameShape(QFrame::VLine);
-        line1_16->setFrameShadow(QFrame::Raised);
+        bg = new QLabel(groupGoods);
+        bg->setObjectName(QStringLiteral("bg"));
+        bg->setGeometry(QRect(0, 0, 160, 340));
+        bg->setStyleSheet(QLatin1String("QLabel\n"
+"{  \n"
+"   background-color: rgba(255, 255, 224, 50%);\n"
+"   border: 0px solid black;\n"
+"}"));
+        bg->raise();
+        btnShowTab->raise();
+        prop->raise();
+        proptext->raise();
+        prop_2->raise();
+        proptext_2->raise();
+        prop_3->raise();
+        proptext_3->raise();
+        prop_4->raise();
+        proptext_4->raise();
+        prop_5->raise();
+        proptext_5->raise();
+        prop_6->raise();
+        proptext_6->raise();
+        prop_7->raise();
+        proptext_7->raise();
+        label_2->raise();
+        line1_8->raise();
+        line1_9->raise();
+        line1_10->raise();
+        line1_11->raise();
+        line1_12->raise();
+        line1_13->raise();
+        line1_14->raise();
+        line1_15->raise();
         lblGoods = new QLabel(game);
         lblGoods->setObjectName(QStringLiteral("lblGoods"));
-        lblGoods->setGeometry(QRect(550, 10, 111, 31));
+        lblGoods->setGeometry(QRect(490, 10, 161, 40));
         lblGoods->setFont(font1);
         lblGoods->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
@@ -352,7 +366,7 @@ public:
         lblGoods->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         propseffect = new QLabel(game);
         propseffect->setObjectName(QStringLiteral("propseffect"));
-        propseffect->setGeometry(QRect(660, 10, 131, 31));
+        propseffect->setGeometry(QRect(660, 10, 131, 40));
         propseffect->setFont(font2);
         propseffect->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
@@ -362,24 +376,13 @@ public:
         groupSkill = new QGroupBox(game);
         groupSkill->setObjectName(QStringLiteral("groupSkill"));
         groupSkill->setGeometry(QRect(0, 530, 800, 70));
-        skill1 = new QLabel(groupSkill);
-        skill1->setObjectName(QStringLiteral("skill1"));
-        skill1->setGeometry(QRect(530, 14, 51, 41));
-        skill1->setPixmap(QPixmap(QString::fromUtf8(":/res/img/skill/p1.png")));
-        skill1->setScaledContents(true);
-        skill2 = new QLabel(groupSkill);
-        skill2->setObjectName(QStringLiteral("skill2"));
-        skill2->setGeometry(QRect(600, 14, 51, 41));
-        skill2->setPixmap(QPixmap(QString::fromUtf8(":/res/img/skill/p2.png")));
-        skill2->setScaledContents(true);
-        skill3 = new QLabel(groupSkill);
-        skill3->setObjectName(QStringLiteral("skill3"));
-        skill3->setGeometry(QRect(680, 14, 41, 41));
-        skill3->setPixmap(QPixmap(QString::fromUtf8(":/res/img/skill/p3.png")));
-        skill3->setScaledContents(true);
         skill1num = new QLabel(groupSkill);
         skill1num->setObjectName(QStringLiteral("skill1num"));
-        skill1num->setGeometry(QRect(515, 10, 21, 20));
+        skill1num->setGeometry(QRect(485, 10, 21, 20));
+        QFont font5;
+        font5.setFamily(QStringLiteral("Times New Roman"));
+        font5.setPointSize(11);
+        skill1num->setFont(font5);
         skill1num->setStyleSheet(QLatin1String("QLabel{\n"
 "border :1px white;\n"
 "background-color: rgba(0,0,0,0);\n"
@@ -393,7 +396,8 @@ public:
         skill1num->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
         skill2num = new QLabel(groupSkill);
         skill2num->setObjectName(QStringLiteral("skill2num"));
-        skill2num->setGeometry(QRect(590, 10, 21, 20));
+        skill2num->setGeometry(QRect(555, 10, 21, 20));
+        skill2num->setFont(font5);
         skill2num->setStyleSheet(QLatin1String("QLabel{\n"
 "border :1px white;\n"
 "background-color: rgba(0,0,0,0);\n"
@@ -404,7 +408,8 @@ public:
         skill2num->setOpenExternalLinks(false);
         skill3num = new QLabel(groupSkill);
         skill3num->setObjectName(QStringLiteral("skill3num"));
-        skill3num->setGeometry(QRect(660, 10, 20, 20));
+        skill3num->setGeometry(QRect(625, 10, 20, 20));
+        skill3num->setFont(font5);
         skill3num->setStyleSheet(QLatin1String("QLabel{\n"
 "border :1px white;\n"
 "background-color: rgba(0,0,0,0);\n"
@@ -413,32 +418,37 @@ public:
         skill3num->setTextFormat(Qt::AutoText);
         skill3num->setScaledContents(false);
         skill3num->setOpenExternalLinks(false);
-        textskill = new QLabel(groupSkill);
-        textskill->setObjectName(QStringLiteral("textskill"));
-        textskill->setGeometry(QRect(740, 20, 51, 31));
-        textskill->setFont(font2);
-        textskill->setStyleSheet(QLatin1String("QLabel\n"
+        coins = new QLabel(groupSkill);
+        coins->setObjectName(QStringLiteral("coins"));
+        coins->setGeometry(QRect(740, 22, 50, 30));
+        QFont font6;
+        font6.setFamily(QStringLiteral("Agency FB"));
+        font6.setPointSize(18);
+        font6.setBold(true);
+        font6.setWeight(75);
+        coins->setFont(font6);
+        coins->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
-"color:#5a5a5a;\n"
+"color:#2A2A2A;\n"
 "}"));
         line1 = new QFrame(groupSkill);
         line1->setObjectName(QStringLiteral("line1"));
-        line1->setGeometry(QRect(575, 10, 16, 50));
+        line1->setGeometry(QRect(540, 10, 16, 50));
         line1->setFrameShape(QFrame::VLine);
         line1->setFrameShadow(QFrame::Raised);
         line1_2 = new QFrame(groupSkill);
         line1_2->setObjectName(QStringLiteral("line1_2"));
-        line1_2->setGeometry(QRect(645, 10, 16, 50));
+        line1_2->setGeometry(QRect(610, 10, 16, 50));
         line1_2->setFrameShape(QFrame::VLine);
         line1_2->setFrameShadow(QFrame::Raised);
         line1_3 = new QFrame(groupSkill);
         line1_3->setObjectName(QStringLiteral("line1_3"));
-        line1_3->setGeometry(QRect(715, 10, 16, 50));
+        line1_3->setGeometry(QRect(680, 10, 16, 50));
         line1_3->setFrameShape(QFrame::VLine);
         line1_3->setFrameShadow(QFrame::Raised);
         textskill_2 = new QLabel(groupSkill);
         textskill_2->setObjectName(QStringLiteral("textskill_2"));
-        textskill_2->setGeometry(QRect(90, 20, 60, 30));
+        textskill_2->setGeometry(QRect(80, 20, 60, 30));
         textskill_2->setFont(font2);
         textskill_2->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
@@ -446,7 +456,7 @@ public:
 "}"));
         textskill_3 = new QLabel(groupSkill);
         textskill_3->setObjectName(QStringLiteral("textskill_3"));
-        textskill_3->setGeometry(QRect(200, 20, 40, 30));
+        textskill_3->setGeometry(QRect(180, 20, 40, 30));
         textskill_3->setFont(font2);
         textskill_3->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
@@ -454,7 +464,7 @@ public:
 "}"));
         textskill_4 = new QLabel(groupSkill);
         textskill_4->setObjectName(QStringLiteral("textskill_4"));
-        textskill_4->setGeometry(QRect(300, 20, 40, 30));
+        textskill_4->setGeometry(QRect(280, 20, 40, 30));
         textskill_4->setFont(font2);
         textskill_4->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
@@ -462,7 +472,7 @@ public:
 "}"));
         lblSpeed = new QLabel(groupSkill);
         lblSpeed->setObjectName(QStringLiteral("lblSpeed"));
-        lblSpeed->setGeometry(QRect(160, 20, 30, 30));
+        lblSpeed->setGeometry(QRect(150, 20, 30, 30));
         QPalette palette;
         QBrush brush(QColor(42, 42, 42, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -476,19 +486,19 @@ public:
         palette.setBrush(QPalette::Disabled, QPalette::Text, brush);
         palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush);
         lblSpeed->setPalette(palette);
-        QFont font5;
-        font5.setFamily(QStringLiteral("Agency FB"));
-        font5.setPointSize(16);
-        font5.setBold(false);
-        font5.setWeight(50);
-        lblSpeed->setFont(font5);
+        QFont font7;
+        font7.setFamily(QStringLiteral("Agency FB"));
+        font7.setPointSize(16);
+        font7.setBold(false);
+        font7.setWeight(50);
+        lblSpeed->setFont(font7);
         lblSpeed->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
 "color:#2A2A2A;\n"
 "}"));
         lblVolume = new QLabel(groupSkill);
         lblVolume->setObjectName(QStringLiteral("lblVolume"));
-        lblVolume->setGeometry(QRect(250, 20, 40, 30));
+        lblVolume->setGeometry(QRect(230, 20, 40, 30));
         QPalette palette1;
         palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette1.setBrush(QPalette::Active, QPalette::Text, brush);
@@ -500,14 +510,14 @@ public:
         palette1.setBrush(QPalette::Disabled, QPalette::Text, brush);
         palette1.setBrush(QPalette::Disabled, QPalette::ButtonText, brush);
         lblVolume->setPalette(palette1);
-        lblVolume->setFont(font5);
+        lblVolume->setFont(font7);
         lblVolume->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
 "color:#2A2A2A;\n"
 "}"));
         lblLife = new QLabel(groupSkill);
         lblLife->setObjectName(QStringLiteral("lblLife"));
-        lblLife->setGeometry(QRect(350, 20, 40, 30));
+        lblLife->setGeometry(QRect(330, 20, 40, 30));
         QPalette palette2;
         palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette2.setBrush(QPalette::Active, QPalette::Text, brush);
@@ -519,34 +529,29 @@ public:
         palette2.setBrush(QPalette::Disabled, QPalette::Text, brush);
         palette2.setBrush(QPalette::Disabled, QPalette::ButtonText, brush);
         lblLife->setPalette(palette2);
-        lblLife->setFont(font5);
+        lblLife->setFont(font7);
         lblLife->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
 "color:#2A2A2A;\n"
 "}"));
         line1_4 = new QFrame(groupSkill);
         line1_4->setObjectName(QStringLiteral("line1_4"));
-        line1_4->setGeometry(QRect(180, 10, 16, 50));
+        line1_4->setGeometry(QRect(160, 10, 16, 50));
         line1_4->setFrameShape(QFrame::VLine);
         line1_4->setFrameShadow(QFrame::Raised);
         line1_5 = new QFrame(groupSkill);
         line1_5->setObjectName(QStringLiteral("line1_5"));
-        line1_5->setGeometry(QRect(280, 10, 16, 50));
+        line1_5->setGeometry(QRect(260, 10, 16, 50));
         line1_5->setFrameShape(QFrame::VLine);
         line1_5->setFrameShadow(QFrame::Raised);
         line1_6 = new QFrame(groupSkill);
         line1_6->setObjectName(QStringLiteral("line1_6"));
-        line1_6->setGeometry(QRect(380, 10, 16, 50));
+        line1_6->setGeometry(QRect(360, 10, 16, 50));
         line1_6->setFrameShape(QFrame::VLine);
         line1_6->setFrameShadow(QFrame::Raised);
         lblPoint = new QLabel(groupSkill);
         lblPoint->setObjectName(QStringLiteral("lblPoint"));
-        lblPoint->setGeometry(QRect(460, 20, 50, 30));
-        QFont font6;
-        font6.setFamily(QStringLiteral("Agency FB"));
-        font6.setPointSize(18);
-        font6.setBold(false);
-        font6.setWeight(50);
+        lblPoint->setGeometry(QRect(430, 20, 41, 30));
         lblPoint->setFont(font6);
         lblPoint->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
@@ -554,7 +559,7 @@ public:
 "}"));
         textskill_5 = new QLabel(groupSkill);
         textskill_5->setObjectName(QStringLiteral("textskill_5"));
-        textskill_5->setGeometry(QRect(410, 20, 40, 30));
+        textskill_5->setGeometry(QRect(380, 20, 40, 30));
         textskill_5->setFont(font2);
         textskill_5->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
@@ -567,7 +572,7 @@ public:
         playerpic->setScaledContents(true);
         line1_7 = new QFrame(groupSkill);
         line1_7->setObjectName(QStringLiteral("line1_7"));
-        line1_7->setGeometry(QRect(500, 10, 16, 50));
+        line1_7->setGeometry(QRect(470, 10, 16, 50));
         line1_7->setFrameShape(QFrame::VLine);
         line1_7->setFrameShadow(QFrame::Raised);
         pbarLife = new QProgressBar(groupSkill);
@@ -585,11 +590,11 @@ public:
         pbarLife->setMaximum(200);
         pbarLife->setValue(200);
         pbarLife->setTextVisible(false);
-
         pbarLife->setOrientation(Qt::Vertical);
         skill1num_2 = new QLabel(groupSkill);
         skill1num_2->setObjectName(QStringLiteral("skill1num_2"));
-        skill1num_2->setGeometry(QRect(520, 40, 21, 20));
+        skill1num_2->setGeometry(QRect(488, 40, 21, 20));
+        skill1num_2->setFont(font5);
         skill1num_2->setStyleSheet(QLatin1String("QLabel{\n"
 "border :1px white;\n"
 "background-color: rgba(0,0,0,0);\n"
@@ -603,7 +608,13 @@ public:
         skill1num_2->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
         skill2num_2 = new QLabel(groupSkill);
         skill2num_2->setObjectName(QStringLiteral("skill2num_2"));
-        skill2num_2->setGeometry(QRect(595, 40, 21, 20));
+        skill2num_2->setGeometry(QRect(560, 40, 21, 20));
+        QFont font8;
+        font8.setFamily(QStringLiteral("Times New Roman"));
+        font8.setPointSize(11);
+        font8.setBold(false);
+        font8.setWeight(50);
+        skill2num_2->setFont(font8);
         skill2num_2->setStyleSheet(QLatin1String("QLabel{\n"
 "border :1px white;\n"
 "background-color: rgba(0,0,0,0);\n"
@@ -614,7 +625,8 @@ public:
         skill2num_2->setOpenExternalLinks(false);
         skill3num_2 = new QLabel(groupSkill);
         skill3num_2->setObjectName(QStringLiteral("skill3num_2"));
-        skill3num_2->setGeometry(QRect(665, 40, 20, 20));
+        skill3num_2->setGeometry(QRect(627, 40, 20, 20));
+        skill3num_2->setFont(font8);
         skill3num_2->setStyleSheet(QLatin1String("QLabel{\n"
 "border :1px white;\n"
 "background-color: rgba(0,0,0,0);\n"
@@ -623,9 +635,87 @@ public:
         skill3num_2->setTextFormat(Qt::AutoText);
         skill3num_2->setScaledContents(false);
         skill3num_2->setOpenExternalLinks(false);
+        lblskill1 = new QPushButton(groupSkill);
+        lblskill1->setObjectName(QStringLiteral("lblskill1"));
+        lblskill1->setGeometry(QRect(500, 20, 41, 41));
+        QFont font9;
+        font9.setFamily(QStringLiteral("Agency FB"));
+        font9.setPointSize(12);
+        font9.setBold(true);
+        font9.setWeight(75);
+        lblskill1->setFont(font9);
+        lblskill1->setStyleSheet(QLatin1String("QPushButton{\n"
+"	border-image: url(:/res/img/skill/s1.png);\n"
+"	\n"
+"\n"
+"border: 0px;\n"
+"color:#000000;\n"
+"border-radius: 2px;\n"
+"\n"
+"}\n"
+"QPushButton:hover{\n"
+"border: 2px;\n"
+"color:#2a2a2a;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border:1px solid rgb(77, 176, 251);\n"
+"color:#aaaaaa;\n"
+"\n"
+"}\n"
+""));
+        lblskill1->setIconSize(QSize(15, 35));
+        lblskill2 = new QPushButton(groupSkill);
+        lblskill2->setObjectName(QStringLiteral("lblskill2"));
+        lblskill2->setGeometry(QRect(570, 20, 41, 41));
+        lblskill2->setFont(font9);
+        lblskill2->setStyleSheet(QLatin1String("QPushButton{\n"
+"border-image: url(:/res/img/skill/s2.png);\n"
+"color:#000000;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border: 2px;\n"
+"color:#2a2a2a;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border:1px solid rgb(77, 176, 251);\n"
+"color:#aaaaaa;\n"
+"\n"
+"}"));
+        lblskill2->setIconSize(QSize(15, 35));
+        lblskill3 = new QPushButton(groupSkill);
+        lblskill3->setObjectName(QStringLiteral("lblskill3"));
+        lblskill3->setGeometry(QRect(640, 20, 41, 41));
+        lblskill3->setFont(font9);
+        lblskill3->setStyleSheet(QLatin1String("QPushButton{\n"
+"border-image: url(:/res/img/skill/s3.png);\n"
+"color:#000000;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border: 2px;\n"
+"color:#2a2a2a;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border:1px solid rgb(77, 176, 251);\n"
+"color:#aaaaaa;\n"
+"\n"
+"}"));
+        lblskill3->setIconSize(QSize(15, 35));
+        label_3 = new QLabel(groupSkill);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(700, 20, 35, 35));
+        label_3->setPixmap(QPixmap(QString::fromUtf8(":/res/img/skill/coins.png")));
+        label_3->setScaledContents(true);
         groupBoss = new QLabel(game);
         groupBoss->setObjectName(QStringLiteral("groupBoss"));
-        groupBoss->setGeometry(QRect(360, 170, 151, 51));
+        groupBoss->setGeometry(QRect(330, 170, 151, 51));
         QPalette palette3;
         QBrush brush1(QColor(190, 38, 40, 255));
         brush1.setStyle(Qt::SolidPattern);
@@ -639,7 +729,12 @@ public:
         palette3.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         palette3.setBrush(QPalette::Disabled, QPalette::ButtonText, brush1);
         groupBoss->setPalette(palette3);
-        groupBoss->setFont(font6);
+        QFont font10;
+        font10.setFamily(QStringLiteral("Agency FB"));
+        font10.setPointSize(18);
+        font10.setBold(false);
+        font10.setWeight(50);
+        groupBoss->setFont(font10);
         groupBoss->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
 "color:#be2628;\n"
@@ -650,8 +745,6 @@ public:
         lblback->setFrameShape(QFrame::StyledPanel);
         lblback->setFrameShadow(QFrame::Raised);
 
-     
-
         retranslateUi(game);
 
         QMetaObject::connectSlotsByName(game);
@@ -659,7 +752,6 @@ public:
 
     void retranslateUi(QWidget *game)
     {
-
         game->setWindowTitle(QApplication::translate("game", "Form", Q_NULLPTR));
         lblTime->setText(QApplication::translate("game", "0", Q_NULLPTR));
         lblAttackMode->setText(QApplication::translate("game", "Normal Bullet", Q_NULLPTR));
@@ -667,30 +759,28 @@ public:
         groupGoods->setTitle(QString());
         btnShowTab->setText(QString());
         prop->setText(QString());
-        proptext->setText(QApplication::translate("game", "SPEED UP", Q_NULLPTR));
+        proptext->setText(QApplication::translate("game", "Speed Up", Q_NULLPTR));
         prop_2->setText(QString());
-        proptext_2->setText(QApplication::translate("game", "SPEED LOW", Q_NULLPTR));
+        proptext_2->setText(QApplication::translate("game", "Speed Low", Q_NULLPTR));
         prop_3->setText(QString());
-        proptext_3->setText(QApplication::translate("game", "SIZE LARGER", Q_NULLPTR));
+        proptext_3->setText(QApplication::translate("game", "Size Larger", Q_NULLPTR));
         prop_4->setText(QString());
-        proptext_4->setText(QApplication::translate("game", "SIZE SMALLER", Q_NULLPTR));
+        proptext_4->setText(QApplication::translate("game", "Size Smaller", Q_NULLPTR));
         prop_5->setText(QString());
-        proptext_5->setText(QApplication::translate("game", "BLOOD BAG", Q_NULLPTR));
+        proptext_5->setText(QApplication::translate("game", "Blood Bag", Q_NULLPTR));
         prop_6->setText(QString());
-        proptext_6->setText(QApplication::translate("game", "BLOOD BAG", Q_NULLPTR));
+        proptext_6->setText(QApplication::translate("game", "Super Shield", Q_NULLPTR));
         prop_7->setText(QString());
-        proptext_7->setText(QApplication::translate("game", "BLOOD BAG", Q_NULLPTR));
+        proptext_7->setText(QApplication::translate("game", "Jump Moving", Q_NULLPTR));
         label_2->setText(QApplication::translate("game", "PROPS INFO", Q_NULLPTR));
+        bg->setText(QString());
         lblGoods->setText(QApplication::translate("game", "None", Q_NULLPTR));
         propseffect->setText(QApplication::translate("game", "PROPS EFFECT", Q_NULLPTR));
         groupSkill->setTitle(QString());
-        skill1->setText(QString());
-        skill2->setText(QString());
-        skill3->setText(QString());
-        skill1num->setText(QApplication::translate("game", "15", Q_NULLPTR));
-        skill2num->setText(QApplication::translate("game", "15", Q_NULLPTR));
-        skill3num->setText(QApplication::translate("game", "15", Q_NULLPTR));
-        textskill->setText(QApplication::translate("game", "SKILL", Q_NULLPTR));
+        skill1num->setText(QApplication::translate("game", "$5", Q_NULLPTR));
+        skill2num->setText(QApplication::translate("game", "$2", Q_NULLPTR));
+        skill3num->setText(QApplication::translate("game", "$4", Q_NULLPTR));
+        coins->setText(QApplication::translate("game", "0", Q_NULLPTR));
         textskill_2->setText(QApplication::translate("game", "SPEED", Q_NULLPTR));
         textskill_3->setText(QApplication::translate("game", "SIZE", Q_NULLPTR));
         textskill_4->setText(QApplication::translate("game", "LIFE", Q_NULLPTR));
@@ -703,8 +793,11 @@ public:
         skill1num_2->setText(QApplication::translate("game", "U", Q_NULLPTR));
         skill2num_2->setText(QApplication::translate("game", "I", Q_NULLPTR));
         skill3num_2->setText(QApplication::translate("game", "O", Q_NULLPTR));
+        lblskill1->setText(QString());
+        lblskill2->setText(QString());
+        lblskill3->setText(QString());
+        label_3->setText(QString());
         groupBoss->setText(QApplication::translate("game", "BOSS IS COMING!", Q_NULLPTR));
-
     } // retranslateUi
 
 };

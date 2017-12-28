@@ -14,7 +14,7 @@ info::info(QWidget *parent) :
 
 void info::showInfo()
 {
-    setGeometry(QRect(0, 0, ui->infoBackground->width(), ui->infoBackground->height()));
+    setGeometry(QRect(20, 100, ui->infoBackground->width(), ui->infoBackground->height()));
     show();
 }
 

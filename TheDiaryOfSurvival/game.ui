@@ -50,12 +50,10 @@ color:#b53436;
   <widget class="QProgressBar" name="pbarEnergy">
    <property name="geometry">
     <rect>
-
-     <x>270</x>
+     <x>230</x>
      <y>15</y>
      <width>70</width>
      <height>20</height>
-
     </rect>
    </property>
    <property name="styleSheet">
@@ -82,12 +80,10 @@ QProgressBar::chunk {
   <widget class="QLabel" name="lblAttackMode">
    <property name="geometry">
     <rect>
-
      <x>140</x>
      <y>10</y>
      <width>140</width>
-     <height>30</height>
-
+     <height>40</height>
     </rect>
    </property>
    <property name="font">
@@ -111,12 +107,10 @@ color:#2a2a2a;
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-
      <x>10</x>
      <y>10</y>
      <width>120</width>
-     <height>30</height>
-
+     <height>40</height>
     </rect>
    </property>
    <property name="font">
@@ -141,12 +135,10 @@ color:#5a5a5a;
   <widget class="QGroupBox" name="groupGoods">
    <property name="geometry">
     <rect>
-
      <x>640</x>
      <y>140</y>
      <width>160</width>
      <height>340</height>
-
     </rect>
    </property>
    <property name="title">
@@ -155,12 +147,10 @@ color:#5a5a5a;
    <widget class="QPushButton" name="btnShowTab">
     <property name="geometry">
      <rect>
-
       <x>0</x>
       <y>140</y>
       <width>20</width>
       <height>50</height>
-
      </rect>
     </property>
     <property name="font">
@@ -199,12 +189,10 @@ background-color:rgb(80, 189, 255);
    <widget class="QLabel" name="prop">
     <property name="geometry">
      <rect>
-
       <x>20</x>
       <y>50</y>
-      <width>35</width>
-      <height>30</height>
-
+      <width>30</width>
+      <height>28</height>
      </rect>
     </property>
     <property name="text">
@@ -239,18 +227,16 @@ color:#2A2A2A;
 }</string>
     </property>
     <property name="text">
-     <string>SPEED UP</string>
+     <string>Speed Up</string>
     </property>
    </widget>
    <widget class="QLabel" name="prop_2">
     <property name="geometry">
      <rect>
-
       <x>20</x>
       <y>90</y>
-      <width>35</width>
-      <height>35</height>
-
+      <width>30</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -266,10 +252,8 @@ color:#2A2A2A;
    <widget class="QLabel" name="proptext_2">
     <property name="geometry">
      <rect>
-
       <x>60</x>
       <y>90</y>
-
       <width>81</width>
       <height>30</height>
      </rect>
@@ -287,18 +271,16 @@ color:#2A2A2A;
 }</string>
     </property>
     <property name="text">
-     <string>SPEED LOW</string>
+     <string>Speed Low</string>
     </property>
    </widget>
    <widget class="QLabel" name="prop_3">
     <property name="geometry">
      <rect>
-
       <x>20</x>
       <y>130</y>
-      <width>35</width>
-      <height>35</height>
-
+      <width>30</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -333,24 +315,23 @@ color:#2A2A2A;
 }</string>
     </property>
     <property name="text">
-     <string>SIZE LARGER</string>
+     <string>Size Larger</string>
     </property>
    </widget>
    <widget class="QLabel" name="prop_4">
     <property name="geometry">
      <rect>
       <x>20</x>
-
       <y>170</y>
-      <width>35</width>
-      <height>35</height>
+      <width>30</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="res.qrc">:/res/img/goods/goods (2).png</pixmap>
+     <pixmap resource="res.qrc">:/res/img/goods/goods (4).png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -363,7 +344,6 @@ color:#2A2A2A;
       <y>170</y>
       <width>81</width>
       <height>30</height>
-
      </rect>
     </property>
     <property name="font">
@@ -379,17 +359,16 @@ color:#2A2A2A;
 }</string>
     </property>
     <property name="text">
-     <string>SIZE SMALLER</string>
+     <string>Size Smaller</string>
     </property>
    </widget>
    <widget class="QLabel" name="prop_5">
     <property name="geometry">
      <rect>
-
       <x>20</x>
       <y>210</y>
-      <width>35</width>
-      <height>35</height>
+      <width>30</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -409,7 +388,6 @@ color:#2A2A2A;
       <y>210</y>
       <width>81</width>
       <height>30</height>
-
      </rect>
     </property>
     <property name="font">
@@ -425,27 +403,23 @@ color:#2A2A2A;
 }</string>
     </property>
     <property name="text">
-
-     <string>BLOOD BAG</string>
-
+     <string>Blood Bag</string>
     </property>
    </widget>
    <widget class="QLabel" name="prop_6">
     <property name="geometry">
      <rect>
-
       <x>20</x>
       <y>290</y>
-      <width>35</width>
-      <height>35</height>
-
+      <width>30</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="res.qrc">:/res/img/goods/goods (2).png</pixmap>
+     <pixmap resource="res.qrc">:/res/img/goods/goods (7).png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -473,24 +447,23 @@ color:#2A2A2A;
 }</string>
     </property>
     <property name="text">
-     <string>BLOOD BAG</string>
+     <string>Super Shield</string>
     </property>
    </widget>
    <widget class="QLabel" name="prop_7">
     <property name="geometry">
      <rect>
       <x>20</x>
-
       <y>250</y>
-      <width>35</width>
-      <height>35</height>
+      <width>30</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="res.qrc">:/res/img/goods/goods (2).png</pixmap>
+     <pixmap resource="res.qrc">:/res/img/goods/goods (6).png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -503,7 +476,6 @@ color:#2A2A2A;
       <y>250</y>
       <width>81</width>
       <height>30</height>
-
      </rect>
     </property>
     <property name="font">
@@ -519,7 +491,7 @@ color:#2A2A2A;
 }</string>
     </property>
     <property name="text">
-     <string>BLOOD BAG</string>
+     <string>Jump Moving</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -675,30 +647,59 @@ color:#5a5a5a;
      <enum>QFrame::Raised</enum>
     </property>
    </widget>
-   <widget class="QFrame" name="line1_16">
+   <widget class="QLabel" name="bg">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>70</y>
-      <width>8</width>
-      <height>231</height>
+      <x>0</x>
+      <y>0</y>
+      <width>160</width>
+      <height>340</height>
      </rect>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::VLine</enum>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{  
+   background-color: rgba(255, 255, 224, 50%);
+   border: 0px solid black;
+}</string>
     </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
+    <property name="text">
+     <string/>
     </property>
    </widget>
+   <zorder>bg</zorder>
+   <zorder>btnShowTab</zorder>
+   <zorder>prop</zorder>
+   <zorder>proptext</zorder>
+   <zorder>prop_2</zorder>
+   <zorder>proptext_2</zorder>
+   <zorder>prop_3</zorder>
+   <zorder>proptext_3</zorder>
+   <zorder>prop_4</zorder>
+   <zorder>proptext_4</zorder>
+   <zorder>prop_5</zorder>
+   <zorder>proptext_5</zorder>
+   <zorder>prop_6</zorder>
+   <zorder>proptext_6</zorder>
+   <zorder>prop_7</zorder>
+   <zorder>proptext_7</zorder>
+   <zorder>label_2</zorder>
+   <zorder>line1_8</zorder>
+   <zorder>line1_9</zorder>
+   <zorder>line1_10</zorder>
+   <zorder>line1_11</zorder>
+   <zorder>line1_12</zorder>
+   <zorder>line1_13</zorder>
+   <zorder>line1_14</zorder>
+   <zorder>line1_15</zorder>
   </widget>
   <widget class="QLabel" name="lblGoods">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>490</x>
      <y>10</y>
-     <width>111</width>
-     <height>31</height>
+     <width>161</width>
+     <height>40</height>
     </rect>
    </property>
    <property name="font">
@@ -728,7 +729,7 @@ color:#2A2A2A;
      <x>660</x>
      <y>10</y>
      <width>131</width>
-     <height>31</height>
+     <height>40</height>
     </rect>
    </property>
    <property name="font">
@@ -762,71 +763,20 @@ color:#5A5A5A;
    <property name="title">
     <string/>
    </property>
-   <widget class="QLabel" name="skill1">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>14</y>
-      <width>51</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="res.qrc">:/res/img/skill/p1.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="skill2">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>14</y>
-      <width>51</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="res.qrc">:/res/img/skill/p2.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="skill3">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>14</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="res.qrc">:/res/img/skill/p3.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QLabel" name="skill1num">
     <property name="geometry">
      <rect>
-      <x>515</x>
+      <x>485</x>
       <y>10</y>
       <width>21</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
@@ -836,7 +786,7 @@ color:#5a5a5a;
 }</string>
     </property>
     <property name="text">
-     <string>15</string>
+     <string>$5</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -860,11 +810,17 @@ color:#5a5a5a;
    <widget class="QLabel" name="skill2num">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>555</x>
       <y>10</y>
       <width>21</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
@@ -874,7 +830,7 @@ color:#5a5a5a;
 }</string>
     </property>
     <property name="text">
-     <string>15</string>
+     <string>$2</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -889,11 +845,17 @@ color:#5a5a5a;
    <widget class="QLabel" name="skill3num">
     <property name="geometry">
      <rect>
-      <x>660</x>
+      <x>625</x>
       <y>10</y>
       <width>20</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
@@ -903,7 +865,7 @@ color:#5a5a5a;
 }</string>
     </property>
     <property name="text">
-     <string>15</string>
+     <string>$4</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -915,35 +877,37 @@ color:#5a5a5a;
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="textskill">
+   <widget class="QLabel" name="coins">
     <property name="geometry">
      <rect>
       <x>740</x>
-      <y>20</y>
-      <width>51</width>
-      <height>31</height>
+      <y>22</y>
+      <width>50</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Agency FB</family>
-      <pointsize>16</pointsize>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel
 {
-color:#5a5a5a;
+color:#2A2A2A;
 }</string>
     </property>
     <property name="text">
-     <string>SKILL</string>
+     <string>0</string>
     </property>
    </widget>
    <widget class="QFrame" name="line1">
     <property name="geometry">
      <rect>
-      <x>575</x>
+      <x>540</x>
       <y>10</y>
       <width>16</width>
       <height>50</height>
@@ -959,7 +923,7 @@ color:#5a5a5a;
    <widget class="QFrame" name="line1_2">
     <property name="geometry">
      <rect>
-      <x>645</x>
+      <x>610</x>
       <y>10</y>
       <width>16</width>
       <height>50</height>
@@ -975,7 +939,7 @@ color:#5a5a5a;
    <widget class="QFrame" name="line1_3">
     <property name="geometry">
      <rect>
-      <x>715</x>
+      <x>680</x>
       <y>10</y>
       <width>16</width>
       <height>50</height>
@@ -991,7 +955,7 @@ color:#5a5a5a;
    <widget class="QLabel" name="textskill_2">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>80</x>
       <y>20</y>
       <width>60</width>
       <height>30</height>
@@ -1016,7 +980,7 @@ color:#5a5a5a;
    <widget class="QLabel" name="textskill_3">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>180</x>
       <y>20</y>
       <width>40</width>
       <height>30</height>
@@ -1041,7 +1005,7 @@ color:#5a5a5a;
    <widget class="QLabel" name="textskill_4">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>280</x>
       <y>20</y>
       <width>40</width>
       <height>30</height>
@@ -1066,7 +1030,7 @@ color:#5a5a5a;
    <widget class="QLabel" name="lblSpeed">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>150</x>
       <y>20</y>
       <width>30</width>
       <height>30</height>
@@ -1184,7 +1148,7 @@ color:#2A2A2A;
    <widget class="QLabel" name="lblVolume">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>230</x>
       <y>20</y>
       <width>40</width>
       <height>30</height>
@@ -1302,7 +1266,7 @@ color:#2A2A2A;
    <widget class="QLabel" name="lblLife">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>330</x>
       <y>20</y>
       <width>40</width>
       <height>30</height>
@@ -1420,7 +1384,7 @@ color:#2A2A2A;
    <widget class="QFrame" name="line1_4">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>160</x>
       <y>10</y>
       <width>16</width>
       <height>50</height>
@@ -1436,7 +1400,7 @@ color:#2A2A2A;
    <widget class="QFrame" name="line1_5">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>260</x>
       <y>10</y>
       <width>16</width>
       <height>50</height>
@@ -1452,7 +1416,7 @@ color:#2A2A2A;
    <widget class="QFrame" name="line1_6">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>360</x>
       <y>10</y>
       <width>16</width>
       <height>50</height>
@@ -1468,9 +1432,9 @@ color:#2A2A2A;
    <widget class="QLabel" name="lblPoint">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>430</x>
       <y>20</y>
-      <width>50</width>
+      <width>41</width>
       <height>30</height>
      </rect>
     </property>
@@ -1478,8 +1442,8 @@ color:#2A2A2A;
      <font>
       <family>Agency FB</family>
       <pointsize>18</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -1495,7 +1459,7 @@ color:#2A2A2A;
    <widget class="QLabel" name="textskill_5">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>380</x>
       <y>20</y>
       <width>40</width>
       <height>30</height>
@@ -1539,7 +1503,7 @@ color:#5a5a5a;
    <widget class="QFrame" name="line1_7">
     <property name="geometry">
      <rect>
-      <x>500</x>
+      <x>470</x>
       <y>10</y>
       <width>16</width>
       <height>50</height>
@@ -1588,11 +1552,17 @@ QProgressBar::chunk {
    <widget class="QLabel" name="skill1num_2">
     <property name="geometry">
      <rect>
-      <x>520</x>
+      <x>488</x>
       <y>40</y>
       <width>21</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
@@ -1626,11 +1596,19 @@ color:#5a5a5a;
    <widget class="QLabel" name="skill2num_2">
     <property name="geometry">
      <rect>
-      <x>595</x>
+      <x>560</x>
       <y>40</y>
       <width>21</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>11</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
@@ -1655,11 +1633,19 @@ color:#5a5a5a;
    <widget class="QLabel" name="skill3num_2">
     <property name="geometry">
      <rect>
-      <x>665</x>
+      <x>627</x>
       <y>40</y>
       <width>20</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>11</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
@@ -1681,11 +1667,170 @@ color:#5a5a5a;
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="lblskill1">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>20</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Agency FB</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	border-image: url(:/res/img/skill/s1.png);
+	
+
+border: 0px;
+color:#000000;
+border-radius: 2px;
+
+}
+QPushButton:hover{
+border: 2px;
+color:#2a2a2a;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>15</width>
+      <height>35</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="lblskill2">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>20</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Agency FB</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/img/skill/s2.png);
+color:#000000;
+}
+
+QPushButton:hover{
+border: 2px;
+color:#2a2a2a;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>15</width>
+      <height>35</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="lblskill3">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>20</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Agency FB</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image: url(:/res/img/skill/s3.png);
+color:#000000;
+}
+
+QPushButton:hover{
+border: 2px;
+color:#2a2a2a;
+
+}
+
+QPushButton:pressed{
+border:1px solid rgb(77, 176, 251);
+color:#aaaaaa;
+
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>15</width>
+      <height>35</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>20</y>
+      <width>35</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="res.qrc">:/res/img/skill/coins.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QLabel" name="groupBoss">
    <property name="geometry">
     <rect>
-     <x>360</x>
+     <x>330</x>
      <y>170</y>
      <width>151</width>
      <height>51</height>
@@ -1815,338 +1960,6 @@ color:#be2628;
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-  </widget>
-  <widget class="QProgressBar" name="pbarBoss_1">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>0</y>
-     <width>141</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QProgressBar {
-    border: 2px solid grey;
-    border-radius: 5px;
-    background-color: rgba(0,0,0,0);
-}
-
-QProgressBar::chunk {
-	background-image: url(:/type/res/config/ico/firebar.png);
-}</string>
-   </property>
-   <property name="maximum">
-    <number>200</number>
-   </property>
-   <property name="value">
-    <number>200</number>
-   </property>
-   <property name="textVisible">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QProgressBar" name="pbarBoss_2">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>30</y>
-     <width>141</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QProgressBar {
-    border: 2px solid grey;
-    border-radius: 5px;
-    background-color: rgba(0,0,0,0);
-}
-
-QProgressBar::chunk {
-	background-image: url(:/type/res/config/ico/firebar.png);
-}</string>
-   </property>
-   <property name="maximum">
-    <number>200</number>
-   </property>
-   <property name="value">
-    <number>200</number>
-   </property>
-   <property name="textVisible">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QProgressBar" name="pbarBoss_3">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>60</y>
-     <width>141</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QProgressBar {
-    border: 2px solid grey;
-    border-radius: 5px;
-    background-color: rgba(0,0,0,0);
-}
-
-QProgressBar::chunk {
-	background-image: url(:/type/res/config/ico/firebar.png);
-}</string>
-   </property>
-   <property name="maximum">
-    <number>200</number>
-   </property>
-   <property name="value">
-    <number>200</number>
-   </property>
-   <property name="textVisible">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QGroupBox" name="groupBoss">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>140</y>
-     <width>291</width>
-     <height>201</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string/>
-   </property>
-   <widget class="QLabel" name="label_22">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>55</y>
-      <width>111</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>120</red>
-          <green>120</green>
-          <blue>120</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="font">
-     <font>
-      <family>微软雅黑</family>
-      <pointsize>9</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Boss来啦！</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupSkill">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>540</y>
-     <width>400</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string/>
-   </property>
-   <widget class="QLabel" name="label_20">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>20</y>
-      <width>31</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>120</red>
-          <green>120</green>
-          <blue>120</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="font">
-     <font>
-      <family>微软雅黑</family>
-      <pointsize>9</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Q</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_25">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>20</y>
-      <width>31</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>120</red>
-          <green>120</green>
-          <blue>120</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="font">
-     <font>
-      <family>微软雅黑</family>
-      <pointsize>9</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>空格</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnShowTab_2">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>16</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-border: 0px;
-color:#FFFFFF;
-background-color: rgb(50, 112, 169);
-}
-
-QPushButton:hover{
-border: 0px;
-color:#FFFFFF;
-background-color:rgb(77, 176, 251);
-}
-
-QPushButton:checked{
-border:1px solid rgb(77, 176, 251);
-color:#FFFFFF;
-background-color:rgb(80, 189, 255);
-}</string>
-    </property>
-    <property name="text">
-     <string>&lt;</string>
-    </property>
-   </widget>
   </widget>
  </widget>
  <resources>
