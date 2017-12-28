@@ -17,7 +17,7 @@ loadwin::loadwin(QWidget *parent) :
     /*设置槽*/
     connect(ui->loadButton,SIGNAL(clicked()),this,SLOT(loadButtonClicked()));
     connect(ui->exitButton,SIGNAL(clicked()),this,SLOT(slot_exitButton()));
-
+    m_uname="visitor";
     //初始化尝试登录次数
     LoadTimes = 0;
 
@@ -37,6 +37,8 @@ void loadwin::loadButtonClicked(){
 
     QString name = ui->userline->text();
     QString pw = ui->pwline->text();
+    m_uname=name;
+    qDebug()<<m_uname;
 
     if(name == "" || pw == ""){
        QMessageBox::information(this,tr("警告"),
@@ -45,10 +47,10 @@ void loadwin::loadButtonClicked(){
     }
       else{
         if(doCheck(name,pw)){
+
             QMessageBox::information(this,tr("温馨提示"),
                                      tr("登陆成功!!!"));
             LoadTimes = 0;
-
             this->hide();
             emit sig_loginSuccess();
             return;
@@ -90,6 +92,9 @@ bool loadwin::doCheck(const QString uname, const QString pw){
     else{
         return false;
     }
+}
+QString loadwin::return_user(){
+    return m_uname;
 }
 
 void loadwin::saveRecord(int killnum, int timecount){

@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     initLoadwin();
     initRank();
 
+
     connect(m_game,SIGNAL(sig_deathSave(int,int)),m_loadwin,SLOT(saveRecord(int, int)));
 }
 
@@ -25,6 +26,7 @@ void MainWindow::initGame()
     m_game = new game(this);
 
     m_game->setGeometry(0,0,width(),height());
+//    qDebug()<<width();
     m_game->setFocusPolicy(Qt::StrongFocus);
 
     m_game->hide();
@@ -41,6 +43,7 @@ void MainWindow::initStart()
     connect(m_start,SIGNAL(sig_btnInfo()),this,SLOT(slot_info()));
     connect(m_start,SIGNAL(sig_btnRegis()),this,SLOT(slot_regis()));
     connect(m_start,SIGNAL(sig_btnLogin()),this,SLOT(slot_loadwin()));
+    connect(m_start,SIGNAL(sig_btnRank()),this,SLOT(slot_rank()));
 }
 
 void MainWindow::initInfo()
@@ -55,6 +58,7 @@ void MainWindow::initRegis()
     m_regis = new regis(this);
     m_regis->hide();
     connect(m_start,SIGNAL(sig_btnRegis()),this,SLOT(slot_regis()));
+    //connect(m_regis,SIGNAL(sig_close_regis()),this,SLOT(slot_start()));
     connect(m_regis,SIGNAL(sig_returnButton()),this,SLOT(slot_returnStart()));
     connect(m_regis,SIGNAL(sig_load()),this,SLOT(slot_loadwin()));
 }
@@ -63,6 +67,7 @@ void MainWindow::initLoadwin()
 {
     m_loadwin = new loadwin(this);
     m_loadwin->hide();
+//    connect(m_start,SIGNAL(sig_btnLogin()),this,SLOT(slot_loadwin()));
     connect(m_loadwin,SIGNAL(sig_exitButton()),this,SLOT(slot_exitLogin()));   //restart信号，则触发游戏重启
     connect(m_loadwin,SIGNAL(sig_loginSuccess()),this,SLOT(slot_start()));
 }
@@ -73,9 +78,8 @@ void MainWindow::initRank()
     m_rank->hide();
 
     connect(m_rank,SIGNAL(sig_returnButton()),this,SLOT(slot_exitRank()));
-    connect(m_start,SIGNAL(sig_btnRank()),this,SLOT(slot_rank()));
-}
 
+}
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
@@ -86,7 +90,7 @@ void MainWindow::slot_start()
 {
     m_start->hide();
     m_game->show();
-
+    transUser();
     m_game->startGameLoop();
 }
 
@@ -112,6 +116,7 @@ void MainWindow::slot_rank()
 void MainWindow::slot_return()
 {
     m_game->hide();
+
     m_start->show();
 
 }
@@ -123,6 +128,11 @@ void MainWindow::slot_exitLogin()
 
 }
 
+void MainWindow::transUser(){
+    m_game->setUser(m_loadwin->return_user());
+    qDebug()<<"sdfsdf"<<m_loadwin->return_user();
+    qDebug()<<m_game->returnUser();
+}
 void MainWindow::slot_exitRank()
 {
     m_rank->hide();

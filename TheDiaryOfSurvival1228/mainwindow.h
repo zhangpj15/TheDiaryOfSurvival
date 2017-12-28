@@ -34,6 +34,7 @@ public:
     void initRegis();
     void initLoadwin();
     void initRank();
+    void transUser();
 
 protected:
     void resizeEvent(QResizeEvent* event);
