@@ -495,6 +495,7 @@ void game::slot_attack()
 
 void game::slot_gameOver()
 {
+    emit sig_deathSave(m_pmanager.m_killNum,m_time/1000);
     m_timer.stop();
     m_death->show();
     m_death->setWindowModality(Qt::ApplicationModal);
