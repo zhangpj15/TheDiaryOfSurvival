@@ -63,7 +63,6 @@ bool gmanager::updategoods(QPointF dist,double size)
             {
                 m_goods.removeAt(i);
                 i--;
-//                qDebug()<<("货物被吃掉");
             }
             continue;
         }

@@ -15,7 +15,6 @@ void Player::initPlayer()
     m_life = 100;
     m_curState = _STA;
     m_size = 50;
-    //    m_big=50;
     m_curgoods = 0;
     defence=0;
 }
@@ -154,8 +153,6 @@ void Player::speedup()
 void Player::small()
 {
     m_size=m_size>30?m_size-10:30;
-    //    setCurrentVolume(m_big);
-    //    qDebug()<<m_size;
 }
 void Player::speedlow()
 {
@@ -260,12 +257,7 @@ void Player::updategoods()
 
 void Player::render(QPainter *painter)
 {
-    //    setCurrentVolume(m_big);
     painter->save();
-
-    //    int numb=m_life/25+1;
-    //    for(int i=0;i<numb;i++)
-    //        painter->drawPixmap(m_posi.x()+0.2*i*m_size,m_posi.y()-0.2*m_size,15,15,QPixmap(QString(m_type)));
     painter->translate(m_posi.x()+m_size/2.0,m_posi.y()+m_size/2.0);
     //    将中心设为坐标系原点，便于旋转
     painter->rotate(m_dir);

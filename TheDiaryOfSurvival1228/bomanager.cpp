@@ -48,7 +48,6 @@ void Bomanager::bornNew(QPointF posi)
         double leng = TwoPtDistance(posi,oneboss.getPosi());
 
         if(leng < 100||m_boss.size()>2){
-//            qDebug()<<m_boss.size()<<"boss数量";
             continue;
         }
         m_boss.push_back(oneboss);// 将新生成的敌人添加至列表
@@ -60,7 +59,6 @@ void Bomanager::bornNew(QPointF posi)
 bool Bomanager::updateBoss(QPointF dist,double size)
 {
     m_playPosi = dist;
-//    qDebug()<<"更新boss了";
     for(int i=0; i< m_boss.size(); i++)
     {
         if(!m_boss[i].isAlive())  // 已经死亡的敌人

@@ -4,7 +4,7 @@ Bullet::Bullet()
 {
     m_isLive = true;
     m_size = 25;
-    m_speed = 7;
+    m_speed = 3;
     m_pic=":/res/img/bullets/bullets (1).png";
 }
 
@@ -29,18 +29,7 @@ double Bullet::getSpeed()
 }
 void Bullet::changepic(QString str)
 {
-    int keyy;
-    //m_pic=str;
-    if (str=="_SHOTGUN"){
-        keyy=4;
-    }
-    else if(str=="_MESS"){
-        keyy=5;
-    }
-    else
-        keyy=1;
-
-    m_pic=QString(":/res/img/bullets/bullets (%1).png").arg(keyy);
+    m_pic=str;
 }
 
 QPointF Bullet::getPosi()
@@ -60,12 +49,10 @@ void Bullet::updateBullet()
 {
     double nextX = m_posi.x()+m_speed*sin(3.14*m_dir/180.0);
     double nextY = m_posi.y()-m_speed*cos(3.14*m_dir/180.0);
-
     m_posi = QPointF(nextX,nextY);
 }
 
 void Bullet::renderBullet(QPainter *painter)
 {
-
     painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(m_pic));
 }
