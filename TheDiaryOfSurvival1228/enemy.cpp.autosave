@@ -1,36 +1,34 @@
-#include "goods.h"
-
-goods::goods()
+#include "enemy.h"
+#include "QSound"
+Enemy::Enemy()
 {
     m_size = 50;
+
     m_isAlive = true;
     m_countDown = 100;
-    m_deathType = qrand()%2+1;
+    m_deathType = qrand()%4+1;
+    m_born=1;
 }
 
-void goods::setPosi(double x, double y)
+void Enemy::setPosi(double x, double y)
 {
     m_posi = QPointF(x,y);
 }
 
-void goods::setColor(int x, int y, int z)
+void Enemy::setColor(int x, int y, int z)
 {
     m_color = QColor(x,y,z);
 }
-void goods::setBorn(int x)
+void Enemy::setBorn(int x)
 {
     m_born = x;
 }
-void goods::setNumber(int x)
-{
-    m_number = x;
-}
-void goods::setIsAlive(bool b)
+void Enemy::setIsAlive(bool b)
 {
     m_isAlive = b;
 }
 
-QPointF goods::getPosi()
+QPointF Enemy::getPosi()
 {
     QPointF posi;
     posi.setX(m_posi.x()+m_size/2.0);
@@ -38,47 +36,44 @@ QPointF goods::getPosi()
     return m_posi;
 }
 
-double goods::getSize()
+double Enemy::getSize()
 {
     return m_size;
 }
 
-QColor goods::getColor()
+QColor Enemy::getColor()
 {
     return m_color;
 }
 
-bool goods::isAlive()
+bool Enemy::isAlive()
 {
     return m_isAlive;
 }
 
-int goods::getCountDown()
+int Enemy::getCountDown()
 {
     return m_countDown;
 }
-int goods::getNumber()
+
+void Enemy::render(QPainter *painter)
 {
-    return m_number;
-}
-void goods::render(QPainter *painter)
-{
-    if(m_isAlive)painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(QString(":/res/img/goods/goods (%1).png").arg(m_born)));
+    if(m_isAlive)painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
     else
     {
 
         QPixmap pixmap(m_size,m_size);
 
         pixmap.fill(m_color);
-        pixmap.setMask(QPixmap(QString(":/res/img/goods/fireworks (1).png"))
+        pixmap.setMask(QPixmap(QString(":/res/img/mask/mask%1.png").arg(m_deathType))
                        .scaled(m_size,m_size).mask());
 
         painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,pixmap);
 
         m_countDown--;
-
         m_color.setRed((m_color.red()+2)<255?m_color.red()+2:255);
         m_color.setGreen((m_color.green()+2)<251?m_color.green()+2:251);
         m_color.setBlue((m_color.blue()+2)<242?m_color.blue()+2:242);
+        
     }
 }

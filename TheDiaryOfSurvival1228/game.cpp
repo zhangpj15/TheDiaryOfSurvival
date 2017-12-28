@@ -106,10 +106,7 @@ void game::startGameLoop()
     ui->pbarLife->setVisible(true);    //显示能量槽
     ui->pbarLife->setRange(0,m_player.getLife());    //显示能量槽
     ui->pbarLife->setValue(m_player.getLife());
-    //    ui->pbarLife->setStyleSheet(
-    //                "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
-    //                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
-    //提示栏的动画效果
+
     static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupGoods,"pos");
     animate->setStartValue(QPoint(width()-160,140));
     animate->setEndValue(QPoint(width()-20,140));
@@ -117,6 +114,7 @@ void game::startGameLoop()
     animate->setDuration(3000);
     ui->btnShowTab->setText("<");
     animate->start();
+
     setFocus();
 }
 
@@ -125,28 +123,18 @@ void game::startGameLoop()
 void game::slot_timeLoop()
 {
     m_time += m_timer.interval();
-
-    //    qDebug()<<m_time;
     sectime=m_time/1000;
     if(m_time%zonerate==0)//控制缩圈
     {
-        //        qDebug()<<"到点啦";
         zone=m_time/zonerate;
     }
     if(m_time%dayrate==0)//控制背景图片
     {
-        //        qDebug()<<"到点啦";
-        //pix=QPixmap(":/res/img/background/playbg1.jpg");
-        //        ui->lblback->setStyleSheet{
-        //                "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}"}
-        //      mainwindow.setStyleSheet("#mainwindow{border-image:url(:/res/img/background/playbg1.jpg);}");
-        //ui->lblback->show();
         setAutoFillBackground(true);  //这句一定不能少，否则图片显示不出来。
         QPalette palette;
         palette.setBrush(QPalette::Background, QBrush(QPixmap(QString(":/res/img/background/playbg%1.jpg").arg((m_time/dayrate)%15+1))));
         setPalette(palette);
     }
-    //ui->btnShowTab->setText(">");
 
     m_player.updateStates();// 位置刷新
     m_player.updategoods();// 道具刷新
@@ -157,14 +145,12 @@ void game::slot_timeLoop()
         ui->lblLife->setText(QString::number(m_player.getLife(),10));
         ui->lblVolume->setText(QString::number(m_player.getSize()));
         ui->lblSpeed->setText(QString::number(m_player.getSpeed()));
-        //        ui->lblVolume;
     }
     m_gmanager.updategoods(m_player.getCurrentPosi(),m_player.getSize());
     m_pmanager.updateAttackEffect(m_player.getCurrentPosi(),m_player.getSize(),m_player.getDir());// 攻击模式刷新
 
     bool attacked = (m_emanager.updateEnemys(m_player.getCurrentPosi(),m_player.getSize())||m_bmanager.updatebarriers(m_player.getCurrentPosi(),m_player.getSize())||m_bomanager.updateBoss(m_player.getCurrentPosi(),m_player.getSize()));
     bool hurt= (m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()-m_player.getSize()*0.5,m_player.getCurrentPosi().y()-m_player.getSize()*0.5) && m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()-m_player.getSize()*0.5,m_player.getCurrentPosi().y()+m_player.getSize()*0.5)&&m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()+m_player.getSize()*0.5,m_player.getCurrentPosi().y()-m_player.getSize()*0.5)&&m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x()+m_player.getSize()*0.5,m_player.getCurrentPosi().y()+m_player.getSize()*0.5));
-    //    bool hurt=m_pmanager.m_lifeZone.contains(m_player.getCurrentPosi().x());
     bool isGameOver=false;
     static int denum=0;
     if(!hurt||attacked)
@@ -173,7 +159,6 @@ void game::slot_timeLoop()
         {
             if(denum<50){
                 denum++;
-                qDebug()<<"无敌中";
             }
             else{
                 denum=0;
@@ -190,9 +175,6 @@ void game::slot_timeLoop()
                 ui->lblLife->setText(QString::number(m_player.getLife()));
                 ui->pbarLife->setRange(0,100-1);
                 ui->pbarLife->setValue(m_player.getLife());
-                //        ui->pbarLife->setStyleSheet(
-                //                    "QProgressBar {border: 2px solid grey;border-radius: 5px;background-color: rgba(0,0,0,0);}"
-                //                    "QProgressBar::chunk {background-image: url(:/res/config/ico/coldFireBar.png);}");
                 if(m_player.getLife()==0)isGameOver=true;
             }
             else countblood++;
@@ -336,10 +318,6 @@ void game::keyPressEvent(QKeyEvent *event)
         ui->lblAttackMode->setText(m_pmanager.getAttackMode());
         m_pmanager.setAttacked(true);
         break;
-        //    case Qt::Key_K:
-        //        m_pmanager.changeAttackMode();
-        //        ui->lblAttackMode->setText(m_pmanager.getAttackMode());
-        //        break;
     case Qt::Key_U:
         if(m_pmanager.getSkill_1())
         {
@@ -374,9 +352,8 @@ void game::keyPressEvent(QKeyEvent *event)
             m_timer.start();
         break;
     case Qt::Key_Q:
-        //        m_timer.stop();
-        //        m_end->show();
-        emit sig_quitgame();
+        if(m_player.getLife())
+            emit sig_quitgame();
         break;
     }
 }
@@ -520,6 +497,7 @@ void game::slot_gameOver()
 {
     m_timer.stop();
     m_death->show();
+    m_death->setWindowModality(Qt::ApplicationModal);
     m_death->move((this->width() - m_death->width())/2,(this->height() - m_death->height())/2);
 }
 

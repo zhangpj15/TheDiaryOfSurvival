@@ -74,5 +74,12 @@ void Enemy::render(QPainter *painter)
         m_color.setRed((m_color.red()+2)<255?m_color.red()+2:255);
         m_color.setGreen((m_color.green()+2)<251?m_color.green()+2:251);
         m_color.setBlue((m_color.blue()+2)<242?m_color.blue()+2:242);
+
+        static QPropertyAnimation * animate = new QPropertyAnimation(ui->groupGoods,"pos");
+        animate->setStartValue(m_posi);
+        animate->setEndValue(QPoint(700,600));
+        animate->setEasingCurve(QEasingCurve::InCubic);
+        animate->setDuration(3000);
+        animate->start();
     }
 }

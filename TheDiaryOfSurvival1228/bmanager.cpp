@@ -1,7 +1,7 @@
 #include "bmanager.h"
 #include "player.h"
 
-QPointF m_playerPosi_barriers;  // 玩家的位置
+QPointF m_playerPosi_barriers;
 bool compareDist(const barriers &l, const barriers &r);
 
 bmanager::bmanager()
@@ -62,7 +62,7 @@ bool bmanager::updatebarriers(QPointF dist,double size)
         float dis=10;
         float range=(m_barriers[i].getSize()+size)*0.3;
         m_barriers[i].setPosi(m_barriers[i].getPosi().x()+dis*m_speed,
-                           m_barriers[i].getPosi().y());
+                              m_barriers[i].getPosi().y());
         if(length<=range)                // 如果接触,那么游戏结束
             return true;
 
