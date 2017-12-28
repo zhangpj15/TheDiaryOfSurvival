@@ -37,7 +37,7 @@ public:
     int zonerate;
     int dayrate;
     int bloodrate;
-    QString m_user;
+    int timeBtn;
 
     int m_price_skill1;
     int m_price_skill2;
@@ -56,8 +56,7 @@ public:
     Player m_player;
 
     void startGameLoop();   // 开始游戏
-    void setUser(QString a);   // 开始游戏
-    QString returnUser();   // 开始游戏
+
     explicit game(QWidget *parent = 0);
     ~game();
 
@@ -94,7 +93,6 @@ signals:
     void sig_death();
     void sig_quitgame();
     void sig_borngoods();
-    void sig_deathSave(int,int);
 
 private:
     Ui::game *ui;

@@ -204,6 +204,7 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
                 m_killNum++;   // 击杀一个敌人
                 m_money++;
                 QSound::play(":/res/wav/beat3.wav");//击杀音效
+
                 break;
             }
         }
@@ -362,7 +363,7 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
         {
         case _BULLET:
         {
-            if(!(m_counter%20==0||m_counter==0))
+            if(!(m_counter%50==0||m_counter==0)||m_counter>100)
                 break;
             // 普通子弹攻击
             QPointF s;
@@ -379,7 +380,7 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
         }
         case _SHOTGUN:
         {
-            if(!(m_counter%40==0||m_counter==0))
+            if(!(m_counter%40==0||m_counter==0)||m_counter>100)
                 break;
             // 散弹攻击-skill1-sword
             QPointF s;
@@ -404,7 +405,7 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
         }
         case _MESS:
         {
-            if(!(m_counter%30==0||m_counter==0))
+            if(!(m_counter%30==0||m_counter==0)||m_counter>100)
                 break;
             // 散弹攻击
             QPointF s;
