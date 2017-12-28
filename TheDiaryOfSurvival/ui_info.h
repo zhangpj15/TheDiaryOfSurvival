@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'info.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.3
+** Created by: Qt User Interface Compiler version 5.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -36,6 +36,8 @@ public:
     QLabel *label_12;
     QLabel *label_13;
     QLabel *label_14;
+    QLabel *label_15;
+    QLabel *label_16;
 
     void setupUi(QWidget *info)
     {
@@ -78,16 +80,19 @@ public:
         label_5->setFont(font);
         label_3 = new QLabel(info);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(120, 20, 271, 51));
+        label_3->setGeometry(QRect(90, 30, 331, 51));
         QFont font1;
-        font1.setFamily(QStringLiteral("Book Antiqua"));
-        font1.setPointSize(24);
+        font1.setFamily(QStringLiteral("Arial Rounded MT Bold"));
+        font1.setPointSize(28);
         font1.setBold(false);
         font1.setWeight(50);
         label_3->setFont(font1);
+        label_3->setStyleSheet(QLatin1String("QLabel{\n"
+"color:#6a6a6a;\n"
+"}"));
         label_9 = new QLabel(info);
         label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(370, 110, 91, 40));
+        label_9->setGeometry(QRect(360, 110, 91, 40));
         QPalette palette2;
         palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
@@ -99,14 +104,15 @@ public:
         infoBackground->setGeometry(QRect(0, 0, 500, 360));
         infoBackground->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
-"background-color:rgb(250,250,250);\n"
-"border:1px #2a2a2a;\n"
-"border-radius: 2px;\n"
+"background-color:rgba(250,250,220,70%);\n"
+"border:2px #2a2a2a;\n"
+"border-radius: 10px;\n"
+"\n"
 "}"));
         infoBackground->setFrameShadow(QFrame::Sunken);
         label_10 = new QLabel(info);
         label_10->setObjectName(QStringLiteral("label_10"));
-        label_10->setGeometry(QRect(270, 110, 91, 40));
+        label_10->setGeometry(QRect(260, 110, 91, 40));
         label_10->setFont(font);
         label_10->setStyleSheet(QLatin1String("QLabel{\n"
 "color:#5a5a5a;\n"
@@ -120,7 +126,7 @@ public:
 "}"));
         infoClose = new QPushButton(info);
         infoClose->setObjectName(QStringLiteral("infoClose"));
-        infoClose->setGeometry(QRect(110, 280, 281, 42));
+        infoClose->setGeometry(QRect(180, 280, 131, 42));
         QFont font2;
         font2.setFamily(QStringLiteral("Agency FB"));
         font2.setPointSize(26);
@@ -142,20 +148,20 @@ public:
 "}\n"
 "\n"
 "QPushButton:pressed{\n"
-"border:1px solid rgb(77, 176, 251);\n"
+"border:0px solid rgb(77, 176, 251);\n"
 "color:#aaaaaa;\n"
 "\n"
 "}"));
         label_11 = new QLabel(info);
         label_11->setObjectName(QStringLiteral("label_11"));
-        label_11->setGeometry(QRect(270, 160, 91, 40));
+        label_11->setGeometry(QRect(260, 160, 91, 40));
         label_11->setFont(font);
         label_11->setStyleSheet(QLatin1String("QLabel{\n"
 "color:#5a5a5a;\n"
 "}"));
         label_12 = new QLabel(info);
         label_12->setObjectName(QStringLiteral("label_12"));
-        label_12->setGeometry(QRect(340, 160, 91, 40));
+        label_12->setGeometry(QRect(330, 160, 91, 40));
         QPalette palette3;
         palette3.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette3.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
@@ -171,13 +177,29 @@ public:
 "}"));
         label_14 = new QLabel(info);
         label_14->setObjectName(QStringLiteral("label_14"));
-        label_14->setGeometry(QRect(110, 210, 91, 40));
+        label_14->setGeometry(QRect(160, 210, 41, 40));
         QPalette palette4;
         palette4.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette4.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette4.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         label_14->setPalette(palette4);
         label_14->setFont(font);
+        label_15 = new QLabel(info);
+        label_15->setObjectName(QStringLiteral("label_15"));
+        label_15->setGeometry(QRect(260, 210, 111, 40));
+        label_15->setFont(font);
+        label_15->setStyleSheet(QLatin1String("QLabel{\n"
+"color:#5a5a5a;\n"
+"}"));
+        label_16 = new QLabel(info);
+        label_16->setObjectName(QStringLiteral("label_16"));
+        label_16->setGeometry(QRect(380, 210, 101, 40));
+        QPalette palette5;
+        palette5.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette5.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette5.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        label_16->setPalette(palette5);
+        label_16->setFont(font);
         infoBackground->raise();
         label_7->raise();
         label_6->raise();
@@ -191,6 +213,8 @@ public:
         label_12->raise();
         label_13->raise();
         label_14->raise();
+        label_15->raise();
+        label_16->raise();
 
         retranslateUi(info);
 
@@ -199,20 +223,22 @@ public:
 
     void retranslateUi(QWidget *info)
     {
-        info->setWindowTitle(QApplication::translate("info", "Form", Q_NULLPTR));
-        label_7->setText(QApplication::translate("info", "Moving:", Q_NULLPTR));
-        label_6->setText(QApplication::translate("info", "J", Q_NULLPTR));
-        label_5->setText(QApplication::translate("info", "W-S-A-D", Q_NULLPTR));
-        label_3->setText(QApplication::translate("info", "BRIEF GUIDE", Q_NULLPTR));
-        label_9->setText(QApplication::translate("info", "U-I-O", Q_NULLPTR));
+        info->setWindowTitle(QApplication::translate("info", "Form", 0));
+        label_7->setText(QApplication::translate("info", "Moving:", 0));
+        label_6->setText(QApplication::translate("info", "J", 0));
+        label_5->setText(QApplication::translate("info", "W-S-A-D", 0));
+        label_3->setText(QApplication::translate("info", "BRIEF GUIDE", 0));
+        label_9->setText(QApplication::translate("info", "U-I-O", 0));
         infoBackground->setText(QString());
-        label_10->setText(QApplication::translate("info", "Skill Mode:", Q_NULLPTR));
-        label_8->setText(QApplication::translate("info", "Normal Attack\357\274\232", Q_NULLPTR));
-        infoClose->setText(QApplication::translate("info", "CLOSE", Q_NULLPTR));
-        label_11->setText(QApplication::translate("info", "Pause:", Q_NULLPTR));
-        label_12->setText(QApplication::translate("info", "space", Q_NULLPTR));
-        label_13->setText(QApplication::translate("info", "Quit:", Q_NULLPTR));
-        label_14->setText(QApplication::translate("info", "Q", Q_NULLPTR));
+        label_10->setText(QApplication::translate("info", "Skill Mode:", 0));
+        label_8->setText(QApplication::translate("info", "Normal Attack\357\274\232", 0));
+        infoClose->setText(QApplication::translate("info", "CLOSE", 0));
+        label_11->setText(QApplication::translate("info", "Pause:", 0));
+        label_12->setText(QApplication::translate("info", "space", 0));
+        label_13->setText(QApplication::translate("info", "Quit Game:", 0));
+        label_14->setText(QApplication::translate("info", "Q", 0));
+        label_15->setText(QApplication::translate("info", "Aquire Skill:", 0));
+        label_16->setText(QApplication::translate("info", "click button", 0));
     } // retranslateUi
 
 };

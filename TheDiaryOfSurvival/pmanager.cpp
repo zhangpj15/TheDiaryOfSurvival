@@ -100,11 +100,11 @@ QString Pmanager::getAttackMode()
     case _BULLET:
         return "Normal Bullet";
     case _SHOTGUN:
-        return "Shot Gun";
+        return "7×Sword ";
     case _FIRE:
         return "Fire Gun";
     case _MESS:
-        return "Mess";
+        return "Triple Gun";
     }
 }
 // 返回商品
@@ -120,13 +120,13 @@ QString Pmanager::getgoodsMode(int i)
     case 3:
         return "Speed low";
     case 4:
-        return "Sieze Smaller";
+        return "Size Smaller";
     case 5:
         return "Blood bag";
     case 6:
-        return "changeType";
+        return "Jump Moving";
     case 7:
-        return "Defence";
+        return "Super Shield";
     }
 }
 // 返回攻击模式
@@ -240,6 +240,7 @@ void Pmanager::checkKnockWithEnemys(QVector<Enemy> &enemys, QPointF posi, double
             enemys[i].setIsAlive(false);
             m_killNum++;   // 击杀一个敌人
             m_money++;
+            QSound::play(":/res/wav/beat3.wav");//击杀音效
         }
     }
 }
@@ -268,6 +269,7 @@ void Pmanager::checkKnockWithBoss(QVector<Boss> &bosses, QPointF posi, double di
                     m_bullets.removeAt(i--);
                     m_killNum++;   // 击杀一个敌人
                     m_money+=5;
+                    QSound::play(":/res/wav/hit2.wav");//击杀boss音效
                 }
                 //                qDebug()<<bosses[k].getLife();
                 break;
@@ -304,6 +306,7 @@ void Pmanager::checkKnockWithBoss(QVector<Boss> &bosses, QPointF posi, double di
         if(polygon.containsPoint(bosses[i].getPosi(),Qt::WindingFill))
         {
             bosses[i].setIsAlive(false);
+            QSound::play(":/res/wav/hit2.wav");//击杀boss音效
             m_killNum++;   // 击杀一个敌人
             m_money+=5;
         }
@@ -361,7 +364,7 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
         {
             if(!(m_counter%20==0||m_counter==0))
                 break;
-            // 子弹攻击
+            // 普通子弹攻击
             QPointF s;
 
             s.setX(posi.x()+size/2.0*sin(3.14*dir/180.0));    // 设置新子弹的位置
@@ -378,7 +381,7 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
         {
             if(!(m_counter%40==0||m_counter==0))
                 break;
-            // 散弹攻击
+            // 散弹攻击-skill1-sword
             QPointF s;
 
             s.setX(posi.x()+2*sin(3.14*dir/180.0));
@@ -387,7 +390,7 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
             Bullet temp;
             temp.setPosi(s.x(),s.y());
             temp.setDir(dir);
-
+            temp.changepic(":/res/img/bullets/bullets (5).png");
             m_bullets.push_back(temp);
 
             for(int i=0; i<3; i=i+1)// 扇形发出
@@ -412,6 +415,7 @@ void Pmanager::updateAttackEffect(QPointF posi, double size, double dir)
             Bullet temp;
             temp.setPosi(s.x(),s.y());
             temp.setDir(dir);
+            temp.changepic(":/res/img/bullets/bullets (4).png");
             int h=100;
             m_bullets.push_back(temp);
 
@@ -492,7 +496,7 @@ void Pmanager::renderBullets(QPainter *painter,QString str)
 {
     for(int i=0; i<m_bullets.size(); i++)
     {
-        m_bullets[i].changepic(str);
+//        m_bullets[i].changepic(str);
         m_bullets[i].renderBullet(painter);
     }
 }

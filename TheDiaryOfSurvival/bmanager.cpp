@@ -1,7 +1,7 @@
 #include "bmanager.h"
 #include "player.h"
 
-QPointF m_playerPosi_barriers;  // 玩家的位置
+QPointF m_playerPosi_barriers;
 bool compareDist(const barriers &l, const barriers &r);
 
 bmanager::bmanager()

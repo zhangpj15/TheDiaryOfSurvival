@@ -92,8 +92,7 @@ void Boss::updateAttackEffect(QPointF posi, double size, double dir)
             Bullet temp;
             temp.setPosi(s.x(),s.y());
             temp.setDir(dir);
-
-//            m_bullets.push_back(temp);
+            temp.changepic(":/res/img/bullets/bullets (6).png");
             for(int i=0; i<6; i=i+1)// 扇形发出
             {
                 temp.setDir(dir-i*60);
@@ -113,7 +112,7 @@ void Boss::updateAttackEffect(QPointF posi, double size, double dir)
             Bullet temp;
             temp.setPosi(s.x(),s.y());
             temp.setDir(dir);
-
+            temp.changepic(":/res/img/bullets/bullets (7).png");
 //            m_bullets.push_back(temp);
             for(int i=0; i<4; i=i+1)// 扇形发出
             {
@@ -135,7 +134,7 @@ void Boss::updateAttackEffect(QPointF posi, double size, double dir)
             Bullet temp;
             temp.setPosi(s.x(),s.y());
             temp.setDir(dir-30);
-
+            temp.changepic(":/res/img/bullets/bullets (3).png");
 //            m_bullets.push_back(temp);
             for(int i=0; i<8; i=i+1)// 扇形发出
             {

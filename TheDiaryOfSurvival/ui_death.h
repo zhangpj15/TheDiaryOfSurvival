@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'death.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.3
+** Created by: Qt User Interface Compiler version 5.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -25,6 +25,7 @@ class Ui_death
 public:
     QLabel *lblPoint;
     QPushButton *btnRestart;
+    QLabel *label;
 
     void setupUi(QWidget *death)
     {
@@ -52,15 +53,15 @@ public:
         font.setPointSize(34);
         lblPoint->setFont(font);
         lblPoint->setStyleSheet(QLatin1String("QLabel{\n"
+"color:#5a5a5a;\n"
 "border: 0px;\n"
-"color:#5A5A5A;\n"
 "border-radius: 7px;\n"
 "\n"
 "}"));
         lblPoint->setAlignment(Qt::AlignCenter);
         btnRestart = new QPushButton(death);
         btnRestart->setObjectName(QStringLiteral("btnRestart"));
-        btnRestart->setGeometry(QRect(110, 180, 158, 42));
+        btnRestart->setGeometry(QRect(120, 180, 158, 42));
         QFont font1;
         font1.setFamily(QStringLiteral("Agency FB"));
         font1.setPointSize(26);
@@ -70,7 +71,7 @@ public:
         btnRestart->setFont(font1);
         btnRestart->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
-"color:#3A3A3A;\n"
+"color:#3a3a3a;\n"
 "border-radius: 7px;\n"
 "\n"
 "}\n"
@@ -82,10 +83,22 @@ public:
 "}\n"
 "\n"
 "QPushButton:pressed{\n"
-"border:1px solid rgb(77, 176, 251);\n"
+"border:0px solid rgb(77, 176, 251);\n"
 "color:#aaaaaa;\n"
 "\n"
 "}"));
+        label = new QLabel(death);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(0, 0, 400, 300));
+        label->setStyleSheet(QLatin1String("QLabel{\n"
+"background-color:rgba(250,250,220,70%);\n"
+"border:2px #2a2a2a;\n"
+"border-radius: 10px;\n"
+"}"));
+        label->setScaledContents(true);
+        label->raise();
+        lblPoint->raise();
+        btnRestart->raise();
 
         retranslateUi(death);
 
@@ -94,9 +107,10 @@ public:
 
     void retranslateUi(QWidget *death)
     {
-        death->setWindowTitle(QApplication::translate("death", "Form", Q_NULLPTR));
-        lblPoint->setText(QApplication::translate("death", "Game over", Q_NULLPTR));
-        btnRestart->setText(QApplication::translate("death", "RESTART", Q_NULLPTR));
+        death->setWindowTitle(QApplication::translate("death", "Form", 0));
+        lblPoint->setText(QApplication::translate("death", "Game over", 0));
+        btnRestart->setText(QApplication::translate("death", "RESTART", 0));
+        label->setText(QString());
     } // retranslateUi
 
 };

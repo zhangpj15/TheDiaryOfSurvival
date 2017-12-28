@@ -8,7 +8,7 @@ Player::Player()
 
 void Player::initPlayer()
 {
-    m_type = ":/res/img/plane/figure (2).png";
+    m_type = ":/res/img/plane/figure (11).png";
     m_type_bullets=":/res/img/bullets/bullets (2).png";
     m_dir = 0;
     m_vel = 2;
@@ -275,9 +275,9 @@ void Player::render(QPainter *painter)
     int numb=m_life/25+1;
     if(defence){
         QPainterPath path;
-        path.addEllipse(getCurrentPosi(),m_size*0.7,m_size*0.7);
-        path.addEllipse(getCurrentPosi(),m_size*0.5,m_size*0.5);
-        painter->setBrush(QPixmap(QString(":/res/config/ico/coldFireBar.png")));
+        path.addEllipse(getCurrentPosi(),m_size*0.75,m_size*0.75);
+        path.addEllipse(getCurrentPosi(),m_size*0.6,m_size*0.6);
+        painter->setBrush(QPixmap(QString(":/res/config/ico/metal.png")));
         path.setFillRule(Qt::OddEvenFill);//使用奇偶填充，刚好可以只显示圆环
         painter->drawPath(path);
     }

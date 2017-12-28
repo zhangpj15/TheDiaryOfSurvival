@@ -62,13 +62,13 @@ void game::startGameLoop()
     space=1;
     zone=0;
 
-
-    m_price_skill1=15;
-    m_price_skill2=15;
-    m_price_skill3=15;
+    //道具价格
+    m_price_skill1=5;
+    m_price_skill2=2;
+    m_price_skill3=4;
     update();
 
-    bgsound->play();//播放
+    bgsound->play();//播放bgm
     bgsound->setLoops(-1);
     //bgsound->stop();//停止
 
@@ -585,7 +585,8 @@ void game::renderBorder(QPainter *painter, int rate)
     int w_bound=this->width()-space*8/3*rate>300?this->width()-space*8/3*rate:280;
     int h_bound=this->height()-130-space*2*rate>210?this->height()-130-space*2*rate:210;
     path.addRect(space*4/3*rate,60+space*rate,w_bound,h_bound);
-    painter->setBrush(QPixmap(QString(":/res/config/ico/coldFireBar.png")));
+    painter->setPen(QPen(Qt::gray,1,Qt::DotLine,Qt::FlatCap));
+    painter->setBrush(QPixmap(QString(":/res/config/ico/seaplane.png")));
     path.setFillRule(Qt::OddEvenFill);//使用奇偶填充，刚好可以只显示圆环
     painter->drawPath(path);
     m_pmanager.setLifeRect(space*4/3*rate,60+space*rate,w_bound,h_bound);
