@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     initInfo();
     initRegis();
     initLoadwin();
+    initRank();
 
     connect(m_game,SIGNAL(sig_deathSave(int,int)),m_loadwin,SLOT(saveRecord(int, int)));
 }
@@ -66,6 +67,16 @@ void MainWindow::initLoadwin()
     connect(m_loadwin,SIGNAL(sig_loginSuccess()),this,SLOT(slot_start()));
 }
 
+void MainWindow::initRank()
+{
+    m_rank = new Rank(this);
+    m_rank->hide();
+
+    connect(m_rank,SIGNAL(sig_returnButton()),this,SLOT(slot_exitRank()));
+    connect(m_start,SIGNAL(sig_btnRank()),this,SLOT(slot_rank()));
+}
+
+
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
     m_game->setGeometry(0,0,width(),height());
@@ -91,6 +102,12 @@ void MainWindow::slot_loadwin()
     m_loadwin->show();
 }
 
+void MainWindow::slot_rank()
+{
+    m_start->hide();
+    m_rank->fresh();
+    m_rank->show();
+}
 
 void MainWindow::slot_return()
 {
@@ -104,6 +121,12 @@ void MainWindow::slot_exitLogin()
     m_loadwin->hide();
     m_start->show();
 
+}
+
+void MainWindow::slot_exitRank()
+{
+    m_rank->hide();
+    m_start->show();
 }
 
 void MainWindow::slot_returnStart()

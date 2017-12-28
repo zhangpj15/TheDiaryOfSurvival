@@ -92,6 +92,7 @@ signals:
     void sig_death();
     void sig_quitgame();
     void sig_borngoods();
+    void sig_deathSave(int killnum,int timecount);
 
 private:
     Ui::game *ui;
