@@ -136,7 +136,13 @@ void game::slot_timeLoop()
         bornrate_enermy=(bornrate_enermy-100)<501?500:(bornrate_enermy-100);
         bornrate_boss=(bornrate_boss-1000)<6001?6000:(bornrate_boss-1500);
         bornrate_goods=(bornrate_goods-100)<9001?9000:(bornrate_goods-100);
-        bornrate_barriers=(bornrate_barriers-150)<1501?1500:(bornrate_barriers-150);
+       //bornrate_barriers=(bornrate_barriers-150)<1501?1500:(bornrate_barriers-150);
+    }
+    if(m_time%5000==0){
+        bornrate_barriers=300;
+    }
+    if(m_time%6000==0){
+        bornrate_barriers=3000;
     }
     if(m_time%zonerate==0)//控制缩圈
     {
