@@ -33,8 +33,10 @@ void Boss::setIsAlive(bool b)
 QPointF Boss::getPosi()
 {
     QPointF posi;
-    posi.setX(m_posi.x()+m_size/2.0);
-    posi.setY(m_posi.y()+m_size/2.0);
+    //posi.setX(m_posi.x()+m_size/2.0);
+   // posi.setY(m_posi.y()+m_size/2.0);
+    posi.setX(m_posi.x()+50);
+    posi.setY(m_posi.y()+50);
     return m_posi;
 }
 
@@ -147,10 +149,10 @@ void Boss::updateAttackEffect(QPointF posi, double size, double dir)
 void Boss::render(QPainter *painter)
 {
     if(m_isAlive){
-        painter->drawPixmap(m_posi.x(),m_posi.y(),m_size,m_size,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
+        painter->drawPixmap(m_posi.x()-50,m_posi.y()-50,m_size,m_size,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
         int numb=m_life/25+1;
         for(int i=0;i<numb;i++)
-            painter->drawPixmap(m_posi.x()+0.2*i*m_size,m_posi.y()-0.2*m_size,25,25,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
+            painter->drawPixmap(m_posi.x()-50+0.2*i*m_size,m_posi.y()-50-0.2*m_size,25,25,QPixmap(QString(":/res/img/mask/enermy_(%1).png").arg(m_born)));
         for(int i=0; i<m_bullets.size(); i++)
         {
 //            m_bullets[i].changepic(str);

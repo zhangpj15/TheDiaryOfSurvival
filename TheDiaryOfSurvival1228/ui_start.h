@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'start.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.9.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -53,7 +53,7 @@ public:
         Background->setWordWrap(false);
         btnEnter = new QPushButton(start);
         btnEnter->setObjectName(QStringLiteral("btnEnter"));
-        btnEnter->setGeometry(QRect(550, 140, 172, 50));
+        btnEnter->setGeometry(QRect(540, 300, 172, 50));
         QFont font1;
         font1.setFamily(QStringLiteral("Agency FB"));
         font1.setPointSize(24);
@@ -84,7 +84,7 @@ public:
 "}"));
         btnClose = new QPushButton(start);
         btnClose->setObjectName(QStringLiteral("btnClose"));
-        btnClose->setGeometry(QRect(550, 200, 151, 50));
+        btnClose->setGeometry(QRect(540, 480, 151, 50));
         QFont font2;
         font2.setFamily(QStringLiteral("Agency FB"));
         font2.setPointSize(24);
@@ -112,7 +112,7 @@ public:
 "}"));
         btnInfo = new QPushButton(start);
         btnInfo->setObjectName(QStringLiteral("btnInfo"));
-        btnInfo->setGeometry(QRect(550, 320, 101, 50));
+        btnInfo->setGeometry(QRect(540, 360, 101, 50));
         btnInfo->setFont(font2);
         btnInfo->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
@@ -134,7 +134,7 @@ public:
 "}"));
         btnLogin = new QPushButton(start);
         btnLogin->setObjectName(QStringLiteral("btnLogin"));
-        btnLogin->setGeometry(QRect(550, 430, 81, 52));
+        btnLogin->setGeometry(QRect(540, 130, 81, 52));
         btnLogin->setMinimumSize(QSize(0, 0));
         QFont font3;
         font3.setFamily(QStringLiteral("Agency FB"));
@@ -163,7 +163,7 @@ public:
 "}"));
         btnRegis = new QPushButton(start);
         btnRegis->setObjectName(QStringLiteral("btnRegis"));
-        btnRegis->setGeometry(QRect(550, 490, 131, 52));
+        btnRegis->setGeometry(QRect(540, 210, 131, 52));
         btnRegis->setMinimumSize(QSize(124, 0));
         QFont font4;
         font4.setFamily(QStringLiteral("Agency FB"));
@@ -192,7 +192,7 @@ public:
 "}"));
         btnRank = new QPushButton(start);
         btnRank->setObjectName(QStringLiteral("btnRank"));
-        btnRank->setGeometry(QRect(550, 260, 131, 50));
+        btnRank->setGeometry(QRect(540, 420, 131, 50));
         btnRank->setMinimumSize(QSize(0, 0));
         btnRank->setFont(font1);
         btnRank->setStyleSheet(QLatin1String("QPushButton{\n"
@@ -221,14 +221,14 @@ public:
 
     void retranslateUi(QWidget *start)
     {
-        start->setWindowTitle(QApplication::translate("start", "Form", 0));
+        start->setWindowTitle(QApplication::translate("start", "Form", Q_NULLPTR));
         Background->setText(QString());
-        btnEnter->setText(QApplication::translate("start", "START GAME", 0));
-        btnClose->setText(QApplication::translate("start", "QUIT GAME", 0));
-        btnInfo->setText(QApplication::translate("start", "ABOUT", 0));
-        btnLogin->setText(QApplication::translate("start", "Login", 0));
-        btnRegis->setText(QApplication::translate("start", "Register", 0));
-        btnRank->setText(QApplication::translate("start", "RANKING", 0));
+        btnEnter->setText(QApplication::translate("start", "START GAME", Q_NULLPTR));
+        btnClose->setText(QApplication::translate("start", "QUIT GAME", Q_NULLPTR));
+        btnInfo->setText(QApplication::translate("start", "ABOUT", Q_NULLPTR));
+        btnLogin->setText(QApplication::translate("start", "Login", Q_NULLPTR));
+        btnRegis->setText(QApplication::translate("start", "Register", Q_NULLPTR));
+        btnRank->setText(QApplication::translate("start", "RANKING", Q_NULLPTR));
     } // retranslateUi
 
 };

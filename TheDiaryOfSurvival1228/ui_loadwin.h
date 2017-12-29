@@ -65,22 +65,30 @@ public:
         userline = new QLineEdit(loadwin);
         userline->setObjectName(QStringLiteral("userline"));
         userline->setGeometry(QRect(340, 310, 239, 42));
-        userline->setFont(font);
+        QFont font1;
+        font1.setFamily(QStringLiteral("Agency FB"));
+        font1.setPointSize(16);
+        font1.setBold(true);
+        font1.setWeight(75);
+        userline->setFont(font1);
         pwline = new QLineEdit(loadwin);
         pwline->setObjectName(QStringLiteral("pwline"));
         pwline->setGeometry(QRect(340, 370, 239, 42));
-        pwline->setFont(font);
+        QFont font2;
+        font2.setFamily(QStringLiteral("Agency FB"));
+        font2.setPointSize(16);
+        pwline->setFont(font2);
         loadButton = new QPushButton(loadwin);
         loadButton->setObjectName(QStringLiteral("loadButton"));
         loadButton->setGeometry(QRect(330, 450, 121, 51));
-        QFont font1;
-        font1.setFamily(QStringLiteral("Agency FB"));
-        font1.setPointSize(26);
-        font1.setBold(true);
-        font1.setItalic(false);
-        font1.setUnderline(true);
-        font1.setWeight(75);
-        loadButton->setFont(font1);
+        QFont font3;
+        font3.setFamily(QStringLiteral("Agency FB"));
+        font3.setPointSize(26);
+        font3.setBold(true);
+        font3.setItalic(false);
+        font3.setUnderline(true);
+        font3.setWeight(75);
+        loadButton->setFont(font3);
         loadButton->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
 "color:#FFFFFF;\n"
@@ -102,7 +110,7 @@ public:
         exitButton = new QPushButton(loadwin);
         exitButton->setObjectName(QStringLiteral("exitButton"));
         exitButton->setGeometry(QRect(470, 450, 101, 51));
-        exitButton->setFont(font1);
+        exitButton->setFont(font3);
         exitButton->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
 "color:#FFFFFF;\n"

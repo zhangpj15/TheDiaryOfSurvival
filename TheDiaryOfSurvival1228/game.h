@@ -29,6 +29,7 @@ public:
     int m_time;    // 与 Timer 捆绑的一个时间值
     int sectime;
     int zone=0;
+    int bornrate;
     int bornrate_enermy;
     int bornrate_boss;
     int bornrate_goods;
@@ -37,7 +38,7 @@ public:
     int zonerate;
     int dayrate;
     int bloodrate;
-    int timeBtn;
+    QString m_user;
 
     int m_price_skill1;
     int m_price_skill2;
@@ -56,7 +57,8 @@ public:
     Player m_player;
 
     void startGameLoop();   // 开始游戏
-
+    void setUser(QString a);   // 开始游戏
+    QString returnUser();   // 开始游戏
     explicit game(QWidget *parent = 0);
     ~game();
 
@@ -93,6 +95,7 @@ signals:
     void sig_death();
     void sig_quitgame();
     void sig_borngoods();
+    void sig_deathSave(int,int);
 
 private:
     Ui::game *ui;

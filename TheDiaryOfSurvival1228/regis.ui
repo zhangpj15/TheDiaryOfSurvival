@@ -239,7 +239,7 @@ border-radius: 7px;
       <property name="font">
        <font>
         <family>Agency FB</family>
-        <pointsize>20</pointsize>
+        <pointsize>16</pointsize>
        </font>
       </property>
      </widget>
@@ -249,7 +249,7 @@ border-radius: 7px;
       <property name="font">
        <font>
         <family>Agency FB</family>
-        <pointsize>20</pointsize>
+        <pointsize>16</pointsize>
        </font>
       </property>
      </widget>
@@ -259,7 +259,7 @@ border-radius: 7px;
       <property name="font">
        <font>
         <family>Agency FB</family>
-        <pointsize>20</pointsize>
+        <pointsize>16</pointsize>
        </font>
       </property>
      </widget>
@@ -269,7 +269,7 @@ border-radius: 7px;
       <property name="font">
        <font>
         <family>Agency FB</family>
-        <pointsize>20</pointsize>
+        <pointsize>16</pointsize>
        </font>
       </property>
      </widget>
@@ -279,7 +279,7 @@ border-radius: 7px;
       <property name="font">
        <font>
         <family>Agency FB</family>
-        <pointsize>20</pointsize>
+        <pointsize>16</pointsize>
        </font>
       </property>
      </widget>
@@ -310,7 +310,7 @@ border-radius: 7px;
       <property name="font">
        <font>
         <family>Agency FB</family>
-        <pointsize>12</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="text">
@@ -323,7 +323,7 @@ border-radius: 7px;
       <property name="font">
        <font>
         <family>Agency FB</family>
-        <pointsize>12</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="text">

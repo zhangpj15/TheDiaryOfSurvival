@@ -358,7 +358,7 @@ public:
         line1_15->raise();
         lblGoods = new QLabel(game);
         lblGoods->setObjectName(QStringLiteral("lblGoods"));
-        lblGoods->setGeometry(QRect(490, 10, 161, 40));
+        lblGoods->setGeometry(QRect(790, 60, 161, 40));
         lblGoods->setFont(font1);
         lblGoods->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
@@ -367,7 +367,7 @@ public:
         lblGoods->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         propseffect = new QLabel(game);
         propseffect->setObjectName(QStringLiteral("propseffect"));
-        propseffect->setGeometry(QRect(660, 10, 131, 40));
+        propseffect->setGeometry(QRect(670, 10, 131, 40));
         propseffect->setFont(font2);
         propseffect->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
@@ -552,7 +552,7 @@ public:
         line1_6->setFrameShadow(QFrame::Raised);
         lblPoint = new QLabel(groupSkill);
         lblPoint->setObjectName(QStringLiteral("lblPoint"));
-        lblPoint->setGeometry(QRect(430, 20, 41, 30));
+        lblPoint->setGeometry(QRect(420, 20, 41, 30));
         lblPoint->setFont(font6);
         lblPoint->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
@@ -747,7 +747,13 @@ public:
         lblback->setFrameShadow(QFrame::Raised);
         lbluser = new QLabel(game);
         lbluser->setObjectName(QStringLiteral("lbluser"));
-        lbluser->setGeometry(QRect(450, 20, 72, 15));
+        lbluser->setGeometry(QRect(580, 10, 100, 40));
+        lbluser->setFont(font1);
+        lbluser->setStyleSheet(QLatin1String("QLabel\n"
+"{\n"
+"color:#2a2a2a;\n"
+"}"));
+        lbluser->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         retranslateUi(game);
 
@@ -779,7 +785,7 @@ public:
         label_2->setText(QApplication::translate("game", "PROPS INFO", Q_NULLPTR));
         bg->setText(QString());
         lblGoods->setText(QApplication::translate("game", "None", Q_NULLPTR));
-        propseffect->setText(QApplication::translate("game", "PROPS EFFECT", Q_NULLPTR));
+        propseffect->setText(QApplication::translate("game", "USER NAME", Q_NULLPTR));
         groupSkill->setTitle(QString());
         skill1num->setText(QApplication::translate("game", "$5", Q_NULLPTR));
         skill2num->setText(QApplication::translate("game", "$2", Q_NULLPTR));
@@ -802,7 +808,7 @@ public:
         lblskill3->setText(QString());
         label_3->setText(QString());
         groupBoss->setText(QApplication::translate("game", "BOSS IS COMING!", Q_NULLPTR));
-        lbluser->setText(QApplication::translate("game", "TextLabel", Q_NULLPTR));
+        lbluser->setText(QString());
     } // retranslateUi
 
 };
