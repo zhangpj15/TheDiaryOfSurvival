@@ -81,7 +81,9 @@ border-radius: 7px;
    <property name="font">
     <font>
      <family>Agency FB</family>
-     <pointsize>20</pointsize>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
   </widget>
@@ -97,7 +99,7 @@ border-radius: 7px;
    <property name="font">
     <font>
      <family>Agency FB</family>
-     <pointsize>20</pointsize>
+     <pointsize>16</pointsize>
     </font>
    </property>
   </widget>

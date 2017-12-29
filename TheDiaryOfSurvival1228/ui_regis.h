@@ -185,31 +185,34 @@ public:
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         usernameline = new QLineEdit(verticalFrame_2);
         usernameline->setObjectName(QStringLiteral("usernameline"));
-        usernameline->setFont(font);
+        QFont font1;
+        font1.setFamily(QStringLiteral("Agency FB"));
+        font1.setPointSize(16);
+        usernameline->setFont(font1);
 
         verticalLayout_3->addWidget(usernameline);
 
         mailboxline = new QLineEdit(verticalFrame_2);
         mailboxline->setObjectName(QStringLiteral("mailboxline"));
-        mailboxline->setFont(font);
+        mailboxline->setFont(font1);
 
         verticalLayout_3->addWidget(mailboxline);
 
         telline = new QLineEdit(verticalFrame_2);
         telline->setObjectName(QStringLiteral("telline"));
-        telline->setFont(font);
+        telline->setFont(font1);
 
         verticalLayout_3->addWidget(telline);
 
         passwordline = new QLineEdit(verticalFrame_2);
         passwordline->setObjectName(QStringLiteral("passwordline"));
-        passwordline->setFont(font);
+        passwordline->setFont(font1);
 
         verticalLayout_3->addWidget(passwordline);
 
         rPasswordline = new QLineEdit(verticalFrame_2);
         rPasswordline->setObjectName(QStringLiteral("rPasswordline"));
-        rPasswordline->setFont(font);
+        rPasswordline->setFont(font1);
 
         verticalLayout_3->addWidget(rPasswordline);
 
@@ -223,16 +226,16 @@ public:
         horizontalLayout_2->setContentsMargins(-1, 1, -1, -1);
         manradioButton = new QRadioButton(horizontalFrame);
         manradioButton->setObjectName(QStringLiteral("manradioButton"));
-        QFont font1;
-        font1.setFamily(QStringLiteral("Agency FB"));
-        font1.setPointSize(12);
-        manradioButton->setFont(font1);
+        QFont font2;
+        font2.setFamily(QStringLiteral("Agency FB"));
+        font2.setPointSize(14);
+        manradioButton->setFont(font2);
 
         horizontalLayout_2->addWidget(manradioButton);
 
         womanradioButton = new QRadioButton(horizontalFrame);
         womanradioButton->setObjectName(QStringLiteral("womanradioButton"));
-        womanradioButton->setFont(font1);
+        womanradioButton->setFont(font2);
         womanradioButton->setCheckable(true);
         womanradioButton->setChecked(false);
         womanradioButton->setAutoRepeat(false);
@@ -242,13 +245,13 @@ public:
         returnButton = new QPushButton(regis);
         returnButton->setObjectName(QStringLiteral("returnButton"));
         returnButton->setGeometry(QRect(10, 10, 121, 52));
-        QFont font2;
-        font2.setFamily(QStringLiteral("Agency FB"));
-        font2.setPointSize(26);
-        font2.setBold(true);
-        font2.setUnderline(true);
-        font2.setWeight(75);
-        returnButton->setFont(font2);
+        QFont font3;
+        font3.setFamily(QStringLiteral("Agency FB"));
+        font3.setPointSize(26);
+        font3.setBold(true);
+        font3.setUnderline(true);
+        font3.setWeight(75);
+        returnButton->setFont(font3);
         returnButton->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
 "color:#FFFFFF;\n"
@@ -270,7 +273,7 @@ public:
         loginButton = new QPushButton(regis);
         loginButton->setObjectName(QStringLiteral("loginButton"));
         loginButton->setGeometry(QRect(90, 440, 171, 52));
-        loginButton->setFont(font2);
+        loginButton->setFont(font3);
         loginButton->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
 "color:#FFFFFF;\n"
@@ -292,7 +295,7 @@ public:
         loadButton = new QPushButton(regis);
         loadButton->setObjectName(QStringLiteral("loadButton"));
         loadButton->setGeometry(QRect(300, 440, 111, 52));
-        loadButton->setFont(font2);
+        loadButton->setFont(font3);
         loadButton->setStyleSheet(QLatin1String("QPushButton{\n"
 "border: 0px;\n"
 "color:#FFFFFF;\n"
